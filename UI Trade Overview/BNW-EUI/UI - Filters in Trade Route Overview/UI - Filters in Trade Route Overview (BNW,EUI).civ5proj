@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <ProjectGuid>{da1b236b-6343-4e7a-8ac5-7a8689a9667f}</ProjectGuid>
+    <Name>UI - Filters in Trade Route Overview (BNW,EUI)</Name>
+    <Guid>eece07cc-4fbd-4e7b-a128-35b6226d3cd6</Guid>
+    <ModVersion>1</ModVersion>
+    <Stability>Stable</Stability>
+    <Teaser>Adds filters for Trade Routes Available page (BNW,EUI)</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]BNW-EUI[ENDCOLOR] version.</Description>
+    <Authors>Infixo</Authors>
+    <SpecialThanks>
+    </SpecialThanks>
+    <AffectsSavedGames>false</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
+    <SupportsMac>true</SupportsMac>
+    <AssemblyName>UI - Filters in Trade Route Overview</AssemblyName>
+    <RootNamespace>UI - Filters in Trade Route Overview</RootNamespace>
+    <ModReferences />
+    <ModBlockers>
+      <Association xmlns="">
+        <Type>Mod</Type>
+        <Name>UI - Filters in Trade Route Overview (Vox Populi)</Name>
+        <Id>f30c5651-8fce-44c8-abe6-4bc9bd582098</Id>
+        <MinVersion>1</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModBlockers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Package Only' ">
+    <PackageMod>true</PackageMod>
+    <DeployMod>false</DeployMod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Deploy Only' ">
+    <PackageMod>false</PackageMod>
+    <DeployMod>true</DeployMod>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lua\TradeRouteOverview.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Lua\TradeRouteOverview.xml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
+</Project>

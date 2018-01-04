@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mod id="f30c5651-8fce-44c8-abe6-4bc9bd582098" version="1">
+  <Properties>
+    <Name>UI - Filters in Trade Route Overview (Vox Populi)</Name>
+    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR])</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version.</Description>
+    <Authors>Infixo</Authors>
+    <HideSetupGame>0</HideSetupGame>
+    <AffectsSavedGames>0</AffectsSavedGames>
+    <SupportsSinglePlayer>1</SupportsSinglePlayer>
+    <SupportsMultiplayer>1</SupportsMultiplayer>
+    <SupportsHotSeat>1</SupportsHotSeat>
+    <SupportsMac>1</SupportsMac>
+    <ReloadAudioSystem>0</ReloadAudioSystem>
+    <ReloadLandmarkSystem>0</ReloadLandmarkSystem>
+    <ReloadStrategicViewSystem>0</ReloadStrategicViewSystem>
+    <ReloadUnitSystem>0</ReloadUnitSystem>
+  </Properties>
+  <Dependencies>
+    <Mod id="d1b6328c-ff44-4b0d-aad7-c657f83610cd" minversion="88" maxversion="999" title="(1) Community Patch" />
+  </Dependencies>
+  <References>
+    <Mod id="24923240-e4fb-4bf6-8f0e-6e5b6cf4d3c2" minversion="1" maxversion="999" title="(6a) CBO Compatibility (EUI)" />
+    <Mod id="828b5b4b-7c62-4afb-a43f-034b596ef5e4" minversion="1" maxversion="999" title="(6b) CBO Compatibility (No-EUI)" />
+  </References>
+  <Blocks>
+    <Mod id="eece07cc-4fbd-4e7b-a128-35b6226d3cd6" minversion="1" maxversion="999" title="UI - Filters in Trade Route Overview (BNW &amp; EUI)" />
+  </Blocks>
+  <Files>
+    <File md5="D83073C9084AF8CBAE88092D7925BB14" import="1">Lua/TradeRouteOverview.lua</File>
+    <File md5="7854795702CEFC980AEDCEAA1BDF0222" import="1">Lua/TradeRouteOverview.xml</File>
+    <File md5="41F4F7F71A275467DC26109D2A0E3AC1" import="0">Text/FiltersInTRO.xml</File>
+  </Files>
+  <Actions>
+    <OnModActivated>
+      <UpdateDatabase>Text/FiltersInTRO.xml</UpdateDatabase>
+    </OnModActivated>
+  </Actions>
+</Mod>

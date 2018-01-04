@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mod id="af398f38-90a0-45f0-9831-6c712c86061b" version="5">
+  <Properties>
+    <Name>(8) VP-EE Compatibility</Name>
+    <Teaser>Vox Populi and Enlightenment Era compatibility project</Teaser>
+    <Description>Enlightenment Era is now fully compatible with Vox Populi. Techs are streamlined, Units and Buildings re-balanced and integrated with VP. The mod also includes RER. Enjoy!</Description>
+    <Authors>Infixo</Authors>
+    <SpecialThanks>Xony, zwei833, Pouakai, pandasnail, phantomaxl1207, barrizqi, sukritact, JanBoruta, Chrisy15, Enginseer, Padre19, Aldebaran1997, Gazebo</SpecialThanks>
+    <HideSetupGame>0</HideSetupGame>
+    <AffectsSavedGames>1</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>1</SupportsSinglePlayer>
+    <SupportsMultiplayer>1</SupportsMultiplayer>
+    <SupportsHotSeat>1</SupportsHotSeat>
+    <SupportsMac>1</SupportsMac>
+    <ReloadAudioSystem>0</ReloadAudioSystem>
+    <ReloadLandmarkSystem>1</ReloadLandmarkSystem>
+    <ReloadStrategicViewSystem>1</ReloadStrategicViewSystem>
+    <ReloadUnitSystem>1</ReloadUnitSystem>
+  </Properties>
+  <Dependencies>
+    <Mod id="ce8aa614-7ef7-4a45-a179-5329869e8d6d" minversion="5" maxversion="999" title="Enlightenment Era" />
+    <Mod id="8411a7a8-dad3-4622-a18e-fcc18324c799" minversion="13" maxversion="999" title="(2) Community Balance Overhaul" />
+  </Dependencies>
+  <References>
+    <Mod id="24923240-e4fb-4bf6-8f0e-6e5b6cf4d3c2" minversion="1" maxversion="999" title="(6a) CBO Compatibility (EUI)" />
+    <Mod id="828b5b4b-7c62-4afb-a43f-034b596ef5e4" minversion="1" maxversion="999" title="(6b) CBO Compatibility (No-EUI)" />
+  </References>
+  <Blocks>
+    <Mod id="a9efbd84-c934-4e58-acb2-717a4cd70b93" minversion="0" maxversion="999" title="Gripsholm Wonder" />
+    <Mod id="66f38ce9-fc7b-448d-a7db-949d105b9b9f" minversion="0" maxversion="999" title="Renaissance Era Revised" />
+  </Blocks>
+  <Files>
+    <File md5="3F79B8638ABDCD58D76BB8C342D601B8" import="0">Art/IconAtlas.xml</File>
+    <File md5="3AB255B17157FE2A929FF5C24D72B988" import="1">Art/Mausoleum128.dds</File>
+    <File md5="6C5803BFC25B429CFB598B52031A1B8F" import="1">Art/Mausoleum256.dds</File>
+    <File md5="87EC7534D60D1B3E3E67D56406EC312D" import="1">Art/Mausoleum45.dds</File>
+    <File md5="ED4B04FD72BE0AE89DA89A2DA626CCE1" import="1">Art/Mausoleum64.dds</File>
+    <File md5="A41B78DDFB9C9CAA379CB8C767D5DADE" import="0">VPEE_Buildings.sql</File>
+    <File md5="7793B1754A683E950682BBFFFDC4E179" import="0">VPEE_Policies.sql</File>
+    <File md5="C7E7D5F8AA0E92029FD9438084038119" import="0">VPEE_Tech.sql</File>
+    <File md5="F4AF223991D4320BF6FE25AC0E1C40F8" import="0">VPEE_Text_en_US.sql</File>
+    <File md5="8B1CBE3D436DA725B67CE87FDBA5F6F5" import="0">VPEE_Units.sql</File>
+    <File md5="1F77E677E7E3AF50FE83F7C583F448DA" import="0">Lua/VPEE_Functions.lua</File>
+    <File md5="0C3E3E7E4C6C249FA68EC58B85D4489C" import="1">Lua/CultureOverview.lua</File>
+    <File md5="5F310B56A85B1E68963A0B8361F3F4BC" import="1">Lua/CultureOverview.xml</File>
+    <File md5="3569D3CBE1E1D2088BAC138852B3AA89" import="1">Lua/Wonders.lua</File>
+    <File md5="DDFF5127358A69F9C3D6E1F79A531547" import="1">RER/2hswordsman/2hgs_black_diff.dds</File>
+    <File md5="D8BE541295FE2C8C101088DFFEED08A2" import="1">RER/2hswordsman/2hgs_black_sref.dds</File>
+    <File md5="18EA9FE46D430F838258A251A498711A" import="1">RER/2hswordsman/2hswordsman_black.fxsxml</File>
+    <File md5="6A88330D83403F350F5FEDEC39F7C1B7" import="1">RER/2hswordsman/2hswordsman_black.gr2</File>
+    <File md5="4020A662D7DAD5FCDB43A10487F831F0" import="1">RER/2hswordsman/2h_tercio_piquero_sref.dds</File>
+    <File md5="F7F6A7C7832E8130B2311A6DC641251C" import="1">RER/2hswordsman/DBaro2nClay_gloss.dds</File>
+    <File md5="9A5E69D7340765F000790541CC6755AD" import="1">RER/2hswordsman/DBaronClay.dds</File>
+    <File md5="447695836D843885AC0C6A5C9E85BE09" import="1">RER/Art/2HANDER_SV.dds</File>
+    <File md5="88660A6952D141496108A10558598C05" import="1">RER/Art/Landsknecht_Flag.dds</File>
+    <File md5="FE96BB4A1626EE4B306D907FF8D682C2" import="1">RER/Art/Landsknecht_SV.dds</File>
+    <File md5="5896DBAACC13823E51B3BCBBBB910ABD" import="1">RER/Art/RER_UNITS_atlas_128.dds</File>
+    <File md5="1E000AA8EC682C11D165BF3E048D27CC" import="1">RER/Art/RER_UNITS_atlas_256.dds</File>
+    <File md5="1E93767F4C86C6463F6A2A364999E2CD" import="1">RER/Art/RER_UNITS_atlas_45.dds</File>
+    <File md5="C0139EB58B3E579C480334B7F15699FA" import="1">RER/Art/RER_UNITS_atlas_64.dds</File>
+    <File md5="57F7125992D72E4E6782DE1058E8C77A" import="1">RER/Art/RER_UNITS_atlas_80.dds</File>
+    <File md5="131CA692BEE32D4198FAC079C7B569F9" import="1">RER/RER_PIKE/pike_helm_diff.dds</File>
+    <File md5="3C1CE99FF2BFE1A47EF3A0A889C0A76F" import="1">RER/RER_PIKE/pike_helm_sref.dds</File>
+    <File md5="EBCE0CD7F3071FFEB7EA63B8FF250985" import="1">RER/RER_PIKE/RER_PIKE.fxsxml</File>
+    <File md5="7C457B3C1AE50E07BD210087FEF27EBF" import="1">RER/RER_PIKE/RER_PIKE.gr2</File>
+    <File md5="B1EF918E9BDE8877909CFBBD03931279" import="1">RER/RER_PIKE/RER_PIKE_diff.dds</File>
+    <File md5="D93107382406BC93F69CEACFE6679FBD" import="1">RER/RER_PIKE/RER_PIKE_sref.dds</File>
+    <File md5="DE8DCC622812A646D988BB37517D3F6B" import="0">RER/RER_Units.sql</File>
+    <File md5="2ACBEE57E8731CFDCB2E1980EDB3596D" import="0">RER/RER_Units.xml</File>
+    <File md5="630FF05F9A7D08517EC29BE411F41410" import="1">RER/Terc/TER_PIKE_diff.dds</File>
+    <File md5="7151B191973CDBA2713C1CD1A1EBA93F" import="1">RER/Terc/TER_PIKE_piquero.fxsxml</File>
+    <File md5="34351D1368AEB6685A4C2E468E4B7E72" import="1">RER/Terc/TER_PIKE_piquero.gr2</File>
+    <File md5="55D2A7C187E45D58FB688D5FFDBCFD1F" import="1">RER/Terc/TER_PIKE_sref.dds</File>
+  </Files>
+  <Actions>
+    <OnModActivated>
+      <UpdateDatabase>Art/IconAtlas.xml</UpdateDatabase>
+      <UpdateDatabase>RER/RER_Units.xml</UpdateDatabase>
+      <UpdateDatabase>RER/RER_Units.sql</UpdateDatabase>
+      <UpdateDatabase>VPEE_Tech.sql</UpdateDatabase>
+      <UpdateDatabase>VPEE_Units.sql</UpdateDatabase>
+      <UpdateDatabase>VPEE_Buildings.sql</UpdateDatabase>
+      <UpdateDatabase>VPEE_Policies.sql</UpdateDatabase>
+      <UpdateDatabase>VPEE_Text_en_US.sql</UpdateDatabase>
+    </OnModActivated>
+  </Actions>
+  <EntryPoints>
+    <EntryPoint type="InGameUIAddin" file="Lua/VPEE_Functions.lua">
+      <Name>VPEE_Functions</Name>
+      <Description>VPEE Wonder Functions</Description>
+    </EntryPoint>
+  </EntryPoints>
+</Mod>

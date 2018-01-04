@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# ModBuddy Solution File, Format Version 11.00
+Project("{F5FC21B5-7CC2-458A-ABBA-992F515BBA20}") = "(8) VP-EE Compatibility", "(8) VP-EE Compatibility\(8) VP-EE Compatibility.civ5proj", "{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|x86 = Default|x86
+		Deploy Only|x86 = Deploy Only|x86
+		Package Only|x86 = Package Only|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}.Default|x86.ActiveCfg = Default|x86
+		{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}.Default|x86.Build.0 = Default|x86
+		{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}.Deploy Only|x86.ActiveCfg = Deploy Only|x86
+		{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}.Deploy Only|x86.Build.0 = Deploy Only|x86
+		{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}.Package Only|x86.ActiveCfg = Package Only|x86
+		{1DECA6D5-81CB-4F8D-A412-FFEAF5E60FFD}.Package Only|x86.Build.0 = Package Only|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

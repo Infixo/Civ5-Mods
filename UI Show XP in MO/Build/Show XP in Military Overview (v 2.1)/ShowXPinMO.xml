@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by Infixo @ Feb 1, 2017 -->
+<GameData>
+
+	<Language_en_US>
+		<Row Tag="TXT_KEY_XP">
+			<Text>XP</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_MO_SORT_XP">
+			<Text>Sort By XP</Text>
+		</Row>
+	</Language_en_US>
+	
+</GameData>

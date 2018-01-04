@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mod id="eece07cc-4fbd-4e7b-a128-35b6226d3cd6" version="1">
+  <Properties>
+    <Name>UI - Filters in Trade Route Overview (BNW,EUI)</Name>
+    <Teaser>Adds filters for Trade Routes Available page (BNW,EUI)</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]BNW-EUI[ENDCOLOR] version.</Description>
+    <Authors>Infixo</Authors>
+    <HideSetupGame>0</HideSetupGame>
+    <AffectsSavedGames>0</AffectsSavedGames>
+    <SupportsSinglePlayer>1</SupportsSinglePlayer>
+    <SupportsMultiplayer>1</SupportsMultiplayer>
+    <SupportsHotSeat>1</SupportsHotSeat>
+    <SupportsMac>1</SupportsMac>
+    <ReloadAudioSystem>0</ReloadAudioSystem>
+    <ReloadLandmarkSystem>0</ReloadLandmarkSystem>
+    <ReloadStrategicViewSystem>0</ReloadStrategicViewSystem>
+    <ReloadUnitSystem>0</ReloadUnitSystem>
+  </Properties>
+  <Dependencies />
+  <References />
+  <Blocks>
+    <Mod id="f30c5651-8fce-44c8-abe6-4bc9bd582098" minversion="1" maxversion="999" title="UI - Filters in Trade Route Overview (Vox Populi)" />
+  </Blocks>
+  <Files>
+    <File md5="A52618B32EA4CC1F0B749FBD4431E637" import="1">Lua/TradeRouteOverview.lua</File>
+    <File md5="3962900C1434C4519CA67756B0224053" import="1">Lua/TradeRouteOverview.xml</File>
+  </Files>
+</Mod>

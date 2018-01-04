@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by Pouakai-->
+<GameData>
+	<Units>
+		<Row>
+			<Class>UNITCLASS_2HANDER</Class>
+			<Type>UNIT_2HANDER</Type>
+			<PrereqTech>TECH_CHEMISTRY</PrereqTech>
+			<Combat>26</Combat>
+			<Cost>260</Cost>
+			<FaithCost>280</FaithCost>
+			<RequiresFaithPurchaseEnabled>true</RequiresFaithPurchaseEnabled>
+			<Moves>2</Moves>
+			<CombatClass>UNITCOMBAT_MELEE</CombatClass>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_2HANDER</Description>
+			<Civilopedia>TXT_KEY_CIV5_2HANDER_TEXT</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_2HANDER_STRATEGY</Strategy>
+			<Help>TXT_KEY_UNIT_HELP_2HANDER</Help>
+			<MilitarySupport>true</MilitarySupport>
+			<MilitaryProduction>true</MilitaryProduction>
+			<Pillage>true</Pillage>
+			<ObsoleteTech>TECH_EE_FLINTLOCK</ObsoleteTech>
+			<GoodyHutUpgradeUnitClass>UNITCLASS_EE_LINE_INFANTRY</GoodyHutUpgradeUnitClass>
+			<AdvancedStartCost>25</AdvancedStartCost>
+			<XPValueAttack>3</XPValueAttack>
+			<XPValueDefense>3</XPValueDefense>
+			<Conscription>3</Conscription>
+			<UnitArtInfo>ART_DEF_UNIT_2HANDER</UnitArtInfo>
+			<UnitFlagIconOffset>33</UnitFlagIconOffset>
+			<IconAtlas>RER_UNITS_ATLAS</IconAtlas>
+			<PortraitIndex>0</PortraitIndex>
+		</Row>
+	</Units>
+	<Unit_AITypes>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<UnitAIType>UNITAI_ATTACK</UnitAIType>
+		</Row>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<UnitAIType>UNITAI_DEFENSE</UnitAIType>
+		</Row>
+	</Unit_AITypes>
+	<Unit_ClassUpgrades>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<UnitClassType>UNITCLASS_EE_LINE_INFANTRY</UnitClassType>
+		</Row>
+	</Unit_ClassUpgrades>
+	<Unit_Flavors>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<FlavorType>FLAVOR_OFFENSE</FlavorType>
+			<Flavor>7</Flavor>
+		</Row>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<FlavorType>FLAVOR_DEFENSE</FlavorType>
+			<Flavor>6</Flavor>
+		</Row>
+	</Unit_Flavors>
+	<Unit_FreePromotions>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<PromotionType>PROMOTION_2HANDER</PromotionType>
+		</Row>
+	</Unit_FreePromotions>
+	<Unit_ResourceQuantityRequirements>
+		<Row>
+			<UnitType>UNIT_2HANDER</UnitType>
+			<ResourceType>RESOURCE_IRON</ResourceType>
+		</Row>
+	</Unit_ResourceQuantityRequirements>
+	<Language_en_US>
+		<Row Tag="TXT_KEY_UNIT_2HANDER">
+			<Text>Two-Handed Swordsman</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIV5_2HANDER_TEXT">
+			<Text>Renaissance two-handed swords are monstrous weapons, longer and larger than even the medieval great swords, with a hilt of over a foot and a blade that measures nearly five feet in length, taller than some people. They are primarily in use during the early decades of the 16th century. These swords represent the final stage in the trend of increasing size that started in the 14th century. They can be used to fight against pike formations and cut off pike heads.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_UNIT_2HANDER_STRATEGY">
+			<Text>Two-Handed Swordsman is much stronger than the Longswordsman, and gains a devastating combat bonus against Spearmen, Pikemen, Tercio and Landsknecht.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_UNIT_HELP_2HANDER">
+			<Text>Early Renaissance Era melee unit. Additional +33% [ICON_WAR] Attack against Spearmen, Pikemen, Tercio and Landsknecht.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_2HANDER">
+			<Text>Two Hander</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_2HANDER_HELP">
+			<Text>+33% [ICON_WAR] Attack vs Spearmen, Pikemen, Tercio and Landsknecht.</Text>
+		</Row>
+	</Language_en_US>
+</GameData>

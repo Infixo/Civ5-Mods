@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <ProjectGuid>{7560397a-a72a-4514-8fb0-3b6358563701}</ProjectGuid>
+    <Name>Enhanced Naval Warfare for Vox Populi</Name>
+    <Guid>675ba5ec-dc5a-400f-9864-8170568d04e5</Guid>
+    <ModVersion>1</ModVersion>
+    <Stability>Stable</Stability>
+    <Teaser>New Naval units in late-game eras so in each era there's a complete set of unit types</Teaser>
+    <Description>New units in late-game eras so in each era there's a complete set of specific unit types (no gaps):
+[NEWLINE][ICON_MOVES]Dreadnought - Modern Era, naval ranged
+[NEWLINE][ICON_MOVES](early) Destroyer - Modern Era, naval melee
+[NEWLINE][ICON_MOVES]Rocket Missile - Atomic Era, missile
+[NEWLINE][ICON_MOVES]Attack Submarine - Atomic Era, submarines
+[NEWLINE][ICON_MOVES]Missile Destroyer - Information Era, naval melee
+[NEWLINE][ICON_MOVES]Supercarrier - Information Era, carriers
+[NEWLINE]Changes to existing units: Missile Cruiser is back again a ranged unit, Submarine is available earlier but is weaker and Guided Missile is available in Information Era. Destroyer is renamed to Modern Destroyer.</Description>
+    <Authors>Infixo</Authors>
+    <SpecialThanks>See credits.txt</SpecialThanks>
+    <AffectsSavedGames>true</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
+    <SupportsMac>true</SupportsMac>
+    <AssemblyName>Enhanced Modern Warfare</AssemblyName>
+    <RootNamespace>Enhanced Modern Warfare</RootNamespace>
+    <ModReferences>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(2) Community Balance Overhaul</Name>
+        <Id>8411a7a8-dad3-4622-a18e-fcc18324c799</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModReferences>
+    <ModBlockers>
+      <Association>
+        <Type>Mod</Type>
+        <Name>swatmp5's Supercarrier</Name>
+        <Id>dda9a4d5-6d80-40b5-9918-d8a4d869130f</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>R.E.D. Extended Edition</Name>
+        <Id>dea3cb9a-4b6b-46bb-82c4-9aba78f08213</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Information Era Ship Fix</Name>
+        <Id>219d9b36-1289-4453-a40e-1bf77f76cb59</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Techtree Overhaul</Name>
+        <Id>265a41e4-afb6-45d3-b361-fa16d74a8a70</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModBlockers>
+    <ModDependencies>
+      <Association xmlns="">
+        <Type>Mod</Type>
+        <Name>(1) Community Patch</Name>
+        <Id>d1b6328c-ff44-4b0d-aad7-c657f83610cd</Id>
+        <MinVersion>72</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModDependencies>
+    <ModActions>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Shared/ENW_UnitsShared.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>AttackSubmarine/Unit_AttackSubmarine.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Dreadnought/Unit_Dreadnought.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Destroyer/Unit_EarlyDestroyer.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>MissileDestroyer/Unit_MissileDestroyer.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>RocketMissile/Unit_RocketMissile.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Supercarrier/Unit_Supercarrier.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>ENW_Units.sql</FileName>
+      </Action>
+    </ModActions>
+    <ReloadUnitSystem>true</ReloadUnitSystem>
+    <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Package Only' ">
+    <PackageMod>true</PackageMod>
+    <DeployMod>false</DeployMod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Deploy Only' ">
+    <PackageMod>false</PackageMod>
+    <DeployMod>true</DeployMod>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Animations" />
+    <Folder Include="AttackSubmarine" />
+    <Folder Include="AttackSubmarine\Model" />
+    <Folder Include="Dreadnought" />
+    <Folder Include="Dreadnought\Model" />
+    <Folder Include="Destroyer\Model" />
+    <Folder Include="MissileDestroyer" />
+    <Folder Include="MissileDestroyer\Model" />
+    <Folder Include="Destroyer" />
+    <Folder Include="Shared" />
+    <Folder Include="Shared\Art" />
+    <Folder Include="Supercarrier" />
+    <Folder Include="RocketMissile" />
+    <Folder Include="Supercarrier\Model" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Animations\edited_aim_ms_attack_city_to_run.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_attack_to_run_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_bombard_defend_loop_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_combat_ready_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_death_final_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_death_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_enter_bombard_defend_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_enter_combat_ready_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_enter_fortify.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_fidgets_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_fortify_fidget_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_fortify_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_fortify_leave_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_idle_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_leave_bombard_defend_trans_idle_a_graph.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_leave_combat_ready.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_modern_ship_attacks.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_running_loop.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_start_running.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_stop_running.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_ms_transitions_for_idles.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_aim_running_loop.dge">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Animations\edited_modern_ship_aim_state_01.fsmxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Model\akula.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Model\Akula.gr2">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Model\Akula_diff.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Model\Akula_DMG_diff.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Model\Akula_DMG_sref.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Model\Akula_sref.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\SV_AttackSubmarine.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="AttackSubmarine\Unit_AttackSubmarine.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="credits.txt">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\edited_fx_triggers_destroyer.ftsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\edited_fx_triggers_wickes.ftsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Wickes.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Wickes.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Wickes.gr2">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\WickesSREF.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Z_Class.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Z_Class.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Z_Class.gr2">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Model\Z_Class_gloss.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\SV_EarlyDestroyer.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Destroyer\Unit_EarlyDestroyer.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\Model\Dreadnought_Generic.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\Model\Dreadnought_Generic.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\Model\Dreadnought_Generic.gr2">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\Model\Dreadnought_Generic_gloss.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\Model\edited_fx_triggers_battleship_4turret.ftsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\SV_Dreadnought.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Dreadnought\Unit_Dreadnought.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="ENW_Units.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Model\edited_fx_triggers_missilecruiser.ftsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Model\kirov.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Model\Kirov.gr2">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Model\kirov_diff.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Model\kirov_sref.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Model\missilecruiser.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\SV_ENW_MissileCruiser.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="MissileDestroyer\Unit_MissileDestroyer.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="RocketMissile\SV_RocketMissile.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="RocketMissile\Unit_RocketMissile.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\Art\ENW_IconAtlas128.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\Art\ENW_IconAtlas256.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\Art\ENW_IconAtlas45.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\Art\ENW_IconAtlas64.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\Art\ENW_IconAtlas80.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\Art\ENW_UnitFlagAtlas.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Shared\ENW_UnitsShared.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Model\edited_fx_triggers_carrier.ftsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Model\USS_Nimitz.fxsxml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Model\USS_Nimitz.gr2">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Model\USS_Nimitz_diff.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Model\USS_Nimitz_sref.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\SV_Supercarrier.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Unit_Supercarrier.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
+</Project>

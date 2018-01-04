@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# ModBuddy Solution File, Format Version 11.00
+Project("{F5FC21B5-7CC2-458A-ABBA-992F515BBA20}") = "UI - Filters in Trade Route Overview (BNW,EUI)", "UI - Filters in Trade Route Overview\UI - Filters in Trade Route Overview (BNW,EUI).civ5proj", "{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|x86 = Default|x86
+		Deploy Only|x86 = Deploy Only|x86
+		Package Only|x86 = Package Only|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}.Default|x86.ActiveCfg = Default|x86
+		{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}.Default|x86.Build.0 = Default|x86
+		{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}.Deploy Only|x86.ActiveCfg = Deploy Only|x86
+		{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}.Deploy Only|x86.Build.0 = Deploy Only|x86
+		{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}.Package Only|x86.ActiveCfg = Package Only|x86
+		{DA1B236B-6343-4E7A-8AC5-7A8689A9667F}.Package Only|x86.Build.0 = Package Only|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

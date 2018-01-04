@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <ProjectGuid>{097e9275-25d4-4cb4-a4b6-a69862aa5b52}</ProjectGuid>
+    <Name>UI - Filters in Trade Route Overview (Vox Populi)</Name>
+    <Guid>f30c5651-8fce-44c8-abe6-4bc9bd582098</Guid>
+    <ModVersion>1</ModVersion>
+    <Stability>Stable</Stability>
+    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR])</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version.</Description>
+    <Authors>Infixo</Authors>
+    <SpecialThanks>
+    </SpecialThanks>
+    <AffectsSavedGames>false</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
+    <SupportsMac>true</SupportsMac>
+    <AssemblyName>Trade Overview Enhanced</AssemblyName>
+    <RootNamespace>Trade Overview Enhanced</RootNamespace>
+    <ModReferences>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6a) CBO Compatibility (EUI)</Name>
+        <Id>24923240-e4fb-4bf6-8f0e-6e5b6cf4d3c2</Id>
+        <MinVersion>1</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6b) CBO Compatibility (No-EUI)</Name>
+        <Id>828b5b4b-7c62-4afb-a43f-034b596ef5e4</Id>
+        <MinVersion>1</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModReferences>
+    <ModDependencies>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(1) Community Patch</Name>
+        <Id>d1b6328c-ff44-4b0d-aad7-c657f83610cd</Id>
+        <MinVersion>88</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModDependencies>
+    <ModBlockers>
+      <Association xmlns="">
+        <Type>Mod</Type>
+        <Name>UI - Filters in Trade Route Overview (BNW &amp; EUI)</Name>
+        <Id>eece07cc-4fbd-4e7b-a128-35b6226d3cd6</Id>
+        <MinVersion>1</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModBlockers>
+    <ModActions>
+      <Action xmlns="">
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Text/FiltersInTRO.xml</FileName>
+      </Action>
+    </ModActions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Package Only' ">
+    <PackageMod>true</PackageMod>
+    <DeployMod>false</DeployMod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Deploy Only' ">
+    <PackageMod>false</PackageMod>
+    <DeployMod>true</DeployMod>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Lua" />
+    <Folder Include="Text" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lua\TradeRouteOverview.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Lua\TradeRouteOverview.xml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Text\FiltersInTRO.xml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
+</Project>
