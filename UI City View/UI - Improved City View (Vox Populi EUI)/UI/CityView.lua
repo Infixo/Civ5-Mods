@@ -439,7 +439,10 @@ local function GetSpecialistYields( city, specialist )
 				specialistYieldModifier = specialistYieldModifier + specialistCultureModifier
 				cultureFromSpecialist = 0
 			end
+			-- Vox Populi Comparable Yields Tweak
+			specialistYieldModifier = 100
 			yieldTips:insertIf( specialistYield ~= 0 and specialistYield * specialistYieldModifier / 100 .. tostring(YieldIcons[yieldID]) )
+			--yieldTips:insertIf( specialistYield ~= 0 and specialistYield .. tostring(YieldIcons[yieldID]) )
 		end
 		yieldTips:insertIf( cultureFromSpecialist ~= 0 and cultureFromSpecialist .. "[ICON_CULTURE]" )
 		yieldTips:insertIf( civ5_mode and (specialist.GreatPeopleRateChange or 0) ~= 0 and specialist.GreatPeopleRateChange .. GreatPeopleIcon( specialist.Type ) )
@@ -662,6 +665,11 @@ local function sortBuildings(a,b)
 	end
 end
 
+local function StringFormatNeatFloat(x)
+	if math.floor(math.abs(x)) == math.abs(x) then return string.format("%d", x); end
+	return string.format("%.1f", x);
+end
+
 local function SetupBuildingList( city, buildings, buildingIM )
 	buildingIM.ResetInstances()
 	buildings:sort( sortBuildings )
@@ -840,6 +848,15 @@ local function SetupBuildingList( city, buildings, buildingIM )
 						+ (gk_mode and cityOwner:GetPlayerBuildingClassYieldChange( buildingClassID, yieldID )
 						+ city:GetReligionBuildingClassYieldChange( buildingClassID, yieldID ) or 0)
 						+ (bnw_mode and city:GetLeagueBuildingClassYieldChange( buildingClassID, yieldID ) or 0)
+						+ city:GetLocalBuildingClassYield(buildingClassID, yieldID)
+						+ city:GetReligionBuildingYieldRateModifier(buildingClassID, yieldID)
+						+ city:GetBuildingYieldChangeFromCorporationFranchises(buildingClassID, yieldID)
+						+ city:GetEventBuildingClassYield(buildingClassID, yieldID)
+						+ cityOwner:GetPolicyBuildingClassYieldChange(buildingClassID, yieldID)
+
+			if GameInfo.Yields[yieldID].Type == "YIELD_CULTURE" then
+				buildingCultureRate = buildingCultureRate + city:GetBuildingClassCultureChange(buildingClassID )
+			end
 			-- Yield modifiers from the building
 			buildingYieldModifier = Game.GetBuildingYieldModifier( buildingID, yieldID )
 						+ cityOwner:GetPolicyBuildingClassYieldModifier( buildingClassID, yieldID )
@@ -886,13 +903,15 @@ local function SetupBuildingList( city, buildings, buildingIM )
 			-- Events
 			buildingYieldRate = buildingYieldRate + city:GetEventBuildingClassYield(buildingClassID, yieldID);
 			-- End 
+			-- Vox Populi Comparable Yields Tweak
+			cityYieldRateModifier = 100
 			buildingYieldRate = buildingYieldRate * cityYieldRateModifier + ( cityYieldRate - buildingYieldRate ) * buildingYieldModifier
-			tips:insertIf( isProducing and buildingYieldRate ~= 0 and buildingYieldRate / 100 .. tostring(YieldIcons[ yieldID ]) )
+			tips:insertIf( isProducing and buildingYieldRate ~= 0 and StringFormatNeatFloat(buildingYieldRate / 100) .. tostring(YieldIcons[ yieldID ]) )
 		end
 
 		-- Culture leftovers
 		buildingCultureRate = buildingCultureRate * (100+cityCultureRateModifier) + ( cityCultureRate - buildingCultureRate ) * buildingCultureModifier
-		tips:insertIf( isNotResistance and buildingCultureRate ~=0 and buildingCultureRate / 100 .. "[ICON_CULTURE]" )
+		tips:insertIf( isNotResistance and buildingCultureRate ~=0 and StringFormatNeatFloat(buildingCultureRate / 100) .. "[ICON_CULTURE]" )
 
 -- TODO TOURISM
 		if civ5bnw_mode then
@@ -916,7 +935,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		end
 		controls.Name:SetText( buildingName )
 
-		tips:insertIf( defenseChange ~=0 and defenseChange / 100 .. "[ICON_STRENGTH]" )
+		tips:insertIf( defenseChange ~=0 and StringFormatNeatFloat(defenseChange / 100) .. "[ICON_STRENGTH]" )
 		tips:insertLocalizedIfNonZero( "TXT_KEY_PEDIA_DEFENSE_HITPOINTS", hitPointChange )
 
 		controls.Label:ChangeParent( controls.Stack )
@@ -1556,7 +1575,7 @@ local function UpdateWorkingHexesNow()
 		-- display buy plot buttons
 		-- Venice Edit (CBP)
 		local bAnnex = g_activePlayer:MayNotAnnex();
-		if g_BuyPlotMode then
+		if g_BuyPlotMode then 
 			if not g_isViewingMode or bAnnex then
 		--END
 				local cash = g_activePlayer:GetGold()
@@ -1752,15 +1771,15 @@ local function UpdateCityViewNow()
 			end
 		end
 		
+		-- Resistance tooltip
+		if (iResistanceUnhappiness ~= 0) then
+			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_EO_CITY_RESISTANCE", iResistanceUnhappiness);
+		end
 		-- Occupation tooltip
 		if (iOccupationUnhappiness ~= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_OCCUPATION_UNHAPPINESS", iOccupationUnhappiness);
 		end
 		
-		-- Resistance tooltip
-		if (iResistanceUnhappiness ~= 0) then
-			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_EO_CITY_RESISTANCE", iResistanceUnhappiness);
-		end
 
 		-- Starving tooltip
 		if (iStarvingUnhappiness ~= 0) then
@@ -1915,6 +1934,8 @@ local function UpdateCityViewNow()
 							gpChange = gpChange + building.GreatPeopleRateChange
 						end
 					end
+
+					gpChange = gpChange + city:GetExtraSpecialistPoints(specialist.ID)
 
 					local gpChangePlayerMod = cityOwner:GetGreatPeopleRateModifier()
 					local gpChangeCityMod = city:GetGreatPeopleRateModifier()
@@ -2236,6 +2257,7 @@ local function UpdateCityViewNow()
 					if areSpecialistsAllowedByBuilding then
 						noWondersWithSpecialistInThisCity = false
 					end
+				-- Specialist buildings will appear in a "normal" section	
 				--elseif areSpecialistsAllowedByBuilding then
 				--	buildings = specialistBuildings
 				elseif greatWorkCount > 0 then

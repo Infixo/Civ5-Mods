@@ -1,21 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="6df65e6b-6aa4-4da2-a7fd-084d0e9c84c1" version="9">
+<Mod id="6df65e6b-6aa4-4da2-a7fd-084d0e9c84c1" version="10">
   <Properties>
     <Name>UI - Improved City View (Vox Populi EUI)</Name>
-    <Stability>Beta</Stability>
     <Teaser>More compact and concise City View (for Vox Populi with EUI)</Teaser>
-    <Description>Based on previous work by Sneaks, this mod aims at further improving the CityView Screen (for Vox Populi with EUI). 
-
+    <Description>Based on previous work by Sneaks, this mod aims at further improving the CityView Screen.
 Details:
 - Specialists grouped together in one box;
 - Considerably smaller City Focus box.
 
-Requires Brave New World and Vox Populi (with EUI). Only works with the small interface option and you need to delete the following two files:
+Requires [COLOR_POSITIVE_TEXT]Vox Populi with EUI[ENDCOLOR]. Only works with the small interface option.
 
-.../MODS/(6a) Community Balance Overhaul - Compatibility Files (EUI)/LUA/CityView.lua
-.../MODS/(6a) Community Balance Overhaul - Compatibility Files (EUI)/LUA/CityView_small.xml 
+Available in English, French, German, Italian, Polish, Russian, and Spanish. If your language is missing or if you find any bug, please let me know.
 
-Available in English, French, German, Italian, Russian, and Spanish. If your language is missing or if you find any bug, please let me know.</Description>
+Vox Populi compatible by Infixo.</Description>
     <Authors>Meister Maggi</Authors>
     <SpecialThanks>bc1, Gazebo, Sneaks, Thalassicus, whoward69</SpecialThanks>
     <HideSetupGame>0</HideSetupGame>
@@ -31,20 +28,17 @@ Available in English, French, German, Italian, Russian, and Spanish. If your lan
   </Properties>
   <Dependencies>
     <Mod id="24923240-e4fb-4bf6-8f0e-6e5b6cf4d3c2" minversion="0" maxversion="999" title="(6a) Community Balance Overhaul - Compatibility Files (EUI)" />
-    <Dlc id="6DA07636-4123-4018-B643-6575B4EC336B" minversion="0" maxversion="999" />
   </Dependencies>
   <References />
   <Blocks />
   <Files>
-    <File md5="E44DB0A46CB4A2EBE67A6C80CE5665B8" import="0">Text/AdditionalText.xml</File>
-    <File md5="E4DF3ECA29CB95BA3D73A0E3B4E64820" import="0">Text/SpecialistsBoxTextLabel.xml</File>
-    <File md5="773C64EACF9212E4E1A2E29C40851706" import="1">UI/CityView.lua</File>
-    <File md5="101A54CA7AC9C042A76E907BEA9A1CF6" import="1">UI/CityView_small.xml</File>
+    <File md5="B187AD8781F3F6CD176AFD873E74CECA" import="0">Text/SpecialistsBoxTextLabel.xml</File>
+    <File md5="9E7C61EAE1BBA961789DF24B0893B919" import="1">UI/CityView.lua</File>
+    <File md5="5126065B56690CCBEEF360B8BD8F1E60" import="1">UI/CityView_small.xml</File>
   </Files>
   <Actions>
     <OnModActivated>
       <UpdateDatabase>Text/SpecialistsBoxTextLabel.xml</UpdateDatabase>
-      <UpdateDatabase>Text/AdditionalText.xml</UpdateDatabase>
     </OnModActivated>
   </Actions>
 </Mod>

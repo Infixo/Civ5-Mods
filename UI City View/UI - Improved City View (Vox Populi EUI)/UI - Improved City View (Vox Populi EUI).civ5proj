@@ -5,21 +5,19 @@
     <ProjectGuid>{6df65e6b-6aa4-4da2-a7fd-084d0e9c84c1}</ProjectGuid>
     <Name>UI - Improved City View (Vox Populi EUI)</Name>
     <Guid>6df65e6b-6aa4-4da2-a7fd-084d0e9c84c1</Guid>
-    <ModVersion>9</ModVersion>
-    <Stability>Beta</Stability>
+    <ModVersion>10</ModVersion>
+    <Stability>Stable</Stability>
     <Teaser>More compact and concise City View (for Vox Populi with EUI)</Teaser>
-    <Description>Based on previous work by Sneaks, this mod aims at further improving the CityView Screen (for Vox Populi with EUI). 
-
+    <Description>Based on previous work by Sneaks, this mod aims at further improving the CityView Screen.
 Details:
 - Specialists grouped together in one box;
 - Considerably smaller City Focus box.
 
-Requires Brave New World and Vox Populi (with EUI). Only works with the small interface option and you need to delete the following two files:
+Requires [COLOR_POSITIVE_TEXT]Vox Populi with EUI[ENDCOLOR]. Only works with the small interface option.
 
-.../MODS/(6a) Community Balance Overhaul - Compatibility Files (EUI)/LUA/CityView.lua
-.../MODS/(6a) Community Balance Overhaul - Compatibility Files (EUI)/LUA/CityView_small.xml 
+Available in English, French, German, Italian, Polish, Russian, and Spanish. If your language is missing or if you find any bug, please let me know.
 
-Available in English, French, German, Italian, Russian, and Spanish. If your language is missing or if you find any bug, please let me know.</Description>
+Vox Populi compatible by Infixo.</Description>
     <Authors>Meister Maggi</Authors>
     <SpecialThanks>bc1, Gazebo, Sneaks, Thalassicus, whoward69</SpecialThanks>
     <AffectsSavedGames>false</AffectsSavedGames>
@@ -39,24 +37,12 @@ Available in English, French, German, Italian, Russian, and Spanish. If your lan
         <MinVersion>0</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>
-      <Association>
-        <Type>Dlc</Type>
-        <Name></Name>
-        <Id>6DA07636-4123-4018-B643-6575B4EC336B</Id>
-        <MinVersion>0</MinVersion>
-        <MaxVersion>999</MaxVersion>
-      </Association>
     </ModDependencies>
     <ModActions>
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>Text/SpecialistsBoxTextLabel.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>Text/AdditionalText.xml</FileName>
       </Action>
     </ModActions>
   </PropertyGroup>
@@ -76,10 +62,6 @@ Available in English, French, German, Italian, Russian, and Spanish. If your lan
     <Folder Include="Text" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Text\AdditionalText.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="Text\SpecialistsBoxTextLabel.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
