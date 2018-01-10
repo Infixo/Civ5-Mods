@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by ModBuddy on 7/23/2012 7:45:01 PM -->
+<GameData>
+	<Language_DE_DE>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="Spezialisten" />
+		</Update>
+	</Language_DE_DE>
+	<Language_en_US>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="Specialists" />
+		</Update>
+	</Language_en_US>
+	<Language_ES_ES>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="Especialistas" />
+		</Update>
+	</Language_ES_ES>
+	<Language_FR_FR>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="Sp&#233;cialistes" />
+		</Update>
+	</Language_FR_FR>
+	<Language_IT_IT>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="Specialistas" />
+		</Update>
+	</Language_IT_IT>
+	<Language_JA_JP>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="専門家" />
+		</Update>
+	</Language_JA_JP>
+	<Language_RU_RU>
+		<Update>
+			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
+			<Set Text="специалист" />
+		</Update>
+	</Language_RU_RU>
+</GameData>
