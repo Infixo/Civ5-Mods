@@ -68,7 +68,7 @@
 				<Label ID="HappinessPerTurnLabel" Anchor="R,C" String=""/>
 				<Box Anchor="L,B" Color="27.53.64.255" Offset="4,0" Size="196,1"/>
 			</Button>
-			<!-- END -->			
+			<!-- END -->
 			<!-- Culture Info NotificationTileFrame -->
 			<Button ID="CultureBox" Size="196,24">
 				<Label Anchor="L,C" Offset="6,0" String="[ICON_CULTURE]"/>
@@ -114,6 +114,7 @@
 				<!--MM:Production Queue Gold Button (first item)-->
 				<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 				<Button ID="PQremove" Anchor="L,C" Offset="4,-1" Size="32,32" Texture="IconFrame32Delete.dds" ToolTip="TXT_KEY_CITYVIEW_Q_X_TEXT" />
+				<Label ID="PQinvested" Anchor="R,C" String="[ICON_INVEST]" Font="TwCenMT16"/>
 				<Image Anchor="L,B" Texture="bar340x2.dds" Size="270,1" Color="White.128" />
 			</GridButton>
 			<!-- Production Info -->
@@ -125,7 +126,7 @@
 				</Label>
 			</Button>
 			<!-- Order Selection -->
-			<ScrollPanel ID="SelectionScrollPanel" Anchor="L,B" Size="270,108" Vertical="1" AutoScrollBar="1" >
+			<ScrollPanel ID="SelectionScrollPanel"Anchor="L,B" Size="270,108" Vertical="1" AutoScrollBar="1" >
 				<ScrollBar ID="SelectionScrollBar" Style="VertSlider" Anchor="R,C" AnchorSide="O.I" Length="72" />
 				<UpButton Style="ScrollBarUp" Anchor="R,T" AnchorSide="O.I" />
 				<DownButton Style="ScrollBarDown" Anchor="R,B" AnchorSide="O.I" />
@@ -395,6 +396,7 @@
 			<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 			<Box ID="PQdisabled" Anchor="L,T" Size="270,38" Color="27.0.64.128" />
 			<Button ID="PQremove" Anchor="L,C" Offset="4,-1" Size="32,32" Texture="IconFrame32Delete.dds" ToolTip="TXT_KEY_CITYVIEW_Q_X_TEXT" />
+			<Label ID="PQinvested" Anchor="R,C" String="[ICON_INVEST]" Font="TwCenMT16"/>
 			<Image Anchor="L,B" Texture="bar340x2.dds" Size="270,1" Color="White.128" />
 		</GridButton>
 	</Instance>
@@ -440,14 +442,10 @@
 
 	<!-- Great Person Meter Instances -->
 	<Instance Name="GPInstance">
-		<Button ID="GPBox" NoStateChange="1" Anchor="L,T" Color="255.255.255.0" Size="254,70">
-			<Image Anchor="C,C" Size="214,29" Offset="-20,4" Texture="MeterBarGreatPersonBack.dds">
-				<TextureBar ID="GPMeter" Anchor="L,C" Size="214.29" Texture="MeterBarGreatPersonGold.dds" Direction="Right" />
-				<Image Anchor="L,C" Size="214,29" Texture="MeterBarFrame.dds"/>
-				<Label ID="GreatPersonLabel" Anchor="L,T" Offset="12,-15" String="TXT_KEY_CITYVIEW_GP_PROGRGRESS" Font="TwCenMT16" />
-			</Image>
-			<Image Anchor="R,C" Size="64,64" Offset="0,-2" Texture="64x64FrameButtons.dds">
-				<Image ID="GPImage" Anchor="C,C" Size="64,64"/>
+		<Button ID="GPBox" NoStateChange="1" Anchor="L,T" Color="255.255.255.0" Size="254,32">
+			<Label ID="GreatPersonLabel" Anchor="L,C" Offset="5,0" String="TXT_KEY_CITYVIEW_GP_PROGRGRESS" Font="TwCenMT16" />
+			<Image Anchor="R,C" Size="130,20" Offset="5,0" Texture="MeterBarGreatPersonBack.dds">
+				<TextureBar ID="GPMeter" Anchor="L,C" Size="130,15" Texture="MeterBarGreatPersonGold.dds" Direction="Right" />
 			</Image>
 			<Box Anchor="L,B" Color="27.53.64.255" Size="254,2"/>
 		</Button>

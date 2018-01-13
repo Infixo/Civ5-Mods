@@ -68,7 +68,7 @@
 				<Label ID="HappinessPerTurnLabel" Anchor="R,C" String=""/>
 				<Box Anchor="L,B" Color="27.53.64.255" Offset="4,0" Size="196,1"/>
 			</Button>
-			<!-- END -->			
+			<!-- END -->
 			<!-- Culture Info NotificationTileFrame -->
 			<Button ID="CultureBox" Size="196,24">
 				<Label Anchor="L,C" Offset="6,0" String="[ICON_CULTURE]"/>
@@ -114,6 +114,7 @@
 				<!--MM:Production Queue Gold Button (first item)-->
 				<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 				<Button ID="PQremove" Anchor="L,C" Offset="4,-1" Size="32,32" Texture="IconFrame32Delete.dds" ToolTip="TXT_KEY_CITYVIEW_Q_X_TEXT" />
+				<Label ID="PQinvested" Anchor="R,C" String="[ICON_INVEST]" Font="TwCenMT16"/>
 				<Image Anchor="L,B" Texture="bar340x2.dds" Size="270,1" Color="White.128" />
 			</GridButton>
 			<!-- Production Info -->
@@ -125,7 +126,7 @@
 				</Label>
 			</Button>
 			<!-- Order Selection -->
-			<ScrollPanel ID="SelectionScrollPanel" Anchor="L,B" Size="270,108" Vertical="1" AutoScrollBar="1" >
+			<ScrollPanel ID="SelectionScrollPanel"Anchor="L,B" Size="270,108" Vertical="1" AutoScrollBar="1" >
 				<ScrollBar ID="SelectionScrollBar" Style="VertSlider" Anchor="R,C" AnchorSide="O.I" Length="72" />
 				<UpButton Style="ScrollBarUp" Anchor="R,T" AnchorSide="O.I" />
 				<DownButton Style="ScrollBarDown" Anchor="R,B" AnchorSide="O.I" />
@@ -395,6 +396,7 @@
 			<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 			<Box ID="PQdisabled" Anchor="L,T" Size="270,38" Color="27.0.64.128" />
 			<Button ID="PQremove" Anchor="L,C" Offset="4,-1" Size="32,32" Texture="IconFrame32Delete.dds" ToolTip="TXT_KEY_CITYVIEW_Q_X_TEXT" />
+			<Label ID="PQinvested" Anchor="R,C" String="[ICON_INVEST]" Font="TwCenMT16"/>
 			<Image Anchor="L,B" Texture="bar340x2.dds" Size="270,1" Color="White.128" />
 		</GridButton>
 	</Instance>
