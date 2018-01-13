@@ -2067,8 +2067,10 @@ local function UpdateCityViewNow()
 							tips:insert( "[COLOR_YIELD_FOOD]" .. Locale.ToUpper( L( "TXT_KEY_STR_TURNS", gpTurns ) ) .. "[ENDCOLOR]  "
 										 .. gpChange .. icon .. " " .. L"TXT_KEY_GOLD_PERTURN_HEADING4_TITLE" )
 							labelText = labelText .. ": " .. Locale.ToLower( L( "TXT_KEY_STR_TURNS", gpTurns ) )
+							instance.GreatPersonLabel:SetText( icon..string.format("%+.1f", gpChange).." [ICON_SWAP]"..gpTurns )
+						else
+							instance.GreatPersonLabel:SetText( icon )
 						end
-						instance.GreatPersonLabel:SetText( icon .. labelText )
 						if gk_mode then
 							if gpChangePlayerMod ~= 0 then
 								tips:insert( L( "TXT_KEY_PLAYER_GP_MOD", gpChangePlayerMod ) )
@@ -2096,8 +2098,8 @@ local function UpdateCityViewNow()
 						instance.GPBox:SetVoid1( unitClass.ID )
 						instance.GPBox:RegisterCallback( Mouse.eRClick, UnitClassPedia )
 
-						local portraitOffset, portraitAtlas = UI_GetUnitPortraitIcon( GameInfoTypes[ unitClass.DefaultUnit ], cityOwnerID )
-						instance.GPImage:SetHide(not IconHookup( portraitOffset, 64, portraitAtlas, instance.GPImage ) )
+						--local portraitOffset, portraitAtlas = UI_GetUnitPortraitIcon( GameInfoTypes[ unitClass.DefaultUnit ], cityOwnerID )
+						--instance.GPImage:SetHide(not IconHookup( portraitOffset, 64, portraitAtlas, instance.GPImage ) )
 					end
 				end
 			end
