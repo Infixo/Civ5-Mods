@@ -7,8 +7,8 @@
     <Guid>5e4c5a89-f4e0-44f1-9590-da744d7950d5</Guid>
     <ModVersion>2</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>Various improvements to the Military Overview popup (v 2.2)</Teaser>
-    <Description>Various improvements to the Military Overview popup.[NEWLINE][ICON_BULLET]Adds a column with units' XP and Level.[NEWLINE][ICON_BULLET]Displays unit's unique name instead of type in the Name column.[NEWLINE][ICON_BULLET]Shows icons for Great People and religious units.[NEWLINE][ICON_BULLET]Displays Health Bar if unit is damaged.[NEWLINE][NEWLINE]Works with BNW, EUI and Vox Populi.[NEWLINE]Version 2.2</Description>
+    <Teaser>Various improvements to the Military Overview popup (v 2.3)</Teaser>
+    <Description>Various improvements to the Military Overview popup.[NEWLINE][ICON_BULLET]Adds a column with units' XP and Level.[NEWLINE][ICON_BULLET]Displays unit's unique name instead of type in the Name column.[NEWLINE][ICON_BULLET]Shows icons for Great People and religious units.[NEWLINE][ICON_BULLET]Displays Health Bar if unit is damaged.[NEWLINE][NEWLINE]Works with BNW, EUI and Vox Populi.[NEWLINE]Version 2.3</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>akamal</SpecialThanks>
     <AffectsSavedGames>false</AffectsSavedGames>
@@ -31,6 +31,13 @@
         <Type>Mod</Type>
         <Name>(6b) CBO - Compatibility Mod (No-EUI)</Name>
         <Id>828b5b4b-7c62-4afb-a43f-034b596ef5e4</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6c) 43 Civs CP</Name>
+        <Id>6521c02b-1c78-4826-a5b0-faed86235e98</Id>
         <MinVersion>0</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>

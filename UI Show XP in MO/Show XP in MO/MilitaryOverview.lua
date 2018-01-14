@@ -1,12 +1,23 @@
+print("Loading MilitaryOverview.lua from 'UI - Show XP in Military Overview' version 2.3")
 -------------------------------------------------
 -- Military
 -- v1.0, Feb 1, 2017: modified by Infixo for Show XP in Military Overview mod
 -- v2.0, Feb 4, 2017: added detection of Community Patch - should be compatible with VP and BNW
 -- v2.1, Mar 2, 2017: changes due to VP 2/27, corrected "Civlian"
--- v3.0, Dec 26, 2017: Implemented tweaks from ak, religious units and icons for GP
+-- v2.2, Dec 26, 2017: Implemented tweaks from ak, religious units and icons for GP
+-- v2.3, Jan 14, 2018: Compatibility with VP 1-14 (obsolete Lua function changed into a new one)
 -------------------------------------------------
 include( "IconSupport" );
 include( "InstanceManager" );
+
+-- Infixo: ShowXPinMO/start
+local isUsingCP = false;
+for _, mod in pairs(Modding.GetActivatedMods()) do
+	if (mod.ID == "d1b6328c-ff44-4b0d-aad7-c657f83610cd") then
+		isUsingCP = true;
+	end
+end
+-- Infixo: ShowXPinMO/end
 
 local m_MilitaryIM = InstanceManager:new( "UnitInstance", "Root", Controls.MilitaryStack );
 local m_CivilianIM = InstanceManager:new( "UnitInstance", "Root", Controls.CivilianStack );
@@ -108,14 +119,6 @@ function UpdateScreen()
     local iPlayer = Game.GetActivePlayer();
     local pPlayer = Players[ iPlayer ];
     
-	-- Infixo: ShowXPinMO/start
-	local isUsingCP = false;
-	for _, mod in pairs(Modding.GetActivatedMods()) do
-		if (mod.ID == "d1b6328c-ff44-4b0d-aad7-c657f83610cd") then
-			isUsingCP = true;
-		end
-	end
-	-- Infixo: ShowXPinMO/end
     --------------------------------------------------------
     -- Great General Progress
     local fThreshold = pPlayer:GreatGeneralThreshold();
@@ -140,7 +143,7 @@ function UpdateScreen()
 	if isUsingCP then
 		Controls.WarWearinessReductionValue:SetText( -pPlayer:GetWarWearinessSupplyReduction() );
 		Controls.TechReductionValue:SetText( -pPlayer:GetTechSupplyReduction() );
-		Controls.SupplyUseValue:SetText( pPlayer:GetNumUnitsNoCivilian() );
+		Controls.SupplyUseValue:SetText( pPlayer:GetNumUnitsToSupply() );
 	else
 		Controls.WarWearinessReductionValue:SetText( "n/a" );
 		Controls.TechReductionValue:SetText( "n/a" );
@@ -153,7 +156,7 @@ function UpdateScreen()
     if( not bInDeficit ) then
 	--CBP
 		if isUsingCP then
-			Controls.SupplyRemainingValue:SetText( pPlayer:GetNumUnitsSupplied() - pPlayer:GetNumUnitsNoCivilian() );
+			Controls.SupplyRemainingValue:SetText( pPlayer:GetNumUnitsSupplied() - pPlayer:GetNumUnitsToSupply() );
 		else
 			Controls.SupplyRemainingValue:SetText( pPlayer:GetNumUnitsSupplied() - pPlayer:GetNumUnits() );
 		end
@@ -543,3 +546,5 @@ ContextPtr:SetShowHideHandler( ShowHideHandler );
 -- 'Active' (local human) player has changed
 ----------------------------------------------------------------
 Events.GameplaySetActivePlayer.Add(OnClose);
+
+print("Loaded MilitaryOverview.lua from 'UI - Show XP in Military Overview'")
