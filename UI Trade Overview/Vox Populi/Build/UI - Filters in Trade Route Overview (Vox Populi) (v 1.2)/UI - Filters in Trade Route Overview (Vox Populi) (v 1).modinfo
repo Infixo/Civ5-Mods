@@ -2,10 +2,11 @@
 <Mod id="f30c5651-8fce-44c8-abe6-4bc9bd582098" version="1">
   <Properties>
     <Name>UI - Filters in Trade Route Overview (Vox Populi)</Name>
-    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR])</Teaser>
-    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version.</Description>
+    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR]), version 1.2</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version 1.2.</Description>
     <Authors>Infixo</Authors>
     <HideSetupGame>0</HideSetupGame>
+    <Homepage>http://forums.civfanatics.com/threads/ui-filters-in-trade-route-overview.625570/</Homepage>
     <AffectsSavedGames>0</AffectsSavedGames>
     <SupportsSinglePlayer>1</SupportsSinglePlayer>
     <SupportsMultiplayer>1</SupportsMultiplayer>
@@ -27,9 +28,9 @@
     <Mod id="eece07cc-4fbd-4e7b-a128-35b6226d3cd6" minversion="1" maxversion="999" title="UI - Filters in Trade Route Overview (BNW &amp; EUI)" />
   </Blocks>
   <Files>
-    <File md5="D83073C9084AF8CBAE88092D7925BB14" import="1">Lua/TradeRouteOverview.lua</File>
-    <File md5="7854795702CEFC980AEDCEAA1BDF0222" import="1">Lua/TradeRouteOverview.xml</File>
-    <File md5="41F4F7F71A275467DC26109D2A0E3AC1" import="0">Text/FiltersInTRO.xml</File>
+    <File md5="9BFB9FA589508E732CEFCBE2EB62E340" import="1">Lua/TradeRouteOverview.lua</File>
+    <File md5="801B6B35800C4DE78262A1254D0B10D0" import="1">Lua/TradeRouteOverview.xml</File>
+    <File md5="4BFA9B196F2C1D4BEDA0BB27CB96D25A" import="0">Text/FiltersInTRO.xml</File>
   </Files>
   <Actions>
     <OnModActivated>

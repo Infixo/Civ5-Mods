@@ -2,7 +2,7 @@
 <!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Scott Lewis (Firaxis Games) -->
 <Context ColorSet="Beige_Black_Alpha" Font="TwCenMT16" FontStyle="Shadow">
 	<Instance Name="TRInstance">
-		<Box ID="Root" Offset="0,0" Anchor="L,T" Size="1050,34" Color="255,255,255,0">
+		<Box ID="Root" Offset="0,0" Anchor="L,T" Size="1080,34" Color="255,255,255,0">
 			<Stack Anchor="L,C" StackGrowth="Right" Offset="0,0" Padding="0">
 				<Button ID="DomainButton" Anchor="L,C" Size="35,45" Style="BoxButton" ToolTip="TXT_KEY_TRO_LOCATE_RECALL_TT">
 					<Image Anchor="C,C" Size="22,22" Texture="TradeCaravan_22.dds" ID="Domain_Land" Hidden="1"/>
@@ -15,7 +15,10 @@
 				<Box Anchor="L,C" Color="0,0,0,0" Offset="0,0" Size="30,34">
 					<Label Anchor="C,C" Offset="0,0" String="RouteLength" Font="TwCenMT18" FontStyle="Stroke" ID="RouteLength"/>
 				</Box>
-				<!-- TROE -->
+				<Box Anchor="L,C" Color="0,0,0,0" Offset="0,0" Size="30,34">
+					<Label Anchor="C,C" Offset="0,0" String="RouteTurns" Font="TwCenMT18" FontStyle="Stroke" ID="RouteTurns"/>
+				</Box>
+				<!-- TROE end -->
 				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="30,34">
 					<Grid Anchor="C,C" Size="30,34" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1"/>
 					<Box Size="32,32" Anchor="L,T" Offset="0,-3" Color="0,0,0,0">
@@ -75,11 +78,11 @@
 					<Label Anchor="C,C" Offset="0,0" Font="TwCenMT20" FontStyle="Stroke" ID="TurnsLeft"/>
 				</Button>
 			</Stack>
-      <Grid ID="Divider" Style="Grid9Bar" Padding="0,0" Anchor="L,B" Size="1000,1" Offset="0,0"/>
+      <Grid ID="Divider" Style="Grid9Bar" Padding="0,0" Anchor="L,B" Size="1030,1" Offset="0,0"/>
 		</Box>
 	</Instance>
 	<Box Style="BGBlock_ClearTopBar"/>
-	<Grid Size="1050,653" Anchor="C,C" Offset="0,6" Padding="0,0" Style="Grid9DetailFive140">
+	<Grid Size="1080,653" Anchor="C,C" Offset="0,6" Padding="0,0" Style="Grid9DetailFive140">
 		<Image Anchor="C,T" AnchorSide="I.O" Size="256,64" Offset="0,-14" Texture="assets\UI\Art\Icons\Top512IconTrim.dds">
 			<Image ID="CivIconBG" Size="64.64" Anchor="C,C" Offset="-1,-1" TextureOffset="77,0" Texture="CivIconBGSizes.dds"/>
 			<Image ID="CivIconShadow" Size="48.48" Anchor="C,C" Offset="0,0" Texture="CivSymbolAtlas48.dds" Color="Black.128"/>
@@ -125,14 +128,16 @@
 			<Image Anchor="C,B" Offset="0,0" Texture="HorizontalTrim.dds" Size="1030,5"/>
 		</Box>
 		<!-- Content Panel -->
-		<Box Size="1017,459" Color="1,16,13,255" Offset="17,77">
+		<Box Size="1047,459" Color="1,16,13,255" Offset="17,77">
 			<!-- Column Backgrounds-->
 			<Stack Anchor="L,T" StackGrowth="Right" Offset="0,0" Padding="0">
 				<Box Anchor="L,T" Size="34,459" Color="0,0,0,0"/>
 				<Box Anchor="L,T" Size="1,459" Color="18,108,98,255"/>
-				<Box Anchor="L,T" Size="29,459" Color="0,0,0,0"/> <!-- TROE -->
+				<Box Anchor="L,T" Size="29,459" Color="0,0,0,0"/> <!-- TROE range -->
 				<Box Anchor="L,T" Size="1,459" Color="18,108,98,255"/> <!-- TROE -->
-				<Box Anchor="L,T" Size="29,459" Color="0,0,0,0"/> <!-- TROE -->
+				<Box Anchor="L,T" Size="29,459" Color="0,0,0,0"/> <!-- TROE length -->
+				<Box Anchor="L,T" Size="1,459" Color="18,108,98,255"/> <!-- TROE -->
+				<Box Anchor="L,T" Size="29,459" Color="0,0,0,0"/> <!-- TROE turns -->
 				<Box Anchor="L,T" Size="1,459" Color="18,108,98,255"/> <!-- TROE -->
 				<Box Anchor="L,T" Size="139,459" Color="1,26,23,255"/>
 				<Box Anchor="L,T" Size="1,459" Color="18,108,98,255"/>
@@ -187,6 +192,14 @@
 						</AlphaAnim>
 					</ShowOnMouseOver>
 					<Label Anchor="C,C" Offset="0.-1" Font="TwCenMT18" String="TXT_KEY_TROE_COL_LENGTH" ToolTip="TXT_KEY_TROE_COL_LENGTH_TT"/>
+				</Button>
+				<Button ID="RouteTurns" Anchor="L,C" Size="29,45" Style="BoxButton">
+					<ShowOnMouseOver>
+						<AlphaAnim Anchor="C,C" Offset="0,0" Size="30,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+							<Grid Size="30,45" Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL"/>
+						</AlphaAnim>
+					</ShowOnMouseOver>
+					<Label Anchor="C,C" Offset="0.-1" Font="TwCenMT18" String="TXT_KEY_TROE_COL_TURNS" ToolTip="TXT_KEY_TROE_COL_TURNS_TT"/>
 				</Button>
 				<!-- TROE -->
 				<Button ID="FromOwnerHeader" Anchor="L,C" Size="29,45" Style="BoxButton">
@@ -311,7 +324,7 @@
 				</Button>
 			</Stack>
 			<!-- City List -->
-			<ScrollPanel Anchor="L,T" Offset="0,45" Size="1016,400" Vertical="1" AutoScrollBar="0" ID="MainScroll">
+			<ScrollPanel Anchor="L,T" Offset="0,45" Size="1046,400" Vertical="1" AutoScrollBar="0" ID="MainScroll">
 				<ScrollBar Offset="0,18" Style="VertSlider" Anchor="R,T" Length="377" ID="MainScrollBar"/>
 				<UpButton Offset="0,0" Style="ScrollBarUp" Anchor="R,T" ID="MainUpButton"/>
 				<DownButton Offset="0,395" Style="ScrollBarDown" Anchor="R,T" ID="MainDownButton"/>
@@ -320,7 +333,7 @@
 			</ScrollPanel>
 		</Box>
 		<!-- Bottom Panel -->
-		<Image Anchor="C,B" Offset="0,110" Texture="HorizontalTrim.dds" Size="1030,5"/>
+		<Image Anchor="C,B" Offset="0,110" Texture="HorizontalTrim.dds" Size="1060,5"/>
 		<Box Anchor="C,B" AnchorSide="I.I" Offset="0,54" Size="927,56" Color="255,255,255,0">
 			<!-- Close Button  -->
 			<GridButton Anchor="L,B" Style="SmallButton" Size="150,32" Offset="14,0" StateOffsetIncrement="0,0" ID="CloseButton">

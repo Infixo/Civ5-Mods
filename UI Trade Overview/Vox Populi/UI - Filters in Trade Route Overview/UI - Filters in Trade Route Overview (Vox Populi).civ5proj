@@ -7,8 +7,8 @@
     <Guid>f30c5651-8fce-44c8-abe6-4bc9bd582098</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR])</Teaser>
-    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version.</Description>
+    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR]), version 1.2</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version 1.2.</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>
     </SpecialThanks>
@@ -61,6 +61,7 @@
         <FileName>Text/FiltersInTRO.xml</FileName>
       </Action>
     </ModActions>
+    <Homepage>http://forums.civfanatics.com/threads/ui-filters-in-trade-route-overview.625570/</Homepage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>

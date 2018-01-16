@@ -1,4 +1,5 @@
-print("Loading Trade Route Overview Enhanced version"); -- TROE
+print("Loading TradeRouteOverview.lua from 'UI - Filters in Trade Route Overview (Vox Populi)' version 1.2"); -- TROE
+
 -------------------------------------------------
 -- Trade Route Overview
 -------------------------------------------------
@@ -52,6 +53,13 @@ g_SortOptions = {
 		Button = Controls.RouteLength,
 		Column = "RouteLength",
 		DefaultDirection = "desc",
+		CurrentDirection = nil,
+		SortType = "numeric",
+	},
+	{
+		Button = Controls.RouteTurns,
+		Column = "RouteTurns",
+		DefaultDirection = "asc",
 		CurrentDirection = nil,
 		SortType = "numeric",
 	},
@@ -457,6 +465,7 @@ function SetData(data)
 		-- TROE
 		v.RouteRange  = Players[v.FromID]:GetTradeRouteRange(v.Domain, v.FromCity);
 		v.RouteLength = Players[v.FromID]:GetTradeConnectionDistance(v.FromCity, v.ToCity, v.Domain);
+		v.RouteTurns  = Players[v.FromID]:GetTradeRouteTurns(v.FromCity, v.ToCity, v.Domain);
 		-- TROE
 	end
 	g_Data = data;
@@ -591,9 +600,10 @@ function DisplayData()
 		instance.ToCivIconShadow:SetToolTipString(v.ToCiv);
 		instance.ToCivIconHighlight:SetToolTipString(v.ToCiv);
 		instance.ToCity:SetText(v.ToCityName);
-		-- TROE add range and length
+		-- TROE add more info
 		instance.RouteRange:SetText(v.RouteRange);
 		instance.RouteLength:SetText(v.RouteLength);
+		instance.RouteTurns:SetText(v.RouteTurns);
 		-- TROE add red exclamation mark for already targeted INT cities
 		if v.TradeConnectionType == TradeConnectionTypes.TRADE_CONNECTION_INTERNATIONAL and tAlreadyActiveRoutes[ sToRouteName ] then
 			instance.ToCity:SetText(v.ToCityName.."[COLOR_RED]![ENDCOLOR]");
@@ -733,4 +743,4 @@ ContextPtr:SetShowHideHandler( ShowHideHandler );
 RegisterSortOptions();
 TabSelect("YourTR");
 
-print("Loaded Trade Route Overview Enhanced version"); -- TROE
+print("Loaded TradeRouteOverview.lua from 'UI - Filters in Trade Route Overview (Vox Populi)' version 1.2"); -- TROE
