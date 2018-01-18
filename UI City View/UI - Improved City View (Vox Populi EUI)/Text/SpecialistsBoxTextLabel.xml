@@ -3,10 +3,6 @@
 <GameData>
 	<!-- en_US -->
 	<Language_en_US>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="Specialists" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>Specialists</Text>
 		</Row>
@@ -19,10 +15,6 @@
 	</Language_en_US>
 	<!-- DE_DE -->
 	<Language_DE_DE>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="Spezialisten" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>Spezialisten</Text>
 		</Row>
@@ -32,10 +24,6 @@
 	</Language_DE_DE>
 	<!-- ES_ES -->
 	<Language_ES_ES>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="Especialistas" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>Especialistas</Text>
 		</Row>
@@ -45,10 +33,6 @@
 	</Language_ES_ES>
 	<!-- FR_FR -->
 	<Language_FR_FR>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="Sp&#233;cialistes" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>Sp&#233;cialistes</Text>
 		</Row>
@@ -58,10 +42,6 @@
 	</Language_FR_FR>
 	<!-- IT_IT -->
 	<Language_IT_IT>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="Specialistas" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>Specialistas</Text>
 		</Row>
@@ -71,10 +51,6 @@
 	</Language_IT_IT>
 	<!-- JA_JP -->
 	<Language_JA_JP>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="専門家" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>専門家</Text>
 		</Row>
@@ -84,23 +60,18 @@
 	</Language_JA_JP>
 	<!-- PL_PL -->
 	<Language_PL_PL>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="Specjaliści" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>Specjaliści</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
 			<Text>{1_Specialist} zatrudniony w {2_Building}</Text>
 		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_GREAT_WORKS">
+			<Text>Wielkie Dzieła</Text>
+		</Row>
 	</Language_en_US>
 	<!-- RU_RU -->
 	<Language_RU_RU>
-		<Update>
-			<Where Tag="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
-			<Set Text="специалист" />
-		</Update>
 		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
 			<Text>специалист</Text>
 		</Row>

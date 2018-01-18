@@ -153,7 +153,7 @@ local g_SpecialistSlotIM   = InstanceManager:new( "SpecialistSlotInstance", "Spe
 local g_SpecialistIconIM   = InstanceManager:new( "SpecialistIconInstance", "SpecialistIconButton", Controls.SpecialistsBox );
 -- Infixo - IMs for Great Works
 local g_GreatWorksSlotIM   = InstanceManager:new( "Work", "Button", Controls.GreatWorksBox );
-local g_ProdQueueIM, g_SpecialistsIM, g_GreatWorksIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
+local g_ProdQueueIM, g_SpecialistsIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
 local g_slots = table()
 local g_works = table()
 local g_heap = Controls.Scrap
@@ -731,12 +731,6 @@ local function SetupBuildingList( city, buildings, buildingIM )
 
 		-------------------
 		-- Great Work Slots
-		--local greatWorkInfo = "";
-		--local greatWorkIcons = {
---			["GREAT_WORK_SLOT_ART_ARTIFACT"] = "[ICON_GREAT_ARTIST]",
-			--["GREAT_WORK_SLOT_LITERATURE"] = "[ICON_GREAT_WRITER]",
-			--["GREAT_WORK_SLOT_MUSIC"] = "[ICON_GREAT_MUSICIAN]",
-		--}
 		if greatWorkCount > 0 then
 			local buildingGreatWorkSlotType = building.GreatWorkSlotType
 			if buildingGreatWorkSlotType then
@@ -765,16 +759,13 @@ local function SetupBuildingList( city, buildings, buildingIM )
 					if greatWorkID >= 0 then
 						slot:SetTexture( buildingGreatWorkSlot.FilledIcon )
 						slot:RegisterCallback( Mouse.eRClick, GreatWorkPopup )
-						--greatWorkInfo = greatWorkInfo..greatWorkIcons[buildingGreatWorkSlotType]
 					else
 						slot:SetTexture( buildingGreatWorkSlot.EmptyIcon )
 						slot:ClearCallback( Mouse.eRClick )
-						--greatWorkInfo = greatWorkInfo.."[ICON_GREAT_WORK]"
 					end
 				end
 			end
 		end
-		--if greatWorkInfo ~= "" then greatWorkInfo = "[ICON_BULLET]"..greatWorkInfo.."[ICON_BULLET]" end
 
 		-------------------
 		-- Specialist Slots
@@ -1663,6 +1654,16 @@ local function UpdateWorkingHexesNow()
 	end -- city
 end
 
+
+-------------------------------------------------
+-- Workaround for ERROR "function at line 1660 has more than 60 upvalues"
+-------------------------------------------------
+local g_gwCallbacks = {
+	tooltip = GreatWorkTooltip,
+	culture = YourCulturePopup,
+	gwpopup = GreatWorkPopup,
+}
+
 -------------------------------------------------
 -- City View Update
 -------------------------------------------------
@@ -2308,21 +2309,14 @@ local function UpdateCityViewNow()
 					greatWorkData.BuildingID = building.ID
 					greatWorkData.BuildingDescription = building.Description
 					greatWorkData.ThemingBonus = sThemingBonus
-					--ContextPtr:BuildInstanceForControl( "Work", instance, slotStack )
-					--slot = instance.Button
-					--slot:RegisterCallback( Mouse.eLClick, YourCulturePopup )
-					--slot:RegisterCallback( Mouse.eMouseEnter, GreatWorkTooltip )
 					greatWorkData.GreatWorkID = city:GetBuildingGreatWork( buildingClassID, i )
 					greatWorkData.GreatWorkSlotID = buildingGreatWorkSlot.ID
-					--slot:SetVoids( greatWorkID, buildingGreatWorkSlot.ID )
 					if greatWorkData.GreatWorkID >= 0 then
 						greatWorkData.IsFilled = true
 						greatWorkData.Icon = buildingGreatWorkSlot.FilledIcon
-						--slot:RegisterCallback( Mouse.eRClick, GreatWorkPopup )
 					else
 						greatWorkData.IsFilled = false
 						greatWorkData.Icon = buildingGreatWorkSlot.EmptyIcon
-						--slot:ClearCallback( Mouse.eRClick )
 					end
 					table.insert(greatWorksData[buildingGreatWorkSlotType], greatWorkData);
 				end -- great works in a building
@@ -2340,7 +2334,7 @@ local function UpdateCityViewNow()
 			print("GW TYPE:", gwt, #gwall);
 			for i, gwdata in pairs(gwall) do -- specific type
 				print("  GW num#", i)
-				if slotX == 3 then slotX = 0; slotY = slotY + 1; end
+				if slotX == 7 then slotX = 0; slotY = slotY + 1; end
 				-- create an instance
 				gwInstance = g_GreatWorksSlotIM:GetInstance();
 				print("gwInstance", gwInstance);
@@ -2350,16 +2344,15 @@ local function UpdateCityViewNow()
 				gwInstance.Button:SetTexture(gwdata.Icon);
 				-- callbacks
 				gwInstance.Button:SetVoids( gwdata.GreatWorkID, gwdata.GreatWorkSlotID )
-				gwInstance.Button:RegisterCallback( Mouse.eMouseEnter, GreatWorkTooltip )
-				--gwInstance:RegisterCallback( Mouse.eLClick, YourCulturePopup )
-				--local greatWorkID = city:GetBuildingGreatWork( buildingClassID, i )
-				--if gwdata.IsFilled then gwInstance:RegisterCallback( Mouse.eRClick, GreatWorkPopup )
-				--else                    gwInstance:ClearCallback( Mouse.eRClick ) end
+				gwInstance.Button:RegisterCallback( Mouse.eMouseEnter,  g_gwCallbacks.tooltip) -- GreatWorkTooltip
+				gwInstance.Button:RegisterCallback( Mouse.eLClick,  g_gwCallbacks.culture) -- YourCulturePopup
+				if gwdata.IsFilled then gwInstance.Button:RegisterCallback( Mouse.eRClick, g_gwCallbacks.gwpopup ) -- GreatWorkPopup
+				else                    gwInstance.Button:ClearCallback( Mouse.eRClick ) end
 				-- DEBUG
-				for k,v in pairs(gwdata) do
-					if type(v) == "string" and v then print("    (k,v)",k,v,Locale.ConvertTextKey(v))
-					else print("    (k,v)",k,v) end
-				end
+				--for k,v in pairs(gwdata) do
+					--if type(v) == "string" and v then print("    (k,v)",k,v,Locale.ConvertTextKey(v))
+					--else print("    (k,v)",k,v) end
+				--end
 				slotX = slotX + 1
 			end
 		end
