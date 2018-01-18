@@ -153,7 +153,7 @@ local g_SpecialistSlotIM   = InstanceManager:new( "SpecialistSlotInstance", "Spe
 local g_SpecialistIconIM   = InstanceManager:new( "SpecialistIconInstance", "SpecialistIconButton", Controls.SpecialistsBox );
 -- Infixo - IMs for Great Works
 local g_GreatWorksSlotIM   = InstanceManager:new( "Work", "Button", Controls.GreatWorksBox );
-local g_ProdQueueIM, g_SpecialistsIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
+local g_ProdQueueIM, g_GreatWorksIM, g_SpecialistsIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
 local g_slots = table()
 local g_works = table()
 local g_heap = Controls.Scrap
@@ -2657,7 +2657,7 @@ g_ProcessSelectIM	= StackInstanceManager( "SelectionInstance", "Button", Control
 g_FocusSelectIM		= StackInstanceManager( "", "", Controls.WorkerManagementBox, Controls.WorkerHeader, function(self, collapsed) g_workerHeadingOpen = not collapsed ResizeRightStack() UpdateWorkingHexes() end, true, not g_workerHeadingOpen )
 g_SpecialistsIM     = StackInstanceManager("", "", Controls.SpecialistsStack, Controls.SpecialistsHeader, ResizeRightStack)
 -- Infixo Great Works NOT WORKING YET
---g_GreatWorksIM      = StackInstanceManager("", "", Controls.GreatWorksStack, Controls.GreatWorksHeader, ResizeRightStack)
+g_GreatWorksIM      = StackInstanceManager("", "", Controls.GreatWorksStack, Controls.GreatWorksHeader, ResizeRightStack)
 
 local function SetToolTipString( toolTipFunc )
 	g_leftTipControls.Text:SetText( toolTipFunc( UI_GetHeadSelectedCity() ) )
