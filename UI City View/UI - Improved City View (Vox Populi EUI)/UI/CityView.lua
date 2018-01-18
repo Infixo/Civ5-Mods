@@ -1,3 +1,4 @@
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -150,7 +151,9 @@ local g_BuyPlotButtonIM	= StackInstanceManager( "BuyPlotButtonInstance", "BuyPlo
 --Maggi - Instance managers for specialists/icons and below SpecialistsboxStack (g_SpecialistsIM)
 local g_SpecialistSlotIM   = InstanceManager:new( "SpecialistSlotInstance", "SpecialistSlotButton", Controls.SpecialistsBox );
 local g_SpecialistIconIM   = InstanceManager:new( "SpecialistIconInstance", "SpecialistIconButton", Controls.SpecialistsBox );
-local g_ProdQueueIM, g_SpecialistsIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
+-- Infixo - IMs for Great Works
+local g_GreatWorksSlotIM   = InstanceManager:new( "Work", "Button", Controls.GreatWorksBox );
+local g_ProdQueueIM, g_SpecialistsIM, g_GreatWorksIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
 local g_slots = table()
 local g_works = table()
 local g_heap = Controls.Scrap
@@ -728,6 +731,12 @@ local function SetupBuildingList( city, buildings, buildingIM )
 
 		-------------------
 		-- Great Work Slots
+		--local greatWorkInfo = "";
+		--local greatWorkIcons = {
+--			["GREAT_WORK_SLOT_ART_ARTIFACT"] = "[ICON_GREAT_ARTIST]",
+			--["GREAT_WORK_SLOT_LITERATURE"] = "[ICON_GREAT_WRITER]",
+			--["GREAT_WORK_SLOT_MUSIC"] = "[ICON_GREAT_MUSICIAN]",
+		--}
 		if greatWorkCount > 0 then
 			local buildingGreatWorkSlotType = building.GreatWorkSlotType
 			if buildingGreatWorkSlotType then
@@ -756,13 +765,16 @@ local function SetupBuildingList( city, buildings, buildingIM )
 					if greatWorkID >= 0 then
 						slot:SetTexture( buildingGreatWorkSlot.FilledIcon )
 						slot:RegisterCallback( Mouse.eRClick, GreatWorkPopup )
+						--greatWorkInfo = greatWorkInfo..greatWorkIcons[buildingGreatWorkSlotType]
 					else
 						slot:SetTexture( buildingGreatWorkSlot.EmptyIcon )
 						slot:ClearCallback( Mouse.eRClick )
+						--greatWorkInfo = greatWorkInfo.."[ICON_GREAT_WORK]"
 					end
 				end
 			end
 		end
+		--if greatWorkInfo ~= "" then greatWorkInfo = "[ICON_BULLET]"..greatWorkInfo.."[ICON_BULLET]" end
 
 		-------------------
 		-- Specialist Slots
@@ -2179,9 +2191,9 @@ local function UpdateCityViewNow()
 							controlTable.FilledSpecialistSlot:SetHide(not(slotfilled));
 							local emptySlotString = Locale.ConvertTextKey("TXT_KEY_CITYVIEW_EMPTY_SLOT");
 							local specialistName = Locale.ConvertTextKey(pSpecialistInfo.Description);
-							local employedAt = Locale.ConvertTextKey("TXT_KEY_EMPLOYED_AT",pSpecialistInfo.Description,GameInfo.Buildings[slotbuilding].Description);
+							local employedAt = Locale.ConvertTextKey("TXT_KEY_CITYVIEW_EMPLOYED_AT",pSpecialistInfo.Description,GameInfo.Buildings[slotbuilding].Description);
 							local ToolTipString = employedAt .."[NEWLINE] ";
-							--local employedAt = Locale.ConvertTextKey("TXT_KEY_EMPLOYED_AT");
+							--local employedAt = Locale.ConvertTextKey("TXT_KEY_CITYVIEW_EMPLOYED_AT");
 							--local ToolTipString = specialistName .. " " .. employedAt .. " " .. Locale.ConvertTextKey(GameInfo.Buildings[slotbuilding].Description) .."[NEWLINE] ";
 		--					-- Culture unneeded with CivUP
 							--local iCultureFromSpecialist = city:GetCultureFromSpecialist(iSpecialistID);					
@@ -2259,6 +2271,104 @@ local function UpdateCityViewNow()
 		
 		--print("Made it through specialists");
 
+		-----------------------------
+		-- Infixo: Great Works Box --
+		-----------------------------		
+		--local greatWorkIcons = {
+			--["GREAT_WORK_SLOT_ART_ARTIFACT"] = "[ICON_GREAT_ARTIST]",
+			--["GREAT_WORK_SLOT_LITERATURE"] = "[ICON_GREAT_WRITER]",
+			--["GREAT_WORK_SLOT_MUSIC"] = "[ICON_GREAT_MUSICIAN]",
+		--}
+		local totalGreatWorkCount = 0;
+		g_GreatWorksSlotIM:ResetInstances();
+		local greatWorksData = {
+			["GREAT_WORK_SLOT_ART_ARTIFACT"] = {},
+			["GREAT_WORK_SLOT_LITERATURE"] = {},
+			["GREAT_WORK_SLOT_MUSIC"] = {},
+		}
+		-- Build table of GWs
+		for building in GameInfo.Buildings() do
+			local buildingGreatWorkCount = civ5bnw_mode and building.GreatWorkCount or 0
+			local buildingGreatWorkSlotType = building.GreatWorkSlotType -- GREAT_WORK_SLOT_ART_ARTIFACT / GREAT_WORK_SLOT_MUSIC / GREAT_WORK_SLOT_LITERATURE
+			if buildingGreatWorkCount > 0 and buildingGreatWorkSlotType and city:IsHasBuilding(building.ID) then
+				totalGreatWorkCount = totalGreatWorkCount + buildingGreatWorkCount
+				local buildingGreatWorkSlot = GameInfo.GreatWorkSlots[ buildingGreatWorkSlotType ]
+				local buildingClassID = GameInfoTypes[ building.BuildingClass ]
+				local sThemingBonus = ""
+				if city:IsThemingBonusPossible( buildingClassID ) then sThemingBonus = city:GetThemingBonus( buildingClassID ) end
+				--[[ THEMING BONUS???
+				if city:IsThemingBonusPossible( buildingClassID ) then
+					textButton:SetText( " +" .. city:GetThemingBonus( buildingClassID ) )
+					textButton:SetVoid1( buildingClassID )
+					textButton:SetHide( false )
+				end
+				--]]
+				for i = 0, buildingGreatWorkCount - 1 do
+					local greatWorkData = {}
+					greatWorkData.BuildingID = building.ID
+					greatWorkData.BuildingDescription = building.Description
+					greatWorkData.ThemingBonus = sThemingBonus
+					--ContextPtr:BuildInstanceForControl( "Work", instance, slotStack )
+					--slot = instance.Button
+					--slot:RegisterCallback( Mouse.eLClick, YourCulturePopup )
+					--slot:RegisterCallback( Mouse.eMouseEnter, GreatWorkTooltip )
+					greatWorkData.GreatWorkID = city:GetBuildingGreatWork( buildingClassID, i )
+					greatWorkData.GreatWorkSlotID = buildingGreatWorkSlot.ID
+					--slot:SetVoids( greatWorkID, buildingGreatWorkSlot.ID )
+					if greatWorkData.GreatWorkID >= 0 then
+						greatWorkData.IsFilled = true
+						greatWorkData.Icon = buildingGreatWorkSlot.FilledIcon
+						--slot:RegisterCallback( Mouse.eRClick, GreatWorkPopup )
+					else
+						greatWorkData.IsFilled = false
+						greatWorkData.Icon = buildingGreatWorkSlot.EmptyIcon
+						--slot:ClearCallback( Mouse.eRClick )
+					end
+					table.insert(greatWorksData[buildingGreatWorkSlotType], greatWorkData);
+				end -- great works in a building
+			end -- greatWorkCount > 0
+		end -- GameInfo.Buildings
+		
+		-- show or hide the box
+		print("SHOW/HIDE")
+		Controls.GreatWorksHeader:SetHide( totalGreatWorkCount == 0 )
+		Controls.GreatWorksBox:SetHide( totalGreatWorkCount == 0 )
+		-- create slots and put them into the box
+		local slotX, slotY = 0, 0
+		print("FOUND #gw in city", totalGreatWorkCount, city:GetName())
+		for gwt, gwall in pairs(greatWorksData) do -- 3 types
+			print("GW TYPE:", gwt, #gwall);
+			for i, gwdata in pairs(gwall) do -- specific type
+				print("  GW num#", i)
+				if slotX == 3 then slotX = 0; slotY = slotY + 1; end
+				-- create an instance
+				gwInstance = g_GreatWorksSlotIM:GetInstance();
+				print("gwInstance", gwInstance);
+				-- content
+				gwInstance.Button:SetOffsetX(8 + slotX * 34);
+				gwInstance.Button:SetOffsetY(2 + slotY * 34);
+				gwInstance.Button:SetTexture(gwdata.Icon);
+				-- callbacks
+				gwInstance.Button:SetVoids( gwdata.GreatWorkID, gwdata.GreatWorkSlotID )
+				gwInstance.Button:RegisterCallback( Mouse.eMouseEnter, GreatWorkTooltip )
+				--gwInstance:RegisterCallback( Mouse.eLClick, YourCulturePopup )
+				--local greatWorkID = city:GetBuildingGreatWork( buildingClassID, i )
+				--if gwdata.IsFilled then gwInstance:RegisterCallback( Mouse.eRClick, GreatWorkPopup )
+				--else                    gwInstance:ClearCallback( Mouse.eRClick ) end
+				-- DEBUG
+				for k,v in pairs(gwdata) do
+					if type(v) == "string" and v then print("    (k,v)",k,v,Locale.ConvertTextKey(v))
+					else print("    (k,v)",k,v) end
+				end
+				slotX = slotX + 1
+			end
+		end
+		-- resize the box
+		if totalGreatWorkCount > 0 then 
+			Controls.GreatWorksBox:SetSize( { x = 254, y = (slotY+1) * 34 + 4} );
+		end
+		
+		
 		-------------------------------------------
 		-- Buildings
 		-------------------------------------------
@@ -2553,6 +2663,8 @@ g_WonderSelectIM	= StackInstanceManager( "SelectionInstance", "Button", Controls
 g_ProcessSelectIM	= StackInstanceManager( "SelectionInstance", "Button", Controls.OtherButtonStack, Controls.OtherButton, ResizeProdQueue )
 g_FocusSelectIM		= StackInstanceManager( "", "", Controls.WorkerManagementBox, Controls.WorkerHeader, function(self, collapsed) g_workerHeadingOpen = not collapsed ResizeRightStack() UpdateWorkingHexes() end, true, not g_workerHeadingOpen )
 g_SpecialistsIM     = StackInstanceManager("", "", Controls.SpecialistsStack, Controls.SpecialistsHeader, ResizeRightStack)
+-- Infixo Great Works NOT WORKING YET
+--g_GreatWorksIM      = StackInstanceManager("", "", Controls.GreatWorksStack, Controls.GreatWorksHeader, ResizeRightStack)
 
 local function SetToolTipString( toolTipFunc )
 	g_leftTipControls.Text:SetText( toolTipFunc( UI_GetHeadSelectedCity() ) )
