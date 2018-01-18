@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by ModBuddy on 7/23/2012 7:45:01 PM -->
+<GameData>
+	<!-- en_US -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>Specialists</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} employed at {2_Building}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_GREAT_WORKS">
+			<Text>Great Works</Text>
+		</Row>
+	</Language_en_US>
+	<!-- DE_DE -->
+	<Language_DE_DE>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>Spezialisten</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} besch&#228;ftigt in {2_Building}</Text>
+		</Row>
+	</Language_DE_DE>
+	<!-- ES_ES -->
+	<Language_ES_ES>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>Especialistas</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} empleado en {2_Building}</Text>
+		</Row>
+	</Language_ES_ES>
+	<!-- FR_FR -->
+	<Language_FR_FR>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>Sp&#233;cialistes</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} employ&#233; &#224; {2_Building}</Text>
+		</Row>
+	</Language_FR_FR>
+	<!-- IT_IT -->
+	<Language_IT_IT>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>Specialistas</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} impiegato presso {2_Building}</Text>
+		</Row>
+	</Language_IT_IT>
+	<!-- JA_JP -->
+	<Language_JA_JP>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>専門家</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{2_Building}の{1_Specialist}</Text>
+		</Row>
+	</Language_JA_JP>
+	<!-- PL_PL -->
+	<Language_PL_PL>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>Specjaliści</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} zatrudniony w {2_Building}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_GREAT_WORKS">
+			<Text>Wielkie Dzieła</Text>
+		</Row>
+	</Language_en_US>
+	<!-- RU_RU -->
+	<Language_RU_RU>
+		<Row Tag="TXT_KEY_CITYVIEW_SPECIALISTS">
+			<Text>специалист</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
+			<Text>{1_Specialist} занятых на {2_Building};</Text>
+		</Row>
+	</Language_RU_RU>
+</GameData>

@@ -2,7 +2,7 @@
 <Mod id="6df65e6b-6aa4-4da2-a7fd-084d0e9c84c1" version="10">
   <Properties>
     <Name>UI - Improved City View (Vox Populi EUI)</Name>
-    <Teaser>More compact and concise City View (for Vox Populi with EUI)</Teaser>
+    <Teaser>More compact and concise City View (for Vox Populi with EUI), Version 10</Teaser>
     <Description>Based on previous work by Sneaks, this mod aims at further improving the CityView Screen.
 Details:
 - Specialists grouped together in one box;
@@ -12,8 +12,8 @@ Requires [COLOR_POSITIVE_TEXT]Vox Populi with EUI[ENDCOLOR]. Only works with the
 
 Available in English, French, German, Italian, Polish, Russian, and Spanish. If your language is missing or if you find any bug, please let me know.
 
-Vox Populi compatible by Infixo.</Description>
-    <Authors>Meister Maggi</Authors>
+Vox Populi compatible by Infixo. Version 10.</Description>
+    <Authors>Meister Maggi, Infixo</Authors>
     <SpecialThanks>bc1, Gazebo, Sneaks, Thalassicus, whoward69</SpecialThanks>
     <HideSetupGame>0</HideSetupGame>
     <AffectsSavedGames>0</AffectsSavedGames>
@@ -32,13 +32,13 @@ Vox Populi compatible by Infixo.</Description>
   <References />
   <Blocks />
   <Files>
-    <File md5="B187AD8781F3F6CD176AFD873E74CECA" import="0">Text/SpecialistsBoxTextLabel.xml</File>
-    <File md5="3BE8E9261F9DE629DA1CDE438CBE39D1" import="1">UI/CityView.lua</File>
-    <File md5="C8DF3C897EB21A43FF177AF404A2C559" import="1">UI/CityView_small.xml</File>
+    <File md5="74E1AD6B282CEF59B70F865E7E272D37" import="0">Text/ImprovedCityView_text.xml</File>
+    <File md5="A6B5ECFC8EA23AED45798276E2AA00ED" import="1">UI/CityView.lua</File>
+    <File md5="D63F46389D8CCE38747091B80CFBB179" import="1">UI/CityView_small.xml</File>
   </Files>
   <Actions>
     <OnModActivated>
-      <UpdateDatabase>Text/SpecialistsBoxTextLabel.xml</UpdateDatabase>
+      <UpdateDatabase>Text/ImprovedCityView_text.xml</UpdateDatabase>
     </OnModActivated>
   </Actions>
 </Mod>

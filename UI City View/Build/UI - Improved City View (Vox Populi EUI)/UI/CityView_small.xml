@@ -259,7 +259,7 @@
 				<Stack ID="GPStack" Anchor="L,T" StackGrowth="B"/>
 				<!-- Maggi: Specialists Box -->
 				<Button Anchor="L,B" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds" ID="SpecialistsHeader">
-					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_SPECIAL_TEXT" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="SpecialistsHeaderLabel"/>
+					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_SPECIALISTS" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="SpecialistsHeaderLabel"/>
 				</Button>
 				<Stack ID="SpecialistsStack" Anchor="L,T" StackGrowth="B">
 					<Box Anchor="L,C" Color="White.0" Offset="0,0" Size="254,32" ID="SpecialistsControlBox">
@@ -294,6 +294,13 @@
 						<Box Anchor="L,B" Color="27.53.64.255" Size="254,2"/>
 					</Box>
 				</Stack>
+				<!-- Infixo Great Works -->
+				<Button Anchor="L,B" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds" ID="GreatWorksHeader">
+					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_GREAT_WORKS" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="GreatWorksHeaderLabel"/>
+				</Button>
+				<!--<Stack ID="GreatWorksStack" Anchor="L,T" StackGrowth="B">-->
+					<Button ID="GreatWorksBox" Anchor="L,T" Color="White.0" Size="254,32"/>
+				<!--</Stack>-->
 				<!-- Great Work Buildings -->
 				<Button ID="GreatWorkHeader" Anchor="L,C" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds">
 					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_GREAT_WORK_BUILDINGS_TEXT" />
@@ -428,14 +435,14 @@
 
 	<!-- Maggi: Specialists Slot Instances -->
 	<Instance Name="SpecialistSlotInstance">
-		<Button Anchor="R,T" Size="32,32" Offset="0,0" ID="SpecialistSlotButton">
+		<Button Anchor="L,T" Size="32,32" Offset="0,0" ID="SpecialistSlotButton">
 			<Button Anchor="C,C" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\CitizenWorker.dds" ID="FilledSpecialistSlot" Hidden="True"/>
 			<Button Anchor="C,C" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\CitizenEmpty.dds" ID="EmptySpecialistSlot" Hidden="True"/>
 		</Button>
 	</Instance>
 	<!-- Maggi: Specialists Icon Instances -->
 	<Instance Name="SpecialistIconInstance">
-		<Button Anchor="R,T" Size="32,32" Offset="0,0" ID="SpecialistIconButton">
+		<Button Anchor="L,T" Size="32,32" Offset="0,0" ID="SpecialistIconButton">
 			<Label Anchor="C,C" Offset="0,0" Font="TwCenMT18" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" String="[ICON_CULTURE]" ID="SpecialistIcon"/>
 		</Button>
 	</Instance>
