@@ -55,7 +55,7 @@
 			</Button>
 			<!-- Tourism Info -->
 			<Button ID="TourismBox" Size="196,24">
-				<Label Anchor="L,C" Offset="6,0" String="[ICON_TOURISM"/>
+				<Label Anchor="L,C" Offset="6,0" String="[ICON_TOURISM]"/>
 				<Label Anchor="L,C" Offset="32,0" String="TXT_KEY_CITYVIEW_TOURISM_TEXT"/>
 				<Label ID="TourismPerTurnLabel" Anchor="R,C" String=""/>
 				<Box Anchor="L,B" Color="27.53.64.255" Offset="4,0" Size="196,1"/>
@@ -63,7 +63,7 @@
 			<!-- CBP -->
 			<!-- Happiness Info -->
 			<Button ID="HappinessBox" Size="196,24">
-				<Label Anchor="L,C" Offset="6,0" String="[ICON_HAPPINESS_1"/>
+				<Label Anchor="L,C" Offset="6,0" String="[ICON_HAPPINESS_1]"/>
 				<Label Anchor="L,C" Offset="32,0" String="TXT_KEY_CITYVIEW_HAPPINESS_TEXT"/>
 				<Label ID="HappinessPerTurnLabel" Anchor="R,C" String=""/>
 				<Box Anchor="L,B" Color="27.53.64.255" Offset="4,0" Size="196,1"/>
@@ -111,10 +111,11 @@
 						<Label ID="PQturns" Font="TwCenMT16"/>
 					</Stack>
 				</Stack>
-				<!--MM:Production Queue Gold Button (first item)-->
-				<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 				<Button ID="PQremove" Anchor="L,C" Offset="4,-1" Size="32,32" Texture="IconFrame32Delete.dds" ToolTip="TXT_KEY_CITYVIEW_Q_X_TEXT" />
+				<!-- Vox Populi invested -->
 				<Label ID="PQinvested" Anchor="R,C" String="[ICON_INVEST]" Font="TwCenMT16"/>
+				<!-- Vox Populi gold button (first item) -->
+				<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 				<Image Anchor="L,B" Texture="bar340x2.dds" Size="270,1" Color="White.128" />
 			</GridButton>
 			<!-- Production Info -->
@@ -281,11 +282,19 @@
 					<Stack ID="SlackerStack" Anchor="R,T" StackGrowth="Left" WrapGrowth="Down" WrapWidth="260" />
 					<Box Anchor="L,B" Color="27.53.64.255" Size="254,2"/>
 				</Button>
+				<!-- Infixo Great Works -->
+				<Button Anchor="L,B" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds" ID="GreatWorksHeader">
+					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_GREAT_WORKS" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="GreatWorksHeaderLabel"/>
+				</Button>
+				<Stack ID="GreatWorksStack" Anchor="L,T" StackGrowth="B">
+					<Button ID="GreatWorksBox" Anchor="L,T" Color="White.0" Size="254,32"/>
+				</Stack>
 				<!-- Special Buildings -->
 				<Button ID="SpecialBuildingsHeader" Anchor="L,C" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds">
 					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_SPECIAL_TEXT" />
 				</Button>
 				<Stack ID="SpecialBuildingsStack" Anchor="L,T" StackGrowth="B">
+					<!-- Infixo not used
 					<Box ID="SpecialistControlBox" Anchor="L,C" Color="White.0" Size="254,32">
 						<Label Anchor="R,T" Offset="64,8"/>
 						<CheckBox ID="NoAutoSpecialistCheckbox" Style="SquareCheck" Anchor="L,B" ToolTip="TXT_KEY_CITYVIEW_SPECIALISTCONTROL_TT">
@@ -293,14 +302,8 @@
 						</CheckBox>
 						<Box Anchor="L,B" Color="27.53.64.255" Size="254,2"/>
 					</Box>
+					-->
 				</Stack>
-				<!-- Infixo Great Works -->
-				<Button Anchor="L,B" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds" ID="GreatWorksHeader">
-					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_GREAT_WORKS" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="GreatWorksHeaderLabel"/>
-				</Button>
-				<!--<Stack ID="GreatWorksStack" Anchor="L,T" StackGrowth="B">-->
-					<Button ID="GreatWorksBox" Anchor="L,T" Color="White.0" Size="254,32"/>
-				<!--</Stack>-->
 				<!-- Great Work Buildings -->
 				<Button ID="GreatWorkHeader" Anchor="L,C" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds">
 					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_GREAT_WORK_BUILDINGS_TEXT" />
@@ -311,6 +314,7 @@
 					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_WONDERS_TEXT" />
 				</Button>
 				<Stack ID="WondersStack" Anchor="L,T" StackGrowth="B">
+					<!-- Infixo not used
 					<Box ID="SpecialistControlBox2" Anchor="L,C" Color="White.0" Size="254,32">
 						<Label Anchor="R,T" Offset="64,8"/>
 						<CheckBox ID="NoAutoSpecialistCheckbox2" Style="SquareCheck" Anchor="L,B" ToolTip="TXT_KEY_CITYVIEW_SPECIALISTCONTROL_TT">
@@ -318,6 +322,7 @@
 						</CheckBox>
 						<Box Anchor="L,B" Color="27.53.64.255" Size="254,2"/>
 					</Box>
+					-->
 				</Stack>
 				<!-- Other Buildings -->
 				<Button ID="BuildingsHeader" Anchor="L,C" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds">
@@ -399,29 +404,35 @@
 					<Label ID="PQturns" Font="TwCenMT16"/>
 				</Stack>
 			</Stack>
-			<!--MM:Production Queue Gold Button (all but the first item) -->
-			<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 			<Box ID="PQdisabled" Anchor="L,T" Size="270,38" Color="27.0.64.128" />
 			<Button ID="PQremove" Anchor="L,C" Offset="4,-1" Size="32,32" Texture="IconFrame32Delete.dds" ToolTip="TXT_KEY_CITYVIEW_Q_X_TEXT" />
+			<!-- Vox Populi invested -->
 			<Label ID="PQinvested" Anchor="R,C" String="[ICON_INVEST]" Font="TwCenMT16"/>
+			<!-- Vox Populi gold button -->
+			<GridButton ID="PQGoldButton" Anchor="R,B" Size="70,22" Style="SmallButton" ToolTipType="EUI_CityViewLeftTooltip" Font="TwCenMT16"/>
 			<Image Anchor="L,B" Texture="bar340x2.dds" Size="270,1" Color="White.128" />
 		</GridButton>
 	</Instance>
 
 	<Instance Name="BuildingInstance">
-		<Button ID="Button" Size="254,64" ToolTipType="EUI_CityViewRightTooltip" >
-			<Image Anchor="R,T" Size="64,64" Texture="64x64FrameButtons.dds">
-				<Image ID="Portrait" Anchor="C,C" Size="64,64" />
-			</Image>
-			<Stack ID="Stack" Anchor="R,T" Offset="0,8" StackGrowth="Down" Padding="8" >
-				<Label ID="Name" Anchor="R,T" Offset="64,0" Font="TwCenMT18" TruncateWidth="190"/>
+		<Button ID="Button" Size="254,46" ToolTipType="EUI_CityViewRightTooltip" >
+			<!-- Icon -->
+			<!--<Image Anchor="R,T" Size="64,64" Texture="64x64FrameButtons.dds">-->
+			<Image ID="Portrait" Anchor="R,T" Size="64,64"/>
+			<!--</Image>-->
+			<!--<Stack ID="Stack" Anchor="R,T" Offset="0,8" StackGrowth="Down" Padding="8" >-->
+			<!-- Building name -->
+			<Label ID="Name" Anchor="L,T" Offset="6,3" Font="TwCenMT18" TruncateWidth="210"/>
+				<!-- not used
 				<Stack ID="SlotStack" Anchor="R,T" StackGrowth="Left" WrapGrowth="Down" WrapWidth="254">
 					<Container Size="64.1"/>
 					<TextButton ID="TextButton" Anchor="R,C"/>
 				</Stack>
-				<Label ID="Label" Anchor="R,B" WrapWidth="254" Font="TwCenMT18"/>
-			</Stack>
-			<GridButton ID="SellButton" Anchor="L,T" Size="70,22" Style="SmallButton" Color="255,128,128,255" Font="TwCenMT16" ToolTip="TXT_KEY_CLICK_TO_SELL" />
+				-->
+			<!-- Yields info -->
+			<Label ID="Label" Anchor="L,T" Offset="6,24" Font="TwCenMT18" WrapWidth="254"/>
+			<!--</Stack>-->
+			<GridButton ID="SellButton" Anchor="R,T" Size="70,22" Style="SmallButton" Color="255,128,128,255" Font="TwCenMT16" ToolTip="TXT_KEY_CLICK_TO_SELL"/>
 			<Box Anchor="C,B" Color="27.53.64.255" Size="254,2"/>
 		</Button>
 	</Instance>

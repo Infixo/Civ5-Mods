@@ -33,8 +33,8 @@ Vox Populi compatible by Infixo. Version 10.</Description>
   <Blocks />
   <Files>
     <File md5="74E1AD6B282CEF59B70F865E7E272D37" import="0">Text/ImprovedCityView_text.xml</File>
-    <File md5="A6B5ECFC8EA23AED45798276E2AA00ED" import="1">UI/CityView.lua</File>
-    <File md5="D63F46389D8CCE38747091B80CFBB179" import="1">UI/CityView_small.xml</File>
+    <File md5="E682413E4FD0B3AA5740B3BE1355DAE7" import="1">UI/CityView.lua</File>
+    <File md5="DD7B06317CB06A31CE92D80EC61DF060" import="1">UI/CityView_small.xml</File>
   </Files>
   <Actions>
     <OnModActivated>

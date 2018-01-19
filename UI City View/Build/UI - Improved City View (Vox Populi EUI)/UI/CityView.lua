@@ -148,12 +148,14 @@ local g_leftStackHeigth = g_screenHeight - 40 - Controls.CityInfoBG:GetOffsetY()
 
 local g_PlotButtonIM	= StackInstanceManager( "PlotButtonInstance", "PlotButtonAnchor", Controls.PlotButtonContainer )
 local g_BuyPlotButtonIM	= StackInstanceManager( "BuyPlotButtonInstance", "BuyPlotButtonAnchor", Controls.PlotButtonContainer )
---Maggi - Instance managers for specialists/icons and below SpecialistsboxStack (g_SpecialistsIM)
+-- Maggi: Instance managers for specialists/icons and below SpecialistsboxStack (g_SpecialistsIM)
 local g_SpecialistSlotIM   = InstanceManager:new( "SpecialistSlotInstance", "SpecialistSlotButton", Controls.SpecialistsBox );
 local g_SpecialistIconIM   = InstanceManager:new( "SpecialistIconInstance", "SpecialistIconButton", Controls.SpecialistsBox );
+local g_SpecialistsIM
 -- Infixo - IMs for Great Works
 local g_GreatWorksSlotIM   = InstanceManager:new( "Work", "Button", Controls.GreatWorksBox );
-local g_ProdQueueIM, g_SpecialistsIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
+local g_GreatWorksIM
+local g_ProdQueueIM, g_SpecialBuildingsIM, g_GreatWorkIM, g_WondersIM, g_BuildingsIM, g_GreatPeopleIM, g_SlackerIM, g_UnitSelectIM, g_BuildingSelectIM, g_WonderSelectIM, g_ProcessSelectIM, g_FocusSelectIM
 local g_slots = table()
 local g_works = table()
 local g_heap = Controls.Scrap
@@ -303,10 +305,10 @@ local function ClearCityUIInfo()
 	g_ProdQueueIM.ResetInstances()
 	g_ProdQueueIM.Commit()
 	Controls.PQremove:SetHide( true )
-	Controls.PQGoldButton:SetHide( true )
 	Controls.PQrank:SetText()
 	Controls.PQname:SetText()
 	Controls.PQturns:SetText()
+	Controls.PQGoldButton:SetHide( true )
 	return Controls.ProductionPortraitButton:SetHide(true)
 end
 
@@ -456,6 +458,7 @@ local function GetSpecialistYields( city, specialist )
 		yieldTips:insertIf( civ5_mode and (specialist.GreatPeopleRateChange or 0) ~= 0 and specialist.GreatPeopleRateChange .. GreatPeopleIcon( specialist.Type ) )
 		-- Vox Populi food info
 		local foodPerSpec = city:FoodConsumptionSpecialistTimes100() / 100;
+		if specialist.Type == "SPECIALIST_CITIZEN" then foodPerSpec = GameDefines.FOOD_CONSUMPTION_PER_POPULATION end
 		yieldTips:insertIf( foodPerSpec ~= 0 and StringFormatNeatFloat(-foodPerSpec) .. "[ICON_FOOD]" );
 		-- Vox Populi end
 	end
@@ -474,7 +477,8 @@ local function SpecialistTooltip( control )
 		strToolTip = L"TXT_KEY_CITYVIEW_EMPTY_SLOT".."[NEWLINE]("..strToolTip..")"
 	end
 	g_rightTipControls.Text:SetText( strToolTip )
-	IconHookup( specialist.PortraitIndex, g_rightTipControls.Portrait:GetSizeY(), specialist.IconAtlas, g_rightTipControls.Portrait )
+	-- Infixo Icon OFF
+	--IconHookup( specialist.PortraitIndex, g_rightTipControls.Portrait:GetSizeY(), specialist.IconAtlas, g_rightTipControls.Portrait )
 	g_rightTipControls.Box:SetHide( false )
 	return g_rightTipControls.Box:DoAutoSize()
 end
@@ -486,6 +490,7 @@ local function BuildingToolTip( control )
 	if city and building then
 
 		g_rightTipControls.Text:SetText( GetHelpTextForBuilding( buildingID, false, false, city:GetNumFreeBuilding(buildingID) > 0, city ) )
+		-- Infixo Portrait is used to show bigger tooltip icon
 		IconHookup( building.PortraitIndex, g_rightTipControls.Portrait:GetSizeY(), building.IconAtlas, g_rightTipControls.Portrait )
 		g_rightTipControls.Box:SetHide( false )
 		return g_rightTipControls.Box:DoAutoSize()
@@ -578,8 +583,8 @@ local function SelectionToolTip( control )
 	return OrderItemTooltip( UI_GetHeadSelectedCity(), true, false, control:GetVoid1(), control:GetVoid2() )
 end
 
--- MM: tooltip function
-local function PQBuyButtonToolTip( control )
+-- Vox Populi gold button
+local function PQGoldButtonToolTip( control )
 	return OrderItemTooltip( UI_GetHeadSelectedCity(),control:IsDisabled(), g_yieldCurrency, control:GetVoid1(), control:GetVoid2() )
 end
 
@@ -604,7 +609,7 @@ local function ToggleSpecialist( buildingID, slotID )
 			Game.SelectedCitiesGameNetMessage(GameMessageTypes.GAMEMESSAGE_DO_TASK, TaskTypes.TASK_NO_AUTO_ASSIGN_SPECIALISTS, -1, -1, true)
 			Controls.NoAutoSpecialistsCheckbox:SetCheck(true)
 			if bnw_mode then
-				Controls.NoAutoSpecialistCheckbox2:SetCheck(true)
+				-- Controls.NoAutoSpecialistCheckbox2:SetCheck(true) -- Infixo not used
 			end
 		end
 
@@ -664,15 +669,17 @@ end
 -------------------------------------------------
 
 local function sortBuildings(a,b)
+-- Infixo [1] is building, [2] is Localized Description, [3] is great work count, [4] is specialist type id (or 999 if none)
 	if a and b then
 		--if a[4] ~= b[4] then
 		--	return a[4] < b[4]
 		--elseif a[3] ~= b[3] then
 		--	return a[3] > b[3]
 		--end
-		if a[3] ~= b[3] then
-			return a[3] > b[3]
-		end
+		-- Infixo just sort by name...
+		--if a[3] ~= b[3] then
+			--return a[3] > b[3]
+		--end
 		return a[2] < b[2]
 	end
 end
@@ -688,18 +695,19 @@ local function SetupBuildingList( city, buildings, buildingIM )
 	for i = 1, #buildings do
 
 		local building, buildingName, greatWorkCount = unpack(buildings[i])
+		local buildingNameSuffix = "" -- will show specialists and great work count
 		local buildingID = building.ID
 		local controls, isNewInstance = buildingIM.GetInstance()
 		local buildingButton = controls.Button
 		local sellButton = controls.SellButton
-		local textButton = controls.TextButton
-		textButton:SetHide( true )
+		--local textButton = controls.TextButton
+		--textButton:SetHide( true )
 		if isNewInstance then
 			buildingButton:RegisterCallback( Mouse.eRClick, BuildingPedia )
 			buildingButton:SetToolTipCallback( BuildingToolTip )
 			sellButton:RegisterCallback( Mouse.eLClick, SellBuilding )
-			textButton:RegisterCallback( Mouse.eLClick, YourCulturePopup )
-			textButton:RegisterCallback( Mouse.eMouseEnter, ThemingTooltip )
+			--textButton:RegisterCallback( Mouse.eLClick, YourCulturePopup )
+			--textButton:RegisterCallback( Mouse.eMouseEnter, ThemingTooltip )
 		else
 			for _, slot in pairs( controls[1] ) do
 				g_slots:insert( slot )
@@ -726,23 +734,33 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		local instance = {}
 
 --!!!BE portrait size is bigger
-
-		controls.Portrait:SetHide( not IconHookup( building.PortraitIndex, 64, building.IconAtlas, controls.Portrait ) )
+		-- Infixo icon is not shown but needed for tooltip icon
+		IconHookup( building.PortraitIndex, 64, building.IconAtlas, controls.Portrait )
+		controls.Portrait:SetHide( true )
 
 		-------------------
 		-- Great Work Slots
+		local greatWorkIcons = {
+			["GREAT_WORK_SLOT_ART_ARTIFACT"] = "[ICON_GREAT_ARTIST]",
+			["GREAT_WORK_SLOT_LITERATURE"] = "[ICON_GREAT_WRITER]",
+			["GREAT_WORK_SLOT_MUSIC"] = "[ICON_GREAT_MUSICIAN]",
+		}
 		if greatWorkCount > 0 then
 			local buildingGreatWorkSlotType = building.GreatWorkSlotType
 			if buildingGreatWorkSlotType then
-				local buildingGreatWorkSlot = GameInfo.GreatWorkSlots[ buildingGreatWorkSlotType ]
+				--buildingNameSuffix = buildingNameSuffix.." "..string.rep(greatWorkIcons[buildingGreatWorkSlotType], greatWorkCount) -- Infixo great works
+				buildingNameSuffix = buildingNameSuffix.." "..string.rep("[ICON_GREAT_WORK]", greatWorkCount) -- Infixo great works
+				--local buildingGreatWorkSlot = GameInfo.GreatWorkSlots[ buildingGreatWorkSlotType ]
 				local buildingClassID = GameInfoTypes[ building.BuildingClass ]
 
 				if city:IsThemingBonusPossible( buildingClassID ) then
-					textButton:SetText( " +" .. city:GetThemingBonus( buildingClassID ) )
-					textButton:SetVoid1( buildingClassID )
-					textButton:SetHide( false )
+					if city:GetThemingBonus( buildingClassID ) > 0 then buildingNameSuffix = buildingNameSuffix.."[ICON_CHECKBOX]" end -- Infixo theming bonus active flag
+					--textButton:SetText( " +" .. city:GetThemingBonus( buildingClassID ) )
+					--textButton:SetVoid1( buildingClassID )
+					--textButton:SetHide( false )
 				end
 
+				--[[ Infixo Great Works
 				for i = 0, greatWorkCount - 1 do
 					local slot = g_works:remove()
 					if slot then
@@ -764,9 +782,9 @@ local function SetupBuildingList( city, buildings, buildingIM )
 						slot:ClearCallback( Mouse.eRClick )
 					end
 				end
+				--]]
 			end
 		end
-
 		-------------------
 		-- Specialist Slots
 		local numSpecialistsInBuilding = city:GetNumSpecialistsInBuilding( buildingID )
@@ -780,33 +798,36 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		end
 		local specialistType = building.SpecialistType
 		local specialist = GameInfo.Specialists[specialistType]
-		--if specialist then
-		--	for slotID = 1, city:GetNumSpecialistsAllowedByBuilding( buildingID ) do
-		--		local slot = g_slots:remove()
-		--		if slot then
-		--			slot:ChangeParent( slotStack )
-		--		else
-		--			ContextPtr:BuildInstanceForControl( "Slot", instance, slotStack )
-		--			slot = instance.Button
-		--			slot:RegisterCallback( Mouse.eRClick, SpecialistPedia )
-		--			slot:SetToolTipCallback( SpecialistTooltip )
-		--		end
-		--		controls[1]:insert( slot )
-		--		if civ5_mode then
-		--			slot:SetTexture( specialistTable[ slotID ] and g_slotTexture[ specialistType ] or "CitizenEmpty.dds" )
-		--		else
-		--			IconHookup( specialist.PortraitIndex, 45, specialist.IconAtlas, instance.Portrait )
-		--			instance.Portrait:SetHide( not specialistTable[ slotID ] )
-		--		end
-		--		slot:SetVoids( buildingID, slotID )
-		--		if g_isViewingMode then
-		--			slot:ClearCallback( Mouse.eLClick )
-		--		else
-		--			slot:RegisterCallback( Mouse.eLClick, ToggleSpecialist )
-		--		end
-		--	end -- Specialist Slots
-		--end
-
+		-- Infixo add icons to building name
+		if numSpecialistsInBuilding > 0 then buildingNameSuffix = buildingNameSuffix.." "..string.rep(GreatPeopleIcon(specialistType), numSpecialistsInBuilding) end
+		--[[ Maggi: Specialists
+		if specialist then
+			for slotID = 1, city:GetNumSpecialistsAllowedByBuilding( buildingID ) do
+				local slot = g_slots:remove()
+				if slot then
+					slot:ChangeParent( slotStack )
+				else
+					ContextPtr:BuildInstanceForControl( "Slot", instance, slotStack )
+					slot = instance.Button
+					slot:RegisterCallback( Mouse.eRClick, SpecialistPedia )
+					slot:SetToolTipCallback( SpecialistTooltip )
+				end
+				controls[1]:insert( slot )
+				if civ5_mode then
+					slot:SetTexture( specialistTable[ slotID ] and g_slotTexture[ specialistType ] or "CitizenEmpty.dds" )
+				else
+					IconHookup( specialist.PortraitIndex, 45, specialist.IconAtlas, instance.Portrait )
+					instance.Portrait:SetHide( not specialistTable[ slotID ] )
+				end
+				slot:SetVoids( buildingID, slotID )
+				if g_isViewingMode then
+					slot:ClearCallback( Mouse.eLClick )
+				else
+					slot:RegisterCallback( Mouse.eLClick, ToggleSpecialist )
+				end
+			end -- Specialist Slots
+		end
+		--]]
 		-- Building stats/bonuses
 		local buildingClassID = GameInfoTypes[ building.BuildingClass ] or -1
 		local maintenanceCost = tonumber(building[g_maintenanceCurrency]) or 0
@@ -814,7 +835,8 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		local hitPointChange = tonumber(building.ExtraCityHitPoints) or 0
 		--CBP
 		--local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) + (specialist and city:GetCultureFromSpecialist( specialist.ID ) or 0) * numSpecialistsInBuilding
-		local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) + (specialist and (city:GetSpecialistYield( specialist.ID, YieldTypes.YIELD_CULTURE ) + city:GetCultureFromSpecialist( specialist.ID ) + city:GetSpecialistYieldChange( specialist.ID, YieldTypes.YIELD_CULTURE)) or 0) * numSpecialistsInBuilding
+		--local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) + (specialist and (city:GetSpecialistYield( specialist.ID, YieldTypes.YIELD_CULTURE ) + city:GetCultureFromSpecialist( specialist.ID ) + city:GetSpecialistYieldChange( specialist.ID, YieldTypes.YIELD_CULTURE)) or 0) * numSpecialistsInBuilding
+		local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) -- Infixo don't duplicate specialists
 		--END
 		local buildingCultureModifier = tonumber(building.CultureRateModifier) or 0
 		local cityCultureRateModifier = cityOwner:GetCultureCityModifier() + city:GetCultureRateModifier() + (city:GetNumWorldWonders() > 0 and cityOwner and cityOwner:GetCultureWonderMultiplier() or 0)
@@ -875,6 +897,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 				end
 			end
 			-- Specialists yield
+			--[[ Infixo don't duplicate specialists
 			if specialist then
 				--CBP
 				if(yieldID ~= YieldTypes.YIELD_CULTURE) then
@@ -882,6 +905,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 				end
 				--END
 			end
+			--]]
 			cityYieldRateModifier = city:GetBaseYieldRateModifier( yieldID )
 			cityYieldRate = city:GetYieldPerPopTimes100( yieldID ) * population / 100 + city:GetBaseYieldRate( yieldID )
 			-- Special culture case
@@ -921,8 +945,8 @@ local function SetupBuildingList( city, buildings, buildingIM )
 			cityYieldRateModifier = 100
 			-- Vox Populi calculate impact of that single building on base yields
 			--buildingYieldRate = buildingYieldRate * cityYieldRateModifier + ( cityYieldRate - buildingYieldRate ) * buildingYieldModifier
-			local iYieldFromBuildingModifier = city:GetBaseYieldRate(yieldID) * buildingYieldModifier / 100;
-			buildingYieldRate = buildingYieldRate + iYieldFromBuildingModifier
+			--local iYieldFromBuildingModifier = city:GetBaseYieldRate(yieldID) * buildingYieldModifier / 100;
+			--buildingYieldRate = buildingYieldRate + iYieldFromBuildingModifier
 			tips:insertIf( isProducing and buildingYieldRate ~= 0 and StringFormatNeatFloat(buildingYieldRate) .. tostring(YieldIcons[ yieldID ]) )
 			-- Vox Populi end
 		end
@@ -947,25 +971,27 @@ local function SetupBuildingList( city, buildings, buildingIM )
 			buildingName = L( "TXT_KEY_RELIGIOUS_BUILDING", buildingName, Players[city:GetOwner()]:GetStateReligionKey() )
 		end
 		if city:GetNumFreeBuilding( buildingID ) > 0 then
-			buildingName = buildingName .. " (" .. L"TXT_KEY_FREE" .. ")"
+			buildingName = buildingName .. " ([COLOR_POSITIVE_TEXT]" .. L"TXT_KEY_FREE" .. "[ENDCOLOR])"
 		else
 			tips:insertIf( maintenanceCost ~=0 and -maintenanceCost .. g_currencyIcon )
 		end
+		buildingName = buildingName..buildingNameSuffix -- Infixo show icons for great work slots and specialist slots
 		controls.Name:SetText( buildingName )
 
 		tips:insertIf( defenseChange ~=0 and StringFormatNeatFloat(defenseChange / 100) .. "[ICON_STRENGTH]" )
 		tips:insertLocalizedIfNonZero( "TXT_KEY_PEDIA_DEFENSE_HITPOINTS", hitPointChange )
 
-		controls.Label:ChangeParent( controls.Stack )
 		controls.Label:SetText( tips:concat(" ") )
-		slotStack:CalculateSize()
-		if slotStack:GetSizeX() + controls.Label:GetSizeX() < 254 then
-			controls.Label:ChangeParent( slotStack )
-		end
-		controls.Stack:CalculateSize()
+		-- Infixo OFF
+		--controls.Label:ChangeParent( controls.Stack )
+		--slotStack:CalculateSize()
+		--if slotStack:GetSizeX() + controls.Label:GetSizeX() < 254 then
+			--controls.Label:ChangeParent( slotStack )
+		--end
+		--controls.Stack:CalculateSize()
 --		slotStack:ReprocessAnchoring()
 --		controls.Stack:ReprocessAnchoring()
-		buildingButton:SetSizeY( math_max(64, controls.Stack:GetSizeY() + 16) )
+		--buildingButton:SetSizeY( math_max(64, controls.Stack:GetSizeY() + 16) ) -- Infixo OFF
 	end
 	return buildingIM.Commit()
 end
@@ -1192,8 +1218,8 @@ local function SwapQueueItem( queuedItemNumber )
 	g_queuedItemNumber = queuedItemNumber or g_queuedItemNumber
 end
 
--- MM: function for clicking the buy button in the queue
-local function PQBuyButtonClicked( orderID, itemID )
+-- Vox Populi gold button
+local function PQGoldButtonCallback( orderID, itemID )
 	return SelectionPurchase( orderID, itemID, g_yieldCurrency, "AS2D_INTERFACE_CITY_SCREEN_PURCHASE" )
 end
 
@@ -1229,15 +1255,9 @@ local function UpdateCityProductionQueueNow (city, cityID, cityOwnerID, isVenice
 	g_ProdQueueIM.ResetInstances()
 	local queueItems = {}
 
-	-- MM: gold for comparison
-	local cash = g_activePlayer:GetGold()
-
 	for queuedItemNumber = 0, math_max( queueLength-1, 0 ) do
 
 		local orderID, itemID, _, isRepeat, isReallyRepeat
-		-- MM: vars for setting the buybutton 
-		local goldCost, canBuyWithGold
-
 		if isQueueEmpty then
 			local item = g_finishedItems[ cityID ]
 			if item then
@@ -1247,26 +1267,6 @@ local function UpdateCityProductionQueueNow (city, cityID, cityOwnerID, isVenice
 		else
 			orderID, itemID, _, isRepeat = city:GetOrderFromQueue( queuedItemNumber )
 			queueItems[ orderID / 64 + itemID ] = true
-
-			--MM: set the cost value (if possible)
-			if orderID == 0 then
-				goldCost = city:GetUnitPurchaseCost(itemID)
-
-				if goldCost then
-					canBuyWithGold = cityIsCanPurchase( city, true, true, itemID, -1, -1, g_yieldCurrency )	
-					goldCost = cityIsCanPurchase( city, false, false, itemID, -1, -1, g_yieldCurrency ) and goldCost
-				end
-			elseif orderID == 1 then
-				goldCost = city:GetBuildingPurchaseCost(itemID)
-				if goldCost then
-					canBuyWithGold = cityIsCanPurchase( city, true, true, -1, itemID, -1, g_yieldCurrency )
-					goldCost = cityIsCanPurchase( city, false, false, -1, itemID, -1, g_yieldCurrency ) and goldCost
-				end
-			end 
-			if g_isDebugMode then
-				goldCost, canBuyWithGold = nil
-			end
-
 		end
 		local instance, portraitSize
 		if queuedItemNumber == 0 then
@@ -1277,7 +1277,6 @@ local function UpdateCityProductionQueueNow (city, cityID, cityOwnerID, isVenice
 			instance = g_ProdQueueIM.GetInstance()
 			instance.PQdisabled:SetHide( not isMaintain )
 		end
-
 		instance.PQbox:SetVoid1( queuedItemNumber )
 		instance.PQbox:RegisterCallback( Mouse.eMouseEnter, SwapQueueItem )
 		instance.PQbox:RegisterCallback( Mouse.eRClick, ProductionPedia )
@@ -1286,29 +1285,35 @@ local function UpdateCityProductionQueueNow (city, cityID, cityOwnerID, isVenice
 		instance.PQremove:SetHide( isQueueEmpty or g_isViewingMode )
 		instance.PQremove:SetVoid1( queuedItemNumber )
 		instance.PQremove:RegisterCallback( Mouse.eLClick, RemoveQueueItem )
-
-		-- MM: setting the gold buy button
-		instance.PQGoldButton:SetHide( not goldCost or g_isViewingMode )
-		if goldCost then
-			instance.PQGoldButton:SetDisabled( not canBuyWithGold )
-			instance.PQGoldButton:SetAlpha( canBuyWithGold and 1 or 0.5 )
-			instance.PQGoldButton:SetVoids( orderID, itemID )
-			instance.PQGoldButton:SetText( (cash>=goldCost and goldCost or "[COLOR_WARNING_TEXT]"..(goldCost-cash).."[ENDCOLOR]") .. g_currencyIcon )
-			instance.PQGoldButton:SetToolTipCallback ( PQBuyButtonToolTip )
-			instance.PQGoldButton:RegisterCallback( Mouse.eLClick, PQBuyButtonClicked )
-			--instance.PQGoldButton:RegisterCallback( Mouse.eRClick, PQBuyButtonClicked )
-		end
-
+		
 		local itemInfo, turnsRemaining, portraitOffset, portraitAtlas
+		
+		-- Vox Populi invested
+		local cashInvested;
+		-- Vox Populi gold button
+		local cashPQ = g_activePlayer:GetGold();
+		local canBuyWithGoldPQ, goldCostPQ;
 
 		if orderID == OrderTypes.ORDER_TRAIN then
 			itemInfo = GameInfo.Units
 			turnsRemaining = city:GetUnitProductionTurnsLeft( itemID, queuedItemNumber )
 			portraitOffset, portraitAtlas = UI_GetUnitPortraitIcon( itemID, cityOwnerID )
 			isReallyRepeat = isRepeat
+			-- Vox Populi invested
+			cashInvested = city:GetUnitInvestment(itemID)
+			-- Vox Populi gold button
+			canBuyWithGoldPQ = cityIsCanPurchase( city, true, true, itemID, -1, -1, g_yieldCurrency )
+			goldCostPQ = cityIsCanPurchase( city, false, false, itemID, -1, -1, g_yieldCurrency )
+						and city:GetUnitPurchaseCost( itemID )
 		elseif orderID == OrderTypes.ORDER_CONSTRUCT then
 			itemInfo = GameInfo.Buildings
 			turnsRemaining = city:GetBuildingProductionTurnsLeft( itemID, queuedItemNumber )
+			-- Vox Populi invested
+			cashInvested = city:GetBuildingInvestment(itemID)
+			-- Vox Populi gold button
+			canBuyWithGoldPQ = cityIsCanPurchase( city, true, true, -1, itemID, -1, g_yieldCurrency )
+			goldCostPQ = cityIsCanPurchase( city, false, false, -1, itemID, -1, g_yieldCurrency )
+						and city:GetBuildingPurchaseCost( itemID )
 		elseif orderID == OrderTypes.ORDER_CREATE then
 			itemInfo = GameInfo.Projects
 			turnsRemaining = city:GetProjectProductionTurnsLeft( itemID, queuedItemNumber )
@@ -1318,14 +1323,26 @@ local function UpdateCityProductionQueueNow (city, cityID, cityOwnerID, isVenice
 			isReallyRepeat = true
 		end
 		
-		-- Vox Populi Invested
-		local cashInvested;
-		if orderID == OrderTypes.ORDER_TRAIN then
-			cashInvested = city:GetUnitInvestment(itemID);
-		elseif orderID == OrderTypes.ORDER_CONSTRUCT then
-			cashInvested = city:GetBuildingInvestment(itemID);
-		end
+		-- Maggi
+		if g_isDebugMode then goldCost, canBuyWithGold = nil end
+
+		-- Vox Populi invested
 		instance.PQinvested:SetHide( not (cashInvested and cashInvested > 0) );
+		
+		-- Vox Populi gold button
+		if itemInfo then
+			instance.PQGoldButton:SetHide( not goldCostPQ or g_isViewingMode )
+			if goldCostPQ then
+				instance.PQGoldButton:SetDisabled( not canBuyWithGoldPQ )
+				instance.PQGoldButton:SetAlpha( canBuyWithGoldPQ and 1 or 0.5 )
+				instance.PQGoldButton:SetVoids( orderID, itemID )
+				instance.PQGoldButton:SetText( (cashPQ >= goldCostPQ and goldCostPQ or "[COLOR_WARNING_TEXT]"..(goldCostPQ-cashPQ).."[ENDCOLOR]") .. g_currencyIcon )
+				instance.PQGoldButton:RegisterCallback( Mouse.eLClick, PQGoldButtonCallback )
+				instance.PQGoldButton:SetToolTipCallback ( PQGoldButtonToolTip )
+			end
+		else
+			instance.PQGoldButton:SetHide( true )
+		end
 		-- Vox Populi end
 		
 		if itemInfo then
@@ -1712,8 +1729,8 @@ local function UpdateCityViewNow()
 				local iHappinessPerTurn = city:getHappinessDelta();
 				Controls.HappinessPerTurnLabel:LocalizeAndSetText( "TXT_KEY_NET_HAPPINESS_TEXT", iHappinessPerTurn)
 				-- END
-				Controls.NoAutoSpecialistCheckbox2:SetCheck( isNoAutoAssignSpecialists )
-				Controls.NoAutoSpecialistCheckbox2:SetDisabled( g_isViewingMode )
+				--Controls.NoAutoSpecialistCheckbox2:SetCheck( isNoAutoAssignSpecialists ) -- Infixo not used
+				--Controls.NoAutoSpecialistCheckbox2:SetDisabled( g_isViewingMode ) -- Infixo not used
 			end
 		end
 
@@ -2275,11 +2292,6 @@ local function UpdateCityViewNow()
 		-----------------------------
 		-- Infixo: Great Works Box --
 		-----------------------------		
-		--local greatWorkIcons = {
-			--["GREAT_WORK_SLOT_ART_ARTIFACT"] = "[ICON_GREAT_ARTIST]",
-			--["GREAT_WORK_SLOT_LITERATURE"] = "[ICON_GREAT_WRITER]",
-			--["GREAT_WORK_SLOT_MUSIC"] = "[ICON_GREAT_MUSICIAN]",
-		--}
 		local totalGreatWorkCount = 0;
 		g_GreatWorksSlotIM:ResetInstances();
 		local greatWorksData = {
@@ -2324,20 +2336,20 @@ local function UpdateCityViewNow()
 		end -- GameInfo.Buildings
 		
 		-- show or hide the box
-		print("SHOW/HIDE")
+		--print("SHOW/HIDE")
 		Controls.GreatWorksHeader:SetHide( totalGreatWorkCount == 0 )
 		Controls.GreatWorksBox:SetHide( totalGreatWorkCount == 0 )
 		-- create slots and put them into the box
 		local slotX, slotY = 0, 0
-		print("FOUND #gw in city", totalGreatWorkCount, city:GetName())
+		--print("FOUND #gw in city", totalGreatWorkCount, city:GetName())
 		for gwt, gwall in pairs(greatWorksData) do -- 3 types
-			print("GW TYPE:", gwt, #gwall);
+			--print("GW TYPE:", gwt, #gwall);
 			for i, gwdata in pairs(gwall) do -- specific type
-				print("  GW num#", i)
+				--print("  GW num#", i)
 				if slotX == 7 then slotX = 0; slotY = slotY + 1; end
 				-- create an instance
 				gwInstance = g_GreatWorksSlotIM:GetInstance();
-				print("gwInstance", gwInstance);
+				--print("gwInstance", gwInstance);
 				-- content
 				gwInstance.Button:SetOffsetX(8 + slotX * 34);
 				gwInstance.Button:SetOffsetY(2 + slotY * 34);
@@ -2389,8 +2401,8 @@ local function UpdateCityViewNow()
 						noWondersWithSpecialistInThisCity = false
 					end
 				-- Specialist buildings will appear in a "normal" section	
-				--elseif areSpecialistsAllowedByBuilding then
-				--	buildings = specialistBuildings
+				elseif areSpecialistsAllowedByBuilding then
+					buildings = specialistBuildings
 				elseif greatWorkCount > 0 then
 					buildings = greatWorkBuildings
 				elseif greatWorkCount == 0 then		-- compatibility with Firaxis code exploit for invisibility
@@ -2405,8 +2417,8 @@ local function UpdateCityViewNow()
 		Controls.SpecialBuildingsHeader:SetToolTipString(strMaintenanceTT)
 		Controls.BuildingsHeader:SetToolTipString(strMaintenanceTT)
 		Controls.GreatWorkHeader:SetToolTipString(strMaintenanceTT)
-		Controls.SpecialistControlBox:SetHide( #specialistBuildings < 1 )
-		Controls.SpecialistControlBox2:SetHide( noWondersWithSpecialistInThisCity )
+		--Controls.SpecialistControlBox:SetHide( #specialistBuildings < 1 ) -- Infixo not used
+		--Controls.SpecialistControlBox2:SetHide( noWondersWithSpecialistInThisCity ) -- Infixo not used
 
 		SetupBuildingList( city, specialistBuildings, g_SpecialBuildingsIM )
 		SetupBuildingList( city, wonders, g_WondersIM )
@@ -2655,9 +2667,10 @@ g_BuildingSelectIM	= StackInstanceManager( "SelectionInstance", "Button", Contro
 g_WonderSelectIM	= StackInstanceManager( "SelectionInstance", "Button", Controls.WonderButtonStack, Controls.WondersButton, ResizeProdQueue )
 g_ProcessSelectIM	= StackInstanceManager( "SelectionInstance", "Button", Controls.OtherButtonStack, Controls.OtherButton, ResizeProdQueue )
 g_FocusSelectIM		= StackInstanceManager( "", "", Controls.WorkerManagementBox, Controls.WorkerHeader, function(self, collapsed) g_workerHeadingOpen = not collapsed ResizeRightStack() UpdateWorkingHexes() end, true, not g_workerHeadingOpen )
+-- Maggi: Specialists
 g_SpecialistsIM     = StackInstanceManager("", "", Controls.SpecialistsStack, Controls.SpecialistsHeader, ResizeRightStack)
--- Infixo Great Works NOT WORKING YET
---g_GreatWorksIM      = StackInstanceManager("", "", Controls.GreatWorksStack, Controls.GreatWorksHeader, ResizeRightStack)
+-- Infixo Great Works
+g_GreatWorksIM      = StackInstanceManager("", "", Controls.GreatWorksStack, Controls.GreatWorksHeader, ResizeRightStack)
 
 local function SetToolTipString( toolTipFunc )
 	g_leftTipControls.Text:SetText( toolTipFunc( UI_GetHeadSelectedCity() ) )
@@ -2800,7 +2813,7 @@ local g_callBacks = {
 		[Mouse.eRClick] = RenameCity,
 	},
 }
-g_callBacks.NoAutoSpecialistCheckbox2 = g_callBacks.NoAutoSpecialistsCheckbox
+--g_callBacks.NoAutoSpecialistCheckbox2 = g_callBacks.NoAutoSpecialistsCheckbox -- Infixo not used
 
 --Controls.ResetButton:SetVoid1( 0 )	-- calling with 0 = city center causes reset of all forced tiles
 --Controls.BoxOSlackers:SetVoids(-1,-1)
@@ -2961,6 +2974,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
+print("Loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10")
 print("Finished loading EUI city view",os.clock())
 end)
 
@@ -2994,7 +3008,7 @@ function AddSpecialist(iBuilding, slot)
 		Game.SelectedCitiesGameNetMessage(GameMessageTypes.GAMEMESSAGE_DO_TASK, TaskTypes.TASK_NO_AUTO_ASSIGN_SPECIALISTS, -1, -1, true);
 		Controls.NoAutoSpecialistsCheckbox:SetCheck(true);
 		if bnw_mode then
-			Controls.NoAutoSpecialistCheckbox2:SetCheck(true);
+			-- Controls.NoAutoSpecialistCheckbox2:SetCheck(true); --Infixo not used
 		end
 	end
 	
@@ -3020,7 +3034,7 @@ function RemoveSpecialist(iBuilding, slot)
 		Game.SelectedCitiesGameNetMessage(GameMessageTypes.GAMEMESSAGE_DO_TASK, TaskTypes.TASK_NO_AUTO_ASSIGN_SPECIALISTS, -1, -1, true);
 		Controls.NoAutoSpecialistsCheckbox:SetCheck(true);
 		if bnw_mode then
-			Controls.NoAutoSpecialistCheckbox2:SetCheck(true);
+			-- Controls.NoAutoSpecialistCheckbox2:SetCheck(true); -- Infixo not used
         end
 	end
 	
