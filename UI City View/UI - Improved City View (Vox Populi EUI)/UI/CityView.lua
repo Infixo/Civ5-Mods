@@ -458,6 +458,7 @@ local function GetSpecialistYields( city, specialist )
 		yieldTips:insertIf( civ5_mode and (specialist.GreatPeopleRateChange or 0) ~= 0 and specialist.GreatPeopleRateChange .. GreatPeopleIcon( specialist.Type ) )
 		-- Vox Populi food info
 		local foodPerSpec = city:FoodConsumptionSpecialistTimes100() / 100;
+		if specialist.Type == "SPECIALIST_CITIZEN" then foodPerSpec = GameDefines.FOOD_CONSUMPTION_PER_POPULATION end
 		yieldTips:insertIf( foodPerSpec ~= 0 and StringFormatNeatFloat(-foodPerSpec) .. "[ICON_FOOD]" );
 		-- Vox Populi end
 	end
@@ -694,7 +695,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 	for i = 1, #buildings do
 
 		local building, buildingName, greatWorkCount = unpack(buildings[i])
-		local buildingNameSuffix -- will show specialists and great work count
+		local buildingNameSuffix = "" -- will show specialists and great work count
 		local buildingID = building.ID
 		local controls, isNewInstance = buildingIM.GetInstance()
 		local buildingButton = controls.Button
@@ -747,17 +748,19 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		if greatWorkCount > 0 then
 			local buildingGreatWorkSlotType = building.GreatWorkSlotType
 			if buildingGreatWorkSlotType then
-				buildingNameSuffix = " "..string.rep(greatWorkIcons[buildingGreatWorkSlotType], greatWorkCount) -- Infixo great works
-				--[[ Infixo Great Works
-				local buildingGreatWorkSlot = GameInfo.GreatWorkSlots[ buildingGreatWorkSlotType ]
+				--buildingNameSuffix = buildingNameSuffix.." "..string.rep(greatWorkIcons[buildingGreatWorkSlotType], greatWorkCount) -- Infixo great works
+				buildingNameSuffix = buildingNameSuffix.." "..string.rep("[ICON_GREAT_WORK]", greatWorkCount) -- Infixo great works
+				--local buildingGreatWorkSlot = GameInfo.GreatWorkSlots[ buildingGreatWorkSlotType ]
 				local buildingClassID = GameInfoTypes[ building.BuildingClass ]
 
 				if city:IsThemingBonusPossible( buildingClassID ) then
-					textButton:SetText( " +" .. city:GetThemingBonus( buildingClassID ) )
-					textButton:SetVoid1( buildingClassID )
-					textButton:SetHide( false )
+					if city:GetThemingBonus( buildingClassID ) > 0 then buildingNameSuffix = buildingNameSuffix.."[ICON_CHECKBOX]" end -- Infixo theming bonus active flag
+					--textButton:SetText( " +" .. city:GetThemingBonus( buildingClassID ) )
+					--textButton:SetVoid1( buildingClassID )
+					--textButton:SetHide( false )
 				end
 
+				--[[ Infixo Great Works
 				for i = 0, greatWorkCount - 1 do
 					local slot = g_works:remove()
 					if slot then
@@ -795,6 +798,8 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		end
 		local specialistType = building.SpecialistType
 		local specialist = GameInfo.Specialists[specialistType]
+		-- Infixo add icons to building name
+		if numSpecialistsInBuilding > 0 then buildingNameSuffix = buildingNameSuffix.." "..string.rep(GreatPeopleIcon(specialistType), numSpecialistsInBuilding) end
 		--[[ Maggi: Specialists
 		if specialist then
 			for slotID = 1, city:GetNumSpecialistsAllowedByBuilding( buildingID ) do
@@ -830,7 +835,8 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		local hitPointChange = tonumber(building.ExtraCityHitPoints) or 0
 		--CBP
 		--local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) + (specialist and city:GetCultureFromSpecialist( specialist.ID ) or 0) * numSpecialistsInBuilding
-		local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) + (specialist and (city:GetSpecialistYield( specialist.ID, YieldTypes.YIELD_CULTURE ) + city:GetCultureFromSpecialist( specialist.ID ) + city:GetSpecialistYieldChange( specialist.ID, YieldTypes.YIELD_CULTURE)) or 0) * numSpecialistsInBuilding
+		--local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) + (specialist and (city:GetSpecialistYield( specialist.ID, YieldTypes.YIELD_CULTURE ) + city:GetCultureFromSpecialist( specialist.ID ) + city:GetSpecialistYieldChange( specialist.ID, YieldTypes.YIELD_CULTURE)) or 0) * numSpecialistsInBuilding
+		local buildingCultureRate = (not gk_mode and tonumber(building.Culture) or 0) -- Infixo don't duplicate specialists
 		--END
 		local buildingCultureModifier = tonumber(building.CultureRateModifier) or 0
 		local cityCultureRateModifier = cityOwner:GetCultureCityModifier() + city:GetCultureRateModifier() + (city:GetNumWorldWonders() > 0 and cityOwner and cityOwner:GetCultureWonderMultiplier() or 0)
@@ -891,6 +897,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 				end
 			end
 			-- Specialists yield
+			--[[ Infixo don't duplicate specialists
 			if specialist then
 				--CBP
 				if(yieldID ~= YieldTypes.YIELD_CULTURE) then
@@ -898,6 +905,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 				end
 				--END
 			end
+			--]]
 			cityYieldRateModifier = city:GetBaseYieldRateModifier( yieldID )
 			cityYieldRate = city:GetYieldPerPopTimes100( yieldID ) * population / 100 + city:GetBaseYieldRate( yieldID )
 			-- Special culture case
@@ -937,8 +945,8 @@ local function SetupBuildingList( city, buildings, buildingIM )
 			cityYieldRateModifier = 100
 			-- Vox Populi calculate impact of that single building on base yields
 			--buildingYieldRate = buildingYieldRate * cityYieldRateModifier + ( cityYieldRate - buildingYieldRate ) * buildingYieldModifier
-			local iYieldFromBuildingModifier = city:GetBaseYieldRate(yieldID) * buildingYieldModifier / 100;
-			buildingYieldRate = buildingYieldRate + iYieldFromBuildingModifier
+			--local iYieldFromBuildingModifier = city:GetBaseYieldRate(yieldID) * buildingYieldModifier / 100;
+			--buildingYieldRate = buildingYieldRate + iYieldFromBuildingModifier
 			tips:insertIf( isProducing and buildingYieldRate ~= 0 and StringFormatNeatFloat(buildingYieldRate) .. tostring(YieldIcons[ yieldID ]) )
 			-- Vox Populi end
 		end
@@ -967,7 +975,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		else
 			tips:insertIf( maintenanceCost ~=0 and -maintenanceCost .. g_currencyIcon )
 		end
-		if buildingNameSuffix then buildingName = buildingName..buildingNameSuffix end -- Infixo
+		buildingName = buildingName..buildingNameSuffix -- Infixo show icons for great work slots and specialist slots
 		controls.Name:SetText( buildingName )
 
 		tips:insertIf( defenseChange ~=0 and StringFormatNeatFloat(defenseChange / 100) .. "[ICON_STRENGTH]" )
