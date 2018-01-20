@@ -1,4 +1,4 @@
-print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10")
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.1")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -928,11 +928,13 @@ local function SetupBuildingList( city, buildings, buildingIM )
 				-- Vox Populi Comparable Yields
 				--buildingYieldRate = buildingYieldRate + (foodConsumed < foodPerPop * population and foodPerPop * numSpecialistsInBuilding / 2 or 0)
 				--buildingYieldModifier = buildingYieldModifier + (tonumber(building.FoodKept) or 0) -- FoodKept has a different meaning
+				--[[  Infixo switched off to avoid confusion
 				if foodConsumed < foodPerPop * population then 
 					-- this only happens when specialists in the city consume less food that normal population
 					local foodPerSpec = city:FoodConsumptionSpecialistTimes100() / 100;
 					buildingYieldRate = buildingYieldRate + (foodPerPop - foodPerSpec) * numSpecialistsInBuilding;
 				end
+				--]]
 				-- Vox Populi end
 				cityYieldRate = city:FoodDifferenceTimes100() / 100 -- cityYieldRate - foodConsumed 
 				cityYieldRateModifier = cityYieldRateModifier + city:GetMaxFoodKeptPercent()
@@ -2980,7 +2982,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
-print("Loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10")
+print("Loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.1")
 print("Finished loading EUI city view",os.clock())
 end)
 
