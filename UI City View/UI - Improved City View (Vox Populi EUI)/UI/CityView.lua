@@ -259,6 +259,12 @@ local function ResizeRightStack()
 	Controls.BoxOSlackers:SetSizeY( Controls.SlackerStack:GetSizeY() )
 	Controls.WorkerManagementBox:CalculateSize()
 	Controls.WorkerManagementBox:ReprocessAnchoring()
+	Controls.GPStack:CalculateSize() -- Infixo
+	Controls.GPStack:ReprocessAnchoring() -- Infixo
+	Controls.SpecialistsStack:CalculateSize() -- Infixo
+	Controls.SpecialistsStack:ReprocessAnchoring() -- Infixo
+	Controls.GreatWorksStack:CalculateSize() -- Infixo
+	Controls.GreatWorksStack:ReprocessAnchoring() -- Infixo
 	Controls.RightStack:CalculateSize()
 	local rightStackHeight = Controls.RightStack:GetSizeY() + 85
 	Controls.BuildingListBackground:SetSizeY( math_max( math_min( g_screenHeight + 48, rightStackHeight ), 160 ) )
