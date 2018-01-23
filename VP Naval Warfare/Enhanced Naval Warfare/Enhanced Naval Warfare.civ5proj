@@ -15,7 +15,8 @@
 [NEWLINE][ICON_MOVES]Attack Submarine - Atomic Era, submarines
 [NEWLINE][ICON_MOVES]Missile Destroyer - Information Era, naval melee
 [NEWLINE][ICON_MOVES]Supercarrier - Information Era, carriers
-[NEWLINE]Changes to existing units: Missile Cruiser is back again a ranged unit, Submarine is available earlier but is weaker and Guided Missile is available in Information Era. Destroyer is renamed to Modern Destroyer.</Description>
+[NEWLINE]Changes to existing units: Missile Cruiser is back again a ranged unit, Submarine is available earlier but is weaker and Guided Missile is available in Information Era. Destroyer is renamed to Modern Destroyer.
+Version 1.4</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>See credits.txt</SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
@@ -118,6 +119,7 @@
     </ModActions>
     <ReloadUnitSystem>true</ReloadUnitSystem>
     <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
+    <Homepage>http://forums.civfanatics.com/threads/enhanced-naval-warfare-for-vox-populi.624793/</Homepage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
