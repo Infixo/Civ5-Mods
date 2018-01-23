@@ -21,7 +21,7 @@ WHERE Tag IN ('TXT_KEY_BUILDING_CBOEE_THEATRE_PEDIA');
 
 -- Versailles
 UPDATE Language_en_US
-SET Text = 'Extends the length of [ICON_HAPPINESS_1] We Love The King Day by 50% empire-wide. 1 free [ICON_GREAT_PEOPLE] Great Writer appears near the City where the wonder was built.'
+SET Text = 'Extends the length of [ICON_HAPPINESS_1] We Love The King Day by 50% empire-wide. A [COLOR_POSITIVE_TEXT]Free[ENDCOLOR] [ICON_GREAT_WRITER] Great Writer appears near the City where the wonder was built.'
 WHERE Tag = 'TXT_KEY_WONDER_EE_VERSAILLES_HELP';
 
 -- Kronborg
@@ -39,7 +39,7 @@ WHERE Tag IN ('TXT_KEY_BUILDING_EE_KRONBORG_DUMMY_STRATEGY');
 
 -- Fasil Ghebbi
 UPDATE Language_en_US
-SET Text = 'Friendly military units within 3-tile range of Fasil Ghebbi have +25% combat strength. City gets additional +100 HP and +10 [ICON_STRENGTH] Defense. Increases the Military Unit Supply Cap by 5.'
+SET Text = 'Friendly military units within 3-tile range of Fasil Ghebbi gain +25% [ICON_STRENGTH] Combat Strength. City gets additional +100 HP and +10 [ICON_STRENGTH] Defense. Increases the Military Unit Supply Cap by 5.'
 WHERE Tag = 'TXT_KEY_WONDER_EE_FASIL_GHEBBI_HELP';
 
 UPDATE Language_en_US
@@ -47,7 +47,7 @@ SET Text = 'Fasil Ghebbi Aura'
 WHERE Tag = 'TXT_KEY_PROMOTION_EE_FASIL_GHEBBI';
 
 UPDATE Language_en_US
-SET Text = '+25% Combat Strength when in 3-tile range of Fasil Ghebbi.'
+SET Text = '+25% [ICON_STRENGTH] Combat Strength when in 3-tile range of [COLOR_CYAN]Fasil Ghebbi[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_PROMOTION_EE_FASIL_GHEBBI_HELP';
 
 -- Red Fort
@@ -176,7 +176,7 @@ WHERE Tag = 'TXT_KEY_WONDER_EE_SMITHSONIAN_HELP';
 
 -- Wat Phra Kaew
 UPDATE Language_en_US
-SET Text = '+2 [ICON_RESEARCH] Science from Shrines. +3 [ICON_RESEARCH] Science from Temples. +5 [ICON_RESEARCH] Science in the City.[NEWLINE][NEWLINE]City must be built on a river.'
+SET Text = '+1 [ICON_RESEARCH] Science from [COLOR_CYAN]Shrines[ENDCOLOR]. +2 [ICON_RESEARCH] Science from [COLOR_CYAN]Temples[ENDCOLOR]. +5 [ICON_RESEARCH] Science in the City.[NEWLINE][NEWLINE]City must be built on a [COLOR_CYAN]River[ENDCOLOR].'
 WHERE Tag IN ('TXT_KEY_WONDER_EE_WAT_PHRA_KAEW_HELP');
 
 -- Topkapi Palace
@@ -264,7 +264,7 @@ WHERE Tag IN ('TXT_KEY_CIV5_SPAIN_CONQUISTADOR_STRATEGY');
 
 -- Gunsmith
 UPDATE Language_en_US
-SET Text = 'Requires 1 [ICON_RES_IRON] Iron. +20% [ICON_PRODUCTION] Production when building Gunpowder, Armor and Siege Units which also receive additional 15 XP. Increases the Military Unit Supply Cap by 1.'
+SET Text = 'Requires 1 [ICON_RES_IRON] Iron. +25% [ICON_PRODUCTION] Production when building Gunpowder, Armor and Siege Units which also receive additional 15 XP. Increases the Military Unit Supply Cap by 2.'
 WHERE Tag IN ('TXT_KEY_BUILDING_EE_GUNSMITH_HELP');
 
 -- Gallery
@@ -360,7 +360,7 @@ WHERE Tag = 'TXT_KEY_BUILDING_THEATRE_STRATEGY';
 
 -- Bastion
 UPDATE Language_en_US
-SET Text = '+150 HP and +15 [ICON_STRENGTH] Defense in the City. Increases the Military Unit Supply Cap from Population in the City by 5%.[NEWLINE][NEWLINE]City must have a Castle.'
+SET Text = '+150 HP and +15 [ICON_STRENGTH] Defense in the City. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Castle[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_BUILDING_EE_BASTION_HELP';
 
 -- Ostrog
@@ -370,7 +370,7 @@ WHERE Tag = 'TXT_KEY_BUILDING_KREPOST_HELP';
 
 -- Arsenal
 UPDATE Language_en_US
-SET Text = '+100 HP and +10 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 5%.[NEWLINE][NEWLINE]City must have a Bastion.'
+SET Text = '+100 HP and +10 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Bastion[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_BUILDING_ARSENAL_HELP';
 
 UPDATE Language_en_US
@@ -379,7 +379,7 @@ WHERE Tag = 'TXT_KEY_BUILDING_ARSENAL_STRATEGY';
 
 -- Military Base
 UPDATE Language_en_US
-SET Text = '+20% [ICON_PRODUCTION] Production of Air units. Garrisoned units receive an additional 10 Health when healing in this city. +150 HP and +20 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 5%.[NEWLINE][NEWLINE]City must have an Arsenal.'
+SET Text = '+20% [ICON_PRODUCTION] Production of Air units, +10 [ICON_STRENGTH] Damage to Air Units during Air Strikes on City. Garrisoned units receive an additional 10 Health when healing in this city. Foreign Spies cannot steal [ICON_RESEARCH] Science from this City. +150 HP and +20 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have an [COLOR_CYAN]Arsenal[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_BUILDING_MILITARY_BASE_HELP';
 
 UPDATE Language_en_US
@@ -393,7 +393,7 @@ WHERE Tag = 'TXT_KEY_BUILDING_SEAPORT_HELP';
 
 -- Drydock
 UPDATE Language_en_US
-SET Text = 'Naval units trained in this city have +15% [ICON_STRENGTH] Combat Strength. Increases the Military Unit Supply Cap from Population in the City by 5%. Increases City Hit Points by 100.[NEWLINE][NEWLINE]City must contain a Harbor.'
+SET Text = 'Naval units trained in this city have +15% [ICON_STRENGTH] Combat Strength. Increases the Military Unit Supply Cap from Population in the City by 10%. Increases City Hit Points by 100.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Harbor[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_BUILDING_EE_DRYDOCK_HELP';
 
 UPDATE Language_en_US

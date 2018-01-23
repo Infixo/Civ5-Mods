@@ -7,8 +7,8 @@
     <Guid>af398f38-90a0-45f0-9831-6c712c86061b</Guid>
     <ModVersion>5</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>Vox Populi with Enlightenment Era (v 5.0)</Teaser>
-    <Description>Enlightenment Era is now fully compatible with Vox Populi. Techs are streamlined, Units and Buildings re-balanced and integrated with VP. The mod also includes RER. Enjoy![NEWLINE]Version 5.0</Description>
+    <Teaser>Vox Populi with Enlightenment Era (v 5.2)</Teaser>
+    <Description>Enlightenment Era is now fully compatible with Vox Populi. Techs are streamlined, Units and Buildings re-balanced and integrated with VP. The mod also includes RER. Enjoy![NEWLINE]Version 5.2</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>Xony, zwei833, Pouakai, pandasnail, phantomaxl1207, barrizqi, sukritact, JanBoruta, Chrisy15, Enginseer, Padre19, Aldebaran1997, Gazebo</SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
@@ -127,6 +127,7 @@
         <FileName>Lua/VPEE_Functions.lua</FileName>
       </Content>
     </ModContent>
+    <Homepage>http://forums.civfanatics.com/threads/enlightenment-era-compatibility-contd.610282/</Homepage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>

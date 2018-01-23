@@ -304,19 +304,18 @@ VALUES
 -- Gunsmith, Manor, Drydock
 ----------------------------------------------
 UPDATE Buildings
-SET CitySupplyFlat = 1
+SET CitySupplyFlat = 2
 WHERE Type = 'BUILDING_EE_GUNSMITH';
 
 INSERT INTO Building_ResourceQuantityRequirements (BuildingType, ResourceType, Cost)
 VALUES ('BUILDING_EE_GUNSMITH', 'RESOURCE_IRON', 1);
 
---UPDATE Building_UnitCombatProductionModifiers SET Modifier = 20 WHERE BuildingType = 'BUILDING_EE_GUNSMITH';
 DELETE FROM Building_UnitCombatProductionModifiers WHERE BuildingType = 'BUILDING_EE_GUNSMITH';
 INSERT INTO Building_UnitCombatProductionModifiers (BuildingType, UnitCombatType, Modifier)
 VALUES 
-	('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_ARMOR', 20),
-	('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_GUN', 20),
-	('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_SIEGE', 20);
+	('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_ARMOR', 25),
+	('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_GUN', 25),
+	('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_SIEGE', 25);
 
 INSERT INTO Building_UnitCombatFreeExperiences (BuildingType, UnitCombatType, Experience)
 VALUES
@@ -345,23 +344,9 @@ WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW';
 
 INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange)
 VALUES
-	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_SHRINE', 'YIELD_SCIENCE', 2),
-	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_TEMPLE', 'YIELD_SCIENCE', 3);
+	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_SHRINE', 'YIELD_SCIENCE', 1),
+	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_TEMPLE', 'YIELD_SCIENCE', 2);
 	
-/* fix: nerfed down
--- insert fresh good entries - building one can normally build
-INSERT INTO Building_BuildingClassYieldChanges
-				(BuildingType, 					BuildingClassType, 	YieldType, 			YieldChange)
-SELECT DISTINCT 'BUILDING_EE_WAT_PHRA_KAEW', 	BuildingClass,		'YIELD_SCIENCE', 	2
-FROM Buildings
-WHERE BuildingClass IN ('BUILDINGCLASS_SHRINE', 'BUILDINGCLASS_TEMPLE');
--- insert fresh good entries - unlockable via policies
-INSERT INTO Building_BuildingClassYieldChanges
-		(BuildingType, 					BuildingClassType, 	YieldType, 			YieldChange)
-SELECT 	'BUILDING_EE_WAT_PHRA_KAEW', 	BuildingClass,		'YIELD_SCIENCE', 	2
-FROM Buildings WHERE Cost = -1 AND FaithCost > 0 AND UnlockedByBelief = 1;
-*/
-
 DELETE FROM Building_YieldModifiers
 WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW';
 
@@ -386,7 +371,7 @@ FROM Buildings WHERE Defense > 0 AND ExtraCityHitPoints > 0 AND (Cost > 0 OR Fai
 
 -- fix: boosted a little +3G & +2T when Flight researched
 UPDATE Buildings
-SET EnhancedYieldTech = 'TECH_FLIGHT'
+SET UnmoddedHappiness = 0, GreatPeopleRateChange = 0, SpecialistType = NULL, EnhancedYieldTech = 'TECH_FLIGHT'
 WHERE Type = 'BUILDING_EE_TOPKAPI';
 INSERT INTO Building_TechEnhancedYieldChanges (BuildingType, YieldType, Yield)
 VALUES
@@ -426,7 +411,7 @@ WHERE Type = 'BUILDING_RED_FORT';
 -- Versailles
 ------------------------
 UPDATE Buildings
-SET GreatPeopleRateChange = 0 --, GoldenAge = 1 -- fix: nerfed down
+SET GreatPeopleRateChange = 0, SpecialistType = NULL
 WHERE Type = 'BUILDING_EE_VERSAILLES';
 
 INSERT INTO Building_FreeUnits (BuildingType, UnitType, NumUnits)
@@ -441,6 +426,9 @@ WHERE Type = 'BUILDING_EE_FASIL_GHEBBI';
 
 -- Infixo: 33 was too strong, make it 25 but in wider range
 UPDATE UnitPromotions SET CombatPercent = 25 WHERE Type = 'PROMOTION_EE_FASIL_GHEBBI';
+
+DELETE FROM Building_YieldChanges
+WHERE BuildingType = 'BUILDING_EE_FASIL_GHEBBI';
 
 ------------------------
 -- Kronborg
