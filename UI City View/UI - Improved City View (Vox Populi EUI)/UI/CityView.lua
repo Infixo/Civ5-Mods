@@ -960,6 +960,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		end
 
 		-- Culture leftovers
+		cityCultureRateModifier = 0 -- Vox Populi Comparable Yields
 		buildingCultureRate = buildingCultureRate * (100+cityCultureRateModifier) + ( cityCultureRate - buildingCultureRate ) * buildingCultureModifier
 		tips:insertIf( isNotResistance and buildingCultureRate ~=0 and StringFormatNeatFloat(buildingCultureRate / 100) .. "[ICON_CULTURE]" )
 
@@ -974,6 +975,10 @@ local function SetupBuildingList( city, buildings, buildingIM )
 			tourism = tourism + (tonumber(building.TechEnhancedTourism) or 0)
 			tips:insertIf( tourism ~= 0 and tourism.."[ICON_TOURISM]" )
 		end
+		
+		-- Defense and HitPoints before maintenance cost
+		tips:insertIf( defenseChange ~=0 and StringFormatNeatFloat(defenseChange / 100) .. "[ICON_STRENGTH]" )
+		tips:insertLocalizedIfNonZero( "TXT_KEY_PEDIA_DEFENSE_HITPOINTS", hitPointChange )
 
 		if civ5_mode and building.IsReligious then
 			buildingName = L( "TXT_KEY_RELIGIOUS_BUILDING", buildingName, Players[city:GetOwner()]:GetStateReligionKey() )
@@ -981,15 +986,16 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		if city:GetNumFreeBuilding( buildingID ) > 0 then
 			buildingName = buildingName .. " ([COLOR_POSITIVE_TEXT]" .. L"TXT_KEY_FREE" .. "[ENDCOLOR])"
 		else
-			tips:insertIf( maintenanceCost ~=0 and -maintenanceCost .. g_currencyIcon )
+			tips:insertIf( maintenanceCost ~=0 and "[COLOR_NEGATIVE_TEXT]"..-maintenanceCost.."[ENDCOLOR]".. g_currencyIcon )
 		end
 		buildingName = buildingName..buildingNameSuffix -- Infixo show icons for great work slots and specialist slots
 		controls.Name:SetText( buildingName )
-
-		tips:insertIf( defenseChange ~=0 and StringFormatNeatFloat(defenseChange / 100) .. "[ICON_STRENGTH]" )
-		tips:insertLocalizedIfNonZero( "TXT_KEY_PEDIA_DEFENSE_HITPOINTS", hitPointChange )
-
+		
 		controls.Label:SetText( tips:concat(" ") )
+		-- Sometimes yields go to the 2nd line and mess with the next building
+		if tips:count() > 6 then
+			buildingButton:SetSizeY( 69 ) -- cannot use GetSizeY() because it scales from Portrait which is already 64
+		end
 		-- Infixo OFF
 		--controls.Label:ChangeParent( controls.Stack )
 		--slotStack:CalculateSize()
@@ -2023,7 +2029,7 @@ local function UpdateCityViewNow()
 							gpChangePlayerMod = gpChangePlayerMod + cityOwner:GetGreatWriterRateModifier()
 							gpChangePolicyMod = gpChangePolicyMod + cityOwner:GetPolicyGreatWriterRateModifier()
 							if worldCongress then
-								gpChangeWorldCongressMod = gpChangeWorldCongressMod + worldCongress:GetArtsyGreatPersonRateModifier()
+								gpChangeWorldCongressMod = gpChangeWorldCongressMod + cityOwner:GetArtsyGreatPersonRateModifier()
 							end
 							if isGoldenAge and cityOwner:GetGoldenAgeGreatWriterRateModifier() > 0 then
 								gpChangeGoldenAgeMod = gpChangeGoldenAgeMod + cityOwner:GetGoldenAgeGreatWriterRateModifier()
@@ -2032,7 +2038,7 @@ local function UpdateCityViewNow()
 							gpChangePlayerMod = gpChangePlayerMod + cityOwner:GetGreatArtistRateModifier()
 							gpChangePolicyMod = gpChangePolicyMod + cityOwner:GetPolicyGreatArtistRateModifier()
 							if worldCongress then
-								gpChangeWorldCongressMod = gpChangeWorldCongressMod + worldCongress:GetArtsyGreatPersonRateModifier()
+								gpChangeWorldCongressMod = gpChangeWorldCongressMod + cityOwner:GetArtsyGreatPersonRateModifier()
 							end
 							if isGoldenAge and cityOwner:GetGoldenAgeGreatArtistRateModifier() > 0 then
 								gpChangeGoldenAgeMod = gpChangeGoldenAgeMod + cityOwner:GetGoldenAgeGreatArtistRateModifier()
@@ -2041,7 +2047,7 @@ local function UpdateCityViewNow()
 							gpChangePlayerMod = gpChangePlayerMod + cityOwner:GetGreatMusicianRateModifier()
 							gpChangePolicyMod = gpChangePolicyMod + cityOwner:GetPolicyGreatMusicianRateModifier()
 							if worldCongress then
-								gpChangeWorldCongressMod = gpChangeWorldCongressMod + worldCongress:GetArtsyGreatPersonRateModifier()
+								gpChangeWorldCongressMod = gpChangeWorldCongressMod + cityOwner:GetArtsyGreatPersonRateModifier()
 							end
 							if isGoldenAge and cityOwner:GetGoldenAgeGreatMusicianRateModifier() > 0 then
 								gpChangeGoldenAgeMod = gpChangeGoldenAgeMod + cityOwner:GetGoldenAgeGreatMusicianRateModifier()
@@ -2050,7 +2056,7 @@ local function UpdateCityViewNow()
 							gpChangePlayerMod = gpChangePlayerMod + cityOwner:GetGreatScientistRateModifier()
 							gpChangePolicyMod = gpChangePolicyMod + cityOwner:GetPolicyGreatScientistRateModifier()
 							if worldCongress then
-								gpChangeWorldCongressMod = gpChangeWorldCongressMod + worldCongress:GetScienceyGreatPersonRateModifier()
+								gpChangeWorldCongressMod = gpChangeWorldCongressMod + cityOwner:GetScienceyGreatPersonRateModifier()
 							end
 --CBP
 							if isGoldenAge and cityOwner:GetGoldenAgeGreatScientistRateModifier() > 0 then
@@ -2061,7 +2067,7 @@ local function UpdateCityViewNow()
 							gpChangePlayerMod = gpChangePlayerMod + cityOwner:GetGreatMerchantRateModifier()
 							gpChangePolicyMod = gpChangePolicyMod + cityOwner:GetPolicyGreatMerchantRateModifier()
 							if worldCongress then
-								gpChangeWorldCongressMod = gpChangeWorldCongressMod + worldCongress:GetScienceyGreatPersonRateModifier()
+								gpChangeWorldCongressMod = gpChangeWorldCongressMod + cityOwner:GetScienceyGreatPersonRateModifier()
 							end
 --CBP
 							if isGoldenAge and cityOwner:GetGoldenAgeGreatMerchantRateModifier() > 0 then
@@ -2072,7 +2078,7 @@ local function UpdateCityViewNow()
 							gpChangePlayerMod = gpChangePlayerMod + cityOwner:GetGreatEngineerRateModifier()
 							gpChangePolicyMod = gpChangePolicyMod + cityOwner:GetPolicyGreatEngineerRateModifier()
 							if worldCongress then
-								gpChangeWorldCongressMod = gpChangeWorldCongressMod + worldCongress:GetScienceyGreatPersonRateModifier()
+								gpChangeWorldCongressMod = gpChangeWorldCongressMod + cityOwner:GetScienceyGreatPersonRateModifier()
 							end
 --CBP
 							if isGoldenAge and cityOwner:GetGoldenAgeGreatEngineerRateModifier() > 0 then
