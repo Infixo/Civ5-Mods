@@ -95,6 +95,10 @@ VALUES ('UNIT_MISSILE_DESTROYER', 'RESOURCE_ALUMINUM', 1);
 INSERT INTO Unit_BuildingClassPurchaseRequireds (UnitType, BuildingClassType)
 VALUES ('UNIT_MISSILE_DESTROYER','BUILDINGCLASS_SEAPORT');
 
+-- Polynesian UA
+INSERT INTO Trait_BuildsUnitClasses	(TraitType, UnitClassType, BuildType)
+VALUES ('TRAIT_WAYFINDING', 'UNITCLASS_MISSILE_DESTROYER', 'BUILD_FISHING_BOATS');
+
 ----------------------------------------------------
 -- AI
 ----------------------------------------------------

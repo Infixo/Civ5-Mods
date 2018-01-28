@@ -106,6 +106,10 @@ VALUES ('UNIT_EARLY_DESTROYER', 'RESOURCE_COAL', 1);
 INSERT INTO Unit_BuildingClassPurchaseRequireds (UnitType, BuildingClassType)
 VALUES ('UNIT_EARLY_DESTROYER','BUILDINGCLASS_SEAPORT');
 
+-- Polynesian UA
+INSERT INTO Trait_BuildsUnitClasses	(TraitType, UnitClassType, BuildType)
+VALUES ('TRAIT_WAYFINDING', 'UNITCLASS_EARLY_DESTROYER', 'BUILD_FISHING_BOATS');
+
 ----------------------------------------------------
 -- AI
 ----------------------------------------------------

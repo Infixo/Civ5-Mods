@@ -49,6 +49,10 @@ VALUES
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_CARGO_III'),  -- NuclearSub and MisDestr has 2 cargo
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_INTERCEPTION_III');  -- 50%
 	--('UNIT_MISSILE_CRUISER', 'PROMOTION_CARGO_EXTRA2');
+
+-- Polynesian UA no longer applies to Missile Cruiser
+DELETE FROM Trait_BuildsUnitClasses
+WHERE TraitType = 'TRAIT_WAYFINDING' AND UnitClassType = 'UNITCLASS_MISSILE_CRUISER';
 	
 UPDATE Language_en_US
 SET Text = 'Most powerful Naval Ranged unit specialized in warding off enemy aircrafts and hunting submarines. Carries 3 Missiles. Requires [ICON_RES_ALUMINUM] Aluminum to be built.'
