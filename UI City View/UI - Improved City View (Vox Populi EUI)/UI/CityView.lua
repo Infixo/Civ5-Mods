@@ -1,4 +1,4 @@
-print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.1")
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.2")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -980,17 +980,22 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		tips:insertIf( defenseChange ~=0 and StringFormatNeatFloat(defenseChange / 100) .. "[ICON_STRENGTH]" )
 		tips:insertLocalizedIfNonZero( "TXT_KEY_PEDIA_DEFENSE_HITPOINTS", hitPointChange )
 
-		if civ5_mode and building.IsReligious then
-			buildingName = L( "TXT_KEY_RELIGIOUS_BUILDING", buildingName, Players[city:GetOwner()]:GetStateReligionKey() )
-		end
+		-- free / maintenance cost
 		if city:GetNumFreeBuilding( buildingID ) > 0 then
-			buildingName = buildingName .. " ([COLOR_POSITIVE_TEXT]" .. L"TXT_KEY_FREE" .. "[ENDCOLOR])"
+			--buildingName = buildingName .. " ([COLOR_POSITIVE_TEXT]" .. L"TXT_KEY_FREE" .. "[ENDCOLOR])"
+			tips:insertIf( "[COLOR_POSITIVE_TEXT]"..L"TXT_KEY_FREE".."[ENDCOLOR]" )
 		else
 			tips:insertIf( maintenanceCost ~=0 and "[COLOR_NEGATIVE_TEXT]"..-maintenanceCost.."[ENDCOLOR]".. g_currencyIcon )
 		end
-		buildingName = buildingName..buildingNameSuffix -- Infixo show icons for great work slots and specialist slots
-		controls.Name:SetText( buildingName )
 		
+		-- Name
+		if civ5_mode and building.IsReligious then
+			buildingName = L( "TXT_KEY_RELIGIOUS_BUILDING", buildingName, Players[city:GetOwner()]:GetStateReligionKey() )
+		end
+		buildingName = buildingName..buildingNameSuffix -- Infixo show icons for great work slots and specialist slots
+		
+		-- Finally, set controls
+		controls.Name:SetText( buildingName )
 		controls.Label:SetText( tips:concat(" ") )
 		-- Sometimes yields go to the 2nd line and mess with the next building
 		if tips:count() > 6 then
@@ -2988,7 +2993,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
-print("Loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.1")
+print("Loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.2")
 print("Finished loading EUI city view",os.clock())
 end)
 
