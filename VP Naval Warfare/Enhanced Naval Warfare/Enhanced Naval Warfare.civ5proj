@@ -7,16 +7,16 @@
     <Guid>675ba5ec-dc5a-400f-9864-8170568d04e5</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>New Naval units in late-game eras so in each era there's a complete set of unit types</Teaser>
-    <Description>New units in late-game eras so in each era there's a complete set of specific unit types (no gaps):
-[NEWLINE][ICON_MOVES]Dreadnought - Modern Era, naval ranged
-[NEWLINE][ICON_MOVES](early) Destroyer - Modern Era, naval melee
-[NEWLINE][ICON_MOVES]Rocket Missile - Atomic Era, missile
-[NEWLINE][ICON_MOVES]Attack Submarine - Atomic Era, submarines
-[NEWLINE][ICON_MOVES]Missile Destroyer - Information Era, naval melee
-[NEWLINE][ICON_MOVES]Supercarrier - Information Era, carriers
+    <Teaser>Additional Naval units in late-game eras. Version 1.5.</Teaser>
+    <Description>Additional units in late-game eras so in each era there's a complete set of specific unit types (no gaps):
+[NEWLINE][ICON_BULLET]Dreadnought - Modern Era, naval ranged
+[NEWLINE][ICON_BULLET](early) Destroyer - Modern Era, naval melee
+[NEWLINE][ICON_BULLET]Rocket Missile - Atomic Era, missile
+[NEWLINE][ICON_BULLET]Attack Submarine - Atomic Era, submarines
+[NEWLINE][ICON_BULLET]Missile Destroyer - Information Era, naval melee
+[NEWLINE][ICON_BULLET]Supercarrier - Information Era, carriers
 [NEWLINE]Changes to existing units: Missile Cruiser is back again a ranged unit, Submarine is available earlier but is weaker and Guided Missile is available in Information Era. Destroyer is renamed to Modern Destroyer.
-Version 1.4</Description>
+[NEWLINE]Requires Vox Populi. Version 1.5.</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>See credits.txt</SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
