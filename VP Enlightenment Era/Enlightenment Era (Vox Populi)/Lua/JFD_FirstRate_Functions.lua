@@ -4,12 +4,13 @@
 --==========================================================================================================================
 -- INCLUDES
 --==========================================================================================================================
-include("PlotIterators.lua")
+--include("PlotIterators.lua")
 --==========================================================================================================================
 -- UTILITY FUNCTIONS
 --==========================================================================================================================
 -- MOD CHECKS
 --------------------------------------------------------------------------------------------------------------------------
+--[[
 -- EE_IsCivilisationActive
 function EE_IsCivilisationActive(civilizationID)
 	for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
@@ -34,6 +35,7 @@ function EE_IsUsingCPDLL()
 	return false
 end
 local isUsingCPDLL = EE_IsUsingCPDLL()
+--]]
 --==========================================================================================================================
 -- UNITS
 --==========================================================================================================================
@@ -49,9 +51,10 @@ function EE_FirstRate(playerID)
 		for unit in player:Units() do
 			local isAdjacentFirstRate = false
 			if (unit:IsEmbarked() or unit:GetDomainType() == domainSeaID) then
-				local unitPlot = unit:GetPlot()
-				if isUsingCPDLL then
+				--local unitPlot = unit:GetPlot()
+				--if isUsingCPDLL then
 					isAdjacentFirstRate = unit:IsAdjacentToUnitPromotion(unitPromotionFirstRateID, true, false)
+				--[[
 				else
 					for adjacentPlot in PlotAreaSweepIterator(unitPlot, 1, SECTOR_NORTH, DIRECTION_CLOCKWISE, DIRECTION_OUTWARDS, CENTRE_EXCLUDE) do
 						isAdjacentFirstRate = (adjacentPlot:GetUnit() and adjacentPlot:GetUnit():IsHasPromotion(unitPromotionFirstRateID)) or false
@@ -60,7 +63,10 @@ function EE_FirstRate(playerID)
 						end
 					end
 				end
+				--]]
 			end
+			unit:SetHasPromotion(unitPromotionFirstRateDefenseID, isAdjacentFirstRate)
+			--[[
 			if isAdjacentFirstRate then
 				if (not unit:IsHasPromotion(unitPromotionFirstRateDefenseID)) then
 					unit:SetHasPromotion(unitPromotionFirstRateDefenseID, true)
@@ -70,6 +76,7 @@ function EE_FirstRate(playerID)
 					unit:SetHasPromotion(unitPromotionFirstRateDefenseID, false)
 				end
 			end
+			--]]
 		end
 	end
 end

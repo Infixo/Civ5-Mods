@@ -3,13 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <ProjectGuid>{994737e3-00b1-4a20-8942-3416dec2735e}</ProjectGuid>
-    <Name>Enlightenment Era</Name>
+    <Name>Enlightenment Era (Vox Populi)</Name>
     <Guid>ce8aa614-7ef7-4a45-a179-5329869e8d6d</Guid>
     <ModVersion>6</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>Expands the tech tree to include the [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR]</Teaser>
-    <Description>The Enlightenment Era was a period in which scientific thought advanced dramatically</Description>
-    <Authors>Pouakai, JFD, Janboruta, Sukritact</Authors>
+    <Teaser>Expands the game to include the [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR]. Version 1.0</Teaser>
+    <Description>The [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR] was a period in which scientific thought advanced dramatically.
+[NEWLINE][NEWLINE]Requires Vox Populi. Version 1.0.</Description>
+    <Authors>Pouakai, JFD, Janboruta, Sukritact, Infixo</Authors>
     <SpecialThanks>
     </SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
@@ -20,7 +21,29 @@
     <SupportsMac>true</SupportsMac>
     <AssemblyName>Enlightenment Era (Vox Populi)</AssemblyName>
     <RootNamespace>Enlightenment Era (Vox Populi)</RootNamespace>
-    <ModReferences />
+    <ModReferences>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6a) CBO Compatibility (EUI)</Name>
+        <Id>24923240-e4fb-4bf6-8f0e-6e5b6cf4d3c2</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6b) CBO Compatibility (No-EUI)</Name>
+        <Id>828b5b4b-7c62-4afb-a43f-034b596ef5e4</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6c) 43 Civs CP</Name>
+        <Id>6521c02b-1c78-4826-a5b0-faed86235e98</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModReferences>
     <ReloadAudioSystem>true</ReloadAudioSystem>
     <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
     <ReloadUnitSystem>true</ReloadUnitSystem>
@@ -28,22 +51,7 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/JFD_BuildingClassesNeededInCityOR.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>SQL/EECarrackDefines.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/EECruiserDefine.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/EECuirassierDefine.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -78,27 +86,12 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/EEUnits.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>Art/Unit Models/Enlightenment_ArtDefines.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>XML/GameInfo/Enlightenment_Eras.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>XML/GameInfo/Enlightenment_WorldCongress.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/IDRemapper.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -154,11 +147,6 @@
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>XML/Civilizations/Enlightenment_Civilizations.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/Enlightenment_Wonders.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -220,20 +208,43 @@
         <Type>UpdateDatabase</Type>
         <FileName>XML/Text/Localisation/Enlightenment_Text_ru_RU.xml</FileName>
       </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Eras.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Techs.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Buildings.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Wonders.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Units.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Policies.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EE_Other.sql</FileName>
+      </Action>
     </ModActions>
     <ModContent>
-      <Content>
-        <Type>InGameUIAddin</Type>
-        <Name>JFD_BuildingClassesNeededInCityOR</Name>
-        <Description>Look at the title</Description>
-        <FileName>Lua/JFD_BuildingClassesNeededInCityOR.lua</FileName>
-      </Content>
-      <Content>
-        <Type>InGameUIAddin</Type>
-        <Name>Wonders</Name>
-        <Description>Wonder stuff</Description>
-        <FileName>Lua/Wonders.lua</FileName>
-      </Content>
       <Content>
         <Type>InGameUIAddin</Type>
         <Name>JFD_FirstRate_Functions</Name>
@@ -241,6 +252,24 @@
         <FileName>Lua/JFD_FirstRate_Functions.lua</FileName>
       </Content>
     </ModContent>
+    <ModDependencies>
+      <Association xmlns="">
+        <Type>Mod</Type>
+        <Name>(2) Community Balance Overhaul</Name>
+        <Id>8411a7a8-dad3-4622-a18e-fcc18324c799</Id>
+        <MinVersion>13</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModDependencies>
+    <ModBlockers>
+      <Association xmlns="">
+        <Type>Mod</Type>
+        <Name>Renaissance Era Revised</Name>
+        <Id>66f38ce9-fc7b-448d-a7db-949d105b9b9f</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModBlockers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -430,26 +459,6 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Unit Models\Armoured Cruiser\cruiser.fxsxml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Armoured Cruiser\cruiser.gr2">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Armoured Cruiser\cruiser_DIFF.dds">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Armoured Cruiser\cruiser_SREF.dds">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Armoured Cruiser\fx_triggers_cruiser.ftsxml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
     <Content Include="Art\Unit Models\Carrack\carrack.fxsxml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
@@ -463,26 +472,6 @@
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Art\Unit Models\Carrack\Carrack_sref.dds">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Cuirassier\freca1.blend">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Cuirassier\freca1.dds">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Cuirassier\freca1.fxsxml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Cuirassier\freca1.gr2">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Cuirassier\freca1_sref.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
@@ -662,27 +651,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="Lua\CultureOverview.lua">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Lua\CultureOverview.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Lua\JFD_BuildingClassesNeededInCityOR.lua">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="Lua\JFD_FirstRate_Functions.lua">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="Lua\PlotIterators.lua">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Lua\Wonders.lua">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -702,10 +671,6 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Sounds\Quotes\Techs\ArmourPlating.mp3">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
     <Content Include="Sounds\Quotes\Techs\Flintlock.mp3">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
@@ -718,15 +683,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Sounds\Quotes\Techs\Imperialism.mp3">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
     <Content Include="Sounds\Quotes\Techs\Manufacturing.mp3">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Sounds\Quotes\Techs\NaturalHistory.mp3">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
@@ -774,19 +731,27 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\EECruiserDefine.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="SQL\EECuirassierDefine.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="SQL\EEFieldGunDefine.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\EEUnits.sql">
+    <Content Include="SQL\EE_Other.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\EE_Policies.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\EE_Eras.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\EE_Techs.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\EE_Units.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -794,7 +759,11 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\Enlightenment_Wonders.sql">
+    <Content Include="SQL\EE_Buildings.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\EE_Wonders.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -802,17 +771,9 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\IDRemapper.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="SQL\JFD_BuildingClassesNeededInCityOR.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="SQL\EELineInfantryDefine.sql">
       <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
+      <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="SQL\EESkirmisherDefine.sql">
       <SubType>Lua</SubType>
@@ -835,10 +796,6 @@
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="XML\Civilizations\Enlightenment_Civilizations.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\GameInfo\Enlightenment_Eras.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -933,9 +890,7 @@
     <Folder Include="Art\Atlases\Units\Unit Flags" />
     <Folder Include="Art\Unit Models" />
     <Folder Include="Art\Scenes" />
-    <Folder Include="Art\Unit Models\Armoured Cruiser" />
     <Folder Include="Art\Unit Models\Carrack" />
-    <Folder Include="Art\Unit Models\Cuirassier" />
     <Folder Include="Art\Unit Models\Explorer" />
     <Folder Include="Art\Unit Models\Field Gun" />
     <Folder Include="Art\Unit Models\Line Infantry" />
