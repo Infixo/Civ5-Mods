@@ -27,16 +27,20 @@
 			<Description>TXT_KEY_UNIT_EE_GALLEON</Description>
 			<DefaultUnit>UNIT_EE_GALLEON</DefaultUnit>
 		</Row>
+		<!--
 		<Row>
 			<Type>UNITCLASS_EE_CRUISER</Type>
 			<Description>TXT_KEY_UNIT_EE_CRUISER</Description>
 			<DefaultUnit>UNIT_EE_CRUISER</DefaultUnit>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<Type>UNITCLASS_EE_CUIRASSIER</Type>
 			<Description>TXT_KEY_UNIT_EE_CUIRASSIER</Description>
 			<DefaultUnit>UNIT_EE_CUIRASSIER</DefaultUnit>
 		</Row>
+		-->
 		<Row>
 			<Type>UNITCLASS_EE_SKIRMISHER</Type>
 			<Description>TXT_KEY_UNIT_EE_SKIRMISHER</Description>
@@ -47,11 +51,13 @@
 			<Description>TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE</Description>
 			<DefaultUnit>UNIT_EE_SHIP_OF_THE_LINE</DefaultUnit>
 		</Row>
+		<!--
 		<Row>
 			<Type>UNITCLASS_EE_SURVEYOR</Type>
 			<Description>TXT_KEY_UNIT_EE_SURVEYOR</Description>
 			<DefaultUnit>UNIT_EE_SURVEYOR</DefaultUnit>
 		</Row>
+		-->
 		<Row>
 			<Type>UNITCLASS_EE_FIELD_GUN</Type>
 			<Description>TXT_KEY_UNIT_EE_FIELD_GUN</Description>

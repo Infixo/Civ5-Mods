@@ -371,9 +371,9 @@ UPDATE Units
 SET GoodyHutUpgradeUnitClass = 'UNITCLASS_CRUISER', PrereqTech = 'TECH_EE_WARSHIPS', ObsoleteTech = 'TECH_DYNAMITE'
 WHERE Type = 'UNIT_FRIGATE';
 
-UPDATE Unit_ClassUpgrades
-SET UnitClassType = 'UNITCLASS_CRUISER'
-WHERE UnitType = 'UNIT_FRIGATE';
+--UPDATE Unit_ClassUpgrades
+--SET UnitClassType = 'UNITCLASS_CRUISER'
+--WHERE UnitType = 'UNIT_FRIGATE';
 
 -- Infixo: fixing resource requirements
 -- VP removed Iron req from Ships before Industrial Era
@@ -457,7 +457,7 @@ VALUES
 	('UNIT_EE_CARRACK','BUILDINGCLASS_HARBOR'),
 	('UNIT_EE_GALLEON','BUILDINGCLASS_HARBOR'),
 	('UNIT_EE_SHIP_OF_THE_LINE','BUILDINGCLASS_HARBOR'),
-	('UNIT_EE_ENGLISH_FIRST_RATE','BUILDINGCLASS_HARBOR'),
+	--('UNIT_EE_ENGLISH_FIRST_RATE','BUILDINGCLASS_HARBOR'),
 	('UNIT_EE_LINE_INFANTRY','BUILDINGCLASS_ARMORY'),
 	('UNIT_EE_FIELD_GUN','BUILDINGCLASS_ARMORY'),
 	('UNIT_EE_EXPLORER','BUILDINGCLASS_ARMORY'),
@@ -492,7 +492,7 @@ insert into Unit_BuildingClassPurchaseRequireds (UnitType, BuildingClassType)
 -------------------------------------------------------
 -- Clean-up after 4 not used units
 -------------------------------------------------------
-
+/*
 -- deleting from UnitClasses
 DELETE FROM UnitClasses
 WHERE Type IN ('UNITCLASS_EE_SURVEYOR', 'UNITCLASS_EE_CUIRASSIER', 'UNITCLASS_EE_CRUISER', 'UNITCLASS_EE_ENGLISH_FIRST_RATE');
@@ -538,3 +538,4 @@ WHERE UnitType IN ('UNIT_EE_SURVEYOR', 'UNIT_EE_CUIRASSIER', 'UNIT_EE_CRUISER', 
 
 DELETE FROM UnitGameplay2DScripts
 WHERE UnitType IN ('UNIT_EE_SURVEYOR', 'UNIT_EE_CUIRASSIER', 'UNIT_EE_CRUISER', 'UNIT_EE_ENGLISH_FIRST_RATE');
+*/

@@ -8,12 +8,14 @@
 		</Update>
 	</Builds>
 	<Improvement_TechYieldChanges>
+		<!--
 		<Row>
 			<ImprovementType>IMPROVEMENT_PLANTATION</ImprovementType>
 			<TechType>TECH_EE_IMPERIALISM</TechType>
 			<YieldType>YIELD_GOLD</YieldType>
 			<Yield>1</Yield>
 		</Row>
+		-->
 		<Update>
 			<Where ImprovementType="IMPROVEMENT_MANUFACTORY" YieldType="YIELD_PRODUCTION"/>
 			<Set>

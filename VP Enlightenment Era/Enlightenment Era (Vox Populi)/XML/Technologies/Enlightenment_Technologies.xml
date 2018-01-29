@@ -53,6 +53,7 @@
 				<EmbarkedMoveChange>1</EmbarkedMoveChange>
 			</Set>
 		</Update>
+		<!--
 		<Row>
 			<Type>TECH_EE_IMPERIALISM</Type>
 			<Cost>1150</Cost>
@@ -70,6 +71,7 @@
 			<AudioIntro>AS2D_TECH_EE_IMPERIALISM</AudioIntro>
 			<AudioIntroHeader>AS2D_TECH_EE_IMPERIALISM</AudioIntroHeader>
 		</Row>
+		-->
 		<Row>
 			<Type>TECH_EE_HUMANISM</Type>
 			<Cost>1150</Cost>
@@ -127,6 +129,7 @@
 			<AudioIntro>AS2D_TECH_WARSHIPS</AudioIntro>
 			<AudioIntroHeader>AS2D_TECH_WARSHIPS</AudioIntroHeader>
 		</Row>
+		<!--
 		<Row>
 			<Type>TECH_EE_NATURAL_HISTORY</Type>
 			<Cost>1450</Cost>
@@ -143,6 +146,7 @@
 			<AudioIntro>AS2D_TECH_EE_NATURAL_HISTORY</AudioIntro>
 			<AudioIntroHeader>AS2D_TECH_EE_NATURAL_HISTORY</AudioIntroHeader>
 		</Row>
+		-->
 		<Update>
 			<Where Type="TECH_SCIENTIFIC_THEORY" />
 			<Set>
@@ -193,6 +197,7 @@
 			</Set>
 		</Update>
 		<!--Column 11-->
+		<!--
 		<Row>
 			<Type>TECH_EE_ARMOUR_PLATING</Type>
 			<Cost>1800</Cost>
@@ -209,6 +214,7 @@
 			<AudioIntro>AS2D_TECH_EE_ARMOUR_PLATING</AudioIntro>
 			<AudioIntroHeader>AS2D_TECH_EE_ARMOUR_PLATING</AudioIntroHeader>
 		</Row>
+		-->
 		<Update>
 			<Where Type="TECH_ARCHAEOLOGY"/>
 			<Set>
@@ -249,6 +255,7 @@
 			<TechType>TECH_EE_EXPLORATION</TechType>
 			<PrereqTech>TECH_ACOUSTICS</PrereqTech>
 		</Row>
+		<!--
 		<Row>
 			<TechType>TECH_EE_IMPERIALISM</TechType>
 			<PrereqTech>TECH_ARCHITECTURE</PrereqTech>
@@ -257,6 +264,7 @@
 			<TechType>TECH_EE_IMPERIALISM</TechType>
 			<PrereqTech>TECH_EE_EXPLORATION</PrereqTech>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_NAVIGATION</TechType>
 			<PrereqTech>TECH_EE_EXPLORATION</PrereqTech>
@@ -273,13 +281,15 @@
 			<TechType>TECH_EE_WARSHIPS</TechType>
 			<PrereqTech>TECH_NAVIGATION</PrereqTech>
 		</Row>
+		<!--
 		<Row>
 			<TechType>TECH_EE_ARMOUR_PLATING</TechType>
 			<PrereqTech>TECH_EE_WARSHIPS</PrereqTech>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_EE_WARSHIPS</TechType>
-			<PrereqTech>TECH_EE_IMPERIALISM</PrereqTech>
+			<PrereqTech>TECH_NAVIGATION</PrereqTech>
 		</Row>
 		<Row>
 			<TechType>TECH_ARCHAEOLOGY</TechType>
@@ -329,6 +339,7 @@
 			<TechType>TECH_SCIENTIFIC_THEORY</TechType>
 			<PrereqTech>TECH_ECONOMICS</PrereqTech>
 		</Row>
+		<!--
 		<Row>
 			<TechType>TECH_EE_NATURAL_HISTORY</TechType>
 			<PrereqTech>TECH_EE_HUMANISM</PrereqTech>
@@ -337,9 +348,10 @@
 			<TechType>TECH_EE_NATURAL_HISTORY</TechType>
 			<PrereqTech>TECH_EE_IMPERIALISM</PrereqTech>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_ARCHAEOLOGY</TechType>
-			<PrereqTech>TECH_EE_NATURAL_HISTORY</PrereqTech>
+			<PrereqTech>TECH_EE_ROMANTICISM</PrereqTech>
 		</Row>
 		<Row>
 			<TechType>TECH_MILITARY_SCIENCE</TechType>
@@ -357,10 +369,12 @@
 			<TechType>TECH_ELECTRICITY</TechType>
 			<PrereqTech>TECH_INDUSTRIALIZATION</PrereqTech>
 		</Row>
+		<!--
 		<Row>
 			<TechType>TECH_BIOLOGY</TechType>
 			<PrereqTech>TECH_EE_ARMOUR_PLATING</PrereqTech>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_EE_FORTIFICATION</TechType>
 			<PrereqTech>TECH_EE_FLINTLOCK</PrereqTech>
@@ -395,11 +409,13 @@
 		</Row>
 	</Technology_PrereqTechs>
 	<Technology_Flavors>
+		<!--
 		<Row>
 			<TechType>TECH_EE_ARMOUR_PLATING</TechType>
 			<FlavorType>FLAVOR_NAVAL</FlavorType>
 			<Flavor>4</Flavor>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_EE_EXPLORATION</TechType>
 			<FlavorType>FLAVOR_RECON</FlavorType>
@@ -445,6 +461,7 @@
 			<FlavorType>FLAVOR_SCIENCE</FlavorType>
 			<Flavor>4</Flavor>
 		</Row>
+		<!--
 		<Row>
 			<TechType>TECH_EE_IMPERIALISM</TechType>
 			<FlavorType>FLAVOR_RECON</FlavorType>
@@ -465,6 +482,7 @@
 			<FlavorType>FLAVOR_EXPANSION</FlavorType>
 			<Flavor>5</Flavor>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_EE_MANUFACTURING</TechType>
 			<FlavorType>FLAVOR_PRODUCTION</FlavorType>
@@ -475,6 +493,7 @@
 			<FlavorType>FLAVOR_GOLD</FlavorType>
 			<Flavor>4</Flavor>
 		</Row>
+		<!--
 		<Row>
 			<TechType>TECH_EE_NATURAL_HISTORY</TechType>
 			<FlavorType>FLAVOR_CULTURE</FlavorType>
@@ -485,6 +504,7 @@
 			<FlavorType>FLAVOR_WONDER</FlavorType>
 			<Flavor>2</Flavor>
 		</Row>
+		-->
 		<Row>
 			<TechType>TECH_EE_ROMANTICISM</TechType>
 			<FlavorType>FLAVOR_CULTURE</FlavorType>

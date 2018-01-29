@@ -5,7 +5,7 @@
 		<Update>
 			<Where Type="BUILDING_MUSEUM"/>
 			<Set>
-				<PrereqTech>TECH_EE_NATURAL_HISTORY</PrereqTech>
+				<PrereqTech>TECH_EE_ROMANTICISM</PrereqTech>
 				<Cost>280</Cost>
 				<IconAtlas>ENLIGHTENMENT_BUILDING_ATLAS</IconAtlas>
 				<PortraitIndex>5</PortraitIndex>
@@ -112,7 +112,7 @@
 			<BuildingClass>BUILDINGCLASS_EE_DRYDOCK</BuildingClass>
 			<Cost>300</Cost>
 			<GoldMaintenance>2</GoldMaintenance>
-			<PrereqTech>TECH_EE_ARMOUR_PLATING</PrereqTech>
+			<PrereqTech>TECH_EE_WARSHIPS</PrereqTech>
 			<Help>TXT_KEY_BUILDING_EE_DRYDOCK_HELP</Help>
 			<Description>TXT_KEY_BUILDING_EE_DRYDOCK</Description>
 			<Civilopedia>TXT_KEY_BUILDING_EE_DRYDOCK_PEDIA</Civilopedia>
@@ -244,7 +244,7 @@
 			<Type>BUILDING_EE_WEIGH_HOUSE</Type>
 			<BuildingClass>BUILDINGCLASS_EE_WEIGH_HOUSE</BuildingClass>
 			<Cost>250</Cost>
-			<PrereqTech>TECH_EE_IMPERIALISM</PrereqTech>
+			<PrereqTech>TECH_EE_MANUFACTURING</PrereqTech>
 			<Help>TXT_KEY_BUILDING_EE_WEIGH_HOUSE_HELP</Help>
 			<Description>TXT_KEY_BUILDING_EE_WEIGH_HOUSE</Description>
 			<Civilopedia>TXT_KEY_BUILDING_EE_WEIGH_HOUSE_PEDIA</Civilopedia>

@@ -28,45 +28,55 @@
 			<Where Type="UNIT_FRIGATE"/>
 			<Set>
 				<PrereqTech>TECH_NAVIGATION</PrereqTech>
-				<ObsoleteTech>TECH_EE_ARMOUR_PLATING</ObsoleteTech>
+				<ObsoleteTech>TECH_DYNAMITE</ObsoleteTech>
 			</Set>
 		</Update>
 		<!--Upgrade to Cuirassier-->
+		<!--
 		<Update>
 			<Where Type="UNIT_KNIGHT"/>
 			<Set>
-				<ObsoleteTech>TECH_EE_IMPERIALISM</ObsoleteTech>
+				<ObsoleteTech>TECH_EE_EXPLORATION</ObsoleteTech>
 				<GoodyHutUpgradeUnitClass>UNITCLASS_EE_CUIRASSIER</GoodyHutUpgradeUnitClass>
 			</Set>
 		</Update>
+		-->
+		<!--
 		<Update>
 			<Where Type="UNIT_ARABIAN_CAMELARCHER"/>
 			<Set>
-				<ObsoleteTech>TECH_EE_IMPERIALISM</ObsoleteTech>
+				<ObsoleteTech>TECH_METALLURGY</ObsoleteTech>
 				<GoodyHutUpgradeUnitClass>UNITCLASS_EE_CUIRASSIER</GoodyHutUpgradeUnitClass>
 			</Set>
 		</Update>
+		-->
+		<!--
 		<Update>
 			<Where Type="UNIT_SIAMESE_WARELEPHANT"/>
 			<Set>
-				<ObsoleteTech>TECH_EE_IMPERIALISM</ObsoleteTech>
+				<ObsoleteTech>TECH_EE_EXPLORATION</ObsoleteTech>
 				<GoodyHutUpgradeUnitClass>UNITCLASS_EE_CUIRASSIER</GoodyHutUpgradeUnitClass>
 			</Set>
 		</Update>
+		-->
+		<!--
 		<Update>
 			<Where Type="UNIT_SONGHAI_MUSLIMCAVALRY"/>
 			<Set>
-				<ObsoleteTech>TECH_EE_IMPERIALISM</ObsoleteTech>
+				<ObsoleteTech>TECH_METALLURGY</ObsoleteTech>
 				<GoodyHutUpgradeUnitClass>UNITCLASS_EE_CUIRASSIER</GoodyHutUpgradeUnitClass>
 			</Set>
 		</Update>
+		-->
+		<!--
 		<Update>
 			<Where Type="UNIT_MONGOLIAN_KESHIK"/>
 			<Set>
-				<ObsoleteTech>TECH_EE_IMPERIALISM</ObsoleteTech>
+				<ObsoleteTech>TECH_PHYSICS</ObsoleteTech>
 				<GoodyHutUpgradeUnitClass>UNITCLASS_EE_CUIRASSIER</GoodyHutUpgradeUnitClass>
 			</Set>
 		</Update>
+		-->
 		<!--Upgrade to Explorer-->
 		<Update>
 			<Where Type="UNIT_SCOUT"/>
@@ -174,6 +184,7 @@
 				<Cost>120</Cost>
 			</Set>
 		</Update>
+		<!--
 		<Update>
 			<Where Type="UNIT_SPANISH_CONQUISTADOR"/>
 			<Set>
@@ -186,6 +197,7 @@
 				<FaithCost>380</FaithCost>
 			</Set>
 		</Update>
+		-->
 		<Update>
 			<Where Type="UNIT_SWEDISH_CAROLEAN"/>
 			<Set>
@@ -199,16 +211,18 @@
 				<RequiresFaithPurchaseEnabled>true</RequiresFaithPurchaseEnabled>
 			</Set>
 		</Update>
+		<!--
 		<Update>
 			<Where Type="UNIT_SWEDISH_HAKKAPELIITTA"/>
 			<Set>
 				<Class>UNITCLASS_EE_CUIRASSIER</Class>
-				<PrereqTech>TECH_EE_IMPERIALISM</PrereqTech>
+				<PrereqTech>TECH_METALLURGY</PrereqTech>
 				<GoodyHutUpgradeUnitClass>UNITCLASS_CAVALRY</GoodyHutUpgradeUnitClass>
 				<ObsoleteTech>TECH_MILITARY_SCIENCE</ObsoleteTech>
 				<Combat>28</Combat>
 			</Set>
 		</Update>
+		-->
 		<Update>
 			<Where Type="UNIT_AMERICAN_MINUTEMAN"/>
 			<Set>
@@ -267,11 +281,14 @@
 			<Set UnitClassType="UNITCLASS_EE_CARRACK"/>
 		</Update>
 		<!--Upgrade to Cruiser-->
+		<!--
 		<Update>
 			<Where UnitType="UNIT_FRIGATE"/>
 			<Set UnitClassType="UNITCLASS_EE_CRUISER"/>
 		</Update>
+		-->
 		<!--Upgrade to Cuirassier-->
+		<!--
 		<Update>
 			<Where UnitType="UNIT_KNIGHT"/>
 			<Set UnitClassType="UNITCLASS_EE_CUIRASSIER"/>
@@ -292,6 +309,7 @@
 			<Where UnitType="UNIT_MONGOLIAN_KESHIK"/>
 			<Set UnitClassType="UNITCLASS_EE_CUIRASSIER"/>
 		</Update>
+		-->
 		<!--Upgrade to Explorer-->
 		<Row>
 			<UnitType>UNIT_SCOUT</UnitType>
@@ -359,10 +377,12 @@
 			<Where UnitType="UNIT_SWEDISH_CAROLEAN"/>
 			<Set UnitClassType="UNITCLASS_RIFLEMAN"/>
 		</Update>
+		<!--
 		<Update>
 			<Where UnitType="UNIT_SWEDISH_HAKKAPELIITTA"/>
 			<Set UnitClassType="UNITCLASS_CAVALRY"/>
 		</Update>
+		-->
 		<Update>
 			<Where UnitType="UNIT_AMERICAN_MINUTEMAN"/>
 			<Set UnitClassType="UNITCLASS_GATLINGGUN"/>
@@ -375,10 +395,12 @@
 			<Where UnitType="UNIT_KOREAN_TURTLE_SHIP"/>
 			<Set UnitClassType="UNITCLASS_IRONCLAD"/>
 		</Update>
+		<!--
 		<Update>
 			<Where UnitType="UNIT_SPANISH_CONQUISTADOR"/>
 			<Set UnitClassType="UNITCLASS_CAVALRY"/>
 		</Update>
+		-->
 	</Unit_ClassUpgrades>
 	<Unit_FreePromotions>
 		<Update>

@@ -6,10 +6,11 @@
 		<!--= Land Units ========-->
 		<!--=====================-->
 		<!--Cuirassier-->
+		<!-- NOT USED
 		<Row>
 			<Class>UNITCLASS_EE_CUIRASSIER</Class>
 			<Type>UNIT_EE_CUIRASSIER</Type>
-			<PrereqTech>TECH_EE_IMPERIALISM</PrereqTech>
+			<PrereqTech>TECH_EE_HUMANISM</PrereqTech>
 			<Combat>28</Combat>
 			<Cost>185</Cost>
 			<Moves>4</Moves>
@@ -38,6 +39,7 @@
 			<PortraitIndex>0</PortraitIndex>
 			<MoveRate>QUADRUPED</MoveRate>
 		</Row>
+		-->
 		<!--Explorer-->
 		<Row>
 			<Class>UNITCLASS_EE_EXPLORER</Class>
@@ -171,6 +173,7 @@
 			<PortraitIndex>2</PortraitIndex>
 		</Row>
 		<!--Surveyor-->
+		<!-- NOT USED
 		<Row>
 			<Class>UNITCLASS_EE_SURVEYOR</Class>
 			<Type>UNIT_EE_SURVEYOR</Type>
@@ -200,6 +203,7 @@
 			<IconAtlas>EXPANSION2_UNIT_ATLAS</IconAtlas>
 			<PortraitIndex>5</PortraitIndex>
 		</Row>
+		-->
 		<!--Uhlan-->
 		<Row>
 			<Class>UNITCLASS_EE_UHLAN</Class>
@@ -269,10 +273,11 @@
 			<MoveRate>WOODEN_BOAT</MoveRate>
 		</Row>
 		<!--Cruiser-->
+		<!-- NOT USED
 		<Row>
 			<Class>UNITCLASS_EE_CRUISER</Class>
 			<Type>UNIT_EE_CRUISER</Type>
-			<PrereqTech>TECH_EE_ARMOUR_PLATING</PrereqTech>
+			<PrereqTech>TECH_DYNAMITE</PrereqTech>
 			<Combat>35</Combat>
 			<RangedCombat>45</RangedCombat>
 			<Cost>250</Cost>
@@ -302,7 +307,9 @@
 			<PortraitIndex>7</PortraitIndex>
 			<MoveRate>BOAT</MoveRate>
 		</Row>
+		-->
 		<!--First Rate (NEW ENGLISH UU)-->
+		<!-- NOT USED
 		<Row>
 			<Class>UNITCLASS_EE_SHIP_OF_THE_LINE</Class>
 			<Type>UNIT_EE_ENGLISH_FIRST_RATE</Type>
@@ -333,6 +340,7 @@
 			<PortraitIndex>8</PortraitIndex>
 			<MoveRate>WOODEN_BOAT</MoveRate>
 		</Row>
+		-->
 		<!--Galleon-->
 		<Row>
 			<Class>UNITCLASS_EE_GALLEON</Class>
@@ -353,7 +361,7 @@
 			<MilitaryProduction>true</MilitaryProduction>
 			<Pillage>true</Pillage>
 			<Mechanized>true</Mechanized>
-			<ObsoleteTech>TECH_EE_ARMOUR_PLATING</ObsoleteTech>
+			<ObsoleteTech>TECH_EE_WARSHIPS</ObsoleteTech>
 			<AdvancedStartCost>50</AdvancedStartCost>
 			<MinAreaSize>10</MinAreaSize>
 			<XPValueAttack>3</XPValueAttack>
@@ -415,6 +423,7 @@
 			<UnitType>UNIT_EE_CARRACK</UnitType>
 			<UnitAIType>UNITAI_EXPLORE_SEA</UnitAIType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CRUISER</UnitType>
 			<UnitAIType>UNITAI_ASSAULT_SEA</UnitAIType>
@@ -427,6 +436,8 @@
 			<UnitType>UNIT_EE_CRUISER</UnitType>
 			<UnitAIType>UNITAI_ESCORT_SEA</UnitAIType>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<UnitAIType>UNITAI_DEFENSE</UnitAIType>
@@ -435,6 +446,7 @@
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<UnitAIType>UNITAI_FAST_ATTACK</UnitAIType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_EXPLORER</UnitType>
 			<UnitAIType>UNITAI_EXPLORE</UnitAIType>
@@ -447,6 +459,7 @@
 			<UnitType>UNIT_EE_FIELD_GUN</UnitType>
 			<UnitAIType>UNITAI_RANGED</UnitAIType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<UnitAIType>UNITAI_ASSAULT_SEA</UnitAIType>
@@ -459,6 +472,7 @@
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<UnitAIType>UNITAI_ESCORT_SEA</UnitAIType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_GALLEON</UnitType>
 			<UnitAIType>UNITAI_ATTACK_SEA</UnitAIType>
@@ -503,10 +517,12 @@
 			<UnitType>UNIT_EE_SKIRMISHER</UnitType>
 			<UnitAIType>UNITAI_RANGED</UnitAIType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_SURVEYOR</UnitType>
 			<UnitAIType>UNITAI_EXPLORE</UnitAIType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_UHLAN</UnitType>
 			<UnitAIType>UNITAI_DEFENSE</UnitAIType>
@@ -521,26 +537,34 @@
 			<UnitType>UNIT_EE_CARRACK</UnitType>
 			<UnitClassType>UNITCLASS_EE_GALLEON</UnitClassType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CRUISER</UnitType>
 			<UnitClassType>UNITCLASS_BATTLESHIP</UnitClassType>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<UnitClassType>UNITCLASS_CAVALRY</UnitClassType>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_EXPLORER</UnitType>
 			<UnitClassType>UNITCLASS_EE_SURVEYOR</UnitClassType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_FIELD_GUN</UnitType>
 			<UnitClassType>UNITCLASS_ARTILLERY</UnitClassType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<UnitClassType>UNITCLASS_IRONCLAD</UnitClassType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_GALLEON</UnitType>
 			<UnitClassType>UNITCLASS_EE_SHIP_OF_THE_LINE</UnitClassType>
@@ -573,6 +597,7 @@
 			<FlavorType>FLAVOR_NAVAL_RECON</FlavorType>
 			<Flavor>8</Flavor>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CRUISER</UnitType>
 			<FlavorType>FLAVOR_NAVAL</FlavorType>
@@ -583,6 +608,8 @@
 			<FlavorType>FLAVOR_NAVAL_RECON</FlavorType>
 			<Flavor>3</Flavor>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<FlavorType>FLAVOR_OFFENSE</FlavorType>
@@ -598,6 +625,7 @@
 			<FlavorType>FLAVOR_MOBILE</FlavorType>
 			<Flavor>14</Flavor>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_EXPLORER</UnitType>
 			<FlavorType>FLAVOR_RECON</FlavorType>
@@ -618,6 +646,7 @@
 			<FlavorType>FLAVOR_RANGED</FlavorType>
 			<Flavor>11</Flavor>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<FlavorType>FLAVOR_NAVAL</FlavorType>
@@ -628,6 +657,7 @@
 			<FlavorType>FLAVOR_NAVAL_RECON</FlavorType>
 			<Flavor>6</Flavor>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_GALLEON</UnitType>
 			<FlavorType>FLAVOR_NAVAL</FlavorType>
@@ -673,11 +703,13 @@
 			<FlavorType>FLAVOR_RANGED</FlavorType>
 			<Flavor>6</Flavor>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_SURVEYOR</UnitType>
 			<FlavorType>FLAVOR_RECON</FlavorType>
 			<Flavor>7</Flavor>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_UHLAN</UnitType>
 			<FlavorType>FLAVOR_OFFENSE</FlavorType>
@@ -699,10 +731,13 @@
 			<UnitType>UNIT_EE_CARRACK</UnitType>
 			<PromotionType>PROMOTION_OCEAN_IMPASSABLE</PromotionType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CRUISER</UnitType>
 			<PromotionType>PROMOTION_ONLY_DEFENSIVE</PromotionType>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<PromotionType>PROMOTION_NO_DEFENSIVE_BONUSES</PromotionType>
@@ -715,6 +750,7 @@
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<PromotionType>PROMOTION_CITY_PENALTY</PromotionType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_SKIRMISHER</UnitType>
 			<PromotionType>PROMOTION_ONLY_DEFENSIVE</PromotionType>
@@ -751,6 +787,7 @@
 			<UnitType>UNIT_EE_FIELD_GUN</UnitType>
 			<PromotionType>PROMOTION_SIGHT_PENALTY</PromotionType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<PromotionType>PROMOTION_EXTRA_SIGHT_I</PromotionType>
@@ -759,6 +796,8 @@
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<PromotionType>PROMOTION_EE_FIRST_RATE</PromotionType>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_SURVEYOR</UnitType>
 			<PromotionType>PROMOTION_IGNORE_TERRAIN_COST</PromotionType>
@@ -775,6 +814,7 @@
 			<UnitType>UNIT_EE_SURVEYOR</UnitType>
 			<PromotionType>PROMOTION_SURVIVALISM_1</PromotionType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_UHLAN</UnitType>
 			<PromotionType>PROMOTION_NO_DEFENSIVE_BONUSES</PromotionType>
@@ -794,10 +834,12 @@
 	</Unit_FreePromotions>
 	<Unit_ResourceQuantityRequirements>
 		<Delete UnitType="UNIT_FRIGATE"/>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CUIRASSIER</UnitType>
 			<ResourceType>RESOURCE_HORSE</ResourceType>
 		</Row>
+		-->
 		<Row>
 			<UnitType>UNIT_EE_UHLAN</UnitType>
 			<ResourceType>RESOURCE_HORSE</ResourceType>
@@ -806,13 +848,17 @@
 			<UnitType>UNIT_EE_SHIP_OF_THE_LINE</UnitType>
 			<ResourceType>RESOURCE_IRON</ResourceType>
 		</Row>
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_ENGLISH_FIRST_RATE</UnitType>
 			<ResourceType>RESOURCE_IRON</ResourceType>
 		</Row>
+		-->
+		<!--
 		<Row>
 			<UnitType>UNIT_EE_CRUISER</UnitType>
 			<ResourceType>RESOURCE_COAL</ResourceType>
 		</Row>
+		-->
 	</Unit_ResourceQuantityRequirements>
 </GameData>

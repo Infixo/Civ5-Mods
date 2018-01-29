@@ -106,7 +106,7 @@
 			<Civilopedia>TXT_KEY_WONDER_EE_SMITHSONIAN_PEDIA</Civilopedia>
 			<Quote>TXT_KEY_WONDER_EE_SMITHSONIAN_QUOTE</Quote>
 			<Cost>875</Cost>
-			<PrereqTech>TECH_EE_NATURAL_HISTORY</PrereqTech>
+			<PrereqTech>TECH_EE_ROMANTICISM</PrereqTech>
 			<MaxStartEra>ERA_MODERN</MaxStartEra>
 			<SpecialistType>SPECIALIST_SCIENTIST</SpecialistType>
 			<GreatPeopleRateChange>1</GreatPeopleRateChange>
@@ -156,7 +156,7 @@
 			<Civilopedia>TXT_KEY_WONDER_EE_TORRE_PEDIA</Civilopedia>
 			<Quote>TXT_KEY_WONDER_EE_TORRE_QUOTE</Quote>
 			<Cost>750</Cost>
-			<PrereqTech>TECH_EE_IMPERIALISM</PrereqTech>
+			<PrereqTech>TECH_NAVIGATION</PrereqTech>
 			<MaxStartEra>ERA_INDUSTRIAL</MaxStartEra>
 			<SpecialistType>SPECIALIST_MERCHANT</SpecialistType>
 			<GreatPeopleRateChange>2</GreatPeopleRateChange>

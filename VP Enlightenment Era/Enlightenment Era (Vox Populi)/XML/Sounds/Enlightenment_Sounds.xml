@@ -2,16 +2,16 @@
 <!-- Created by Leugi and Pouakai (Mostly Leugi, I just want to feel like I accomplished something)-->
 <GameData>
 	<UnitGameplay2DScripts>
-		<Row UnitType="UNIT_EE_CUIRASSIER" SelectionSound="AS2D_SELECT_CAVALRY" FirstSelectionSound="AS2D_BIRTH_CAVALRY" />
+		<!--<Row UnitType="UNIT_EE_CUIRASSIER" SelectionSound="AS2D_SELECT_CAVALRY" FirstSelectionSound="AS2D_BIRTH_CAVALRY" />-->
 		<Row UnitType="UNIT_EE_EXPLORER" SelectionSound="AS2D_SELECT_SCOUT" FirstSelectionSound="AS2D_BIRTH_SCOUT" />
 		<Row UnitType="UNIT_EE_FIELD_GUN" SelectionSound="AS2D_SELECT_CANNON" FirstSelectionSound="AS2D_BIRTH_CANNON" />
 		<Row UnitType="UNIT_EE_LINE_INFANTRY" SelectionSound="AS2D_SELECT_MUSKETMAN" FirstSelectionSound="AS2D_BIRTH_MUSKETMAN" />
 		<Row UnitType="UNIT_EE_SKIRMISHER" SelectionSound="AS2D_SELECT_CROSSBOWMAN" FirstSelectionSound="AS2D_BIRTH_CROSSBOWMAN" />
-		<Row UnitType="UNIT_EE_SURVEYOR" SelectionSound="AS2D_SELECT_SCOUT" FirstSelectionSound="AS2D_BIRTH_SCOUT" />
+		<!--<Row UnitType="UNIT_EE_SURVEYOR" SelectionSound="AS2D_SELECT_SCOUT" FirstSelectionSound="AS2D_BIRTH_SCOUT" />-->
 		<Row UnitType="UNIT_EE_UHLAN" SelectionSound="AS2D_SELECT_CAVALRY" FirstSelectionSound="AS2D_BIRTH_CAVALRY" />
 		<Row UnitType="UNIT_EE_CARRACK" SelectionSound="AS2D_SELECT_CARAVEL" FirstSelectionSound="AS2D_BIRTH_CARAVEL" />
-		<Row UnitType="UNIT_EE_CRUISER" SelectionSound="AS2D_SELECT_BATTLESHIP" FirstSelectionSound="AS2D_BIRTH_BATTLESHIP" />
-		<Row UnitType="UNIT_EE_ENGLISH_FIRST_RATE" SelectionSound="AS2D_SELECT_FRIGATE" FirstSelectionSound="AS2D_BIRTH_FRIGATE" />
+		<!--<Row UnitType="UNIT_EE_CRUISER" SelectionSound="AS2D_SELECT_BATTLESHIP" FirstSelectionSound="AS2D_BIRTH_BATTLESHIP" />-->
+		<!--<Row UnitType="UNIT_EE_ENGLISH_FIRST_RATE" SelectionSound="AS2D_SELECT_FRIGATE" FirstSelectionSound="AS2D_BIRTH_FRIGATE" />-->
 		<Row UnitType="UNIT_EE_GALLEON" SelectionSound="AS2D_SELECT_CARAVEL" FirstSelectionSound="AS2D_BIRTH_CARAVEL" />
 		<Row UnitType="UNIT_EE_SHIP_OF_THE_LINE" SelectionSound="AS2D_SELECT_FRIGATE" FirstSelectionSound="AS2D_BIRTH_FRIGATE" />
 	</UnitGameplay2DScripts>

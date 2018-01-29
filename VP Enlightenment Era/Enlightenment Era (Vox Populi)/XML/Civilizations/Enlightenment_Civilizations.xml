@@ -17,18 +17,23 @@
 			<Where UnitType="UNIT_SWEDISH_CAROLEAN"/>
 			<Set UnitClassType="UNITCLASS_EE_LINE_INFANTRY"/>
 		</Update>
+		<!--
 		<Update>
 			<Where UnitType="UNIT_SPANISH_CONQUISTADOR"/>
 			<Set UnitClassType="UNITCLASS_EE_CUIRASSIER"/>
 		</Update>
+		-->
+		<!--
 		<Update>
 			<Where UnitType="UNIT_SWEDISH_HAKKAPELIITTA"/>
 			<Set UnitClassType="UNITCLASS_EE_CUIRASSIER"/>
 		</Update>
+		-->
 		<Update>
 			<Where UnitType="UNIT_KOREAN_TURTLE_SHIP"/>
 			<Set UnitClassType="UNITCLASS_EE_GALLEON"/>
 		</Update>
+		<!--
 		<Update>
 			<Where UnitType="UNIT_ENGLISH_SHIPOFTHELINE"/>
 			<Set>
@@ -36,6 +41,7 @@
 				<UnitClassType>UNITCLASS_EE_SHIP_OF_THE_LINE</UnitClassType>
 			</Set>
 		</Update>
+		-->
 		<Row>
 			<CivilizationType>CIVILIZATION_BARBARIAN</CivilizationType>
 			<UnitClassType>UNITCLASS_EE_EXPLORER</UnitClassType>

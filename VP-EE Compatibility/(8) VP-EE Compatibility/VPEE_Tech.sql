@@ -139,8 +139,8 @@ DELETE FROM Technology_PrereqTechs WHERE TechType IN (
 	'TECH_EE_HUMANISM',
 	'TECH_ECONOMICS',
 	'TECH_NAVIGATION',
-	'TECH_EE_FLINTLOCK',
-	'TECH_EE_IMPERIALISM');
+	'TECH_EE_FLINTLOCK');
+	--'TECH_EE_IMPERIALISM');
 	
 	
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
@@ -320,7 +320,7 @@ UPDATE Technologies SET Cost = 20000 WHERE GridX = 20; --11000	Future: 20 turns
 --==========================================================================================================================
 -- Remove not used Techs
 --==========================================================================================================================
-
+/*
 DELETE FROM Technologies
 WHERE Type IN ('TECH_EE_IMPERIALISM', 'TECH_EE_NATURAL_HISTORY', 'TECH_EE_ARMOUR_PLATING');
 CREATE TABLE IDRemapper (ID INTEGER PRIMARY KEY AUTOINCREMENT, Type TEXT);
@@ -330,7 +330,7 @@ DROP TABLE IDRemapper;
 UPDATE sqlite_sequence
 SET seq = (SELECT COUNT(ID) FROM Technologies)-1
 WHERE name = 'Technologies';
-
+*/
 --==========================================================================================================================
 -- Technical Fix for IconHookup error - icon index:	13	icon size:	45	atlas:	TECH_ATLAS_2	image control:	TechIcon
 --==========================================================================================================================
