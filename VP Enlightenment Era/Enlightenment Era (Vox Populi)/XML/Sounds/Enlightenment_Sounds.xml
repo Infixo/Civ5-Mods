@@ -16,11 +16,13 @@
 		<Row UnitType="UNIT_EE_SHIP_OF_THE_LINE" SelectionSound="AS2D_SELECT_FRIGATE" FirstSelectionSound="AS2D_BIRTH_FRIGATE" />
 	</UnitGameplay2DScripts>
 	<Audio_Sounds>
+		<!--
 		<Row>
 			<SoundID>SND_TECH_EE_ARMOUR_PLATING</SoundID>
 			<Filename>ArmourPlating</Filename>
 			<LoadType>DynamicResident</LoadType>
 		</Row>
+		-->
 		<Row>
 			<SoundID>SND_TECH_EE_FLINTLOCK</SoundID>
 			<Filename>Flintlock</Filename>
@@ -36,21 +38,25 @@
 			<Filename>Humanism</Filename>
 			<LoadType>DynamicResident</LoadType>
 		</Row>
+		<!--
 		<Row>
 			<SoundID>SND_TECH_EE_IMPERIALISM</SoundID>
 			<Filename>Imperialism</Filename>
 			<LoadType>DynamicResident</LoadType>
 		</Row>
+		-->
 		<Row>
 			<SoundID>SND_TECH_EE_MANUFACTURING</SoundID>
 			<Filename>Manufacturing</Filename>
 			<LoadType>DynamicResident</LoadType>
 		</Row>
+		<!--
 		<Row>
 			<SoundID>SND_TECH_EE_NATURAL_HISTORY</SoundID>
 			<Filename>NaturalHistory</Filename>
 			<LoadType>DynamicResident</LoadType>
 		</Row>
+		-->
 		<Row>
 			<SoundID>SND_TECH_EE_ROMANTICISM</SoundID>
 			<Filename>Romanticism</Filename>
@@ -123,6 +129,7 @@
 		</Row>
 	</Audio_Sounds>
 	<Audio_2DSounds>
+		<!--
 		<Row>
 			<ScriptID>AS2D_TECH_EE_ARMOUR_PLATING</ScriptID>
 			<SoundID>SND_TECH_EE_ARMOUR_PLATING</SoundID>
@@ -130,6 +137,7 @@
 			<MinVolume>80</MinVolume>
 			<MaxVolume>80</MaxVolume>
 		</Row>
+		-->
 		<Row>
 			<ScriptID>AS2D_TECH_EE_FLINTLOCK</ScriptID>
 			<SoundID>SND_TECH_EE_FLINTLOCK</SoundID>
@@ -151,6 +159,7 @@
 			<MinVolume>80</MinVolume>
 			<MaxVolume>80</MaxVolume>
 		</Row>
+		<!--
 		<Row>
 			<ScriptID>AS2D_TECH_EE_IMPERIALISM</ScriptID>
 			<SoundID>SND_TECH_EE_IMPERIALISM</SoundID>
@@ -158,6 +167,7 @@
 			<MinVolume>80</MinVolume>
 			<MaxVolume>80</MaxVolume>
 		</Row>
+		-->
 		<Row>
 			<ScriptID>AS2D_TECH_EE_MANUFACTURING</ScriptID>
 			<SoundID>SND_TECH_EE_MANUFACTURING</SoundID>
@@ -165,6 +175,7 @@
 			<MinVolume>80</MinVolume>
 			<MaxVolume>80</MaxVolume>
 		</Row>
+		<!--
 		<Row>
 			<ScriptID>AS2D_TECH_EE_NATURAL_HISTORY</ScriptID>
 			<SoundID>SND_TECH_EE_NATURAL_HISTORY</SoundID>
@@ -172,6 +183,7 @@
 			<MinVolume>80</MinVolume>
 			<MaxVolume>80</MaxVolume>
 		</Row>
+		-->
 		<Row>
 			<ScriptID>AS2D_TECH_EE_ROMANTICISM</ScriptID>
 			<SoundID>SND_TECH_EE_ROMANTICISM</SoundID>

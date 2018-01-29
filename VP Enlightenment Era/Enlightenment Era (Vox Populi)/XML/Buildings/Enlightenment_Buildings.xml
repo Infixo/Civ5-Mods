@@ -329,6 +329,7 @@
 			<BuildingClassType>BUILDINGCLASS_BANK</BuildingClassType>
 		</Row>
 	</Building_ClassesNeededInCity>
+	<!--
 	<Building_ClassesNeededInCityOR>
 		<Row>
 			<BuildingType>BUILDING_MUSEUM</BuildingType>
@@ -339,6 +340,7 @@
 			<BuildingClassType>BUILDINGCLASS_THEATRE</BuildingClassType>
 		</Row>
 	</Building_ClassesNeededInCityOR>
+	-->
 	<Building_UnitCombatProductionModifiers>
 		<Row>
 			<BuildingType>BUILDING_EE_GUNSMITH</BuildingType>

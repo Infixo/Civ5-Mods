@@ -97,7 +97,7 @@ WHERE BuildingType = 'BUILDING_MUSEUM';
 
 -- Infixo: Gallery needed for Museum
 DELETE FROM Building_ClassesNeededInCity WHERE BuildingType = 'BUILDING_MUSEUM';
-DELETE FROM Building_ClassesNeededInCityOR WHERE BuildingType = 'BUILDING_MUSEUM';
+--DELETE FROM Building_ClassesNeededInCityOR WHERE BuildingType = 'BUILDING_MUSEUM';
 INSERT INTO Building_ClassesNeededInCity (BuildingType, BuildingClassType)
 VALUES ('BUILDING_MUSEUM', 'BUILDINGCLASS_EE_GALLERY');
 
@@ -338,10 +338,11 @@ UPDATE Buildings SET SpecialistType = 'SPECIALIST_ENGINEER' , SpecialistCount = 
 -- Infixo BUILDING_EE_WAT_PHRA_KAEW clean-up
 ----------------------------------------------
 -- disable trigger & remove all old entries
+/*
 DROP TRIGGER EE_WatPhraKawe_BuildingClassYieldChanges;
 DELETE FROM Building_BuildingClassYieldChanges
 WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW';
-
+*/
 INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange)
 VALUES
 	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_SHRINE', 'YIELD_SCIENCE', 1),
@@ -359,10 +360,12 @@ WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW' AND YieldType = 'YIELD_SCIENCE'
 -- Military buildings: Training ones (Barrack, Armory, etc.) and Defensive ones (Walls, Castle, etc.)
 ----------------------------------------------
 -- disable trigger
+/*
 DROP TRIGGER EE_Topkapi_BuildingClassYieldChanges;
 -- remove all old entries
 DELETE FROM Building_BuildingClassYieldChanges
 WHERE BuildingType = 'BUILDING_EE_TOPKAPI';
+*/
 -- insert fresh good entries - defensive buildings
 INSERT INTO Building_BuildingClassYieldChanges
 				(BuildingType, 			BuildingClassType, 	YieldType, 		YieldChange)
