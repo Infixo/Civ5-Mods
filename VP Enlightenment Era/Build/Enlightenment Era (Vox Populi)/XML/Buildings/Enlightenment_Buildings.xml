@@ -261,16 +261,6 @@
 		<!--= Dummy Buildings -->
 		<!--==================-->
 		<Row>
-			<Type>BUILDING_EE_CRYSTAL_PALACE_GPPG</Type>
-			<BuildingClass>BUILDINGCLASS_EE_CRYSTAL_PALACE_GPPG</BuildingClass>
-			<Description>TXT_KEY_BUILDING_EE_CRYSTAL_PALACE_GPPG</Description>
-			<Cost>-1</Cost>
-			<PrereqTech>NULL</PrereqTech>
-			<GreatWorkCount>-1</GreatWorkCount>
-			<FaithCost>-1</FaithCost>
-			<GreatPeopleRateModifier>5</GreatPeopleRateModifier>
-		</Row>
-		<Row>
 			<Type>BUILDING_EE_KRONBORG_DUMMY</Type>
 			<BuildingClass>BUILDINGCLASS_EE_KRONBORG_DUMMY</BuildingClass>
 			<Cost>-1</Cost>

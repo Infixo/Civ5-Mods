@@ -14,14 +14,16 @@ INSERT INTO Eras (
 	StartingUnitMultiplier, StartingDefenseUnits, StartingWorkerUnits, StartingExploreUnits, StartingGold, StartingCulture,	FreePopulation, LaterEraBuildingConstructMod,
 	StartPercent, BuildingMaintenancePercent, GrowthPercent, TrainPercent, ConstructPercent, CreatePercent, ResearchPercent, BuildPercent, ImprovementPercent, GreatPeoplePercent, CulturePercent,
 	TradeRouteFoodBonusTimes100, TradeRouteProductionBonusTimes100, EventChancePerTurn, SpiesGrantedForPlayer, SpiesGrantedForEveryone, FaithCostMultiplier,
-	DiploEmphasisReligion, DiploEmphasisLatePolicies, LeaguePercent, WarmongerPercent, SoundtrackSpace, CityBombardEffectTag, AudioUnitVictoryScript, AudioUnitDefeatScript, CityArtType)
+	DiploEmphasisReligion, DiploEmphasisLatePolicies, LeaguePercent, WarmongerPercent, SoundtrackSpace, CityBombardEffectTag, AudioUnitVictoryScript, AudioUnitDefeatScript, CityArtType,
+	StartingMinorDefenseUnits) -- VP specific
 VALUES (
 	'ERA_ENLIGHTENMENT', 'TXT_KEY_ERA_EE', 'TXT_KEY_ERA_EE_SHORT', 'TXT_KEY_ERA_EE_ABBREV', 'RENAISSANCE', 'TXT_KEY_ERA_ENLIGHTENMENT_STRATEGY',
 	1, 0, 0, 0, 275, 9,
 	2, 2, 1, 1, 75, 350, 1, -2,
 	40, 70, 85, 45, 50, 50, 30, 85, 85, 85, 85,
 	500, 500, 5, 1, 0, 175,
-	4, 0, 300, 85, 140, 'CITY_BOMBARD_MID', 'AS2D_VICTORY_MIDDLE', 'AS2D_LOSS_MIDDLE', NULL);
+	4, 0, 300, 85, 140, 'CITY_BOMBARD_MID', 'AS2D_VICTORY_MIDDLE', 'AS2D_LOSS_MIDDLE', NULL,
+	1); -- VP specific
 
 UPDATE Eras SET ID = 9 WHERE Type = 'ERA_ENLIGHTENMENT';
 UPDATE Eras SET ID = 8 WHERE Type = 'ERA_FUTURE';

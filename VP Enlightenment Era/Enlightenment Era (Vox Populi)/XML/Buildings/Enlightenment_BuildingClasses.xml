@@ -5,12 +5,6 @@
 		<!--== Wonders =========-->
 		<!--====================-->
 		<Row>
-			<Type>BUILDINGCLASS_EE_CRYSTAL_PALACE</Type>
-			<DefaultBuilding>BUILDING_EE_CRYSTAL_PALACE</DefaultBuilding>
-			<Description>TXT_KEY_BUILDING_EE_CRYSTAL_PALACE</Description>
-			<MaxGlobalInstances>1</MaxGlobalInstances>
-		</Row>
-		<Row>
 			<Type>BUILDINGCLASS_EE_FASIL_GHEBBI</Type>
 			<DefaultBuilding>BUILDING_EE_FASIL_GHEBBI</DefaultBuilding>
 			<Description>TXT_KEY_BUILDING_EE_FASIL_GHEBBI</Description>
@@ -111,10 +105,6 @@
 		<!--====================-->
 		<!--== Dummy Buildings =-->
 		<!--====================-->
-		<Row>
-			<Type>BUILDINGCLASS_EE_CRYSTAL_PALACE_GPPG</Type>
-			<DefaultBuilding>BUILDING_EE_CRYSTAL_PALACE_GPPG</DefaultBuilding>
-		</Row>
 		<Row>
 			<Type>BUILDINGCLASS_EE_KRONBORG_DUMMY</Type>
 			<DefaultBuilding>BUILDING_EE_KRONBORG_DUMMY</DefaultBuilding>

@@ -106,16 +106,6 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>XML/Technologies/Enlightenment_TechTreeUpdates.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Technologies/Enlightenment_Technologies.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>XML/Units/Enlightenment_UnitClasses.xml</FileName>
       </Action>
       <Action>
@@ -156,22 +146,12 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>XML/Terrain/Enlightenment_Improvements.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>XML/Sounds/Enlightenment_Sounds.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>XML/GameInfo/Enlightenment_Policies.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/RER_Units.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -364,7 +344,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Atlases\Units\Unit Flags\Landsknecht_Flag.dds">
+    <Content Include="Art\Atlases\Units\Unit Flags\LandsknechtFlag.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
@@ -373,14 +353,6 @@
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Art\Atlases\Units\Unit Flags\sv_Carrack.dds">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Atlases\Units\Unit Flags\sv_Cruiser.dds">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Atlases\Units\Unit Flags\sv_Cuirassier.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
@@ -872,10 +844,6 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\RER_Units.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="SQL\VPEE_Buildings.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
@@ -928,51 +896,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="XML\Technologies\Enlightenment_Technologies.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Technologies\Enlightenment_TechTreeUpdates.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Terrain\Enlightenment_Improvements.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="XML\Text\Enlightenment_Text.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_ru_RU.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_pl_PL.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_ko_KR.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_ja_JP.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_it_IT.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_fr_FR.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_es_ES.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Localisation\Enlightenment_Text_de_DE.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -1026,10 +950,7 @@
     <Folder Include="XML\GameInfo" />
     <Folder Include="XML\Units" />
     <Folder Include="XML\Text" />
-    <Folder Include="XML\Terrain" />
-    <Folder Include="XML\Technologies" />
     <Folder Include="XML\Sounds" />
-    <Folder Include="XML\Text\Localisation" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
 </Project>

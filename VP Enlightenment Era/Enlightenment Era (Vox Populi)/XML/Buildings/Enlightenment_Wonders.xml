@@ -21,32 +21,6 @@
 		<!--=====================-->
 		<!--== New Wonders ======-->
 		<!--=====================-->
-		<!--Crystal Palace-->
-		<Row>
-			<Type>BUILDING_EE_CRYSTAL_PALACE</Type>
-			<BuildingClass>BUILDINGCLASS_EE_CRYSTAL_PALACE</BuildingClass>
-			<Description>TXT_KEY_BUILDING_EE_CRYSTAL_PALACE</Description>
-			<Help>TXT_KEY_WONDER_EE_CRYSTAL_PALACE_HELP</Help>
-			<Civilopedia>TXT_KEY_WONDER_EE_CRYSTAL_PALACE_PEDIA</Civilopedia>
-			<ThemingBonusHelp>TXT_KEY_EE_CRYSTAL_PALACE_THEMING_BONUS_HELP</ThemingBonusHelp>
-			<Quote>TXT_KEY_WONDER_EE_CRYSTAL_PALACE_QUOTE</Quote>
-			<Cost>950</Cost>
-			<PrereqTech>TECH_EE_ROMANTICISM</PrereqTech>
-			<MaxStartEra>ERA_MODERN</MaxStartEra>
-			<SpecialistType>SPECIALIST_ENGINEER</SpecialistType>
-			<GreatPeopleRateChange>1</GreatPeopleRateChange>
-			<NukeImmune>true</NukeImmune>
-			<HurryCostModifier>-1</HurryCostModifier>
-			<MinAreaSize>-1</MinAreaSize>
-			<ConquestProb>100</ConquestProb>
-			<GreatWorkSlotType>GREAT_WORK_SLOT_ART_ARTIFACT</GreatWorkSlotType>
-			<GreatWorkCount>3</GreatWorkCount>
-			<IconAtlas>ENLIGHTENMENT_WONDER_ATLAS</IconAtlas>
-			<PortraitIndex>3</PortraitIndex>
-			<WonderSplashImage>EE_Crystal_Palace_splash.dds</WonderSplashImage>
-			<WonderSplashAnchor>L,B</WonderSplashAnchor>
-			<WonderSplashAudio>AS2D_WONDER_SPEECH_EE_CRYSTAL_PALACE</WonderSplashAudio>
-		</Row>
 		<!--Fasil Ghebbi-->
 		<Row>
 			<Type>BUILDING_EE_FASIL_GHEBBI</Type>
@@ -330,15 +304,6 @@
 			<Description>TXT_KEY_THEMING_BONUS_EE_SMITHSONIAN</Description>
 			<Bonus>3</Bonus>
 			<MustBeArtifact>true</MustBeArtifact>
-			<RequiresUniquePlayers>true</RequiresUniquePlayers>
-			<AIPriority>5</AIPriority>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_EE_CRYSTAL_PALACE</BuildingType>
-			<Description>TXT_KEY_THEMING_BONUS_EE_CRYSTAL_PALACE</Description>
-			<Bonus>3</Bonus>
-			<SameEra>true</SameEra>
-			<MustBeArt>true</MustBeArt>
 			<RequiresUniquePlayers>true</RequiresUniquePlayers>
 			<AIPriority>5</AIPriority>
 		</Row>

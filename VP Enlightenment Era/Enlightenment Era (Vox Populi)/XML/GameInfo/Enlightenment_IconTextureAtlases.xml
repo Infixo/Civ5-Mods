@@ -212,5 +212,33 @@
 			<IconsPerRow>4</IconsPerRow>
 			<IconsPerColumn>3</IconsPerColumn>
 		</Row>
+		<Row>
+			<Atlas>EECBO_ICON_ATLAS</Atlas>
+			<IconSize>256</IconSize>
+			<Filename>Mausoleum256.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>EECBO_ICON_ATLAS</Atlas>
+			<IconSize>128</IconSize>
+			<Filename>Mausoleum128.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>EECBO_ICON_ATLAS</Atlas>
+			<IconSize>64</IconSize>
+			<Filename>Mausoleum64.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>EECBO_ICON_ATLAS</Atlas>
+			<IconSize>45</IconSize>
+			<Filename>Mausoleum45.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
 	</IconTextureAtlases>
 </GameData>

@@ -1,6 +1,22 @@
+----------------------------------------------------
+-- Enlightenment Era (Vox Populi)
+-- 2018-01-30 Reworked by Infixo from VP-EE mod
+----------------------------------------------------
+
 --==========================================================================================================================
 -- TECHNOLOGIES
 --==========================================================================================================================
+
+INSERT INTO Technologies (Type, Description, Civilopedia, Help, Era, Trade, GridX, GridY, Quote, PortraitIndex, IconAtlas, AudioIntro, AudioIntroHeader) VALUES
+('TECH_EE_SOVEREIGNTY',  'TXT_KEY_TECH_EE_SOVEREIGNTY',  'TXT_KEY_TECH_EE_SOVEREIGNTY_DESC',  'TXT_KEY_TECH_EE_SOVEREIGNTY_HELP',  'ERA_RENAISSANCE',  1,  8, 3, 'TXT_KEY_TECH_EE_SOVEREIGNTY_QUOTE',  2, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_EE_SOVEREIGNTY',  'AS2D_TECH_EE_SOVEREIGNTY'),
+('TECH_EE_EXPLORATION',  'TXT_KEY_TECH_EE_EXPLORATION',  'TXT_KEY_TECH_EXPLORATION_DESC',     'TXT_KEY_TECH_EE_EXPLORATION_HELP',  'ERA_RENAISSANCE',  1,  8, 7, 'TXT_KEY_TECH_EE_EXPLORATION_QUOTE',  1, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_MED_EXPLORATION', 'AS2D_TECH_MED_EXPLORATION'),
+('TECH_EE_HUMANISM',     'TXT_KEY_TECH_EE_HUMANISM',     'TXT_KEY_TECH_HUMANISM_DESC',        'TXT_KEY_TECH_EE_HUMANISM_HELP',     'ERA_ENLIGHTENMENT',1,  9, 2, 'TXT_KEY_TECH_EE_HUMANISM_QUOTE',     6, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_EE_HUMANISM',     'AS2D_TECH_EE_HUMANISM'),
+('TECH_EE_FLINTLOCK',    'TXT_KEY_TECH_EE_FLINTLOCK',    'TXT_KEY_TECH_EE_FLINTLOCK_DESC',    'TXT_KEY_TECH_EE_FLINTLOCK_HELP',    'ERA_ENLIGHTENMENT',1,  9, 8, 'TXT_KEY_TECH_EE_FLINTLOCK_QUOTE',    0, 'CIVIL_WAR_RESOURCE_ATLAS_EXP2','AS2D_TECH_EE_FLINTLOCK','AS2D_TECH_EE_FLINTLOCK'),
+('TECH_EE_MANUFACTURING','TXT_KEY_TECH_EE_MANUFACTURING','TXT_KEY_TECH_EE_MANUFACTURING_DESC','TXT_KEY_TECH_EE_MANUFACTURING_HELP','ERA_ENLIGHTENMENT',1, 10, 4, 'TXT_KEY_TECH_EE_MANUFACTURING_QUOTE',7, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_EE_MANUFACTURING','AS2D_TECH_EE_MANUFACTURING'),
+('TECH_EE_WARSHIPS',     'TXT_KEY_TECH_EE_WARSHIPS',     'TXT_KEY_TECH_EE_WARSHIPS_DESC',     'TXT_KEY_TECH_EE_WARSHIPS_HELP',     'ERA_ENLIGHTENMENT',1, 10, 6, 'TXT_KEY_TECH_EE_WARSHIPS_QUOTE',     4, 'TECH_ATLAS_DLC_07',        'AS2D_TECH_WARSHIPS',        'AS2D_TECH_WARSHIPS'),
+('TECH_EE_FORTIFICATION','TXT_KEY_TECH_EE_FORTIFICATION','TXT_KEY_TECH_EE_FORTIFICATION_DESC','TXT_KEY_TECH_EE_FORTIFICATION_HELP','ERA_ENLIGHTENMENT',1, 10, 8, 'TXT_KEY_TECH_EE_FORTIFICATION_QUOTE',3, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_EE_FORTIFICATION','AS2D_TECH_EE_FORTIFICATION'),
+('TECH_EE_ROMANTICISM',  'TXT_KEY_TECH_EE_ROMANTICISM',  'TXT_KEY_TECH_EE_ROMANTICISM_DESC',  'TXT_KEY_TECH_EE_ROMANTICISM_HELP',  'ERA_INDUSTRIAL',   1, 11, 2, 'TXT_KEY_TECH_EE_ROMANTICISM_QUOTE',  5, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_EE_ROMANTICISM',  'AS2D_TECH_EE_ROMANTICISM');
+
 
 UPDATE Technologies SET EmbarkedMoveChange = 0 WHERE Type = 'TECH_NAVIGATION';
 UPDATE Technologies SET EmbarkedMoveChange = 1 WHERE Type = 'TECH_EE_EXPLORATION';
@@ -8,6 +24,8 @@ UPDATE Technologies SET EmbarkedMoveChange = 1 WHERE Type = 'TECH_EE_EXPLORATION
 UPDATE Technologies SET InternationalTradeRoutesChange = 1 WHERE Type = 'TECH_EE_MANUFACTURING';
 UPDATE Technologies SET InternationalTradeRoutesChange = 0 WHERE Type = 'TECH_ECONOMICS';
 UPDATE Technologies SET InternationalTradeRoutesChange = 1 WHERE Type = 'TECH_EE_EXPLORATION';
+
+UPDATE Technologies SET IconAtlas = 'ENLIGHTENMENT_TECH_ATLAS', PortraitIndex = 0 WHERE Type = 'TECH_ARCHAEOLOGY';
 
 DELETE FROM Tech_SpecialistYieldChanges WHERE TechType = 'TECH_NAVIGATION' AND SpecialistType = 'SPECIALIST_CIVIL_SERVANT';
 
@@ -25,34 +43,35 @@ VALUES
 UPDATE Resources SET TechReveal = 'TECH_EE_MANUFACTURING' WHERE Type = 'RESOURCE_COAL';
 UPDATE Resources SET TechCityTrade = 'TECH_EE_MANUFACTURING' WHERE Type = 'RESOURCE_COAL';	
 
+-- Manufactory 
+UPDATE Improvement_TechYieldChanges SET TechType = 'TECH_EE_MANUFACTURING' WHERE ImprovementType = 'IMPROVEMENT_MANUFACTORY' AND TechType = 'TECH_FERTILIZER';
+
+
 --==========================================================================================================================
--- Eras
+-- Technology Tree
 --==========================================================================================================================
 
 -- Grid X=8 (REN)
-UPDATE Technologies SET Era = 'ERA_RENAISSANCE', GridX='8', GridY='3' WHERE Type = 'TECH_EE_SOVEREIGNTY';
-UPDATE Technologies SET Era = 'ERA_RENAISSANCE', GridX='8', GridY='7' WHERE Type = 'TECH_EE_EXPLORATION';
+--UPDATE Technologies SET Era = 'ERA_RENAISSANCE', GridX='8', GridY='3' WHERE Type = 'TECH_EE_SOVEREIGNTY';
+--UPDATE Technologies SET Era = 'ERA_RENAISSANCE', GridX='8', GridY='7' WHERE Type = 'TECH_EE_EXPLORATION';
 
 -- Grid X=9 (EE)
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='2' WHERE Type = 'TECH_EE_HUMANISM';
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='4' WHERE Type = 'TECH_ECONOMICS';
-/*UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='5' WHERE Type = 'TECH_EE_IMPERIALISM';*/
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='6' WHERE Type = 'TECH_NAVIGATION';
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='8' WHERE Type = 'TECH_EE_FLINTLOCK';
+--UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='2' WHERE Type = 'TECH_EE_HUMANISM';
+UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX = 9, GridY = 4 WHERE Type = 'TECH_ECONOMICS';
+UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX = 9, GridY = 6 WHERE Type = 'TECH_NAVIGATION';
+--UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='9', GridY='8' WHERE Type = 'TECH_EE_FLINTLOCK';
 
 -- Grid X=10 (EE)
-/*UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='1' WHERE Type = 'TECH_EE_NATURAL_HISTORY';*/
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='2' WHERE Type = 'TECH_SCIENTIFIC_THEORY';
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='4' WHERE Type = 'TECH_EE_MANUFACTURING';
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='6' WHERE Type = 'TECH_EE_WARSHIPS';
-UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='8' WHERE Type = 'TECH_EE_FORTIFICATION';
+UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX = 10, GridY = 2 WHERE Type = 'TECH_SCIENTIFIC_THEORY';
+--UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='4' WHERE Type = 'TECH_EE_MANUFACTURING';
+--UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='6' WHERE Type = 'TECH_EE_WARSHIPS';
+--UPDATE Technologies SET Era = 'ERA_ENLIGHTENMENT', GridX='10', GridY='8' WHERE Type = 'TECH_EE_FORTIFICATION';
 
 -- Grid X=11 (IND)
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='11', GridY='2' WHERE Type = 'TECH_EE_ROMANTICISM';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='11', GridY='4' WHERE Type = 'TECH_RAILROAD';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='11', GridY='6' WHERE Type = 'TECH_STEAM_POWER';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='11', GridY='8' WHERE Type = 'TECH_RIFLING';
-/*UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='11', GridY='7' WHERE Type = 'TECH_EE_ARMOUR_PLATING';*/
+--UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='11', GridY='2' WHERE Type = 'TECH_EE_ROMANTICISM';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 11, GridY = 4 WHERE Type = 'TECH_RAILROAD';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 11, GridY = 6 WHERE Type = 'TECH_STEAM_POWER';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 11, GridY = 8 WHERE Type = 'TECH_RIFLING';
 
 UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='1' WHERE Type = 'TECH_ARCHAEOLOGY';
 UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='3' WHERE Type = 'TECH_FERTILIZER';
@@ -66,7 +85,7 @@ UPDATE Technologies SET Era = 'ERA_MODERN', GridX='13', GridY='5' WHERE Type = '
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='13', GridY='7' WHERE Type = 'TECH_REPLACEABLE_PARTS';
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='13', GridY='9' WHERE Type = 'TECH_COMBUSTION';
 
-UPDATE Technologies SET Era = 'ERA_MODERN', GridX='14', GridY='2' WHERE Type = 'TECH_PLASTICS';
+UPDATE Technologies SET Era = 'ERA_MODERN', GridX='14', GridY='2' WHERE Type = 'TECH_PLASTIC';
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='14', GridY='4' WHERE Type = 'TECH_RADIO';
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='14', GridY='6' WHERE Type = 'TECH_FLIGHT';
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='14', GridY='8' WHERE Type = 'TECH_BALLISTICS';
@@ -140,8 +159,6 @@ DELETE FROM Technology_PrereqTechs WHERE TechType IN (
 	'TECH_ECONOMICS',
 	'TECH_NAVIGATION',
 	'TECH_EE_FLINTLOCK');
-	--'TECH_EE_IMPERIALISM');
-	
 	
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
 VALUES
@@ -317,20 +334,6 @@ UPDATE Technologies SET Cost = 14000 WHERE GridX = 18; --9500/8800
 UPDATE Technologies SET Cost = 16000 WHERE GridX = 19; --10000/9500
 UPDATE Technologies SET Cost = 20000 WHERE GridX = 20; --11000	Future: 20 turns
 
---==========================================================================================================================
--- Remove not used Techs
---==========================================================================================================================
-/*
-DELETE FROM Technologies
-WHERE Type IN ('TECH_EE_IMPERIALISM', 'TECH_EE_NATURAL_HISTORY', 'TECH_EE_ARMOUR_PLATING');
-CREATE TABLE IDRemapper (ID INTEGER PRIMARY KEY AUTOINCREMENT, Type TEXT);
-INSERT INTO IDRemapper (Type) SELECT Type FROM Technologies ORDER BY ID;
-UPDATE Technologies SET ID = (SELECT IDRemapper.ID-1 FROM IDRemapper WHERE Technologies.Type = IDRemapper.Type);
-DROP TABLE IDRemapper;
-UPDATE sqlite_sequence
-SET seq = (SELECT COUNT(ID) FROM Technologies)-1
-WHERE name = 'Technologies';
-*/
 --==========================================================================================================================
 -- Technical Fix for IconHookup error - icon index:	13	icon size:	45	atlas:	TECH_ATLAS_2	image control:	TechIcon
 --==========================================================================================================================

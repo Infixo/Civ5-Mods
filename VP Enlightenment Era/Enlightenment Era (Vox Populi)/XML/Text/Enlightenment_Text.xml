@@ -3,52 +3,6 @@
 <GameData>
 	<Language_en_US>
 		<!--===============================================================-->
-		<!--===== Era Names ===============================================-->
-		<!--===============================================================-->
-		<!--
-		<Update>
-			<Set Text="Enlightenment Era"/>
-			<Where Tag="TXT_KEY_ERA_4"/>
-		</Update>
-		<Update>
-			<Set Text="Industrial Era"/>
-			<Where Tag="TXT_KEY_ERA_5"/>
-		</Update>
-		<Update>
-			<Set Text="Modern Era"/>
-			<Where Tag="TXT_KEY_ERA_6"/>
-		</Update>
-		<Update>
-			<Set Text="Atomic Era"/>
-			<Where Tag="TXT_KEY_ERA_7"/>
-		</Update>
-		<Update>
-			<Set Text="Enlightenment"/>
-			<Where Tag="TXT_KEY_ERA_4_SHORT"/>
-		</Update>
-		<Update>
-			<Set Text="Industrial"/>
-			<Where Tag="TXT_KEY_ERA_5_SHORT"/>
-		</Update>
-		<Update>
-			<Set Text="Modern"/>
-			<Where Tag="TXT_KEY_ERA_6_SHORT"/>
-		</Update>
-		<Update>
-			<Set Text="Atomic Era"/>
-			<Where Tag="TXT_KEY_ERA_7_SHORT"/>
-		</Update>
-		<Row Tag="TXT_KEY_ERA_8">
-			<Text>Information Era</Text>
-		</Row>
-		<Row Tag="TXT_KEY_ERA_8_SHORT">
-			<Text>Information Era</Text>
-		</Row>
-		<Row Tag="TXT_KEY_ERA_8_ABBREV">
-			<Text>IX</Text>
-		</Row>
-		-->
-		<!--===============================================================-->
 		<!--========== World Congress =====================================-->
 		<!--===============================================================-->
 		<Row Tag="TXT_KEY_LEAGUE_WORLD_CONGRESS_4">
@@ -431,28 +385,6 @@
 		<!--===============================================================-->
 		<!--====== Wonders ================================================-->
 		<!--===============================================================-->
-		<!--Crystal Palace-->
-		<Row Tag="TXT_KEY_BUILDING_EE_CRYSTAL_PALACE">
-			<Text>Crystal Palace</Text>
-		</Row>
-		<Row Tag="TXT_KEY_WONDER_EE_CRYSTAL_PALACE_HELP">
-			<Text>+5% [ICON_GREAT_PERSON] Great Person generation for each Great Work in the city. Contains 3 Great Work of Art slots.</Text>
-		</Row>
-		<Row Tag="TXT_KEY_EE_CRYSTAL_PALACE_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure the Great Work Slots are all filled with Art from the same Era but different Civilizations.</Text>
-		</Row>
-		<Row Tag="TXT_KEY_THEMING_BONUS_EE_CRYSTAL_PALACE">
-			<Text>Great Exhibition of {1_Era} Works</Text>
-		</Row>
-		<Row Tag="TXT_KEY_WONDER_EE_CRYSTAL_PALACE_QUOTE">
-			<Text>[NEWLINE]"The sun shone and gleamed upon the gigantic edifice, upon which the flags of every nation were flying..."[NEWLINE] - Queen Victoria[NEWLINE]</Text>
-		</Row>
-		<Row Tag="TXT_KEY_WONDER_EE_CRYSTAL_PALACE_PEDIA">
-			<Text>The Crystal Palace was designed by Sir Joseph Paxton and erected in Hyde Park, London, for the Great Exhibition of 1851. It was itself the greatest success of the Exhibition. Paxton based it upon the lily house he had built at Chatsworth for the duke of Devonshire. It was more than three times the length of St Paul's and included 294,000 panes of glass. In 1854 it was removed to Sydenham, where, until its damage by fire in 1936, it housed a museum of sculpture, pictures, and architecture and was used for concerts. In 1941 its demolition was completed because it served as a guide to enemy bombing planes. One of the most significant examples of 19th-century, proto-modern architecture, it was widely imitated in Europe and America.</Text>
-		</Row>
-		<Row Tag="TXT_KEY_BUILDING_EE_CRYSTAL_PALACE_GPPG">
-			<Text>EE: Crystal Palace GP Generation</Text>
-		</Row>
 		<!--Fasil Ghebbi-->
 		<Row Tag="TXT_KEY_BUILDING_EE_FASIL_GHEBBI">
 			<Text>Fasil Ghebbi</Text>

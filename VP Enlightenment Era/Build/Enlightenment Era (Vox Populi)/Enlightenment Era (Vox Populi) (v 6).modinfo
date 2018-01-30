@@ -55,11 +55,9 @@
     <File md5="57F7125992D72E4E6782DE1058E8C77A" import="1">Art/Atlases/Units/RER_UNITS_atlas_80.dds</File>
     <File md5="447695836D843885AC0C6A5C9E85BE09" import="1">Art/Atlases/Units/Unit Flags/sv_2hander.dds</File>
     <File md5="63DBEA3C9A68ECE52947B3AFF733FF1C" import="1">Art/Atlases/Units/Unit Flags/Enlightenment_UnitFlags_32.dds</File>
-    <File md5="88660A6952D141496108A10558598C05" import="1">Art/Atlases/Units/Unit Flags/Landsknecht_Flag.dds</File>
+    <File md5="88660A6952D141496108A10558598C05" import="1">Art/Atlases/Units/Unit Flags/LandsknechtFlag.dds</File>
     <File md5="FE96BB4A1626EE4B306D907FF8D682C2" import="1">Art/Atlases/Units/Unit Flags/sv_Landsknecht.dds</File>
     <File md5="25AA5E4360A27D848F5DFA9BA0354F68" import="1">Art/Atlases/Units/Unit Flags/sv_Carrack.dds</File>
-    <File md5="3F735F37A78CCE3495B3B1B3A52980B2" import="1">Art/Atlases/Units/Unit Flags/sv_Cruiser.dds</File>
-    <File md5="F273B35C0DF6C3DDA0907973F966C4C0" import="1">Art/Atlases/Units/Unit Flags/sv_Cuirassier.dds</File>
     <File md5="7EA37A2020BA282F76D3515862A9D4D8" import="1">Art/Atlases/Units/Unit Flags/sv_Explorer.dds</File>
     <File md5="C509B6310155B4C133A288C453BB2345" import="1">Art/Atlases/Units/Unit Flags/sv_FieldGun.dds</File>
     <File md5="321FE6BE3AC922A3F4512846AB45711B" import="1">Art/Atlases/Units/Unit Flags/sv_Galleon.dds</File>
@@ -174,40 +172,28 @@
     <File md5="726639F1F0C8F0D6DA9F6C2311A9F048" import="0">SQL/EECarrackDefines.sql</File>
     <File md5="2033175767DBA6F147F0674C9AC888AD" import="0">SQL/EEFieldGunDefine.sql</File>
     <File md5="57BCC9A30DD9004AC93CC5694E736CA1" import="0">SQL/VPEE_Other.sql</File>
-    <File md5="D6EFF1A8579D84EDA4D2CD6D743D6CD6" import="0">SQL/VPEE_Eras.sql</File>
+    <File md5="5D78210E827BD57D7B20FF219C9F4629" import="0">SQL/VPEE_Eras.sql</File>
     <File md5="E8FEEDE4B4AE5218CCFA8662A3620336" import="0">SQL/EEShipoftheLineDefine.sql</File>
     <File md5="E58E7B3FDFB92B1C58561B07DC888050" import="0">SQL/VPEE_Wonders.sql</File>
     <File md5="CF779F5EF8286F73BB31F775B5F2A5A9" import="0">SQL/EEExplorerDefine.sql</File>
     <File md5="BCF5DF41AE6B381FE0468713A2BFF25B" import="0">SQL/EELineInfantryDefine.sql</File>
     <File md5="67C88FD8BB78FFB166D57F5BE398CC39" import="0">SQL/EESkirmisherDefine.sql</File>
     <File md5="CA3595A1903BBF9EAB9FB4D27E1380AF" import="0">SQL/EEUhlanDefine.sql</File>
-    <File md5="DE8DCC622812A646D988BB37517D3F6B" import="0">SQL/RER_Units.sql</File>
-    <File md5="2ACBEE57E8731CFDCB2E1980EDB3596D" import="0">SQL/RER_Units.xml</File>
+    <File md5="4F51ED319BCCB6529853F8C9C4EB38C9" import="0">SQL/RER_Units.sql</File>
     <File md5="2B6604D0E2B9962EBFDDC14EF8709378" import="0">SQL/VPEE_Buildings.sql</File>
     <File md5="B46F9FA5DE87CFF1A8E8FBAF50890492" import="0">SQL/VPEE_Policies.sql</File>
-    <File md5="0660DA73F81AF0FE3E7373FD268B4434" import="0">SQL/VPEE_Techs.sql</File>
+    <File md5="A4F2402E67BABBB2BEE142C214AC67CD" import="0">SQL/VPEE_Techs.sql</File>
     <File md5="F64EE52F31A7F92979F941465CED0C4D" import="0">SQL/VPEE_Text_en_US.sql</File>
     <File md5="3C11E9835AFF854FB50F78EB09BA70BD" import="0">SQL/VPEE_Units.sql</File>
-    <File md5="8ACAACA13DD9D71377FAFA3DCD9E79EE" import="0">XML/Buildings/Enlightenment_BuildingClasses.xml</File>
-    <File md5="46FBDF305873823E8DB578F2F66072E0" import="0">XML/Buildings/Enlightenment_Buildings.xml</File>
-    <File md5="E56A4CB25EB9E30BB3A4010946C3966C" import="0">XML/Buildings/Enlightenment_Wonders.xml</File>
-    <File md5="5A45FFD470C000AEFB07803F44243C0D" import="0">XML/Civilizations/Enlightenment_Civilizations.xml</File>
+    <File md5="6DCA9E7CCABE1343BDBC6FFC2F11A4F1" import="0">XML/Buildings/Enlightenment_BuildingClasses.xml</File>
+    <File md5="66A8A7503464910F9C68BBAB9A5DB80E" import="0">XML/Buildings/Enlightenment_Buildings.xml</File>
+    <File md5="3FCB6F8D75571218215F8BB3E78EFB4A" import="0">XML/Buildings/Enlightenment_Wonders.xml</File>
+    <File md5="B0DF8A70C9AD5F5DC656FB51C0704181" import="0">XML/Civilizations/Enlightenment_Civilizations.xml</File>
     <File md5="3951DD71CA9C160AE9E11E2F7BBD2C19" import="0">XML/GameInfo/Enlightenment_IconTextureAtlases.xml</File>
     <File md5="A359AD865AD5B950F9B9D0F8FDBFEE0D" import="0">XML/GameInfo/Enlightenment_Policies.xml</File>
     <File md5="F96C15AD8F86453C77F9C173423A5DE9" import="0">XML/GameInfo/Enlightenment_WorldCongress.xml</File>
     <File md5="27E397C0A5658B15DFEFE8678F115D95" import="0">XML/Sounds/Enlightenment_Sounds.xml</File>
-    <File md5="928A27179A517DB7BB81F0CB706C6390" import="0">XML/Technologies/Enlightenment_Technologies.xml</File>
-    <File md5="C7EF3DCCDC6A1E86886050629A695F5B" import="0">XML/Technologies/Enlightenment_TechTreeUpdates.xml</File>
-    <File md5="82F990693FF2095CE20C09806CFE5C29" import="0">XML/Terrain/Enlightenment_Improvements.xml</File>
-    <File md5="6A9A1020D9B28014C48DF4B0D7D2AE13" import="0">XML/Text/Enlightenment_Text.xml</File>
-    <File md5="197517F47F011722FDE2187007AE1D3D" import="0">XML/Text/Localisation/Enlightenment_Text_ru_RU.xml</File>
-    <File md5="9ABD4DE01174E27476CF341D2A308F86" import="0">XML/Text/Localisation/Enlightenment_Text_pl_PL.xml</File>
-    <File md5="EF8BF24528B382D778EA653314C4A316" import="0">XML/Text/Localisation/Enlightenment_Text_ko_KR.xml</File>
-    <File md5="A340A3E72501C752A0A8295E73C27004" import="0">XML/Text/Localisation/Enlightenment_Text_ja_JP.xml</File>
-    <File md5="6D054FCB990A8D27D2924D52F17DDBBA" import="0">XML/Text/Localisation/Enlightenment_Text_it_IT.xml</File>
-    <File md5="0B8E86699A8F57B5F8D4D4D02902D522" import="0">XML/Text/Localisation/Enlightenment_Text_fr_FR.xml</File>
-    <File md5="EEE2D629CD0DC916BB56CAE9B31971F9" import="0">XML/Text/Localisation/Enlightenment_Text_es_ES.xml</File>
-    <File md5="CDD6AAC7AF16CE32904B79687F89170D" import="0">XML/Text/Localisation/Enlightenment_Text_de_DE.xml</File>
+    <File md5="A3292F4A2C96A3F33DC8C671D794E716" import="0">XML/Text/Enlightenment_Text.xml</File>
     <File md5="8141E3FF320D95A387492526DA430D3F" import="0">XML/Units/Enlightenment_UnitClasses.xml</File>
     <File md5="B425CEA4726D1EB77CF3E5EC2F25CC53" import="0">XML/Units/Enlightenment_UnitPromotions.xml</File>
     <File md5="A64DFBE6FDD5D7EC48CEBDB66D209C55" import="0">XML/Units/Enlightenment_Units.xml</File>
@@ -226,8 +212,6 @@
       <UpdateDatabase>SQL/VPEE_Eras.sql</UpdateDatabase>
       <UpdateDatabase>XML/GameInfo/Enlightenment_WorldCongress.xml</UpdateDatabase>
       <UpdateDatabase>XML/GameInfo/Enlightenment_IconTextureAtlases.xml</UpdateDatabase>
-      <UpdateDatabase>XML/Technologies/Enlightenment_TechTreeUpdates.xml</UpdateDatabase>
-      <UpdateDatabase>XML/Technologies/Enlightenment_Technologies.xml</UpdateDatabase>
       <UpdateDatabase>XML/Units/Enlightenment_UnitClasses.xml</UpdateDatabase>
       <UpdateDatabase>XML/Units/Enlightenment_UnitUpdates.xml</UpdateDatabase>
       <UpdateDatabase>XML/Units/Enlightenment_Units.xml</UpdateDatabase>
@@ -236,10 +220,8 @@
       <UpdateDatabase>XML/Buildings/Enlightenment_Buildings.xml</UpdateDatabase>
       <UpdateDatabase>XML/Buildings/Enlightenment_Wonders.xml</UpdateDatabase>
       <UpdateDatabase>XML/Civilizations/Enlightenment_Civilizations.xml</UpdateDatabase>
-      <UpdateDatabase>XML/Terrain/Enlightenment_Improvements.xml</UpdateDatabase>
       <UpdateDatabase>XML/Sounds/Enlightenment_Sounds.xml</UpdateDatabase>
       <UpdateDatabase>XML/GameInfo/Enlightenment_Policies.xml</UpdateDatabase>
-      <UpdateDatabase>SQL/RER_Units.xml</UpdateDatabase>
       <UpdateDatabase>SQL/RER_Units.sql</UpdateDatabase>
       <UpdateDatabase>SQL/VPEE_Techs.sql</UpdateDatabase>
       <UpdateDatabase>SQL/VPEE_Buildings.sql</UpdateDatabase>
