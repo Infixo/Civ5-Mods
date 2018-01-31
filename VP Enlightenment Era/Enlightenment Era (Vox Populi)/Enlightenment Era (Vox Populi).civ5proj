@@ -5,7 +5,7 @@
     <ProjectGuid>{994737e3-00b1-4a20-8942-3416dec2735e}</ProjectGuid>
     <Name>Enlightenment Era (Vox Populi)</Name>
     <Guid>ce8aa614-7ef7-4a45-a179-5329869e8d6d</Guid>
-    <ModVersion>6</ModVersion>
+    <ModVersion>1</ModVersion>
     <Stability>Stable</Stability>
     <Teaser>Expands the game to include the [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR]. Version 1.0</Teaser>
     <Description>The [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR] was a period in which scientific thought advanced dramatically.
@@ -122,16 +122,6 @@
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>XML/Units/Enlightenment_UnitPromotions.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Buildings/Enlightenment_BuildingClasses.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Buildings/Enlightenment_Buildings.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -861,14 +851,6 @@
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="SQL\VPEE_Units.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Buildings\Enlightenment_BuildingClasses.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Buildings\Enlightenment_Buildings.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

@@ -2,23 +2,6 @@
 -- Language_en_US
 --------------------------------------------------------------------------------------------------------------------------
 
--- CBOEE Theatre
-UPDATE Language_en_US
-SET Text = 'Theatre'
-WHERE Tag IN ('TXT_KEY_BUILDING_CBOEE_THEATRE');
-
-UPDATE Language_en_US
-SET Text = 'Provides [ICON_CULTURE] Culture and a literature slot.'
-WHERE Tag IN ('TXT_KEY_BUILDING_CBOEE_THEATRE_HELP');
-
-UPDATE Language_en_US
-SET Text = 'The Theatre is a Renaissance-era building which increases a city''s [ICON_CULTURE] Culture. The city needs to have an Amphitheater in order to construct the Theatre. Contains 1 slots for Great Works of Writing.'
-WHERE Tag IN ('TXT_KEY_BUILDING_CBOEE_THEATRE_STRATEGY');
-
-UPDATE Language_en_US
-SET Text = 'The Greeks invented theatre as it''s known in the West today. The original theatres were open-air amphitheatres often constructed on the side of a hill. The audience sat on benches cut into the hill, while the performers worked on an open stage at the foot of the hill. Over time the stages moved indoors (especially in locations with risks of lots of inclement weather). A modern theatre still has a stage and seats for the audience, but it also includes sophisticated sound and lighting equipment, an orchestra pit, and an extensive backstage area for props and scenery. Still, an ancient theatre-goer would not be totally surprised by anything found within a modern theatre (except possibly the cost of the food and drinks sold during intermission).'
-WHERE Tag IN ('TXT_KEY_BUILDING_CBOEE_THEATRE_PEDIA');
-
 -- Versailles
 UPDATE Language_en_US
 SET Text = 'Extends the length of [ICON_HAPPINESS_1] We Love The King Day by 50% empire-wide. A [COLOR_POSITIVE_TEXT]Free[ENDCOLOR] [ICON_GREAT_WRITER] Great Writer appears near the City where the wonder was built.'
@@ -76,9 +59,9 @@ SET Text = 'An upgrade to the Explorer. The Adventurer has even more movement an
 WHERE Tag IN ('TXT_KEY_UNIT_EE_EXPLORER_STRATEGY');
 
 -- Museum
-UPDATE Language_en_US
-SET Text = 'The Museum is a mid-game building which increases the city''s [ICON_CULTURE] Culture output.  Also boosts the City''s Great Artist rate and the value of Artists'' Guilds. The city must possess either a Theatre or an Opera House in order to construct the Museum. Contains 2 slots for Great Works of Art or Artifacts.'
-WHERE Tag IN ('TXT_KEY_BUILDING_MUSEUM_STRATEGY');
+--UPDATE Language_en_US
+--SET Text = 'The Museum is a mid-game building which increases the city''s [ICON_CULTURE] Culture output.  Also boosts the City''s Great Artist rate and the value of Artists'' Guilds. The city must possess either a Theatre or an Opera House in order to construct the Museum. Contains 2 slots for Great Works of Art or Artifacts.'
+--WHERE Tag IN ('TXT_KEY_BUILDING_MUSEUM_STRATEGY');
 
 -- Menagerie
 UPDATE Language_en_US
@@ -90,9 +73,9 @@ SET Text = 'The Menagerie reduces Boredom in a city, and produces additional Sci
 WHERE Tag = 'TXT_KEY_BUILDING_EE_MENAGERIE_STRATEGY';
 
 -- Printing Press Tech
-UPDATE Language_en_US
-SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Globe Theatre[ENDCOLOR], a building which increases [ICON_TOURISM] Tourism.'
-WHERE Tag = 'TXT_KEY_TECH_PRINTING_PRESS_HELP';
+--UPDATE Language_en_US
+--SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Globe Theatre[ENDCOLOR], a building which increases [ICON_TOURISM] Tourism.'
+--WHERE Tag = 'TXT_KEY_TECH_PRINTING_PRESS_HELP';
 
 -- Coffee House
 UPDATE Language_en_US
@@ -346,17 +329,18 @@ SET Text = 'The Field Gun is the Enlightenment Era artillery unit.  While its ra
 WHERE Tag = 'TXT_KEY_UNIT_EE_FIELD_GUN_STRATEGY';
 
 -- Get back Zoo
-UPDATE Language_en_US
-SET Text = 'Zoo'
-WHERE Tag = 'TXT_KEY_BUILDING_THEATRE';
 
-UPDATE Language_en_US
-SET Text = 'Reduces [ICON_HAPPINESS_3] Boredom. Grants an additional Scientist Specialist. Gain 100 [ICON_TOURISM] Tourism (scaling with Era) with all known Civilizations when completed.'
-WHERE Tag = 'TXT_KEY_BUILDING_THEATRE_HELP';
+--UPDATE Language_en_US
+--SET Text = 'Zoo'
+--WHERE Tag = 'TXT_KEY_BUILDING_THEATRE';
 
-UPDATE Language_en_US
-SET Text = 'The Zoo reduces Boredom in a city, produces additional Culture, and boosts the Tourism value of nearby Jungle and Forest tiles. Generates a large sum of Tourism with all known Civilizations when completed.'
-WHERE Tag = 'TXT_KEY_BUILDING_THEATRE_STRATEGY';
+--UPDATE Language_en_US
+--SET Text = 'Reduces [ICON_HAPPINESS_3] Boredom. Grants an additional Scientist Specialist. Gain 100 [ICON_TOURISM] Tourism (scaling with Era) with all known Civilizations when completed.'
+--WHERE Tag = 'TXT_KEY_BUILDING_THEATRE_HELP';
+
+--UPDATE Language_en_US
+--SET Text = 'The Zoo reduces Boredom in a city, produces additional Culture, and boosts the Tourism value of nearby Jungle and Forest tiles. Generates a large sum of Tourism with all known Civilizations when completed.'
+--WHERE Tag = 'TXT_KEY_BUILDING_THEATRE_STRATEGY';
 
 -- Bastion
 UPDATE Language_en_US
