@@ -7,7 +7,7 @@
 ----------------------------------------------------
 -- Generic info
 ----------------------------------------------------
-
+/*
 INSERT INTO BuildingClasses (Type, DefaultBuilding, Description) VALUES
 ('BUILDINGCLASS_EE_ACADEMY',    'BUILDING_EE_ACADEMY',    'TXT_KEY_BUILDING_EE_ACADEMY'),
 ('BUILDINGCLASS_EE_BASTION',    'BUILDING_EE_BASTION',    'TXT_KEY_BUILDING_EE_BASTION'),
@@ -21,7 +21,7 @@ INSERT INTO BuildingClasses (Type, DefaultBuilding, Description) VALUES
 ('BUILDINGCLASS_EE_TAVERN',     'BUILDING_EE_TAVERN',     'TXT_KEY_BUILDING_EE_TAVERN'),
 ('BUILDINGCLASS_EE_WEIGH_HOUSE','BUILDING_EE_WEIGH_HOUSE','TXT_KEY_BUILDING_EE_WEIGH_HOUSE'),
 ('BUILDINGCLASS_EE_KRONBORG_DUMMY','BUILDING_EE_KRONBORG_DUMMY','TXT_KEY_EE_KRONBORG_DUMMY');
-
+*/
 INSERT INTO Buildings (Type, BuildingClass, PrereqTech, ArtDefineTag, PortraitIndex, IconAtlas) VALUES
 ('BUILDING_EE_ACADEMY',    'BUILDINGCLASS_EE_ACADEMY',    'TECH_EE_HUMANISM',     'FORGE',  3,'ENLIGHTENMENT_BUILDING_ATLAS'),
 ('BUILDING_EE_BASTION',    'BUILDINGCLASS_EE_BASTION',    'TECH_EE_FORTIFICATION','CASTLE', 1,'ENLIGHTENMENT_BUILDING_ATLAS'),
@@ -51,9 +51,22 @@ WHERE Type IN (
 'BUILDING_EE_TAVERN',
 'BUILDING_EE_WEIGH_HOUSE');
 
--- Kronborg Dummy
-INSERT INTO Buildings (Type, BuildingClass, Cost, Description, ArtDefineTag, MinAreaSize, IconAtlas, PortraitIndex, ExtraCityHitPoints, NeverCapture, GreatWorkCount, FaithCost, NukeImmune) VALUES
-('BUILDING_EE_KRONBORG_DUMMY', 'BUILDINGCLASS_EE_KRONBORG_DUMMY', -1, 'TXT_KEY_EE_KRONBORG_DUMMY', 'NONE', -1, 'BW_ATLAS_1', 19, 25, 1, -1, -1, 1);
+INSERT INTO BuildingClasses (Type, DefaultBuilding, Description)
+SELECT 'BUILDINGCLASS_'||SUBSTR(Type,10), Type, 'TXT_KEY_'||Type
+FROM Buildings
+WHERE Type IN (
+'BUILDING_EE_ACADEMY',
+'BUILDING_EE_BASTION',
+'BUILDING_EE_CLOTH_MILL',
+'BUILDING_EE_DRYDOCK',
+'BUILDING_EE_GALLERY',
+'BUILDING_EE_GUNSMITH',
+'BUILDING_EE_MANOR',
+'BUILDING_EE_MENAGERIE',
+'BUILDING_EE_SALON',
+'BUILDING_EE_TAVERN',
+'BUILDING_EE_WEIGH_HOUSE');
+
 
 -- Non-EE buildings
 UPDATE Buildings
@@ -71,13 +84,9 @@ UPDATE Buildings SET PrereqTech = 'TECH_DYNAMITE' WHERE Type = 'BUILDING_ARSENAL
 --UPDATE BuildingClasses SET MaxGlobalInstances = 0, MaxTeamInstances = 0, MaxPlayerInstances = 0 WHERE Type = 'BUILDINGCLASS_EE_CRYSTAL_PALACE';
 --UPDATE Buildings SET Cost = -1, GreatWorkCount = -1, PrereqTech = NULL WHERE Type = 'BUILDING_EE_CRYSTAL_PALACE';
 
-UPDATE Buildings SET PrereqTech = 'TECH_NAVIGATION' WHERE Type = 'BUILDING_EE_TORRE';
 --UPDATE Buildings SET PrereqTech = 'TECH_EE_MANUFACTURING' WHERE Type = 'BUILDING_EE_WEIGH_HOUSE';
 --UPDATE Buildings SET PrereqTech = 'TECH_EE_ROMANTICISM' WHERE Type = 'BUILDING_MUSEUM';
-UPDATE Buildings SET PrereqTech = 'TECH_EE_ROMANTICISM' WHERE Type = 'BUILDING_EE_SMITHSONIAN';
-UPDATE Buildings SET PrereqTech = 'TECH_EE_ROMANTICISM' WHERE Type = 'BUILDING_HERMITAGE';
 --UPDATE Buildings SET PrereqTech = 'TECH_EE_WARSHIPS' WHERE Type = 'BUILDING_EE_DRYDOCK';
-UPDATE Buildings SET PrereqTech = 'TECH_EE_HUMANISM' WHERE Type = 'BUILDING_UFFIZI';
 
 ------------------------------------------------------------------------------------------------------------------------	
 -- Building costs
@@ -93,38 +102,30 @@ UPDATE Buildings SET PrereqTech = 'TECH_EE_HUMANISM' WHERE Type = 'BUILDING_UFFI
 UPDATE Buildings SET Cost = 300, GoldMaintenance = 2 WHERE Type = 'BUILDING_EE_TAVERN';
 
 -- column 7 (REN1)
-UPDATE Buildings SET Cost = 500, GoldMaintenance = 3 WHERE Type = 'BUILDING_THEATRE';
+--UPDATE Buildings SET Cost = 500, GoldMaintenance = 3 WHERE Type = 'BUILDING_THEATRE';
 
 -- column 8 (REN2)
 UPDATE Buildings SET Cost = 600, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_MANOR';
 UPDATE Buildings SET Cost = 600, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_GALLERY';
-UPDATE Buildings SET Cost = 800 WHERE Type = 'BUILDING_EE_TOPKAPI';
-UPDATE Buildings SET Cost = 800 WHERE Type = 'BUILDING_EE_VERSAILLES';
 
 -- column 9 (EE1)
 UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_SALON';
 UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_ACADEMY';
 UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_GUNSMITH';
 UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_KREPOST'; -- replaces EE_BASTION, but it's earlier
-UPDATE Buildings SET Cost = 1000 WHERE Type = 'BUILDING_EE_WAT_PHRA_KAEW';
-UPDATE Buildings SET Cost = 1000 WHERE Type = 'BUILDING_EE_TORRE';
 
 -- column 10 (EE2)
 UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_WEIGH_HOUSE';
 UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_CLOTH_MILL';
 UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_DRYDOCK';
 UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_BASTION';
-UPDATE Buildings SET Cost = 1150 WHERE Type = 'BUILDING_EE_KRONBORG';
-UPDATE Buildings SET Cost = 1150 WHERE Type = 'BUILDING_EE_FASIL_GHEBBI';
 
 -- column 11 (IND1)
 UPDATE Buildings SET Cost = 1250, GoldMaintenance = 5 WHERE Type = 'BUILDING_EE_MENAGERIE';
---UPDATE Buildings SET Cost = 1400 WHERE Type = 'BUILDING_EE_CRYSTAL_PALACE';
-UPDATE Buildings SET Cost = 1400 WHERE Type = 'BUILDING_EE_SMITHSONIAN';
-UPDATE Buildings SET Cost = 1250 WHERE Type = 'BUILDING_MUSEUM'; -- precaution, same as VP
+--UPDATE Buildings SET Cost = 1250 WHERE Type = 'BUILDING_MUSEUM'; -- precaution, same as VP
 
 -- column 12 (IND2)
-UPDATE Buildings SET Cost = 1000 WHERE Type = 'BUILDING_ARSENAL'; -- precaution, same as VP
+--UPDATE Buildings SET Cost = 1000 WHERE Type = 'BUILDING_ARSENAL'; -- precaution, same as VP
 
 ------------------------------------------------------------------------------------------------------------------------	
 -- Building Lines
@@ -417,190 +418,17 @@ UPDATE Buildings SET ExtraCityHitPoints = 200 WHERE Type = 'BUILDING_SEAPORT';
 UPDATE Buildings SET ExtraCityHitPoints = 100 WHERE Type = 'BUILDING_EE_DRYDOCK';
 UPDATE Buildings SET ExtraCityHitPoints = 250 WHERE Type = 'BUILDING_MINEFIELD';
 
-----------------------------------------------
--- Infixo BUILDING_EE_WAT_PHRA_KAEW clean-up
-----------------------------------------------
--- disable trigger & remove all old entries
-/*
-DROP TRIGGER EE_WatPhraKawe_BuildingClassYieldChanges;
-DELETE FROM Building_BuildingClassYieldChanges
-WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW';
-*/
-INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange)
-VALUES
-	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_SHRINE', 'YIELD_SCIENCE', 1),
-	('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDINGCLASS_TEMPLE', 'YIELD_SCIENCE', 2);
-	
-DELETE FROM Building_YieldModifiers
-WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW';
 
-UPDATE Building_YieldChanges
-SET Yield = 5
-WHERE BuildingType = 'BUILDING_EE_WAT_PHRA_KAEW' AND YieldType = 'YIELD_SCIENCE';
 
-----------------------------------------------
--- Infixo BUILDING_EE_TOPKAPI clean-up
--- Military buildings: Training ones (Barrack, Armory, etc.) and Defensive ones (Walls, Castle, etc.)
-----------------------------------------------
--- disable trigger
-/*
-DROP TRIGGER EE_Topkapi_BuildingClassYieldChanges;
--- remove all old entries
-DELETE FROM Building_BuildingClassYieldChanges
-WHERE BuildingType = 'BUILDING_EE_TOPKAPI';
-*/
--- insert fresh good entries - defensive buildings
-INSERT INTO Building_BuildingClassYieldChanges
-				(BuildingType, 			BuildingClassType, 	YieldType, 		YieldChange)
-SELECT DISTINCT 'BUILDING_EE_TOPKAPI', 	BuildingClass,		'YIELD_FAITH', 	1
-FROM Buildings WHERE Defense > 0 AND ExtraCityHitPoints > 0 AND (Cost > 0 OR FaithCost > 0) AND WonderSplashImage IS NULL;
 
--- fix: boosted a little +3G & +2T when Flight researched
-UPDATE Buildings
-SET UnmoddedHappiness = 0, GreatPeopleRateChange = 0, SpecialistType = NULL, EnhancedYieldTech = 'TECH_FLIGHT'
-WHERE Type = 'BUILDING_EE_TOPKAPI';
-INSERT INTO Building_TechEnhancedYieldChanges (BuildingType, YieldType, Yield)
-VALUES
-	('BUILDING_EE_TOPKAPI', 'YIELD_GOLD', 3),
-	('BUILDING_EE_TOPKAPI', 'YIELD_TOURISM', 2);
-
-------------------------
--- Smithsonian
-------------------------
-
-UPDATE Buildings
-SET FreeBuildingThisCity = 'BUILDINGCLASS_MUSEUM', IlliteracyHappinessChangeGlobal = -10
-WHERE Type = 'BUILDING_EE_SMITHSONIAN';
-
-DELETE FROM Building_YieldChanges WHERE BuildingType = 'BUILDING_EE_SMITHSONIAN';
-INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield)
-VALUES ('BUILDING_EE_SMITHSONIAN', 'YIELD_SCIENCE', 5);
-
-INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange)
-VALUES
-	('BUILDING_EE_SMITHSONIAN', 'BUILDINGCLASS_EE_GALLERY', 'YIELD_CULTURE', 1),
-	('BUILDING_EE_SMITHSONIAN', 'BUILDINGCLASS_MUSEUM', 'YIELD_CULTURE', 1);
-
-INSERT INTO Building_ThemingYieldBonus (BuildingType, YieldType, Yield)
-VALUES
-	('BUILDING_EE_SMITHSONIAN', 'YIELD_SCIENCE', 3),
-	('BUILDING_EE_SMITHSONIAN', 'YIELD_GOLD', 3);
-
-------------------------
--- Red Fort
-------------------------
-UPDATE Buildings
-SET FreeBuildingThisCity = 'BUILDINGCLASS_EE_BASTION' -- Bastion is closer than Arsenal
-WHERE Type = 'BUILDING_RED_FORT';
-
-------------------------
--- Versailles
-------------------------
-UPDATE Buildings
-SET GreatPeopleRateChange = 0, SpecialistType = NULL
-WHERE Type = 'BUILDING_EE_VERSAILLES';
-
-INSERT INTO Building_FreeUnits (BuildingType, UnitType, NumUnits)
-VALUES ('BUILDING_EE_VERSAILLES', 'UNIT_WRITER', 1);
-
-------------------------
--- Fasil Ghebbi
-------------------------
-UPDATE Buildings
-SET ExtraCityHitPoints = 100, Defense = 1000, CitySupplyFlat = 5
-WHERE Type = 'BUILDING_EE_FASIL_GHEBBI';
-
--- Infixo: 33 was too strong, make it 25 but in wider range
-UPDATE UnitPromotions SET CombatPercent = 25 WHERE Type = 'PROMOTION_EE_FASIL_GHEBBI';
-
-DELETE FROM Building_YieldChanges
-WHERE BuildingType = 'BUILDING_EE_FASIL_GHEBBI';
-
-------------------------
--- Kronborg
-------------------------
-UPDATE Building_UnitCombatProductionModifiers
-SET Modifier = 50
-WHERE BuildingType = 'BUILDING_EE_KRONBORG';
-
-UPDATE Buildings SET ExtraCityHitPoints = 0, Defense = 0, MinAreaSize = 10 WHERE Type = 'BUILDING_EE_KRONBORG';
-UPDATE Buildings SET ExtraCityHitPoints = 50, Defense = 500, CitySupplyFlat = 1 WHERE Type = 'BUILDING_EE_KRONBORG_DUMMY';
-
-INSERT INTO Building_FreeUnits (BuildingType, UnitType, NumUnits)
-VALUES ('BUILDING_EE_KRONBORG', 'UNIT_GREAT_ADMIRAL', 1);
-
-DELETE FROM Building_YieldChanges
-WHERE BuildingType = 'BUILDING_EE_KRONBORG';
-
-------------------------
--- Torre del Oro
-------------------------
-UPDATE Buildings
-SET TradeRouteSeaDistanceModifier = 50, TradeRouteRecipientBonus = 3, TradeRouteTargetBonus = 3, NumTradeRouteBonus = 1, MinAreaSize = 10, Gold = 0, FreeBuildingThisCity = 'BUILDINGCLASS_EE_DRYDOCK'
-WHERE Type = 'BUILDING_EE_TORRE';
-
--- TradeRouteSeaGoldBonus = 200 -> +2 Gold
--- gives a free Harbor
--- TradeRouteRecipientBonus	-> incoming TR  // my gold from other TRs (ok)
--- TradeRouteTargetBonus	-> outgoing TR  // other TR owner gain (no) // other player's gain from mine TR outgoing to him
-
-DELETE FROM Building_YieldChanges
-WHERE BuildingType = 'BUILDING_EE_TORRE' AND YieldType = 'YIELD_GOLD';
-
-------------------------
--- Tower of Buddhist Insence (aka Summer Palace)
-------------------------
-UPDATE Buildings
-SET MinorityHappinessChangeGlobal = -10  -- Religious tension
-WHERE Type = 'BUILDING_EE_SUMMER_PALACE';
-
-INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield)
-VALUES ('BUILDING_EE_SUMMER_PALACE', 'YIELD_CULTURE', 2);
-
-------------------------
--- Wonder Requirements
-------------------------
-UPDATE Buildings
-SET NumPoliciesNeeded =  NumPoliciesNeeded + 1
-WHERE NumPoliciesNeeded >= 15;
-
--- Ren1: Chitzen Itza 12, Globe Theatre 11, Himeji 12, Leaning Tower 13
--- Ren2: Porcelain 11, Taj Mahal 12, Topkapi *13, Versailles *12, Sistine 11, Summer Palace 12, Red Fort 13
--- EE1: Uffizi 0, Wat Phra *14, Torre del Oro *14
--- EE2: Kronborg *15, Fasil *15
--- Ind1: Smithsonian*17, Neuschwanstein 16/18, Slater Mill 15/17, 
--- Ind2: Louvre 17/19, BigBen 0, Eiffel 17/19, Brandenburg Gate 0
--- Mod1: Statue of Liberty 20, Empire State Building 0, Motherland Calls 8, 
--- Infixo: new values as of VP907
-
-UPDATE Buildings SET NumPoliciesNeeded = '10' WHERE Type IN ('BUILDING_EE_VERSAILLES');
-UPDATE Buildings SET NumPoliciesNeeded = '11' WHERE Type IN ('BUILDING_EE_TOPKAPI');
-UPDATE Buildings SET NumPoliciesNeeded = '12' WHERE Type IN ('BUILDING_EE_WAT_PHRA_KAEW', 'BUILDING_EE_TORRE');
-UPDATE Buildings SET NumPoliciesNeeded = '13' WHERE Type IN ('BUILDING_EE_FASIL_GHEBBI', 'BUILDING_EE_KRONBORG');
-UPDATE Buildings SET NumPoliciesNeeded = '14' WHERE Type IN ('BUILDING_EE_SMITHSONIAN', 'BUILDING_EE_CRYSTAL_PALACE');
-
--- Tower of Buddhist Incense
-UPDATE Buildings
-SET NationalPopRequired = '35', NumCityCostMod = '10'
-WHERE Type = 'BUILDING_EE_SUMMER_PALACE';
-
-DELETE FROM Building_PrereqBuildingClasses
-WHERE BuildingType = 'BUILDING_EE_SUMMER_PALACE'; 
-
-INSERT INTO Building_ClassesNeededInCity (BuildingType, BuildingClassType)
-VALUES ('BUILDING_EE_SUMMER_PALACE', 'BUILDINGCLASS_GARDEN');
 
 ------------------------
 -- Flavors
 ------------------------
 
-DELETE FROM Building_Flavors WHERE BuildingType = 'BUILDING_EE_TORRE' AND FlavorType = 'FLAVOR_GREAT_PEOPLE'; -- now its Trade Route & Gold
-DELETE FROM Building_Flavors WHERE BuildingType = 'BUILDING_EE_TOPKAPI' AND FlavorType = 'FLAVOR_GOLD'; -- now its Faith
 --DELETE FROM Building_Flavors WHERE BuildingType = 'BUILDING_THEATRE' AND FlavorType = 'FLAVOR_CULTURE'; -- now its Zoo & Boredom
-DELETE FROM Building_Flavors WHERE BuildingType = 'BUILDING_EE_KRONBORG' AND FlavorType = 'FLAVOR_GOLD'; -- now its Defense & Naval
 
 --UPDATE Building_Flavors SET Flavor = 25 WHERE BuildingType = 'BUILDING_EE_GUNSMITH' AND FlavorType = 'FLAVOR_MILITARY_TRAINING';
-UPDATE Building_Flavors SET Flavor = 25 WHERE BuildingType = 'BUILDING_EE_KRONBORG' AND FlavorType = 'FLAVOR_DEFENSE';
 --UPDATE Building_Flavors SET Flavor = 10 WHERE BuildingType = 'BUILDING_EE_TAVERN' AND FlavorType = 'FLAVOR_HAPPINESS';
 
 INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
@@ -628,25 +456,6 @@ INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
 --('BUILDING_EE_TAVERN', 'FLAVOR_SCIENCE', 5),
 ('BUILDING_EE_TAVERN', 'FLAVOR_GROWTH', 6);
 
-INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor)
-VALUES
-	('BUILDING_EE_VERSAILLES', 'FLAVOR_CULTURE', 25),
-	('BUILDING_EE_VERSAILLES', 'FLAVOR_WONDER', 25),
-	('BUILDING_EE_VERSAILLES', 'FLAVOR_EXPANSION', 5),
-	('BUILDING_EE_VERSAILLES', 'FLAVOR_GREAT_PEOPLE', 15),
-	('BUILDING_EE_SUMMER_PALACE', 'FLAVOR_WONDER', 25),
-	('BUILDING_EE_SUMMER_PALACE', 'FLAVOR_GREAT_PEOPLE', 15),
-	('BUILDING_EE_SUMMER_PALACE', 'FLAVOR_RELIGION', 15), -- religious unrest
-	('BUILDING_EE_TOPKAPI', 'FLAVOR_RELIGION', 40), -- faith
-	('BUILDING_EE_TORRE', 'FLAVOR_I_SEA_TRADE_ROUTE', 20), -- range
-	('BUILDING_EE_TORRE', 'FLAVOR_I_TRADE_DESTINATION', 20), -- gold
-	('BUILDING_EE_TORRE', 'FLAVOR_I_TRADE_ORIGIN', 20), -- gold
-	('BUILDING_EE_FASIL_GHEBBI', 'FLAVOR_WONDER', 25),
-	('BUILDING_EE_FASIL_GHEBBI', 'FLAVOR_DEFENSE', 25),
-	('BUILDING_EE_FASIL_GHEBBI', 'FLAVOR_CITY_DEFENSE', 30),
-	('BUILDING_EE_KRONBORG', 'FLAVOR_CITY_DEFENSE', 15),
-	('BUILDING_EE_KRONBORG', 'FLAVOR_NAVAL', 40), -- production
-	('BUILDING_EE_KRONBORG', 'FLAVOR_GREAT_PEOPLE', 15); -- GA
 	
 ------------------------
 -- Missing descriptions for Building Classes
