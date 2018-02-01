@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Created by ModBuddy on 10/22/2015 2:53:10 PM -->
-<GameData>
 	<UnitPromotions>
 		<!--First Rate Defence Bonus-->
 		<Row>
@@ -63,70 +60,3 @@
 			<PediaEntry>TXT_KEY_PROMOTION_EE_FASIL_GHEBBI</PediaEntry>
 		</Row>
 	</UnitPromotions>
-	<UnitPromotions_UnitCombats>
-		<Row>
-			<PromotionType>PROMOTION_EE_DRYDOCK</PromotionType>
-			<UnitCombatType>UNITCOMBAT_NAVALRANGED</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_DRYDOCK</PromotionType>
-			<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_DRYDOCK</PromotionType>
-			<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_DRYDOCK</PromotionType>
-			<UnitCombatType>UNITCOMBAT_CARRIER</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_NAVALRANGED</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_CARRIER</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_RECON</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_MELEE</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_GUN</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_ARCHER</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_MOUNTED</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_ARMOR</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_EE_FASIL_GHEBBI</PromotionType>
-			<UnitCombatType>UNITCOMBAT_HELICOPTER</UnitCombatType>
-		</Row>
-	</UnitPromotions_UnitCombats>
-</GameData>

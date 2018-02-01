@@ -398,12 +398,14 @@
 		<Row Tag="TXT_KEY_WONDER_EE_FASIL_GHEBBI_PEDIA">
 			<Text>Fasil Ghebbi is a fortress in Gondar, along the hillside of Ethiopia. During the 17th and 18th centuries it served as the enclosure for Ethiopia’s emperors. The architecture of the fort is unique to Ethiopia, bending the styles of Nubian, Arabian and Baroque architecture. The site houses castles, Iyasu’s Palace, stables and three churches amongst other rooms. Before the building of the fort in about 1635 the emperors of Ethiopia travelled and lived off the land, resting in tents. Emperor Fasilides broke this tradition by founding the city of Gondar and establishing it as his capital. Upon founding the city Fasilides then instructed the creation of ‘Fasil Gemb’ - Fasilides Castle. Since his death later emperors expanded on Fasil Gemb to eventually cover roughly 70,000 square meters of fortified space. The historian Thomas Pakenham visited the site during the 1950’s, noting that among the halls and palaces were what appeared to be pavilions and kiosks of the imperial city therein. Since 1979 Fasil Ghebbi is a World Heritage Site.</Text>
 		</Row>
+		<!--
 		<Row Tag="TXT_KEY_PROMOTION_EE_FASIL_GHEBBI">
 			<Text>Fasil Ghebbi</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_EE_FASIL_GHEBBI_HELP">
 			<Text>+33% Combat Strength</Text>
 		</Row>
+		-->
 		<!--Kronborg-->
 		<Row Tag="TXT_KEY_BUILDING_EE_KRONBORG">
 			<Text>Kronborg</Text>
@@ -747,6 +749,7 @@
 		<!--===============================================================-->
 		<!--========== Unit Promotions ====================================-->
 		<!--===============================================================-->
+		<!--
 		<Row Tag="TXT_KEY_PROMOTION_EE_FIRST_RATE">
 			<Text>Flagship</Text>
 		</Row>
@@ -771,6 +774,7 @@
 		<Row Tag="TXT_KEY_PROMOTION_EE_DRYDOCK_HELP">
 			<Text>+15% [ICON_STRENGTH] Combat Strength.</Text>
 		</Row>
+		-->
 		<!--===============================================================-->
 		<!--========== Policy Updates =====================================-->
 		<!--===============================================================-->

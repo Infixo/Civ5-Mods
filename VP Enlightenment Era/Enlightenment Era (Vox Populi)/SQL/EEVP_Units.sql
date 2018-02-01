@@ -195,12 +195,19 @@ SET ObsoleteTech = 'TECH_EE_FLINTLOCK', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE
 WHERE Class = 'UNITCLASS_TERCIO';
 
 UPDATE Units
-SET ObsoleteTech = 'TECH_REPLACEABLE_PARTS'
-WHERE Type IN ('UNIT_FRENCH_MUSKETEER', 'UNIT_SWEDISH_CAROLEAN');
+SET ObsoleteTech = 'TECH_REPLACEABLE_PARTS', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_LINE_INFANTRY'
+WHERE Type = 'UNIT_FRENCH_MUSKETEER';
 
 UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_LINE_INFANTRY'
 WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_TERCIO' AND Type != 'UNIT_FRENCH_MUSKETEER');
+
+-- Swedish Carolean
+UPDATE Civilization_UnitClassOverrides SET UnitClassType = 'UNITCLASS_EE_LINE_INFANTRY' WHERE  UnitType = 'UNIT_SWEDISH_CAROLEAN';
+
+UPDATE Units
+SET Class = 'UNITCLASS_EE_LINE_INFANTRY', PrereqTech = 'TECH_EE_FLINTLOCK', ObsoleteTech = 'TECH_RIFLING', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN' -- Cost, FaithCost, RequiresFaithPurchaseEnabled
+WHERE Type = 'UNIT_SWEDISH_CAROLEAN';
 
 -------------------------------------------------------
 -- Russian Cossack
@@ -311,15 +318,8 @@ UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_SKIRMISHER'
 WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_MUSKETMAN');
 
-UPDATE Units SET ObsoleteTech = 'TECH_EE_FORTIFICATION' WHERE Type = 'UNIT_MUSKETMAN';
+UPDATE Units SET ObsoleteTech = 'TECH_EE_FORTIFICATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_SKIRMISHER' WHERE Type = 'UNIT_MUSKETMAN';
 
--- A new promotion: Light Skirmish
-INSERT INTO UnitPromotions(Type, Description, Help, Sound, CannotBeChosen, PortraitIndex, IconAtlas, PediaType, PediaEntry, HillsDoubleMove, LostWithUpgrade)
-VALUES ('PROMOTION_CBOEE_SKIRMISH', 'TXT_KEY_PROMOTION_CBOEE_SKIRMISH', 'TXT_KEY_PROMOTION_CBOEE_SKIRMISH_HELP', 'AS2D_IF_LEVELUP', 1, 59, 'PROMOTION_ATLAS', 'PEDIA_ATTRIBUTES', 'TXT_KEY_PROMOTION_CBOEE_SKIRMISH', 1, 1);
-
-INSERT INTO UnitPromotions_Features(PromotionType, FeatureType, DoubleMove)
-VALUES ('PROMOTION_CBOEE_SKIRMISH', 'FEATURE_FOREST', 1);
-	
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_SKIRMISHER', 'PROMOTION_CBOEE_SKIRMISH'),
 ('UNIT_EE_SKIRMISHER', 'PROMOTION_NAVAL_MISFIRE'),
@@ -342,6 +342,10 @@ WHERE Type = 'UNIT_EE_LINE_INFANTRY';
 
 INSERT INTO Unit_FreePromotions	(UnitType, PromotionType)
 VALUES ('UNIT_EE_LINE_INFANTRY', 'PROMOTION_ANTI_MOUNTED_I');
+
+--UPDATE Units
+--SET Class = 'UNITCLASS_EE_LINE_INFANTRY', PrereqTech = 'TECH_EE_FLINTLOCK', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN', ObsoleteTech = 'TECH_RIFLING' -- Combat, Cost, FaithCost
+--WHERE Type = 'UNIT_DANISH_SKI_INFANTRY';
 
 -------------------------------------------------------
 -- American Minuteman
@@ -397,7 +401,9 @@ UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_FIELD_GUN'
 WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_CANNON');
 
-UPDATE Units SET ObsoleteTech = 'TECH_EE_FLINTLOCK' WHERE Class = 'UNITCLASS_CANNON';
+UPDATE Units
+SET ObsoleteTech = 'TECH_EE_FLINTLOCK', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_FIELD_GUN'
+WHERE Type = 'UNIT_CANNON';
 
 -- Field Gun -> Howitzer
 --UPDATE Unit_ClassUpgrades
@@ -418,7 +424,7 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_FIELD_GUN', 'PROMOTION_SIGHT_PENALTY');
 
 -------------------------------------------------------
--- Trireme, Carrack, Caravel
+-- Carrack, Portuguese Nau
 -------------------------------------------------------
 
 -- Infixo: changed back, in Renaissance all ships could travel through ocean
@@ -454,18 +460,19 @@ UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_CARRACK'
 WHERE UnitType = 'UNIT_CARAVEL';
 
--- Other melee ships
+-- Portuguese Nau
+UPDATE Civilization_UnitClassOverrides SET UnitClassType='UNITCLASS_EE_CARRACK' WHERE UnitType='UNIT_PORTUGUESE_NAU';
+
 UPDATE Units 
-SET PrereqTech = 'TECH_ASTRONOMY', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER', Combat = 32, Moves = 5
+SET PrereqTech = 'TECH_ASTRONOMY', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER', Combat = 32, Moves = 5, ObsoleteTech = 'TECH_EE_WARSHIPS', Class = 'UNITCLASS_EE_CARRACK'
 WHERE Type = 'UNIT_PORTUGUESE_NAU';
 
-UPDATE Units
-SET PrereqTech = 'TECH_EE_EXPLORATION'
-WHERE Type = 'UNIT_DUTCH_SEA_BEGGAR';
+UPDATE Unit_ClassUpgrades SET UnitClassType = 'UNITCLASS_PRIVATEER' WHERE UnitType = 'UNIT_PORTUGUESE_NAU';
 
-UPDATE Units
-SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD'
-WHERE Type = 'UNIT_PRIVATEER'; -- Corvette
+-- Other melee ships
+UPDATE Units SET PrereqTech = 'TECH_EE_EXPLORATION' WHERE Type = 'UNIT_DUTCH_SEA_BEGGAR';
+
+UPDATE Units SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD' WHERE Type = 'UNIT_PRIVATEER'; -- Corvette
 
 -------------------------------------------------------
 -- English UU - classic CBP SotL

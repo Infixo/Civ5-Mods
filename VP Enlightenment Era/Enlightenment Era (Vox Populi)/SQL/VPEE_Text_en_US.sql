@@ -25,13 +25,13 @@ UPDATE Language_en_US
 SET Text = 'Friendly military units within 3-tile range of Fasil Ghebbi gain +25% [ICON_STRENGTH] Combat Strength. City gets additional +100 HP and +10 [ICON_STRENGTH] Defense. Increases the Military Unit Supply Cap by 5.'
 WHERE Tag = 'TXT_KEY_WONDER_EE_FASIL_GHEBBI_HELP';
 
-UPDATE Language_en_US
-SET Text = 'Fasil Ghebbi Aura'
-WHERE Tag = 'TXT_KEY_PROMOTION_EE_FASIL_GHEBBI';
+--UPDATE Language_en_US
+--SET Text = 'Fasil Ghebbi Aura'
+--WHERE Tag = 'TXT_KEY_PROMOTION_EE_FASIL_GHEBBI';
 
-UPDATE Language_en_US
-SET Text = '+25% [ICON_STRENGTH] Combat Strength when in 3-tile range of [COLOR_CYAN]Fasil Ghebbi[ENDCOLOR].'
-WHERE Tag = 'TXT_KEY_PROMOTION_EE_FASIL_GHEBBI_HELP';
+--UPDATE Language_en_US
+--SET Text = '+25% [ICON_STRENGTH] Combat Strength when in 3-tile range of [COLOR_CYAN]Fasil Ghebbi[ENDCOLOR].'
+--WHERE Tag = 'TXT_KEY_PROMOTION_EE_FASIL_GHEBBI_HELP';
 
 -- Red Fort
 UPDATE Language_en_US
@@ -39,11 +39,11 @@ SET Text = 'Receive a free Great Engineer and a free Bastion in the city. Provid
 WHERE Tag = 'TXT_KEY_WONDER_RED_FORT_HELP';
 
 -- Light Skirmish
-INSERT INTO Language_en_US (Tag, Text)
-VALUES ('TXT_KEY_PROMOTION_CBOEE_SKIRMISH', 'Light Skirmish');
+--INSERT INTO Language_en_US (Tag, Text)
+--VALUES ('TXT_KEY_PROMOTION_CBOEE_SKIRMISH', 'Light Skirmish');
 
-INSERT INTO Language_en_US (Tag, Text)
-VALUES ('TXT_KEY_PROMOTION_CBOEE_SKIRMISH_HELP', 'Double Movement on Hills and in Forests. Ability is lost with upgrade.');
+--INSERT INTO Language_en_US (Tag, Text)
+--VALUES ('TXT_KEY_PROMOTION_CBOEE_SKIRMISH_HELP', 'Double Movement on Hills and in Forests. Ability is lost with upgrade.');
 
 -- Adventurer
 UPDATE Language_en_US

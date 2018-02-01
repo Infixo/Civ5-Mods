@@ -86,20 +86,6 @@ WHERE Type = 'UNIT_LONGSWORDSMAN';
 -- Promotions
 ----------------------------------------------------
 
-INSERT INTO UnitPromotions
-	(Type, Description, Help, Sound,
-	CannotBeChosen, UpgradeDiscount, TradeMissionInfluenceModifier, TradeMissionGoldModifier, AttackMod, DefenseMod, LostWithUpgrade,
-	PortraitIndex, IconAtlas, PediaType, PediaEntry)
-VALUES
-	('PROMOTION_2HANDER', 'TXT_KEY_PROMOTION_2HANDER', 'TXT_KEY_PROMOTION_2HANDER_HELP', 'AS2D_IF_LEVELUP',
-	1, 0, 0, 0, 0, 0, 1,
-	59, 'ABILITY_ATLAS', 'PEDIA_ATTRIBUTES', 'TXT_KEY_PROMOTION_2HANDER');
-
-INSERT INTO UnitPromotions_UnitClasses (PromotionType, UnitClassType, Attack) VALUES
-('PROMOTION_2HANDER', 'UNITCLASS_PIKEMAN', 33),
-('PROMOTION_2HANDER', 'UNITCLASS_SPEARMAN', 33),
-('PROMOTION_2HANDER', 'UNITCLASS_LANDSKNECHT', 33),
-('PROMOTION_2HANDER', 'UNITCLASS_TERCIO', 33);
 
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_2HANDER', 'PROMOTION_SHOCK_1'),
@@ -135,9 +121,9 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_UNIT_2HANDER', 'Two-Handed Swordsman'),
 ('TXT_KEY_CIV5_2HANDER_TEXT', 'Renaissance two-handed swords are monstrous weapons, longer and larger than even the medieval great swords, with a hilt of over a foot and a blade that measures nearly five feet in length, taller than some people. They are primarily in use during the early decades of the 16th century. These swords represent the final stage in the trend of increasing size that started in the 14th century. They can be used to fight against pike formations and cut off pike heads.'),
 ('TXT_KEY_UNIT_2HANDER_STRATEGY', 'Two-Handed Swordsman is much stronger than the Longswordsman, and gains a devastating combat bonus against Spearmen, Pikemen, Tercio and Landsknecht.'),
-('TXT_KEY_UNIT_HELP_2HANDER', 'Early Renaissance Era melee unit. Additional +33% [ICON_WAR] Attack against Spearmen, Pikemen, Tercio and Landsknecht.'),
-('TXT_KEY_PROMOTION_2HANDER', 'Two Hander'),
-('TXT_KEY_PROMOTION_2HANDER_HELP', '+33% [ICON_WAR] Attack vs Spearmen, Pikemen, Tercio and Landsknecht.');
+('TXT_KEY_UNIT_HELP_2HANDER', 'Early Renaissance Era melee unit. Additional +33% [ICON_WAR] Attack against Spearmen, Pikemen, Tercio and Landsknecht.');
+--('TXT_KEY_PROMOTION_2HANDER', 'Two Hander'),
+--('TXT_KEY_PROMOTION_2HANDER_HELP', '+33% [ICON_WAR] Attack vs Spearmen, Pikemen, Tercio and Landsknecht.');
 
 
 ----------------------------------------------------
