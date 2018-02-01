@@ -84,7 +84,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_PROMOTION_2HANDER', 'Two Hander'),
 ('TXT_KEY_PROMOTION_2HANDER_HELP', '+33% [ICON_STRENGTH] Attack vs Spearman, Pikeman, Tercio and Landsknecht. [COLOR_NEGATIVE_TEXT]Lost with upgrade[ENDCOLOR].'),
 -- Light Skirmish
-('TXT_KEY_PROMOTION_CBOEE_SKIRMISH', 'Light Skirmish');
+('TXT_KEY_PROMOTION_CBOEE_SKIRMISH', 'Light Skirmish'),
 ('TXT_KEY_PROMOTION_CBOEE_SKIRMISH_HELP', 'Double Movement on Hills and in Forest/Jungle. [COLOR_NEGATIVE_TEXT]Lost with upgrade[ENDCOLOR].'),
 -- Fasil Ghebbi Aura
 ('TXT_KEY_PROMOTION_EE_FASIL_GHEBBI', 'Fasil Ghebbi Aura'),

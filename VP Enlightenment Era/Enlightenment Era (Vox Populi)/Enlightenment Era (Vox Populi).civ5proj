@@ -91,12 +91,7 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Eras.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/GameInfo/Enlightenment_WorldCongress.xml</FileName>
+        <FileName>SQL/EEVP_Eras.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -106,27 +101,32 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>XML/Units/Enlightenment_UnitUpdates.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Units/Enlightenment_UnitPromotions.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Civilizations/Enlightenment_Civilizations.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>XML/Sounds/Enlightenment_Sounds.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>XML/GameInfo/Enlightenment_Policies.xml</FileName>
+        <FileName>SQL/EEVP_Techs.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EEVP_Buildings.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EEVP_Wonders.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EEVP_UnitPromotions.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/EEVP_Units.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -136,32 +136,12 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Techs.sql</FileName>
+        <FileName>SQL/EEVP_Policies.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Buildings.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Wonders.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Units.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Policies.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Other.sql</FileName>
+        <FileName>SQL/EEVP_Other.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -171,7 +151,7 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/VPEE_Text_en_US.sql</FileName>
+        <FileName>SQL/EEVP_Text_en_US.sql</FileName>
       </Action>
     </ModActions>
     <ModContent>
@@ -797,11 +777,15 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Other.sql">
+    <Content Include="SQL\EEVP_UnitPromotions.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Eras.sql">
+    <Content Include="SQL\EEVP_Other.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\EEVP_Eras.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -809,7 +793,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Wonders.sql">
+    <Content Include="SQL\EEVP_Wonders.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -833,39 +817,27 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Buildings.sql">
+    <Content Include="SQL\EEVP_Buildings.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Policies.sql">
+    <Content Include="SQL\EEVP_Policies.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Techs.sql">
+    <Content Include="SQL\EEVP_Techs.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Text_en_US.sql">
+    <Content Include="SQL\EEVP_Text_en_US.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="SQL\VPEE_Units.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Civilizations\Enlightenment_Civilizations.xml">
+    <Content Include="SQL\EEVP_Units.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="XML\GameInfo\Enlightenment_IconTextureAtlases.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\GameInfo\Enlightenment_Policies.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\GameInfo\Enlightenment_WorldCongress.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -874,14 +846,6 @@
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="XML\Text\Enlightenment_Text.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Units\Enlightenment_UnitPromotions.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Units\Enlightenment_UnitUpdates.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
@@ -914,10 +878,7 @@
     <Folder Include="Sounds\Quotes\Era" />
     <Folder Include="Sounds\Quotes\Wonders" />
     <Folder Include="Sounds\Quotes\Techs" />
-    <Folder Include="XML\Buildings" />
-    <Folder Include="XML\Civilizations" />
     <Folder Include="XML\GameInfo" />
-    <Folder Include="XML\Units" />
     <Folder Include="XML\Text" />
     <Folder Include="XML\Sounds" />
   </ItemGroup>
