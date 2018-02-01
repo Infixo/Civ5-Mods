@@ -86,22 +86,7 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>Art/Unit Models/Enlightenment_ArtDefines.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>SQL/EEVP_Eras.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/GameInfo/Enlightenment_IconTextureAtlases.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Sounds/Enlightenment_Sounds.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -142,11 +127,6 @@
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>SQL/EEVP_Other.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Text/Enlightenment_Text.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -472,10 +452,6 @@
     <Content Include="Art\Unit Models\Carrack\Carrack_sref.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
-    </Content>
-    <Content Include="Art\Unit Models\Enlightenment_ArtDefines.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="Art\Unit Models\Explorer\conquistador_musketman.dds">
       <SubType>Lua</SubType>
@@ -837,18 +813,6 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="XML\GameInfo\Enlightenment_IconTextureAtlases.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Sounds\Enlightenment_Sounds.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Text\Enlightenment_Text.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Art" />
@@ -871,16 +835,12 @@
     <Folder Include="Art\Unit Models\Skirmisher" />
     <Folder Include="Art\Unit Models\Ship of the Line" />
     <Folder Include="Lua" />
-    <Folder Include="XML" />
     <Folder Include="SQL" />
     <Folder Include="Sounds" />
     <Folder Include="Sounds\Quotes" />
     <Folder Include="Sounds\Quotes\Era" />
     <Folder Include="Sounds\Quotes\Wonders" />
     <Folder Include="Sounds\Quotes\Techs" />
-    <Folder Include="XML\GameInfo" />
-    <Folder Include="XML\Text" />
-    <Folder Include="XML\Sounds" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
 </Project>
