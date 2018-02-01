@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <ProjectGuid>{994737e3-00b1-4a20-8942-3416dec2735e}</ProjectGuid>
     <Name>Enlightenment Era (Vox Populi)</Name>
-    <Guid>ce8aa614-7ef7-4a45-a179-5329869e8d6d</Guid>
+    <Guid>87b2deae-83cb-9b88-9017-79e741d3739c</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Stable</Stability>
     <Teaser>Expands the game to include the [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR]. Version 1.0</Teaser>
@@ -106,17 +106,7 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>XML/Units/Enlightenment_UnitClasses.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>XML/Units/Enlightenment_UnitUpdates.xml</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>XML/Units/Enlightenment_Units.xml</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -208,7 +198,21 @@
       </Association>
     </ModDependencies>
     <ModBlockers>
-      <Association xmlns="">
+      <Association>
+        <Type>Mod</Type>
+        <Name>Enlightenment Era</Name>
+        <Id>ce8aa614-7ef7-4a45-a179-5329869e8d6d</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(8) VP-EE Compatibility</Name>
+        <Id>af398f38-90a0-45f0-9831-6c712c86061b</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
         <Type>Mod</Type>
         <Name>Renaissance Era Revised</Name>
         <Id>66f38ce9-fc7b-448d-a7db-949d105b9b9f</Id>
@@ -873,15 +877,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="XML\Units\Enlightenment_UnitClasses.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="XML\Units\Enlightenment_UnitPromotions.xml">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="XML\Units\Enlightenment_Units.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
