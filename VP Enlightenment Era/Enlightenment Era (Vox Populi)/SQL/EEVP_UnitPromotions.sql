@@ -8,18 +8,17 @@
 -- Generic info
 ----------------------------------------------------
 
-INSERT INTO UnitPromotions (Type, PediaType, Sound) VALUES
-('PROMOTION_2HANDER',        'PEDIA_MELEE',     'AS2D_IF_LEVELUP'),
-('PROMOTION_CBOEE_SKIRMISH', 'PEDIA_ATTRIBUTES','AS2D_IF_LEVELUP'),
-('PROMOTION_EE_FIRST_RATE',  'PEDIA_NAVAL',     'AS2D_IF_LEVELUP'),
-('PROMOTION_EE_FIRST_RATE_DEFENSE','PEDIA_NAVAL','AS2D_IF_LEVELUP'),
-('PROMOTION_EE_DRYDOCK',     'PEDIA_NAVAL',   NULL),
-('PROMOTION_EE_EXPLORER',    'PEDIA_SCOUTING',NULL),
-('PROMOTION_EE_FASIL_GHEBBI','PEDIA_SHARED',  NULL);
+INSERT INTO UnitPromotions (Type, PediaType, IconAtlas, PortraitIndex, Sound) VALUES
+('PROMOTION_2HANDER',        'PEDIA_MELEE',      'PROMOTION_ATLAS',           13,'AS2D_IF_LEVELUP'),
+('PROMOTION_CBOEE_SKIRMISH', 'PEDIA_ATTRIBUTES', 'EXPANSION2_PROMOTION_ATLAS', 0,'AS2D_IF_LEVELUP'),
+('PROMOTION_EE_FIRST_RATE',  'PEDIA_NAVAL',      'EXPANSION2_PROMOTION_ATLAS',12,'AS2D_IF_LEVELUP'),
+('PROMOTION_EE_FIRST_RATE_DEFENSE','PEDIA_NAVAL','EXPANSION2_PROMOTION_ATLAS',12,'AS2D_IF_LEVELUP'),
+('PROMOTION_EE_DRYDOCK',     'PEDIA_NAVAL',      'PROMOTION_ATLAS',            5, NULL),
+('PROMOTION_EE_EXPLORER',    'PEDIA_SCOUTING',   'PROMOTION_ATLAS',           33, NULL),
+('PROMOTION_EE_FASIL_GHEBBI','PEDIA_SHARED',     'EXPANSION2_PROMOTION_ATLAS',10, NULL);
 
 UPDATE UnitPromotions
-SET Description = 'TXT_KEY_'||Type, Help = 'TXT_KEY_'||Type||'_HELP', PediaEntry = 'TXT_KEY_'||Type,
-	CannotBeChosen = 1, IconAtlas = 'PROMOTION_ATLAS', PortraitIndex = 59
+SET Description = 'TXT_KEY_'||Type, Help = 'TXT_KEY_'||Type||'_HELP', PediaEntry = 'TXT_KEY_'||Type, CannotBeChosen = 1
 WHERE Type IN (
 'PROMOTION_2HANDER',
 'PROMOTION_CBOEE_SKIRMISH',
@@ -29,16 +28,13 @@ WHERE Type IN (
 'PROMOTION_EE_EXPLORER',
 'PROMOTION_EE_FASIL_GHEBBI');
 
--- Exceptions
-UPDATE UnitPromotions SET IconAtlas = 'ABILITY_ATLAS' WHERE Type = 'PROMOTION_2HANDER';
-
 ----------------------------------------------------
 -- Promotions' unique features
 ----------------------------------------------------
 
 UPDATE UnitPromotions SET DefenseMod = 20        WHERE Type = 'PROMOTION_EE_FIRST_RATE_DEFENSE';
 UPDATE UnitPromotions SET CombatPercent = 15     WHERE Type = 'PROMOTION_EE_DRYDOCK';
-UPDATE UnitPromotions SET ExtraNavalMovement = 1 WHERE Type = 'PROMOTION_EE_EXPLORER';
+UPDATE UnitPromotions SET ExtraNavalMovement = 1, EmbarkExtraVisibility = 2 WHERE Type = 'PROMOTION_EE_EXPLORER';
 UPDATE UnitPromotions SET CombatPercent = 25     WHERE Type = 'PROMOTION_EE_FASIL_GHEBBI';
 
 UPDATE UnitPromotions SET LostWithUpgrade = 1, HillsDoubleMove = 1 WHERE Type = 'PROMOTION_CBOEE_SKIRMISH';
@@ -98,7 +94,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_PROMOTION_EE_FIRST_RATE_DEFENSE_HELP', '+20% [ICON_STRENGTH] Defense.'),
 -- Adventurer
 ('TXT_KEY_PROMOTION_EE_EXPLORER', 'Adventurer'),
-('TXT_KEY_PROMOTION_EE_EXPLORER_HELP', '+1 [ICON_MOVES] Movement and +1 sight radius while embarked.'),
+('TXT_KEY_PROMOTION_EE_EXPLORER_HELP', '+1 [ICON_MOVES] Movement and +2 Sight while embarked.'),
 -- Drydock
 ('TXT_KEY_PROMOTION_EE_DRYDOCK', 'Drydock'),
 ('TXT_KEY_PROMOTION_EE_DRYDOCK_HELP', '+15% [ICON_STRENGTH] Combat Strength.');

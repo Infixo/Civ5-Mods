@@ -491,7 +491,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_EE_GUNSMITH', 'Gunsmith'),
 ('TXT_KEY_BUILDING_EE_GUNSMITH_HELP', '15% [ICON_PRODUCTION] Production when building Gunpowder Units.'),
 ('TXT_KEY_BUILDING_EE_GUNSMITH_STRATEGY', 'The Gunsmith increases the speed at which the city produces Gunpowder Units.'),
-('TXT_KEY_BUILDING_EE_GUNSMITH_PEDIA', 'Gunsmiths are skilled craftsmen devoted to the design, modification, manufacture and repair of firearms. Before the advent of Eli Whitney's Mill River Armory in the 1790s AD Samuel Colt's mass production of handguns at his factories in Hartford (USA) and London (UK) in the mid-1800s, the gunsmith shop was a vital establishment in any "civilized" settlement.'),
+('TXT_KEY_BUILDING_EE_GUNSMITH_PEDIA', 'Gunsmiths are skilled craftsmen devoted to the design, modification, manufacture and repair of firearms. Before the advent of Eli Whitney''s Mill River Armory in the 1790s AD Samuel Colt''s mass production of handguns at his factories in Hartford (USA) and London (UK) in the mid-1800s, the gunsmith shop was a vital establishment in any "civilized" settlement.'),
 ('TXT_KEY_BUILDING_EE_MANOR', 'Manor'),
 ('TXT_KEY_BUILDING_EE_MANOR_HELP', '+15% Generation of [ICON_GREAT_PEOPLE] Great People'),
 ('TXT_KEY_BUILDING_EE_MANOR_STRATEGY', 'Increases the rate at which great people are generated in a city.'),
