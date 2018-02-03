@@ -23,7 +23,7 @@ INSERT INTO Units (Type, PrereqTech, Combat, Moves, RequiresFaithPurchaseEnabled
 UPDATE Units
 SET Class = 'UNITCLASS_'||SUBSTR(Type,6), Description = 'TXT_KEY_'||Type,
 	Civilopedia = 'TXT_KEY_'||Type||'_PEDIA', Strategy = 'TXT_KEY_'||Type||'_STRATEGY', Help = 'TXT_KEY_'||Type||'_HELP',
-	MilitarySupport = 1, Pillage = 1, MilitaryProduction = 1, XPValueAttack = 3, XPValueDefense = 3,
+	MilitarySupport = 1, Pillage = 1, MilitaryProduction = 1, XPValueAttack = 3, XPValueDefense = 3, PurchaseCooldown = 1,
 	UnitArtInfo = 'ART_DEF_'||Type, UnitFlagAtlas = 'ENLIGHTENMENT_UNIT_FLAG_ATLAS', IconAtlas = 'ENLIGHTENMENT_UNIT_ATLAS'
 WHERE Type IN (
 'UNIT_EE_EXPLORER',
@@ -167,6 +167,10 @@ SET Class = 'UNITCLASS_EE_LINE_INFANTRY', PrereqTech = 'TECH_EE_FLINTLOCK', Obso
 WHERE Type = 'UNIT_SWEDISH_CAROLEAN';
 
 -------------------------------------------------------
+-- Camel Archer - no changes, obsoletes with Cavalry
+-------------------------------------------------------
+
+-------------------------------------------------------
 -- Russian Cossack
 -- The most popular weapons used by Cossack cavalrymen were usually sabres and long spears.
 -- move Cossack into Enlightenment and make it melee
@@ -214,6 +218,9 @@ VALUES ('UNIT_EE_UHLAN', 'RESOURCE_HORSE');
 
 UPDATE Units SET ObsoleteTech = 'TECH_RIFLING', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_UHLAN' 
 WHERE Type = 'UNIT_LANCER';
+
+UPDATE Units SET ObsoleteTech = 'TECH_RIFLING'
+WHERE Type = 'UNIT_SIAMESE_WARELEPHANT' OR Type = 'UNIT_BYZANTINE_CATAPHRACT';
 
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_UHLAN', 'PROMOTION_NO_DEFENSIVE_BONUSES'),

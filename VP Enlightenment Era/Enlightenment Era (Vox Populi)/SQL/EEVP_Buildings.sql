@@ -214,7 +214,7 @@ INSERT INTO Building_YieldChangesPerPop (BuildingType, YieldType, Yield) VALUES
 ----------------------------------------------
 
 UPDATE Buildings
-SET SpecialistType = 'SPECIALIST_MERCHANT' , SpecialistCount = 1 
+SET SpecialistType = 'SPECIALIST_MERCHANT' , SpecialistCount = 1, TradeRouteSeaGoldBonus = 100
 WHERE Type = 'BUILDING_EE_WEIGH_HOUSE';
 
 UPDATE Buildings
@@ -241,7 +241,7 @@ INSERT INTO Building_ResourceYieldChanges (BuildingType, ResourceType, YieldType
 ----------------------------------------------
 
 UPDATE Buildings
-SET AllowsRangeStrike = 1, NeverCapture = 1, CitySupplyModifier = 10
+SET AllowsRangeStrike = 1, NeverCapture = 1, ConquestProb = 0, CitySupplyModifier = 10
 WHERE Type = 'BUILDING_EE_BASTION';
 
 UPDATE Buildings SET Defense = 1500, ExtraCityHitPoints = 150 WHERE Type = 'BUILDING_EE_BASTION';
