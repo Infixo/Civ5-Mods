@@ -6,18 +6,17 @@
 
 ----------------------------------------------------
 -- Generic info
--- UNIT_EE_EXPLORER is Adventurer
 -- UNIT_EE_SKIRMISHER is Light Infantry
 ----------------------------------------------------
 
 INSERT INTO Units (Type, PrereqTech, Combat, Moves, RequiresFaithPurchaseEnabled, ObsoleteTech, CombatClass, Domain, DefaultUnitAI, AdvancedStartCost, UnitFlagIconOffset, PortraitIndex, GoodyHutUpgradeUnitClass) VALUES
-('UNIT_EE_EXPLORER',       'TECH_EE_EXPLORATION',  23, 3, 1,'TECH_STEAM_POWER',    'UNITCOMBAT_RECON',      'DOMAIN_LAND','UNITAI_EXPLORE',     10, 6, 6,'UNITCLASS_ZEPPELIN'),
-('UNIT_EE_FIELD_GUN',      'TECH_EE_FLINTLOCK',    17, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_SIEGE',      'DOMAIN_LAND','UNITAI_CITY_BOMBARD',30, 4, 4,'UNITCLASS_FIELD_GUN'),
-('UNIT_EE_LINE_INFANTRY',  'TECH_EE_FLINTLOCK',    30, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_GUN',        'DOMAIN_LAND','UNITAI_DEFENSE',     30, 1, 1,'UNITCLASS_RIFLEMAN'),
-('UNIT_EE_SKIRMISHER',     'TECH_EE_FORTIFICATION',21, 2, 1,'TECH_DYNAMITE',       'UNITCOMBAT_ARCHER',     'DOMAIN_LAND','UNITAI_RANGED',      30, 2, 2,'UNITCLASS_GATLINGGUN'),
-('UNIT_EE_UHLAN',          'TECH_RIFLING',         40, 4, 1,'TECH_COMBUSTION',     'UNITCOMBAT_MOUNTED',    'DOMAIN_LAND','UNITAI_FAST_ATTACK', 30, 3, 3,'UNITCLASS_WWI_TANK'),
-('UNIT_EE_CARRACK',        'TECH_ASTRONOMY',       30, 5, 0,'TECH_NAVIGATION',     'UNITCOMBAT_NAVALMELEE', 'DOMAIN_SEA', 'UNITAI_EXPLORE_SEA', 50, 9,19,'UNITCLASS_PRIVATEER'),
-('UNIT_EE_GALLEON',        'TECH_EE_EXPLORATION',  16, 4, 0,'TECH_EE_WARSHIPS',    'UNITCOMBAT_NAVALRANGED','DOMAIN_SEA', 'UNITAI_ASSAULT_SEA', 50, 5, 5,'UNITCLASS_FRIGATE'),
+('UNIT_EE_ADVENTURER',    'TECH_EE_EXPLORATION',  23, 3, 1,'TECH_STEAM_POWER',    'UNITCOMBAT_RECON',       'DOMAIN_LAND','UNITAI_EXPLORE',     10, 6, 6,'UNITCLASS_ZEPPELIN'), -- UNIT_EE_EXPLORER in original EE
+('UNIT_EE_FIELD_GUN',     'TECH_EE_FLINTLOCK',    17, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_SIEGE',       'DOMAIN_LAND','UNITAI_CITY_BOMBARD',30, 4, 4,'UNITCLASS_FIELD_GUN'),
+('UNIT_EE_LINE_INFANTRY', 'TECH_EE_FLINTLOCK',    30, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_GUN',         'DOMAIN_LAND','UNITAI_DEFENSE',     30, 1, 1,'UNITCLASS_RIFLEMAN'),
+('UNIT_EE_SKIRMISHER',    'TECH_EE_FORTIFICATION',21, 2, 1,'TECH_DYNAMITE',       'UNITCOMBAT_ARCHER',      'DOMAIN_LAND','UNITAI_RANGED',      30, 2, 2,'UNITCLASS_GATLINGGUN'),
+('UNIT_EE_UHLAN',         'TECH_RIFLING',         40, 4, 1,'TECH_COMBUSTION',     'UNITCOMBAT_MOUNTED',     'DOMAIN_LAND','UNITAI_FAST_ATTACK', 30, 3, 3,'UNITCLASS_WWI_TANK'),
+('UNIT_EE_CARRACK',       'TECH_ASTRONOMY',       30, 5, 0,'TECH_NAVIGATION',     'UNITCOMBAT_NAVALMELEE',  'DOMAIN_SEA', 'UNITAI_EXPLORE_SEA', 50, 9,19,'UNITCLASS_PRIVATEER'),
+('UNIT_EE_GALLEON',       'TECH_EE_EXPLORATION',  16, 4, 0,'TECH_EE_WARSHIPS',    'UNITCOMBAT_NAVALRANGED', 'DOMAIN_SEA', 'UNITAI_ASSAULT_SEA', 50, 5, 5,'UNITCLASS_FRIGATE'),
 ('UNIT_EE_SHIP_OF_THE_LINE','TECH_EE_WARSHIPS',    40, 5, 0,'TECH_INDUSTRIALIZATION','UNITCOMBAT_NAVALMELEE','DOMAIN_SEA','UNITAI_ASSAULT_SEA', 50, 8, 9,'UNITCLASS_IRONCLAD');
 
 UPDATE Units
@@ -26,7 +25,7 @@ SET Class = 'UNITCLASS_'||SUBSTR(Type,6), Description = 'TXT_KEY_'||Type,
 	MilitarySupport = 1, Pillage = 1, MilitaryProduction = 1, XPValueAttack = 3, XPValueDefense = 3, PurchaseCooldown = 1,
 	UnitArtInfo = 'ART_DEF_'||Type, UnitFlagAtlas = 'ENLIGHTENMENT_UNIT_FLAG_ATLAS', IconAtlas = 'ENLIGHTENMENT_UNIT_ATLAS'
 WHERE Type IN (
-'UNIT_EE_EXPLORER',
+'UNIT_EE_ADVENTURER',
 'UNIT_EE_FIELD_GUN',
 'UNIT_EE_LINE_INFANTRY',
 'UNIT_EE_SKIRMISHER',
@@ -52,7 +51,7 @@ INSERT INTO UnitClasses (Type, DefaultUnit, Description)
 SELECT 'UNITCLASS_'||SUBSTR(Type,6), Type, 'TXT_KEY_'||Type
 FROM Units
 WHERE Type IN (
-'UNIT_EE_EXPLORER',
+'UNIT_EE_ADVENTURER',
 'UNIT_EE_FIELD_GUN',
 'UNIT_EE_LINE_INFANTRY',
 'UNIT_EE_SKIRMISHER',
@@ -69,7 +68,7 @@ INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
 SELECT Type, GoodyHutUpgradeUnitClass
 FROM Units
 WHERE Type IN (
-'UNIT_EE_EXPLORER',
+'UNIT_EE_ADVENTURER',
 'UNIT_EE_FIELD_GUN',
 'UNIT_EE_LINE_INFANTRY',
 'UNIT_EE_SKIRMISHER',
@@ -83,22 +82,22 @@ WHERE Type IN (
 ----------------------------------------------------
 
 INSERT INTO Unit_AITypes (UnitType, UnitAIType) VALUES
-('UNIT_EE_EXPLORER', 'UNITAI_EXPLORE'),
+('UNIT_EE_ADVENTURER','UNITAI_EXPLORE'),
 ('UNIT_EE_FIELD_GUN', 'UNITAI_CITY_BOMBARD'),
 ('UNIT_EE_FIELD_GUN', 'UNITAI_RANGED'),
 ('UNIT_EE_LINE_INFANTRY', 'UNITAI_ATTACK'),
 ('UNIT_EE_LINE_INFANTRY', 'UNITAI_DEFENSE'),
 ('UNIT_EE_LINE_INFANTRY', 'UNITAI_EXPLORE'),
 ('UNIT_EE_SKIRMISHER', 'UNITAI_RANGED'),
-('UNIT_EE_UHLAN', 'UNITAI_DEFENSE'),
-('UNIT_EE_UHLAN', 'UNITAI_FAST_ATTACK'),
-('UNIT_EE_CARRACK', 'UNITAI_ATTACK_SEA'),
-('UNIT_EE_CARRACK', 'UNITAI_RESERVE_SEA'),
-('UNIT_EE_CARRACK', 'UNITAI_ESCORT_SEA'),
-('UNIT_EE_CARRACK', 'UNITAI_EXPLORE_SEA'),
-('UNIT_EE_GALLEON', 'UNITAI_ASSAULT_SEA'),
-('UNIT_EE_GALLEON', 'UNITAI_RESERVE_SEA'),
-('UNIT_EE_GALLEON', 'UNITAI_ESCORT_SEA'),
+('UNIT_EE_UHLAN',    'UNITAI_DEFENSE'),
+('UNIT_EE_UHLAN',    'UNITAI_FAST_ATTACK'),
+('UNIT_EE_CARRACK',  'UNITAI_ATTACK_SEA'),
+('UNIT_EE_CARRACK',  'UNITAI_RESERVE_SEA'),
+('UNIT_EE_CARRACK',  'UNITAI_ESCORT_SEA'),
+('UNIT_EE_CARRACK',  'UNITAI_EXPLORE_SEA'),
+('UNIT_EE_GALLEON',  'UNITAI_ASSAULT_SEA'),
+('UNIT_EE_GALLEON',  'UNITAI_RESERVE_SEA'),
+('UNIT_EE_GALLEON',  'UNITAI_ESCORT_SEA'),
 ('UNIT_EE_SHIP_OF_THE_LINE', 'UNITAI_ASSAULT_SEA'),
 ('UNIT_EE_SHIP_OF_THE_LINE', 'UNITAI_RESERVE_SEA'),
 ('UNIT_EE_SHIP_OF_THE_LINE', 'UNITAI_ESCORT_SEA');
@@ -114,34 +113,35 @@ INSERT INTO ArtDefine_StrategicView (StrategicViewType, TileType, Asset)
 VALUES ('ART_DEF_UNIT_U_SPANISH_GALLEON', 'Unit', 'sv_Galleon.dds');
 
 -------------------------------------------------------
--- Adventurer (UNIT_EE_EXPLORER, upgrade from Explorer)
+-- Adventurer (upgrade from Explorer)
 -------------------------------------------------------
 
 UPDATE Units
-SET ObsoleteTech = 'TECH_STEAM_POWER', BaseSightRange = 3, NoBadGoodies = 1
-WHERE Type = 'UNIT_EE_EXPLORER';
+SET BaseSightRange = 3, NoBadGoodies = 1, ObsoleteTech = 'TECH_STEAM_POWER'
+WHERE Type = 'UNIT_EE_ADVENTURER';
 
 UPDATE Units
 SET ObsoleteTech = 'TECH_COMPASS'
 WHERE Type = 'UNIT_SCOUT';
 
 UPDATE Units
-SET ObsoleteTech = 'TECH_EE_EXPLORATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_EXPLORER' 
+SET ObsoleteTech = 'TECH_EE_EXPLORATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_ADVENTURER' 
 WHERE Type = 'UNIT_EXPLORER';
 
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
-('UNIT_EE_EXPLORER', 'PROMOTION_BARBARIAN_PENALTY_III'),
-('UNIT_EE_EXPLORER', 'PROMOTION_DEFENSIVE_EMBARKATION'),
-('UNIT_EE_EXPLORER', 'PROMOTION_EE_EXPLORER'), -- what is it?
-('UNIT_EE_EXPLORER', 'PROMOTION_EMBARKED_SIGHT'),
-('UNIT_EE_EXPLORER', 'PROMOTION_IGNORE_TERRAIN_COST'),
-('UNIT_EE_EXPLORER', 'PROMOTION_RECON_EXPERIENCE'),
-('UNIT_EE_EXPLORER', 'PROMOTION_SCOUT_GOODY_BONUS'),
-('UNIT_EE_EXPLORER', 'PROMOTION_SCOUTING_1');
+('UNIT_EE_ADVENTURER', 'PROMOTION_BARBARIAN_PENALTY_III'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_DEFENSIVE_EMBARKATION'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_EE_ADVENTURER'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_EMBARKED_SIGHT'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_IGNORE_TERRAIN_COST'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_OCEAN_CROSSING'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_RECON_EXPERIENCE'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_SCOUT_GOODY_BONUS'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_SCOUTING_1');
 
 -- Explorer -> Adventurer
 UPDATE Unit_ClassUpgrades
-SET UnitClassType = 'UNITCLASS_EE_EXPLORER' -- Adventurer
+SET UnitClassType = 'UNITCLASS_EE_ADVENTURER' -- Adventurer
 WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_EXPLORER');
 
 -------------------------------------------------------
@@ -159,12 +159,19 @@ UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_LINE_INFANTRY'
 WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_TERCIO' AND Type != 'UNIT_FRENCH_MUSKETEER');
 
--- Swedish Carolean
+-------------------------------------------------------
+-- Swedish Carolean, used in period 1680-1720
+-- Most of the infantry were equipped with modern flintlock muskets, although older versions still were in use. They were also equipped with rapiers and a bag for ammunition.
+-- Switch to Line Infantry, available early EE
+-------------------------------------------------------
+
 UPDATE Civilization_UnitClassOverrides SET UnitClassType = 'UNITCLASS_EE_LINE_INFANTRY' WHERE  UnitType = 'UNIT_SWEDISH_CAROLEAN';
 
 UPDATE Units
-SET Class = 'UNITCLASS_EE_LINE_INFANTRY', PrereqTech = 'TECH_EE_FLINTLOCK', ObsoleteTech = 'TECH_RIFLING', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN' -- Cost, FaithCost, RequiresFaithPurchaseEnabled
+SET Combat = 34, Class = 'UNITCLASS_EE_LINE_INFANTRY', PrereqTech = 'TECH_EE_FLINTLOCK', ObsoleteTech = 'TECH_REPLACEABLE_PARTS', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN'
 WHERE Type = 'UNIT_SWEDISH_CAROLEAN';
+
+UPDATE Unit_ClassUpgrades SET UnitClassType = 'UNITCLASS_RIFLEMAN' WHERE UnitType = 'UNIT_SWEDISH_CAROLEAN';
 
 -------------------------------------------------------
 -- Camel Archer - no changes, obsoletes with Cavalry
@@ -243,20 +250,21 @@ SET PrereqTech = 'TECH_EE_EXPLORATION'
 WHERE Type = 'UNIT_POLISH_WINGED_HUSSAR';
 
 -------------------------------------------------------
--- Spanish Conquistador
+-- Spanish Conquistador (XVI-XVII cent.)
+-- The armament consisted of a spear, a steel shield, a helmet called a "Morion", a hilted sword, and sometimes a horse saddle with leather shell.
 -------------------------------------------------------
-UPDATE Units
-SET Class = 'UNITCLASS_LANCER', PrereqTech = 'TECH_EE_EXPLORATION', ObsoleteTech = 'TECH_COMBUSTION', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_UHLAN', Combat = 35, Range = 0
-WHERE Type = 'UNIT_SPANISH_CONQUISTADOR';
 
-UPDATE Unit_ClassUpgrades
-SET UnitClassType = 'UNITCLASS_EE_UHLAN'
-WHERE UnitType = 'UNIT_SPANISH_CONQUISTADOR';
+--UPDATE Civilization_UnitClassOverrides SET UnitClassType = 'UNITCLASS_LANCER' WHERE UnitType = 'UNIT_SPANISH_CONQUISTADOR';
 
-UPDATE Civilization_UnitClassOverrides 
-Set UnitClassType = 'UNITCLASS_LANCER' WHERE UnitType = 'UNIT_SPANISH_CONQUISTADOR';
+--UPDATE Units
+--SET Combat = 35, Range = 0, Class = 'UNITCLASS_LANCER', PrereqTech = 'TECH_EE_EXPLORATION', ObsoleteTech = 'TECH_COMBUSTION', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_UHLAN'
+--WHERE Type = 'UNIT_SPANISH_CONQUISTADOR';
 
-DELETE FROM Unit_AITypes WHERE UnitType = 'UNIT_SPANISH_CONQUISTADOR' AND UnitAIType = 'UNITAI_ATTACK';
+--UPDATE Unit_ClassUpgrades
+--SET UnitClassType = 'UNITCLASS_EE_UHLAN'
+--WHERE UnitType = 'UNIT_SPANISH_CONQUISTADOR';
+
+--DELETE FROM Unit_AITypes WHERE UnitType = 'UNIT_SPANISH_CONQUISTADOR' AND UnitAIType = 'UNITAI_ATTACK';
 
 -------------------------------------------------------
 -- Light Infantry (upgrade from Musketman)
@@ -368,7 +376,7 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_FIELD_GUN', 'PROMOTION_SIGHT_PENALTY');
 
 -------------------------------------------------------
--- Carrack, Portuguese Nau
+-- Carrack
 -------------------------------------------------------
 
 -- Caravel changes (->Carrack)
@@ -380,25 +388,38 @@ UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_CARRACK'
 WHERE UnitType = 'UNIT_CARAVEL';
 
+UPDATE Units SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD' WHERE Type = 'UNIT_PRIVATEER'; -- Corvette
+
+-------------------------------------------------------
 -- Portuguese Nau
+-------------------------------------------------------
+
 UPDATE Civilization_UnitClassOverrides SET UnitClassType='UNITCLASS_EE_CARRACK' WHERE UnitType='UNIT_PORTUGUESE_NAU';
 
 UPDATE Units 
-SET PrereqTech = 'TECH_ASTRONOMY', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER', Combat = 32, Moves = 5, ObsoleteTech = 'TECH_EE_WARSHIPS', Class = 'UNITCLASS_EE_CARRACK'
+SET Combat = 32, Moves = 5, Class = 'UNITCLASS_EE_CARRACK', PrereqTech = 'TECH_ASTRONOMY', ObsoleteTech = 'TECH_EE_WARSHIPS', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER'
 WHERE Type = 'UNIT_PORTUGUESE_NAU';
 
 UPDATE Unit_ClassUpgrades SET UnitClassType = 'UNITCLASS_PRIVATEER' WHERE UnitType = 'UNIT_PORTUGUESE_NAU';
 
--- Other melee ships
-UPDATE Units SET PrereqTech = 'TECH_EE_EXPLORATION' WHERE Type = 'UNIT_DUTCH_SEA_BEGGAR';
+-------------------------------------------------------
+-- Dutch Sea Beggar - replacement for Carrack (change from Privateer)
+-- Related to William of Orange, so XVI-XII cent., late Renaissance
+-------------------------------------------------------
 
-UPDATE Units SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD' WHERE Type = 'UNIT_PRIVATEER'; -- Corvette
+UPDATE Units
+SET Combat = 34, Class = 'UNITCLASS_EE_CARRACK', PrereqTech = 'TECH_EE_EXPLORATION', ObsoleteTech = 'TECH_INDUSTRIALIZATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER'
+WHERE Type = 'UNIT_DUTCH_SEA_BEGGAR';
 
+UPDATE Unit_ClassUpgrades SET UnitClassType = 'UNITCLASS_PRIVATEER' WHERE UnitType = 'UNIT_DUTCH_SEA_BEGGAR';
+
+-------------------------------------------------------
 -- Polynesian UA
-INSERT INTO Trait_BuildsUnitClasses	(TraitType, UnitClassType, BuildType)
-VALUES
-	('TRAIT_WAYFINDING', 'UNITCLASS_EE_CARRACK', 'BUILD_FISHING_BOATS'),
-	('TRAIT_WAYFINDING', 'UNITCLASS_EE_SHIP_OF_THE_LINE', 'BUILD_FISHING_BOATS');
+-------------------------------------------------------
+
+INSERT INTO Trait_BuildsUnitClasses	(TraitType, UnitClassType, BuildType) VALUES
+('TRAIT_WAYFINDING', 'UNITCLASS_EE_CARRACK', 'BUILD_FISHING_BOATS'),
+('TRAIT_WAYFINDING', 'UNITCLASS_EE_SHIP_OF_THE_LINE', 'BUILD_FISHING_BOATS');
 
 -------------------------------------------------------
 -- English UU - classic CBP SotL
@@ -469,7 +490,7 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 -------------------------------------------------------
 
 INSERT INTO Unit_Flavors (UnitType, FlavorType, Flavor) VALUES
-('UNIT_EE_EXPLORER',  'FLAVOR_RECON',   7),
+('UNIT_EE_ADVENTURER','FLAVOR_RECON',  12),
 ('UNIT_EE_FIELD_GUN', 'FLAVOR_OFFENSE', 5),
 ('UNIT_EE_FIELD_GUN', 'FLAVOR_DEFENSE', 3),
 ('UNIT_EE_FIELD_GUN', 'FLAVOR_RANGED', 11),
@@ -504,13 +525,16 @@ INSERT INTO Belief_EraFaithUnitPurchase (BeliefType, EraType)
 VALUES ('BELIEF_HEATHEN_CONVERSION', 'ERA_ENLIGHTENMENT');
 
 -- Renaissance
-UPDATE Units SET Cost = 300, FaithCost = 400 WHERE Type = 'UNIT_EE_EXPLORER'; -- Renaissance
-UPDATE Units SET Cost = 300, FaithCost = 400 WHERE Type = 'UNIT_2HANDER'; -- Renaissance
+UPDATE Units SET Cost = 300, FaithCost = 400 WHERE Type = 'UNIT_EE_ADVENTURER';
+UPDATE Units SET Cost = 300, FaithCost = 400 WHERE Type = 'UNIT_2HANDER';
 UPDATE Units SET Cost = 350, FaithCost = 450 WHERE Type = 'UNIT_EE_CARRACK'; -- Renaissance, takes place of PRIVATEER
+UPDATE Units SET Cost = 350, FaithCost = 450 WHERE Type = 'UNIT_PORTUGUESE_NAU'; -- replaces EE_CARRACK (originally PRIVATEER)
+UPDATE Units SET Cost = 375, FaithCost = 450 WHERE Type = 'UNIT_DUTCH_SEA_BEGGAR'; -- replaces EE_CARRACK (originally PRIVATEER)
 UPDATE Units SET Cost = 375, FaithCost = 450 WHERE Type = 'UNIT_EE_GALLEON'; -- Renaissance, takes place of FRIGATE
 UPDATE Units SET Cost = 350, FaithCost = 400 WHERE Type = 'UNIT_SPANISH_CONQUISTADOR'; -- replaces LANCER (originally KNIGHT)
 -- Enlightenment
 UPDATE Units SET Cost = 400, FaithCost = 500 WHERE Type = 'UNIT_EE_LINE_INFANTRY';
+UPDATE Units SET Cost = 400, FaithCost = 500 WHERE Type = 'UNIT_SWEDISH_CAROLEAN'; -- replaces EE_LINE_INF (originally TERCIO)
 UPDATE Units SET Cost = 400, FaithCost = 500 WHERE Type = 'UNIT_AMERICAN_MINUTEMAN'; -- replaces EE_LINE_INF(originally MUSKETMAN)
 UPDATE Units SET Cost = 450, FaithCost = 500 WHERE Type = 'UNIT_EE_SKIRMISHER';
 UPDATE Units SET Cost = 450, FaithCost = 500 WHERE Type = 'UNIT_EE_FIELD_GUN';
@@ -523,17 +547,16 @@ UPDATE Units SET Cost = 700, FaithCost = 600 WHERE Type = 'UNIT_EE_UHLAN';
 UPDATE Units SET Cost = 700, FaithCost = 600 WHERE Type = 'UNIT_RUSSIAN_COSSACK'; -- replaces EE_UHLAN
 
 INSERT INTO Unit_BuildingClassPurchaseRequireds (UnitType, BuildingClassType) VALUES
-('UNIT_2HANDER','BUILDINGCLASS_ARMORY'),
-('UNIT_EE_CARRACK','BUILDINGCLASS_HARBOR'),
-('UNIT_EE_GALLEON','BUILDINGCLASS_HARBOR'),
+('UNIT_2HANDER',      'BUILDINGCLASS_ARMORY'),
+('UNIT_EE_CARRACK',   'BUILDINGCLASS_HARBOR'),
+('UNIT_EE_GALLEON',   'BUILDINGCLASS_HARBOR'),
 ('UNIT_EE_SHIP_OF_THE_LINE','BUILDINGCLASS_HARBOR'),
 ('UNIT_EE_LINE_INFANTRY','BUILDINGCLASS_ARMORY'),
-('UNIT_EE_FIELD_GUN','BUILDINGCLASS_ARMORY'),
-('UNIT_EE_EXPLORER','BUILDINGCLASS_ARMORY'),
-('UNIT_EE_SKIRMISHER','BUILDINGCLASS_STABLE'),
+('UNIT_EE_FIELD_GUN', 'BUILDINGCLASS_ARMORY'),
+('UNIT_EE_ADVENTURER','BUILDINGCLASS_ARMORY'),
 ('UNIT_EE_SKIRMISHER','BUILDINGCLASS_ARMORY'),
-('UNIT_EE_UHLAN','BUILDINGCLASS_STABLE'),
-('UNIT_EE_UHLAN','BUILDINGCLASS_ARMORY');
+('UNIT_EE_UHLAN',     'BUILDINGCLASS_STABLE'),
+('UNIT_EE_UHLAN',     'BUILDINGCLASS_ARMORY');
 
 -------------------------------------------------------
 -- Add new EE buildings as required for purchases in 2 next Eras
@@ -562,7 +585,7 @@ insert into Unit_BuildingClassPurchaseRequireds (UnitType, BuildingClassType)
 -------------------------------------------------------
 
 INSERT INTO UnitGameplay2DScripts (UnitType, SelectionSound, FirstSelectionSound) VALUES
-('UNIT_EE_EXPLORER',     'AS2D_SELECT_SCOUT',     'AS2D_BIRTH_SCOUT'),
+('UNIT_EE_ADVENTURER',   'AS2D_SELECT_SCOUT',     'AS2D_BIRTH_SCOUT'),
 ('UNIT_EE_FIELD_GUN',    'AS2D_SELECT_CANNON',    'AS2D_BIRTH_CANNON'),
 ('UNIT_EE_LINE_INFANTRY','AS2D_SELECT_MUSKETMAN', 'AS2D_BIRTH_MUSKETMAN'),
 ('UNIT_EE_SKIRMISHER',   'AS2D_SELECT_CROSSBOWMAN','AS2D_BIRTH_CROSSBOWMAN'),
@@ -582,21 +605,11 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_UNIT_EE_CARRACK_HELP', 'Early Renaissance era melee naval unit used to gain early naval supremacy.'),
 ('TXT_KEY_UNIT_EE_CARRACK_PEDIA', 'Developed by the Genoese Republic for commercial purposes, a carrack is three- or four-masted sailing vessel. Utilized by Spain and Portugal for oceanic travel and exploration, the carrack was one of the most influential ship designs in history. Large and roomy to carry cargo across vast distances, they were used heavily across the Atlantic and Indian oceans, carrying new found wealth and resources back to the great cities of Europe. One of the most famous ships to go down a history, the Santa Maria, was a carrack that carried Columbus and his crew to discover the new world. Another famous ship of this design belongs to Vasco Da Gama, the Portuguese explorer who circumnavigated Africa, discovering a new route to spices of India. The end of the carrack came at the hands of the galleon. Developed from the carrack, the first galleons became a reality in the mid 16th century, though the carrack would persist for several more decades.'),
 ('TXT_KEY_UNIT_EE_CARRACK_STRATEGY', 'The Carrack upgrades from the Caravel. It allows you to better secure your coastal cities from seafaring Barbarians or counterattacks from enemy Civilizations.  Its early increased combat strength means it can be used, with support, to take small cities with low Defensive Strength.'),
--- Cruiser
---('TXT_KEY_UNIT_EE_CRUISER', 'Cruiser'),
---('TXT_KEY_UNIT_EE_CRUISER_HELP', 'Extremely powerful Industrial Era ranged naval Unit used to wrest control of the seas.'),
---('TXT_KEY_UNIT_EE_CRUISER_STRATEGY', 'A technological bridge between the Frigate and the Battleship, Cruisers move at the same speed as its predecessor but boasts a much stronger Combat Strength.  The Cruiser easily outguns an outdated navy, even without any added maneuverability.'),
---('TXT_KEY_UNIT_EE_CRUISER_PEDIA', 'The word cruiser was applied originally to frigates of the sailing era, which, being smaller and faster than ships of the line, cruised the seas scouting for enemy fleets and hunting enemy convoys. As the designation for a specific type of warship, cruiser did not become current until about 1880, when navies had settled on iron-hulled ships powered either by a combination of sail and steam or solely by steam. Cruiser, then, became the standard designation for a large surface warship built for high speed and great cruising radius, capable of not only defending its own fleet and coastlines but also threatening those of the enemy. By about 1900, cruisers were of two principal kinds: protected cruisers had steel armour plating only on their decks, while armoured cruisers also had armour extending down the sides of the hull. Though smaller than battleships, cruisers were powerful warships because of their great speed and relatively big guns.'),
--- Cuirassier
---('TXT_KEY_UNIT_EE_CUIRASSIER', 'Cuirassier'),
---('TXT_KEY_UNIT_EE_CUIRASSIER_HELP', 'Fast Enlightenment Era mounted Unit.  Vulnerable to Lancers and Uhlans.'),
---('TXT_KEY_UNIT_EE_CUIRASSIER_PEDIA', 'Cuirassiers were European cavalry rigged with firearms and a cuirass, which was the name of their armour. A cuirass is a single or multiple pieces of metal which usually covered the front of the torso. About the middle of the century, the breastplate of the cuirass was made in two parts; the lower adjusted to overlap the upper, held together with a strap or sliding rivet in order to add flexibility to the advantages plate armour had over mail.Primarily fielded in the 15th century, the Cuirassier grew to a heightened prominence during the Napoleonic wars, where it was heavily recruited and equipped with swords as their primary weapon. Cuirassiers continued to be employed into the early ravages of the Great War and continue their ceremonial use as regiments to this day.'),
---('TXT_KEY_UNIT_EE_CUIRASSIER_STRATEGY', 'The Enlightenment Era cavalry unit, the Cuirassier has an increased strength over the medieval Knight while moving at the same speed.  It is vulnerable to anti-mounted units such as Lancers and Uhlans.'),
 -- Adventurer
-('TXT_KEY_UNIT_EE_EXPLORER', 'Adventurer'),
-('TXT_KEY_UNIT_EE_EXPLORER_HELP', 'Recon unit. Can see further and has additional movement while embarked.'),
-('TXT_KEY_UNIT_EE_EXPLORER_PEDIA', 'Throughout history there are those whose thirst for adventure led them from the safe confines of civilized lands. These adventurers, frequently funded by government stipends, would then journey into the unknown, charting their progress all the way. These expeditions, and the maps they helped create, became blueprints for the conquest and domestication of the once uncharted regions of the world.'),
-('TXT_KEY_UNIT_EE_EXPLORER_STRATEGY', 'An upgrade to the Explorer. The Adventurer has even more movement and strength, although is still quite weak.  The Adventurer excels at sea exploration, as it is able to move further while embarked.  Use it to finish meeting all the other Civilizations, or scout out locations for overseas colonies.'),
+('TXT_KEY_UNIT_EE_ADVENTURER', 'Adventurer'),
+('TXT_KEY_UNIT_EE_ADVENTURER_HELP', 'Recon unit. Can see further and has additional movement while embarked.'),
+('TXT_KEY_UNIT_EE_ADVENTURER_PEDIA', 'Throughout history there are those whose thirst for adventure led them from the safe confines of civilized lands. These adventurers, frequently funded by government stipends, would then journey into the unknown, charting their progress all the way. These expeditions, and the maps they helped create, became blueprints for the conquest and domestication of the once uncharted regions of the world.'),
+('TXT_KEY_UNIT_EE_ADVENTURER_STRATEGY', 'An upgrade to the Explorer. The Adventurer has even more movement and strength, although is still quite weak.  The Adventurer excels at sea exploration, as it is able to move further while embarked.  Use it to finish meeting all the other Civilizations, or scout out locations for overseas colonies.'),
 -- Field Gun
 ('TXT_KEY_UNIT_EE_FIELD_GUN', 'Field Gun'),
 ('TXT_KEY_UNIT_EE_FIELD_GUN_HELP', 'Enlightenment Era artillery unit. Moves at half-speed in enemy territory.'),
@@ -626,11 +639,6 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE', 'Ship of the Line'),
 ('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE_HELP', 'Powerful Enlightenment Era naval melee Unit. Grants adjacent ships combat bonus.'),
 ('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE_STRATEGY', 'The Ship of the Line is a melee naval unit of the Enlightenment Era.  Unlike the Corvette, the Ship of the Line requires Iron to build and maintain.  However, a boost to combat strength and a critical boost to movement speed make it worth the price.  Use it to crush outdated fleets with superior firepower and speed.'),
--- Surveyor
---('TXT_KEY_UNIT_EE_SURVEYOR', 'Surveyor'),
---('TXT_KEY_UNIT_EE_SURVEYOR_HELP', 'Late game scouting unit which can enter enemy territory and cover land quickly.'),
---('TXT_KEY_UNIT_EE_SURVEYOR_PEDIA', 'As the Industrial Revolution powered forward, exploration of the world took on a much more scientific slant.  The purpose of exploration changed from the Renaissance ideal of bringing back treasure and trade routes, to a desire to understand the world and its flora and fauna.  This served a practical purpose as well – a more urbanized and mechanized society required formal planning of spaces, in order to more efficiently build infrastructure and settlements.'),
---('TXT_KEY_UNIT_EE_SURVEYOR_STRATEGY', 'The Surveyor is a recon unit that upgrades from the Explorer.  It is stronger and faster still than the Explorer, although it is vulnerable alone.  The Surveyor may enter rival territory without an Open Borders agreement.'),
 -- Uhlan
 ('TXT_KEY_UNIT_EE_UHLAN', 'Uhlan'),
 ('TXT_KEY_UNIT_EE_UHLAN_HELP', 'Mid game light cavalry unit good against other mounted units.'),
@@ -649,6 +657,11 @@ WHERE Tag = 'TXT_KEY_UNIT_HELP_PORTUGUESE_NAU';
 UPDATE Language_en_US 
 SET Text = 'This melee naval unit replaces the Carrack and is skilled at exploration. When it is in a tile next to land owned by another Civilization or City-State you are at peace with, it may perform a one-time trade mission to earn [ICON_GOLD] Gold and XP. The further the land is from your own capital, the greater the bonus, so it is best to use on distant players. Use this unit to explore the map and uncover the locations of other players.'
 WHERE Tag = 'TXT_KEY_UNIT_PORTUGUESE_NAU_STRATEGY';
+
+-- Swedish Carolean
+UPDATE Language_en_US 
+SET Text = 'Caroleans are the backbone of the Enlightenment era Swedish army. They start with the March promotion that allows it to Heal every turn, even if it performs an action. The Carolean also receives a 15% combat bonus when stacked with a Great General, and deals damage to all adjacent units after advancing from killing a unit.'
+WHERE Tag = 'TXT_KEY_UNIT_SWEDISH_CAROLEAN_STRATEGY';
 
 -- Spanish Conquistador
 UPDATE Language_en_US
