@@ -1,11 +1,19 @@
 ----------------------------------------------------
 -- Enlightenment Era (Vox Populi)
+-- TECHNOLOGIES
 -- 2018-01-30 Reworked by Infixo from EE & VP-EE mods
+-- 2018-02-03 Infixo: Optimized tech tree updates
 ----------------------------------------------------
 
---==========================================================================================================================
--- TECHNOLOGIES
---==========================================================================================================================
+-- Make space for EE techs
+UPDATE Technologies SET GridX = 20 WHERE GridX = 18; -- Future Tech
+UPDATE Technologies SET GridX = 19 WHERE GridX = 17; -- INF3
+UPDATE Technologies SET GridX = 18 WHERE GridX = 16; -- INF2
+UPDATE Technologies SET GridX = 17 WHERE GridX = 15; -- INF1
+UPDATE Technologies SET GridX = 16 WHERE GridX = 14; -- ATO2
+UPDATE Technologies SET GridX = 15 WHERE GridX = 13; -- ATO1
+UPDATE Technologies SET GridX = 14 WHERE GridX = 12; -- MOD2
+UPDATE Technologies SET GridX = 13 WHERE GridX = 11; -- MOD1
 
 INSERT INTO Technologies (Type, Description, Civilopedia, Help, Era, Trade, GridX, GridY, Quote, PortraitIndex, IconAtlas, AudioIntro, AudioIntroHeader) VALUES
 ('TECH_EE_SOVEREIGNTY',  'TXT_KEY_TECH_EE_SOVEREIGNTY',  'TXT_KEY_TECH_EE_SOVEREIGNTY_DESC',  'TXT_KEY_TECH_EE_SOVEREIGNTY_HELP',  'ERA_RENAISSANCE',  1,  8, 3, 'TXT_KEY_TECH_EE_SOVEREIGNTY_QUOTE',  2, 'ENLIGHTENMENT_TECH_ATLAS', 'AS2D_TECH_EE_SOVEREIGNTY',  'AS2D_TECH_EE_SOVEREIGNTY'),
@@ -73,12 +81,13 @@ UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 11, GridY = 4 WHERE Type
 UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 11, GridY = 6 WHERE Type = 'TECH_STEAM_POWER';
 UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 11, GridY = 8 WHERE Type = 'TECH_RIFLING';
 
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='1' WHERE Type = 'TECH_ARCHAEOLOGY';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='3' WHERE Type = 'TECH_FERTILIZER';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='5' WHERE Type = 'TECH_INDUSTRIALIZATION';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='7' WHERE Type = 'TECH_DYNAMITE';
-UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX='12', GridY='9' WHERE Type = 'TECH_MILITARY_SCIENCE';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 12, GridY = 1 WHERE Type = 'TECH_ARCHAEOLOGY';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 12, GridY = 3 WHERE Type = 'TECH_FERTILIZER';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 12, GridY = 5 WHERE Type = 'TECH_INDUSTRIALIZATION';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 12, GridY = 7 WHERE Type = 'TECH_DYNAMITE';
+UPDATE Technologies SET Era = 'ERA_INDUSTRIAL', GridX = 12, GridY = 9 WHERE Type = 'TECH_MILITARY_SCIENCE';
 
+/*
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='13', GridY='1' WHERE Type = 'TECH_BIOLOGY';
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='13', GridY='3' WHERE Type = 'TECH_ELECTRICITY';
 UPDATE Technologies SET Era = 'ERA_MODERN', GridX='13', GridY='5' WHERE Type = 'TECH_CORPORATIONS';
@@ -118,7 +127,7 @@ UPDATE Technologies SET Era = 'ERA_FUTURE', GridX='19', GridY='6' WHERE Type = '
 UPDATE Technologies SET Era = 'ERA_FUTURE', GridX='19', GridY='8' WHERE Type = 'TECH_NUCLEAR_FUSION';
 
 UPDATE Technologies SET GridX='20', GridY='5' WHERE Type = 'TECH_FUTURE_TECH';
-
+*/
 --==========================================================================================================================
 -- Prereq Technologies
 --==========================================================================================================================
@@ -137,8 +146,8 @@ VALUES
 
 -- Grid X=8 (REN)
 DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_ARCHITECTURE';
-DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_EE_SOVEREIGNTY';
-DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_EE_EXPLORATION';
+--DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_EE_SOVEREIGNTY';
+--DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_EE_EXPLORATION';
 
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
 VALUES
@@ -154,12 +163,15 @@ VALUES
 	('TECH_METALLURGY', 'TECH_ASTRONOMY'); -- fixing imbalanced routes
 
 -- Grid X=9 (EE)
+DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_ECONOMICS';
+DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_NAVIGATION';
+/*
 DELETE FROM Technology_PrereqTechs WHERE TechType IN (
 	'TECH_EE_HUMANISM',
 	'TECH_ECONOMICS',
 	'TECH_NAVIGATION',
 	'TECH_EE_FLINTLOCK');
-	
+*/
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
 VALUES
 	('TECH_EE_HUMANISM', 'TECH_ARCHITECTURE'),
@@ -172,14 +184,16 @@ VALUES
 	('TECH_EE_FLINTLOCK', 'TECH_PRINTING_PRESS'), -- for balanced route
 	('TECH_EE_FLINTLOCK', 'TECH_EE_EXPLORATION'),
 	('TECH_EE_FLINTLOCK', 'TECH_METALLURGY');
-	
+
 -- Grid X=10 (EE)
+DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_SCIENTIFIC_THEORY';
+/*
 DELETE FROM Technology_PrereqTechs WHERE TechType IN (
-	'TECH_SCIENTIFIC_THEORY',
+	'TECH_SCIENTIFIC_THEORY');
 	'TECH_EE_MANUFACTURING',
 	'TECH_EE_WARSHIPS',
 	'TECH_EE_FORTIFICATION');
-
+*/
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
 VALUES
 	('TECH_SCIENTIFIC_THEORY', 'TECH_EE_HUMANISM'),
@@ -197,7 +211,7 @@ VALUES
 
 -- Grid X=11 (IND)
 DELETE FROM Technology_PrereqTechs WHERE TechType IN (
-	'TECH_EE_ROMANTICISM',
+	--'TECH_EE_ROMANTICISM',
 	'TECH_RAILROAD',
 	'TECH_STEAM_POWER',
 	'TECH_RIFLING');
@@ -218,47 +232,51 @@ VALUES
 	('TECH_RIFLING', 'TECH_EE_FORTIFICATION');
 
 -- Grid X=12 (IND)
+DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_ARCHAEOLOGY';
+DELETE FROM Technology_PrereqTechs WHERE TechType = 'TECH_FERTILIZER';
+/*
 DELETE FROM Technology_PrereqTechs WHERE TechType IN (
 	'TECH_ARCHAEOLOGY',
 	'TECH_FERTILIZER',
 	'TECH_INDUSTRIALIZATION',
 	'TECH_DYNAMITE',
 	'TECH_MILITARY_SCIENCE');
-	
+*/
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
 VALUES
 	('TECH_ARCHAEOLOGY', 'TECH_EE_ROMANTICISM'),
 	('TECH_ARCHAEOLOGY', 'TECH_RAILROAD'),
 	('TECH_FERTILIZER', 'TECH_EE_ROMANTICISM'),
 	('TECH_FERTILIZER', 'TECH_RAILROAD'),
-	('TECH_INDUSTRIALIZATION', 'TECH_RAILROAD'),
-	('TECH_INDUSTRIALIZATION', 'TECH_STEAM_POWER'),
-	('TECH_DYNAMITE', 'TECH_STEAM_POWER'),
-	('TECH_DYNAMITE', 'TECH_RIFLING'),	
-	('TECH_MILITARY_SCIENCE', 'TECH_STEAM_POWER'),
-	('TECH_MILITARY_SCIENCE', 'TECH_RIFLING');
+	--('TECH_INDUSTRIALIZATION', 'TECH_RAILROAD'),
+	--('TECH_INDUSTRIALIZATION', 'TECH_STEAM_POWER'),
+	--('TECH_DYNAMITE', 'TECH_STEAM_POWER'),
+	--('TECH_DYNAMITE', 'TECH_RIFLING'),	
+	('TECH_MILITARY_SCIENCE', 'TECH_STEAM_POWER');
+	--('TECH_MILITARY_SCIENCE', 'TECH_RIFLING');
 
 -- Grid X=13 (MOD)		
+/*
 DELETE FROM Technology_PrereqTechs WHERE TechType IN (
 	'TECH_BIOLOGY',
 	'TECH_ELECTRICITY',
 	'TECH_REPLACEABLE_PARTS',
 	'TECH_COMBUSTION');
-	
+*/
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)
 VALUES
-	('TECH_BIOLOGY', 'TECH_ARCHAEOLOGY'),
-	('TECH_BIOLOGY', 'TECH_FERTILIZER'),
+	--('TECH_BIOLOGY', 'TECH_ARCHAEOLOGY'),
+	--('TECH_BIOLOGY', 'TECH_FERTILIZER'),
 	('TECH_BIOLOGY', 'TECH_INDUSTRIALIZATION'), -- for balanced route
-	('TECH_ELECTRICITY', 'TECH_ARCHAEOLOGY'),
-	('TECH_ELECTRICITY', 'TECH_FERTILIZER'),
-	('TECH_ELECTRICITY', 'TECH_INDUSTRIALIZATION'),
-	('TECH_REPLACEABLE_PARTS', 'TECH_INDUSTRIALIZATION'),
-	('TECH_REPLACEABLE_PARTS', 'TECH_DYNAMITE'),	
-	('TECH_REPLACEABLE_PARTS', 'TECH_MILITARY_SCIENCE'),
-	('TECH_COMBUSTION', 'TECH_INDUSTRIALIZATION'), -- for balanced route
-	('TECH_COMBUSTION', 'TECH_DYNAMITE'),
-	('TECH_COMBUSTION', 'TECH_MILITARY_SCIENCE');
+	--('TECH_ELECTRICITY', 'TECH_ARCHAEOLOGY'),
+	--('TECH_ELECTRICITY', 'TECH_FERTILIZER'),
+	--('TECH_ELECTRICITY', 'TECH_INDUSTRIALIZATION'),
+	--('TECH_REPLACEABLE_PARTS', 'TECH_INDUSTRIALIZATION'),
+	--('TECH_REPLACEABLE_PARTS', 'TECH_DYNAMITE'),	
+	--('TECH_REPLACEABLE_PARTS', 'TECH_MILITARY_SCIENCE'),
+	('TECH_COMBUSTION', 'TECH_INDUSTRIALIZATION'); -- for balanced route
+	--('TECH_COMBUSTION', 'TECH_DYNAMITE'),
+	--('TECH_COMBUSTION', 'TECH_MILITARY_SCIENCE');
 
 -- Fixing imbalanced tech tree routes for outer techs (Atomic and Information)
 INSERT INTO Technology_PrereqTechs (TechType, PrereqTech)

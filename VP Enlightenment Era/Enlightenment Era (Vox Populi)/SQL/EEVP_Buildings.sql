@@ -61,19 +61,7 @@ SET PrereqTech = 'TECH_EE_ROMANTICISM', PortraitIndex = 5, IconAtlas = 'ENLIGHTE
 WHERE Type = 'BUILDING_MUSEUM';
 
 UPDATE Buildings SET PrereqTech = 'TECH_DYNAMITE' WHERE Type = 'BUILDING_ARSENAL';
---UPDATE Buildings SET PrereqTech = 'TECH_PRINTING_PRESS' WHERE Type = 'BUILDING_THEATRE'; -- Zoo
 
-------------------------------------------------------------------------------------------------------------------------	
--- Placement in tech tree
-------------------------------------------------------------------------------------------------------------------------	
-
--- CP disabled, duplicated with Crystal Palace from CSD
---UPDATE BuildingClasses SET MaxGlobalInstances = 0, MaxTeamInstances = 0, MaxPlayerInstances = 0 WHERE Type = 'BUILDINGCLASS_EE_CRYSTAL_PALACE';
---UPDATE Buildings SET Cost = -1, GreatWorkCount = -1, PrereqTech = NULL WHERE Type = 'BUILDING_EE_CRYSTAL_PALACE';
-
---UPDATE Buildings SET PrereqTech = 'TECH_EE_MANUFACTURING' WHERE Type = 'BUILDING_EE_WEIGH_HOUSE';
---UPDATE Buildings SET PrereqTech = 'TECH_EE_ROMANTICISM' WHERE Type = 'BUILDING_MUSEUM';
---UPDATE Buildings SET PrereqTech = 'TECH_EE_WARSHIPS' WHERE Type = 'BUILDING_EE_DRYDOCK';
 
 ------------------------------------------------------------------------------------------------------------------------	
 -- Building costs
@@ -92,23 +80,23 @@ UPDATE Buildings SET Cost = 300, GoldMaintenance = 2 WHERE Type = 'BUILDING_EE_T
 --UPDATE Buildings SET Cost = 500, GoldMaintenance = 3 WHERE Type = 'BUILDING_THEATRE';
 
 -- column 8 (REN2)
-UPDATE Buildings SET Cost = 600, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_MANOR';
-UPDATE Buildings SET Cost = 600, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_GALLERY';
+UPDATE Buildings SET Cost = 600, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_MANOR';
+UPDATE Buildings SET Cost = 600, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_GALLERY';
 
 -- column 9 (EE1)
-UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_SALON';
-UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_ACADEMY';
-UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_EE_GUNSMITH';
-UPDATE Buildings SET Cost = 750, GoldMaintenance = 3 WHERE Type = 'BUILDING_KREPOST'; -- replaces EE_BASTION, but it's earlier
+UPDATE Buildings SET Cost = 750, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_SALON';
+UPDATE Buildings SET Cost = 750, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_ACADEMY';
+UPDATE Buildings SET Cost = 750, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_GUNSMITH';
+UPDATE Buildings SET Cost = 750, GoldMaintenance = 4 WHERE Type = 'BUILDING_KREPOST'; -- replaces EE_BASTION, but it's earlier
 
 -- column 10 (EE2)
-UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_WEIGH_HOUSE';
-UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_CLOTH_MILL';
-UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_DRYDOCK';
-UPDATE Buildings SET Cost = 900, GoldMaintenance = 4 WHERE Type = 'BUILDING_EE_BASTION';
+UPDATE Buildings SET Cost = 900, GoldMaintenance = 5 WHERE Type = 'BUILDING_EE_WEIGH_HOUSE';
+UPDATE Buildings SET Cost = 900, GoldMaintenance = 5 WHERE Type = 'BUILDING_EE_CLOTH_MILL';
+UPDATE Buildings SET Cost = 900, GoldMaintenance = 5 WHERE Type = 'BUILDING_EE_DRYDOCK';
+UPDATE Buildings SET Cost = 900, GoldMaintenance = 5 WHERE Type = 'BUILDING_EE_BASTION';
 
 -- column 11 (IND1)
-UPDATE Buildings SET Cost = 1250, GoldMaintenance = 5 WHERE Type = 'BUILDING_EE_MENAGERIE';
+UPDATE Buildings SET Cost = 1250, GoldMaintenance = 6 WHERE Type = 'BUILDING_EE_MENAGERIE';
 --UPDATE Buildings SET Cost = 1250 WHERE Type = 'BUILDING_MUSEUM'; -- precaution, same as VP
 
 -- column 12 (IND2)
@@ -155,10 +143,6 @@ VALUES ('BUILDING_EE_GALLERY', 'SPECIALIST_ARTIST', 15);
 
 UPDATE Building_YieldChanges SET Yield = 2 WHERE BuildingType = 'BUILDING_EE_GALLERY'; -- culture
 
---UPDATE Buildings
---SET Help = 'TXT_KEY_BUILDING_EE_GALLERY_HELP'
---WHERE Type = 'BUILDING_EE_GALLERY';
-
 -- Gallery: +1 cul/6 pop
 INSERT INTO Building_YieldChangesPerPop (BuildingType, YieldType, Yield)
 VALUES ('BUILDING_EE_GALLERY', 'YIELD_CULTURE', 17);
@@ -168,21 +152,13 @@ UPDATE Building_SpecificGreatPersonRateModifier
 SET Modifier = 25
 WHERE BuildingType = 'BUILDING_MUSEUM' AND SpecialistType = 'SPECIALIST_ARTIST';
 
---UPDATE Building_ThemingYieldBonus
---SET Yield = 5
---WHERE BuildingType = 'BUILDING_MUSEUM';
+UPDATE Building_ThemingYieldBonus
+SET Yield = 5
+WHERE BuildingType = 'BUILDING_MUSEUM';
 
 ----------------------------------------------
 -- Menagerie
 ----------------------------------------------
-
---UPDATE Buildings
---SET Happiness = 0, UnculturedHappinessChange = '-30', GreatWorkSlotType = NULL, GreatWorkCount = 0, IconAtlas = 'EXPANSION2_BUILDING_ATLAS2', PortraitIndex = 0
---WHERE Type = 'BUILDING_THEATRE';
-
---UPDATE Buildings 
---SET Help = 'TXT_KEY_BUILDING_THEATRE_HELP', SpecialistType = 'SPECIALIST_SCIENTIST', SpecialistCount = '1'
---WHERE Type = 'BUILDING_THEATRE';
 
 UPDATE Buildings
 SET  UnculturedHappinessChange = -30
@@ -192,52 +168,13 @@ UPDATE Building_FeatureYieldChanges
 SET BuildingType = 'BUILDING_EE_MENAGERIE'
 WHERE BuildingType = 'BUILDING_THEATRE' AND YieldType = 'YIELD_TOURISM';
 
---DELETE FROM Building_YieldChanges WHERE BuildingType = 'BUILDING_THEATRE';
 INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield) VALUES
 ('BUILDING_EE_MENAGERIE', 'YIELD_SCIENCE', 3),
 ('BUILDING_EE_MENAGERIE', 'YIELD_GOLD', 2),
 ('BUILDING_EE_MENAGERIE', 'YIELD_CULTURE', 2);
---	('BUILDING_THEATRE', 'YIELD_CULTURE', 2);
 	
 INSERT INTO Building_YieldChangesPerPop (BuildingType, YieldType, Yield)
 VALUES ('BUILDING_EE_MENAGERIE', 'YIELD_GOLD', 12); -- 1/8 pop
-
---UPDATE Building_InstantYield
---SET Yield = 100
---WHERE BuildingType = 'BUILDING_THEATRE' AND YieldType = 'YIELD_TOURISM';
-
-
-----------------------------------------------
--- Coffee House (VP: Grocer, Chemistry, cost 500, maint 3)
-----------------------------------------------
-/* no changes from EE, should be the same as VP
-UPDATE Buildings
-SET BuildingClass = 'BUILDINGCLASS_GROCER', PrereqTech = 'TECH_CHEMISTRY', Cost = 500, GoldMaintenance = 3, CultureRateModifier = 0, SpecialistCount = 1
-WHERE Type = 'BUILDING_COFFEE_HOUSE';
-
-UPDATE Building_YieldChanges
-SET Yield = '3', YieldType = 'YIELD_FOOD'
-WHERE BuildingType = 'BUILDING_COFFEE_HOUSE';
-
-UPDATE Buildings
-SET PovertyHappinessChange = '-20'
-WHERE Type = 'BUILDING_COFFEE_HOUSE';
-
-DELETE FROM Building_Flavors WHERE BuildingType = 'BUILDING_COFFEE_HOUSE' AND FlavorType = 'FLAVOR_PRODUCTION';
-
-INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor)
-VALUES
-	('BUILDING_COFFEE_HOUSE', 'FLAVOR_GROWTH', 25),
-	('BUILDING_COFFEE_HOUSE', 'FLAVOR_SCIENCE', 10),
-	('BUILDING_COFFEE_HOUSE', 'FLAVOR_GOLD', 10);
-*/
-UPDATE Buildings
-SET IconAtlas = 'COMMUNITY_ATLAS', PortraitIndex = 20
-WHERE Type = 'BUILDING_MOMA';
-
-UPDATE Buildings
-SET IconAtlas = 'EECBO_ICON_ATLAS', PortraitIndex = 0
-WHERE Type = 'BUILDING_MAUSOLEUM';
 
 ----------------------------------------------
 -- Academy and Salon
@@ -247,10 +184,6 @@ WHERE Type = 'BUILDING_MAUSOLEUM';
 
 UPDATE Buildings SET MutuallyExclusiveGroup = 17 WHERE Type = 'BUILDING_EE_ACADEMY' OR Type = 'BUILDING_EE_SALON';
 
--- remove yield % changes
---DELETE FROM Building_YieldModifiers
---WHERE BuildingType = 'BUILDING_EE_ACADEMY';
-
 UPDATE Buildings
 SET UnculturedHappinessChange = -20, CultureRateModifier = 0  -- culture is stored in different place
 WHERE Type = 'BUILDING_EE_SALON';
@@ -259,8 +192,6 @@ UPDATE Buildings
 SET IlliteracyHappinessChange = -20
 WHERE Type = 'BUILDING_EE_ACADEMY';
 
---UPDATE Building_YieldChanges SET Yield = 2 WHERE BuildingType = 'BUILDING_EE_ACADEMY'; -- science
---UPDATE Building_YieldChanges SET Yield = 2 WHERE BuildingType = 'BUILDING_EE_SALON'; -- culture
 INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield) VALUES
 ('BUILDING_EE_ACADEMY', 'YIELD_SCIENCE', 2),
 ('BUILDING_EE_SALON',   'YIELD_CULTURE', 2);
@@ -290,12 +221,6 @@ UPDATE Buildings
 SET River = 1, PovertyHappinessChange = 10
 WHERE Type = 'BUILDING_EE_CLOTH_MILL';
 
--- remove yield % changes
---DELETE FROM Building_YieldModifiers
---WHERE BuildingType IN ('BUILDING_EE_WEIGH_HOUSE', 'BUILDING_EE_CLOTH_MILL');
-
---UPDATE Building_YieldChanges SET Yield = 3 WHERE BuildingType = 'BUILDING_EE_WEIGH_HOUSE';
---UPDATE Building_YieldChanges SET Yield = 3 WHERE BuildingType = 'BUILDING_EE_CLOTH_MILL';
 INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield) VALUES
 ('BUILDING_EE_CLOTH_MILL',  'YIELD_PRODUCTION', 3),
 ('BUILDING_EE_WEIGH_HOUSE', 'YIELD_GOLD',       3);
@@ -405,18 +330,9 @@ UPDATE Buildings SET ExtraCityHitPoints = 200 WHERE Type = 'BUILDING_SEAPORT';
 UPDATE Buildings SET ExtraCityHitPoints = 100 WHERE Type = 'BUILDING_EE_DRYDOCK';
 UPDATE Buildings SET ExtraCityHitPoints = 250 WHERE Type = 'BUILDING_MINEFIELD';
 
-
-
-
-
 ------------------------
 -- Flavors
 ------------------------
-
---DELETE FROM Building_Flavors WHERE BuildingType = 'BUILDING_THEATRE' AND FlavorType = 'FLAVOR_CULTURE'; -- now its Zoo & Boredom
-
---UPDATE Building_Flavors SET Flavor = 25 WHERE BuildingType = 'BUILDING_EE_GUNSMITH' AND FlavorType = 'FLAVOR_MILITARY_TRAINING';
---UPDATE Building_Flavors SET Flavor = 10 WHERE BuildingType = 'BUILDING_EE_TAVERN' AND FlavorType = 'FLAVOR_HAPPINESS';
 
 INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
 ('BUILDING_EE_ACADEMY', 'FLAVOR_SCIENCE', 35),
@@ -431,84 +347,108 @@ INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
 ('BUILDING_EE_MANOR', 'FLAVOR_CULTURE', 15),
 ('BUILDING_EE_SALON', 'FLAVOR_CULTURE', 35),
 ('BUILDING_EE_WEIGH_HOUSE', 'FLAVOR_GOLD', 25),
---('BUILDING_THEATRE', 'FLAVOR_HAPPINESS', 30), -- Zoo / boredom
---('BUILDING_THEATRE', 'FLAVOR_EXPANSION', 6),
---('BUILDING_THEATRE', 'FLAVOR_CULTURE', 5),
 ('BUILDING_EE_MENAGERIE', 'FLAVOR_EXPANSION', 6), -- Menagerie / boredom
 ('BUILDING_EE_MENAGERIE', 'FLAVOR_GROWTH', 6),
 ('BUILDING_EE_MENAGERIE', 'FLAVOR_CULTURE', 20),
 ('BUILDING_EE_MENAGERIE', 'FLAVOR_GOLD', 15),
 ('BUILDING_EE_TAVERN', 'FLAVOR_HAPPINESS', 5),
 ('BUILDING_EE_TAVERN', 'FLAVOR_EXPANSION', 6), -- Tavern / boredom
---('BUILDING_EE_TAVERN', 'FLAVOR_SCIENCE', 5),
 ('BUILDING_EE_TAVERN', 'FLAVOR_GROWTH', 6);
 
-	
-------------------------
--- Missing descriptions for Building Classes
-------------------------
-/*
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_BASTION'    WHERE Type = 'BUILDINGCLASS_EE_BASTION';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_ACADEMY'    WHERE Type = 'BUILDINGCLASS_EE_ACADEMY';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_BASTION'    WHERE Type = 'BUILDINGCLASS_EE_BASTION';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_CLOTH_MILL' WHERE Type = 'BUILDINGCLASS_EE_CLOTH_MILL';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_DRYDOCK'    WHERE Type = 'BUILDINGCLASS_EE_DRYDOCK';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_GALLERY'    WHERE Type = 'BUILDINGCLASS_EE_GALLERY';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_GUNSMITH'   WHERE Type = 'BUILDINGCLASS_EE_GUNSMITH';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_MANOR'      WHERE Type = 'BUILDINGCLASS_EE_MANOR';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_MENAGERIE'  WHERE Type = 'BUILDINGCLASS_EE_MENAGERIE';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_SALON'      WHERE Type = 'BUILDINGCLASS_EE_SALON';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_TAVERN'     WHERE Type = 'BUILDINGCLASS_EE_TAVERN';
-UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_WEIGH_HOUSE' WHERE Type = 'BUILDINGCLASS_EE_WEIGH_HOUSE';
-*/
---UPDATE BuildingClasses SET Description = 'TXT_KEY_BUILDING_EE_CRYSTAL_PALACE_GPPG' WHERE Type = 'BUILDINGCLASS_EE_CRYSTAL_PALACE_GPPG';
 
 ----------------------------------------------------
 -- Text (en_US)
 ----------------------------------------------------
 
 INSERT INTO Language_en_US (Tag, Text) VALUES
+-- Academy
 ('TXT_KEY_BUILDING_EE_ACADEMY', 'Academy'),
-('TXT_KEY_BUILDING_EE_ACADEMY_HELP', 'City must not contain a Salon.'),
-('TXT_KEY_BUILDING_EE_ACADEMY_STRATEGY', 'The Academy is an Enlightenment-era building which increases the [ICON_SCIENCE] Science output of a city by 15%. It may not be built in a city with an Salon, forcing cities to specialise in either Culture or Science.'),
+('TXT_KEY_BUILDING_EE_ACADEMY_HELP', 'Reduces [ICON_HAPPINESS_3] Illiteracy. +2 [ICON_RESEARCH] Science in the the city and +1 [ICON_RESEARCH] Science for every 5 [ICON_CITIZEN] Citizens in the City. +15% [ICON_GREAT_SCIENTIST] Great Scientist, [ICON_GREAT_ENGINEER] Great Engineer and [ICON_GREAT_MERCHANT] Great Merchant rate in the City.[NEWLINE][NEWLINE]City must not contain a [COLOR_NEGATIVE_TEXT]Salon[ENDCOLOR].'),
+('TXT_KEY_BUILDING_EE_ACADEMY_STRATEGY', 'The Academy is an Enlightenment era building which increases the [ICON_RESEARCH] Science output of a city. It may not be built in a city with an Salon, forcing cities to specialise in either Culture or Science.'),
 ('TXT_KEY_BUILDING_EE_ACADEMY_PEDIA', 'An academy is an organized body of scholars supported by state funding, though generally independent of direct government influence, that coordinates research, establishes standards for their respective fields, and maintain various research facilities within their jurisdiction. The amount of power and influence an academy yields varies considerable between nations. In some, the a single academy may oversee multiple, or all, scientific disciplines, while in others each discipline is guided by its own academy. While academies dedicated to the natural sciences began forming in the 1600s, they truly began to flourish in the 1700s as royalty throughout Europe followed the model set by Frederick III of Prussia when he founded the Prussian Academy of Sciences in 1700.'),
+-- Bastion
 ('TXT_KEY_BUILDING_EE_BASTION', 'Bastion'),
-('TXT_KEY_BUILDING_EE_BASTION_HELP', 'City must have a Castle.'),
+('TXT_KEY_BUILDING_EE_BASTION_HELP', '+150 HP and +15 [ICON_STRENGTH] Defense in the City. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Castle[ENDCOLOR].'),
 ('TXT_KEY_BUILDING_EE_BASTION_STRATEGY', 'The Bastion is an Enlightenment-era defensive building which increases both the hitpoints and defensive strength of the city where it is built. The city must possess a Castle before a Bastion can be built.'),
 ('TXT_KEY_BUILDING_EE_BASTION_PEDIA', 'A bastion is an angular projection extending from a fortification, specifically designed to address the changes gunpowder had brought to the landscape of war. Their angular shape eliminated dead space in front of the bastion, allowing neighboring bastions to fire upon enemies should they reach the base. Bastions tend to be short and broad, providing ample room for cannons and their crews while presenting a smaller profile for enemy artillery to attack. Should a cannonball strike the bastion and penetrate its stone facade, the interior of hard-packed earth and rubble would absorb the blow. Advances in artillery during the 19th Century, however, would render even these defensive measures obsolete.'),
+-- Cloth Mill
 ('TXT_KEY_BUILDING_EE_CLOTH_MILL', 'Cloth Mill'),
-('TXT_KEY_BUILDING_EE_CLOTH_MILL_HELP', 'Each source of [ICON_RES_COTTON] Cotton, [ICON_RES_SHEEP] Sheep and [ICON_RES_SILK] Silk worked by this City produces +2 [ICON_GOLD] Gold.'),
+('TXT_KEY_BUILDING_EE_CLOTH_MILL_HELP', 'Slightly increases [ICON_HAPPINESS_3] Poverty. +3 [ICON_PRODUCTION] Production in the City and +1 [ICON_PRODUCTION] Production for every 4 [ICON_CITIZEN] Citizens in the City. Each source of [ICON_RES_COTTON] Cotton, [ICON_RES_SHEEP] Sheep and [ICON_RES_SILK] Silk worked by this City produces +2 [ICON_GOLD] Gold.[NEWLINE][NEWLINE]City must be built next to a [COLOR_CYAN]River[ENDCOLOR].'),
 ('TXT_KEY_BUILDING_EE_CLOTH_MILL_STRATEGY', 'The Cloth Mill is an Enlightenment-era building which increases the production yield of the city, as well as the gold output of nearby sources of [ICON_RES_COTTON] Cotton, [ICON_RES_SHEEP] Sheep and [ICON_RES_SILK] Silk.'),
 ('TXT_KEY_BUILDING_EE_CLOTH_MILL_PEDIA', 'A cloth mill is an early mechanized workshop for the production of yarn and cloth that set the stage for the development of factories during the Industrial Revolution. Initially cloth mills were dependent upon fast-moving streams and rivers to drive their water wheels, but in time they would rely upon steam to turn their machinery. The first cloth mills were developed in northern England in 1740s, but soon spread the American colonies and beyond.'),
+-- Drydock
 ('TXT_KEY_BUILDING_EE_DRYDOCK', 'Drydock'),
-('TXT_KEY_BUILDING_EE_DRYDOCK_HELP', 'Naval units trained in this city have +15% combat strength. City must contain a Seaport.'),
-('TXT_KEY_BUILDING_EE_DRYDOCK_STRATEGY', 'The Drydock is an early Industrial Era building which increases the combat strength of naval units which are trained in the city. In order to build a Drydock, the city must first contain a Seaport.'),
+('TXT_KEY_BUILDING_EE_DRYDOCK_HELP', 'Naval units trained in this city have +15% [ICON_STRENGTH] Combat Strength. Increases the Military Unit Supply Cap from Population in the City by 10%. Increases City Hit Points by 100.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Harbor[ENDCOLOR].'),
+('TXT_KEY_BUILDING_EE_DRYDOCK_STRATEGY', 'The Drydock is a late Enlightenment Era building which increases the combat strength of naval units which are trained in the city. Increases the Military Unit Supply Cap from Population in the City and City Hit Points. In order to build a Drydock, the city must first contain a Harbor.'),
 ('TXT_KEY_BUILDING_EE_DRYDOCK_PEDIA', 'A drydock is a rectangular basin that can be flooded and drained to facilitate the construction and maintenance of ships and other watercraft.  Vessels are constructed or repaired in the drydock while it is drained. Once the vessel is ready to set sail, the dock is filled with water. Most drydocks are stationary docks built along the coast, though mobile floating drydocks exist that can take smaller vessels aboard for repairs.'),
+-- Gallery
 ('TXT_KEY_BUILDING_EE_GALLERY', 'Gallery'),
-('TXT_KEY_BUILDING_EE_GALLERY_HELP', 'Contains one Great Work of Art slot.'),
+('TXT_KEY_BUILDING_EE_GALLERY_HELP', '+1 [ICON_CULTURE] Culture for every 6 [ICON_CITIZEN] Citizens in the City. Contains one Great Work of Art slot. +15% [ICON_GREAT_ARTIST] Great Artist Rate in the City, and all Artists'' Guilds produce +1 [ICON_GOLD] Gold.'),
 ('TXT_KEY_BUILDING_EE_GALLERY_STRATEGY', 'The Gallery is a Renaissance-era cultural building. It has only one slot for a Great Work of Art or an artifact, but does not require prior Great Work buildings to have been constructed first.'),
 ('TXT_KEY_BUILDING_EE_GALLERY_PEDIA', 'Galleries are places where art is exhibited, either for the general public or for a private audience. Churches, monasteries, and the palaces of monarchs tended to serve as public galleries in medieval Europe, showcasing religious relics and paintings. Private collections held by nobility were also commonplace, and were often, upon condition, opened to the public.[NEWLINE][NEWLINE]By the 18th century, many of these private collections became nationalised and put on public display in newly established art museums. One of the most prestigious examples is the State Hermitage Museum in Russia, to which Catherine the Great purchased and donated many fine collections of art. Today, public galleries continue to be used as a means to display the cultural pride of a nation.'),
+-- Gunsmith
 ('TXT_KEY_BUILDING_EE_GUNSMITH', 'Gunsmith'),
-('TXT_KEY_BUILDING_EE_GUNSMITH_HELP', '15% [ICON_PRODUCTION] Production when building Gunpowder Units.'),
+('TXT_KEY_BUILDING_EE_GUNSMITH_HELP', 'Requires 1 [ICON_RES_IRON] Iron. +25% [ICON_PRODUCTION] Production when building Gunpowder, Armor and Siege Units which also receive additional 15 XP. Increases the Military Unit Supply Cap by 2.'),
 ('TXT_KEY_BUILDING_EE_GUNSMITH_STRATEGY', 'The Gunsmith increases the speed at which the city produces Gunpowder Units.'),
 ('TXT_KEY_BUILDING_EE_GUNSMITH_PEDIA', 'Gunsmiths are skilled craftsmen devoted to the design, modification, manufacture and repair of firearms. Before the advent of Eli Whitney''s Mill River Armory in the 1790s AD Samuel Colt''s mass production of handguns at his factories in Hartford (USA) and London (UK) in the mid-1800s, the gunsmith shop was a vital establishment in any "civilized" settlement.'),
+-- Manor
 ('TXT_KEY_BUILDING_EE_MANOR', 'Manor'),
-('TXT_KEY_BUILDING_EE_MANOR_HELP', '+15% Generation of [ICON_GREAT_PEOPLE] Great People'),
-('TXT_KEY_BUILDING_EE_MANOR_STRATEGY', 'Increases the rate at which great people are generated in a city.'),
+('TXT_KEY_BUILDING_EE_MANOR_HELP', 'Slightly reduces [ICON_HAPPINESS_3] Crime. +15% Generation of [ICON_GREAT_PEOPLE] Great People.'),
+('TXT_KEY_BUILDING_EE_MANOR_STRATEGY', 'Slightly reduces Crime. Increases the rate at which Great People are generated in a city.'),
 ('TXT_KEY_BUILDING_EE_MANOR_PEDIA', 'During the Middle Ages, the manor house was the dwelling of the lord of the manor (or the residential bailiff) and the administrative center of his feudal estate. The medieval manor was generally fortified in proportion to the degree of peaceful settlement of the country or region in which it was located. It served as the center of secular village life, and its great hall was the scene of the manorial court and the place of assembly of the tenantry. With increased prosperity and the desire for more commodious dwellings, the 16th-century manor house evolved into the Renaissance country house. In England more elaborate buildings were constructed, reflecting a new era of formality. The houses were frequently of regular quadrangular plan, with the hall diminished in size and importance. In later years the title of manor house in England lost particular significance, having been adopted by large country mansions that had no manorial foundation.'),
+-- Menagerie
 ('TXT_KEY_BUILDING_EE_MENAGERIE', 'Menagerie'),
-('TXT_KEY_BUILDING_EE_MENAGERIE_HELP', 'Cannot provide more [ICON_HAPPINESS_1] Happiness than there are citizens in the city. City must have a Tavern.'),
+('TXT_KEY_BUILDING_EE_MENAGERIE_HELP', 'Reduces [ICON_HAPPINESS_3] Boredom. Nearby Jungle and Forest tiles gain +1 [ICON_TOURISM] Tourism. Increases [ICON_RESEARCH] Science, [ICON_CULTURE] Culture and [ICON_GOLD] Gold.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Zoo[ENDCOLOR].'),
 ('TXT_KEY_BUILDING_EE_MENAGERIE_PEDIA', 'The oldest known zoological menagerie (or "zoo") has been excavated at Hierakonpolis and dates to c. 3500 BC; the oldest existing zoo, the Tiergarten Schoenbrunn in Vienna, evolved from the exotic animal collection maintained by the Habsburg dynasty and was opened to the public in 1765 AD.'),
-('TXT_KEY_BUILDING_EE_MENAGERIE_STRATEGY', 'A Menagerie increases the [ICON_HAPPINESS_1] Happiness of your empire, but it cannot provide more happiness than there are citizens in the city. The city must possess a Colosseum before the Menagerie can be constructed.'),
+('TXT_KEY_BUILDING_EE_MENAGERIE_STRATEGY', 'The Menagerie reduces Boredom in a city, and produces additional Science and Culture. The city must possess a Zoo before the Menagerie can be constructed.'),
+-- Salon
 ('TXT_KEY_BUILDING_EE_SALON', 'Salon'),
-('TXT_KEY_BUILDING_EE_SALON_HELP', 'City must not contain an Academy. Boosts [ICON_CULTURE] Culture output of the city by +25%.'),
+('TXT_KEY_BUILDING_EE_SALON_HELP', 'Reduces [ICON_HAPPINESS_3] Boredom. +2 [ICON_CULTURE] Culture in the the city and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens in the City. +15% [ICON_GREAT_ARTIST] Great Artist, [ICON_GREAT_MUSICIAN] Great Musician and [ICON_GREAT_WRITER] Great Writer rate in the City.[NEWLINE][NEWLINE]City must not contain an [COLOR_NEGATIVE_TEXT]Academy[ENDCOLOR].'),
 ('TXT_KEY_BUILDING_EE_SALON_PEDIA', 'A salon is a place where people would gather to participate in sophisticated discussion. First appearing in Italy during the 16th century, most salons are associated with those which flourished in France during the Enlightenment. There, the wealthy and intellectual would meet in order to entertain and to expand upon their knowledge of refinements such as art, philosophy, and poetry. Salons were often the staging point for the great literary and philosophical movements of the 18th and 19th centuries.'),
-('TXT_KEY_BUILDING_EE_SALON_STRATEGY', 'The Salon is an Enlightenment-era building which increases the [ICON_CULTURE] Culture output of a city by 25%. It may not be built in a city with an Academy, forcing cities to specialise in either Culture or Science.'),
+('TXT_KEY_BUILDING_EE_SALON_STRATEGY', 'The Salon is an Enlightenment-era building which increases the [ICON_CULTURE] Culture output of a city. It may not be built in a city with an Academy, forcing cities to specialise in either Culture or Science.'),
+-- Tavern
 ('TXT_KEY_BUILDING_EE_TAVERN', 'Tavern'),
-('TXT_KEY_BUILDING_EE_TAVERN_HELP', 'It cannot provide more [ICON_HAPPINESS_1] Happiness than there are [ICON_CITIZEN] Citizens in the city. City must contain a Colosseum.'),
+('TXT_KEY_BUILDING_EE_TAVERN_HELP', 'Slightly reduces [ICON_HAPPINESS_3] Boredom but increases [ICON_HAPPINESS_3] Crime. Nearby [ICON_RES_WHEAT] Wheat, [ICON_RES_DEER] Deer, [ICON_RES_FISH] Fish , [ICON_RES_WINE] Wine and [ICON_RES_BISON] Bison: +1 [ICON_FOOD] Food.'),
 ('TXT_KEY_BUILDING_EE_TAVERN_STRATEGY', 'The Tavern increases the happiness output of the city. In order to build the Tavern, a city must first contain a Collosseum.'),
 ('TXT_KEY_BUILDING_EE_TAVERN_PEDIA', 'Establishments for the dispensation and consumption of alcoholic beverages have been a fixture of cities throughout human civilization. The Babylonian Code of Hammurabi suggests the death penalty for proprietors diluting beer, while the ancient Greek lesche and phatnai catered to the needs of foreign traders and envoys. The traditional English tavern has its roots in the Roman period and, although still considered a place of ill-repute, the taberna was understood as a higher class establishment than the similar caupona which served slaves and the lower classes. Tabernae eventually evolved into alehouses run by women and finally the medieval English inn; sanctuaries for wayfaring strangers, thieves, and political malcontents. By the middle of the 16th century the dining-out habit was well established among townsmen of all classes, and the tavern originated the custom of providing a daily meal at a fixed time. As taverns gradually became more socially acceptable, some of the better houses became regular meeting halls and unofficial clubhouses providing companionship to the masses.'),
+-- Weigh House
 ('TXT_KEY_BUILDING_EE_WEIGH_HOUSE', 'Weigh House'),
-('TXT_KEY_BUILDING_EE_WEIGH_HOUSE_HELP', 'Boosts [ICON_GOLD] Gold output of the city by 25%. City must contain a Bank.'),
+('TXT_KEY_BUILDING_EE_WEIGH_HOUSE_HELP', '+3 [ICON_GOLD] Gold in the the city and +1 [ICON_GOLD] Gold for every 6 [ICON_CITIZEN] Citizens in the City. Adds a [ICON_GREAT_MERCHANT] Merchant Specialist.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Bank[ENDCOLOR].'),
 ('TXT_KEY_BUILDING_EE_WEIGH_HOUSE_STRATEGY', 'The weigh house improves the [ICON_GOLD] Gold output of a city. In order to be built, the city must first contain a bank.'),
 ('TXT_KEY_BUILDING_EE_WEIGH_HOUSE_PEDIA', 'A weigh house is building in which goods are weighed so that taxes might be reliably levied on trade within a city and that disputes regarding the quantity and quality of trade goods might be accurately resolved. Such buildings might be controlled by the city, merchant guilds, or, more rarely, but foreign merchants granted special privileges within the city. Prior to the spread of international standard measurements, a typical weigh house could be found near a city’s market or center, or within its town hall, guild hall, or courthouse.');
+
+-- Museum
+UPDATE Language_en_US
+SET Text = '+1 [ICON_CULTURE] Culture for every 4 [ICON_CITIZEN] Citizens in the City. Contains two Great Work of Art slots. +25% [ICON_GREAT_ARTIST] Great Artist Rate in the City. +5 [ICON_CULTURE] Culture if Themed.'
+WHERE Tag = 'TXT_KEY_BUILDING_MUSEUM_HELP';
+
+-- Ostrog
+UPDATE Language_en_US
+SET Text = '+1 [ICON_PRODUCTION] Production and [ICON_GOLD] Gold to Camps, Mines, and Lumbermills. Decreases tile [ICON_CULTURE] Culture and [ICON_GOLD] Gold cost in the City by 50%. Enemy land Units must expend 1 extra [ICON_MOVES] movement per Tile if they move into a Tile worked by this City.[NEWLINE][NEWLINE]+150 HP and +15 [ICON_STRENGTH] Defense in the City. Military Units supplied by this City''s population increased by 10%.'
+WHERE Tag = 'TXT_KEY_BUILDING_KREPOST_HELP';
+
+-- Arsenal
+UPDATE Language_en_US
+SET Text = '+100 HP and +10 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Bastion[ENDCOLOR].'
+WHERE Tag = 'TXT_KEY_BUILDING_ARSENAL_HELP';
+UPDATE Language_en_US
+SET Text = 'The Arsenal is an Industrial-era military building that increases city''s Defense Strength and Hit Points, making it more difficult to capture. Increases number of Military Units supplied by this City''s population. The city must possess a Bastion before it can construct an Arsenal.'
+WHERE Tag = 'TXT_KEY_BUILDING_ARSENAL_STRATEGY';
+
+-- Military Base
+UPDATE Language_en_US
+SET Text = '+20% [ICON_PRODUCTION] Production of Air units, +10 [ICON_STRENGTH] Damage to Air Units during Air Strikes on City. Garrisoned units receive an additional 10 Health when healing in this city. Foreign Spies cannot steal [ICON_RESEARCH] Science from this City. +150 HP and +20 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have an [COLOR_CYAN]Arsenal[ENDCOLOR].'
+WHERE Tag = 'TXT_KEY_BUILDING_MILITARY_BASE_HELP';
+UPDATE Language_en_US
+SET Text = 'The Military Base is a late-game building which greatly increases city''s Defensive Strength and Hit Points. Garrisoned units receive an additional 10 Health when healing in this city. Increases number of Military Units supplied by this City''s population. The city must possess an Arsenal before a Military Base may be constructed.'
+WHERE Tag = 'TXT_KEY_BUILDING_MILITARY_BASE_STRATEGY';
+
+-- Seaport
+UPDATE Language_en_US
+SET Text = 'Requires 1 [ICON_RES_COAL] Coal. +200 Hit Points in the City. +25% [ICON_PRODUCTION] Production in City. +1 [ICON_PRODUCTION] Production and +1 [ICON_GOLD] Gold from all Ocean and Coastal tiles. +2 [ICON_PRODUCTION] Production and [ICON_GOLD] Gold from Sea Resources worked by this City. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must be built on the coast, and cannot have a Train Station in the City.'
+WHERE Tag = 'TXT_KEY_BUILDING_SEAPORT_HELP';
+
+-- Minefield
+UPDATE Language_en_US
+SET Text = 'Requires 1 [ICON_RES_IRON] Iron. Enemy Naval Units and Embarked Units must expend 1 extra [ICON_MOVES] movement per Tile if they move into a Tile worked by this City. Increases City Defense by 15 and City Hit Points by 250.[NEWLINE][NEWLINE]City must be built on the coast.'
+WHERE Tag = 'TXT_KEY_BUILDING_MINEFIELD_HELP';

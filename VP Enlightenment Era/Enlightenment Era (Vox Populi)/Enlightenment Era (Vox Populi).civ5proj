@@ -9,10 +9,10 @@
     <Stability>Stable</Stability>
     <Teaser>Expands the game to include the [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR]. Version 1.0</Teaser>
     <Description>The [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR] was a period in which scientific thought advanced dramatically.
-[NEWLINE][NEWLINE]Requires Vox Populi. Version 1.0.</Description>
-    <Authors>Pouakai, JFD, Janboruta, Sukritact, Infixo</Authors>
-    <SpecialThanks>
-    </SpecialThanks>
+[NEWLINE]Requires Vox Populi. Version 1.0.
+[NEWLINE][NEWLINE]Main authors: Pouakai, Janboruta, Sukritact - EE, zwei833 - RER. Vox Populi version created by Infixo.</Description>
+    <Authors>Pouakai, JFD, Janboruta, Sukritact, zwei833, Infixo</Authors>
+    <SpecialThanks>Xony, pandasnail, phantomaxl1207, barrizqi, Chrisy15, Enginseer, Padre19, Aldebaran1997, Gazebo</SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
     <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
     <SupportsSinglePlayer>true</SupportsSinglePlayer>
@@ -22,27 +22,6 @@
     <AssemblyName>Enlightenment Era (Vox Populi)</AssemblyName>
     <RootNamespace>Enlightenment Era (Vox Populi)</RootNamespace>
     <ModReferences>
-      <Association>
-        <Type>Mod</Type>
-        <Name>(6a) CBO Compatibility (EUI)</Name>
-        <Id>24923240-e4fb-4bf6-8f0e-6e5b6cf4d3c2</Id>
-        <MinVersion>0</MinVersion>
-        <MaxVersion>999</MaxVersion>
-      </Association>
-      <Association>
-        <Type>Mod</Type>
-        <Name>(6b) CBO Compatibility (No-EUI)</Name>
-        <Id>828b5b4b-7c62-4afb-a43f-034b596ef5e4</Id>
-        <MinVersion>0</MinVersion>
-        <MaxVersion>999</MaxVersion>
-      </Association>
-      <Association>
-        <Type>Mod</Type>
-        <Name>(6c) 43 Civs CP</Name>
-        <Id>6521c02b-1c78-4826-a5b0-faed86235e98</Id>
-        <MinVersion>0</MinVersion>
-        <MaxVersion>999</MaxVersion>
-      </Association>
     </ModReferences>
     <ReloadAudioSystem>true</ReloadAudioSystem>
     <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
@@ -128,11 +107,6 @@
         <Type>UpdateDatabase</Type>
         <FileName>SQL/EEVP_Other.sql</FileName>
       </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/EEVP_Text_en_US.sql</FileName>
-      </Action>
     </ModActions>
     <ModContent>
       <Content>
@@ -149,11 +123,18 @@
       </Content>
     </ModContent>
     <ModDependencies>
-      <Association xmlns="">
+      <Association>
         <Type>Mod</Type>
         <Name>(2) Community Balance Overhaul</Name>
         <Id>8411a7a8-dad3-4622-a18e-fcc18324c799</Id>
         <MinVersion>13</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(3) City-State Diplomacy Mod for CBP</Name>
+        <Id>eead0050-1e3f-4178-a91f-26cf1881ac39</Id>
+        <MinVersion>27</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>
     </ModDependencies>
@@ -180,6 +161,7 @@
         <MaxVersion>999</MaxVersion>
       </Association>
     </ModBlockers>
+    <Homepage>http://forums.civfanatics.com/threads/enlightenment-era-for-vox-populi.610282/</Homepage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -661,10 +643,6 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Credits.txt">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="Lua\JFD_FirstRate_Functions.lua">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
@@ -802,10 +780,6 @@
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="SQL\EEVP_Techs.sql">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="SQL\EEVP_Text_en_US.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

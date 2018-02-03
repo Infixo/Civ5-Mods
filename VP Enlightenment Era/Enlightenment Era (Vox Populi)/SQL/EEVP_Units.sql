@@ -96,10 +96,6 @@ INSERT INTO Unit_AITypes (UnitType, UnitAIType) VALUES
 ('UNIT_EE_CARRACK', 'UNITAI_RESERVE_SEA'),
 ('UNIT_EE_CARRACK', 'UNITAI_ESCORT_SEA'),
 ('UNIT_EE_CARRACK', 'UNITAI_EXPLORE_SEA'),
---('UNIT_EE_GALLEON', 'UNITAI_ATTACK_SEA'),
---('UNIT_EE_GALLEON', 'UNITAI_RESERVE_SEA'),
---('UNIT_EE_GALLEON', 'UNITAI_ESCORT_SEA'),
---('UNIT_EE_GALLEON', 'UNITAI_EXPLORE_SEA'),
 ('UNIT_EE_GALLEON', 'UNITAI_ASSAULT_SEA'),
 ('UNIT_EE_GALLEON', 'UNITAI_RESERVE_SEA'),
 ('UNIT_EE_GALLEON', 'UNITAI_ESCORT_SEA'),
@@ -125,10 +121,6 @@ UPDATE Units
 SET ObsoleteTech = 'TECH_STEAM_POWER', BaseSightRange = 3, NoBadGoodies = 1
 WHERE Type = 'UNIT_EE_EXPLORER';
 
---UPDATE Units
---SET NoBadGoodies = 1
---WHERE Type = 'UNITCLASS_EE_EXPLORER';
-
 UPDATE Units
 SET ObsoleteTech = 'TECH_COMPASS'
 WHERE Type = 'UNIT_SCOUT';
@@ -147,41 +139,10 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_EXPLORER', 'PROMOTION_SCOUT_GOODY_BONUS'),
 ('UNIT_EE_EXPLORER', 'PROMOTION_SCOUTING_1');
 
--- Infixo: Scout -> Explorer
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_EXPLORER'
---WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_SCOUT');
-
 -- Explorer -> Adventurer
 UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_EXPLORER' -- Adventurer
 WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_EXPLORER');
-
--- Adventurer -> Zeppelin
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_EXPLORER', 'UNITCLASS_ZEPPELIN');
-
--------------------------------------------------------
--- Heavy Skirmisher upgrade
--------------------------------------------------------
---UPDATE Units
---SET ObsoleteTech = 'TECH_METALLURGY', GoodyHutUpgradeUnitClass = 'UNITCLASS_CUIRASSIER' 
---WHERE Class = 'UNITCLASS_MOUNTED_BOWMAN';
-
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_CUIRASSIER'
---WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_MOUNTED_BOWMAN');
-
--------------------------------------------------------
--- Knight upgrade (revert to original CBO)
--------------------------------------------------------
---UPDATE Units
---SET ObsoleteTech = 'TECH_EE_EXPLORATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_LANCER' 
---WHERE Class = 'UNITCLASS_KNIGHT';
-
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_LANCER'
---WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_KNIGHT');
 
 -------------------------------------------------------
 -- Tercio upgrade
@@ -243,10 +204,6 @@ UPDATE Units
 SET IgnoreBuildingDefense = 1, MoveRate = 'QUADRUPED', BaseLandAirDefense = 2
 WHERE Type = 'UNIT_EE_UHLAN';
 
--- Uhlan -> Landship
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_UHLAN', 'UNITCLASS_WWI_TANK');
-
 -- Lancer -> Uhlan
 UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_UHLAN'
@@ -257,10 +214,6 @@ VALUES ('UNIT_EE_UHLAN', 'RESOURCE_HORSE');
 
 UPDATE Units SET ObsoleteTech = 'TECH_RIFLING', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_UHLAN' 
 WHERE Type = 'UNIT_LANCER';
-
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_WWI_TANK'
---WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_EE_UHLAN');
 
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_UHLAN', 'PROMOTION_NO_DEFENSIVE_BONUSES'),
@@ -273,6 +226,7 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 -- Sipahi were two types of Ottoman cavalry corps
 -- The Polish Hussars or Winged Hussars, were one of the main types of the cavalry in the Polish-Lithuanian Commonwealth between the 16th and 18th centuries
 -------------------------------------------------------
+
 UPDATE Units
 SET ObsoleteTech = 'TECH_COMBUSTION'
 WHERE Type IN ('UNIT_OTTOMAN_SIPAHI', 'UNIT_POLISH_WINGED_HUSSAR');
@@ -305,10 +259,6 @@ UPDATE Units
 SET RangedCombat = 35, Range = 2
 WHERE Type = 'UNIT_EE_SKIRMISHER';
 
--- Light Infantry -> Gatling Gun
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_SKIRMISHER', 'UNITCLASS_GATLINGGUN');
-
 -- Infixo: proper upgrade for Musketman and Civs' uniques
 UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_SKIRMISHER'
@@ -332,10 +282,6 @@ UPDATE Units
 SET IgnoreBuildingDefense = 1, Conscription = 5
 WHERE Type = 'UNIT_EE_LINE_INFANTRY';
 
--- Line Infantry -> Rifleman
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_LINE_INFANTRY', 'UNITCLASS_RIFLEMAN');
-
 INSERT INTO Unit_FreePromotions	(UnitType, PromotionType)
 VALUES ('UNIT_EE_LINE_INFANTRY', 'PROMOTION_ANTI_MOUNTED_I');
 
@@ -346,6 +292,7 @@ VALUES ('UNIT_EE_LINE_INFANTRY', 'PROMOTION_ANTI_MOUNTED_I');
 -------------------------------------------------------
 -- American Minuteman
 -------------------------------------------------------
+
 UPDATE Civilization_UnitClassOverrides Set UnitClassType = 'UNITCLASS_EE_LINE_INFANTRY' WHERE UnitType = 'UNIT_AMERICAN_MINUTEMAN';
 
 UPDATE Units 
@@ -366,12 +313,6 @@ DELETE From Unit_FreePromotions WHERE UnitType = 'UNIT_AMERICAN_MINUTEMAN' AND P
 DELETE From Unit_FreePromotions WHERE UnitType = 'UNIT_AMERICAN_MINUTEMAN' AND PromotionType = 'PROMOTION_ONLY_DEFENSIVE';
 DELETE From Unit_FreePromotions WHERE UnitType = 'UNIT_AMERICAN_MINUTEMAN' AND PromotionType = 'PROMOTION_BARRAGE_1';
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) SELECT 'UNIT_AMERICAN_MINUTEMAN', 'PROMOTION_DRILL_1';
-
--- Polynesian UA
-INSERT INTO Trait_BuildsUnitClasses	(TraitType, UnitClassType, BuildType)
-VALUES
-	('TRAIT_WAYFINDING', 'UNITCLASS_EE_CARRACK', 'BUILD_FISHING_BOATS'),
-	('TRAIT_WAYFINDING', 'UNITCLASS_EE_SHIP_OF_THE_LINE', 'BUILD_FISHING_BOATS');
 
 -------------------------------------------------------
 -- Field Gun and Howitzer
@@ -423,30 +364,6 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 -- Carrack, Portuguese Nau
 -------------------------------------------------------
 
--- Infixo: changed back, in Renaissance all ships could travel through ocean
---DELETE FROM Unit_FreePromotions WHERE UnitType IN ('UNIT_EE_CARRACK') AND PromotionType = 'PROMOTION_OCEAN_IMPASSABLE';
-
---UPDATE Units 
--- Infixo: tweaked parameters to be aligned with other Renaissance naval units
---SET PrereqTech = 'TECH_ASTRONOMY', ObsoleteTech = 'TECH_NAVIGATION', Combat = 30, Moves = 5, GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER' -- Corvette
---WHERE Type = 'UNIT_EE_CARRACK';
-
--- Carrack -> Corvette
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_PRIVATEER'
---WHERE UnitType = 'UNIT_EE_CARRACK';
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_CARRACK', 'UNITCLASS_PRIVATEER');
-
--- Trireme changes (obsolete?)
---UPDATE Units
---SET GoodyHutUpgradeUnitClass = 'UNITCLASS_CARAVEL' 
---WHERE Class = 'UNITCLASS_TRIREME';
-
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_CARAVEL'
---WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_TRIREME');
-
 -- Caravel changes (->Carrack)
 UPDATE Units
 SET ObsoleteTech = 'TECH_ASTRONOMY', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_CARRACK', Combat = 24
@@ -470,9 +387,16 @@ UPDATE Units SET PrereqTech = 'TECH_EE_EXPLORATION' WHERE Type = 'UNIT_DUTCH_SEA
 
 UPDATE Units SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD' WHERE Type = 'UNIT_PRIVATEER'; -- Corvette
 
+-- Polynesian UA
+INSERT INTO Trait_BuildsUnitClasses	(TraitType, UnitClassType, BuildType)
+VALUES
+	('TRAIT_WAYFINDING', 'UNITCLASS_EE_CARRACK', 'BUILD_FISHING_BOATS'),
+	('TRAIT_WAYFINDING', 'UNITCLASS_EE_SHIP_OF_THE_LINE', 'BUILD_FISHING_BOATS');
+
 -------------------------------------------------------
 -- English UU - classic CBP SotL
 -------------------------------------------------------
+
 UPDATE Units
 SET PrereqTech = 'TECH_NAVIGATION', ObsoleteTech = 'TECH_DYNAMITE', GoodyHutUpgradeUnitClass = 'UNITCLASS_CRUISER', Civilopedia = 'TXT_KEY_UNIT_EE_ENGLISH_FIRST_RATE_PEDIA',
 	Combat = 24, RangedCombat = 34, ShowInPedia = 1,
@@ -494,22 +418,9 @@ UPDATE Units
 SET RangedCombat = 26, Range = 1
 WHERE Type = 'UNIT_EE_GALLEON';
 
--- Galleon -> Frigate
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_FRIGATE'
---WHERE UnitType = 'UNIT_EE_GALLEON';
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_GALLEON', 'UNITCLASS_FRIGATE');
-
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_GALLEON', 'PROMOTION_ONLY_DEFENSIVE'),
 ('UNIT_EE_GALLEON', 'PROMOTION_CAN_MOVE_AFTER_ATTACKING');
-
---DELETE FROM Unit_AITypes WHERE UnitType = 'UNIT_EE_GALLEON';
---INSERT INTO Unit_AITypes (UnitType, UnitAIType) VALUES
---('UNIT_EE_GALLEON', 'UNITAI_ASSAULT_SEA'),
---('UNIT_EE_GALLEON', 'UNITAI_RESERVE_SEA'),
---('UNIT_EE_GALLEON', 'UNITAI_ESCORT_SEA');
 
 -- Galleass changes
 UPDATE Units
@@ -534,15 +445,6 @@ UPDATE Units
 SET GoodyHutUpgradeUnitClass = 'UNITCLASS_CRUISER', PrereqTech = 'TECH_EE_WARSHIPS', ObsoleteTech = 'TECH_DYNAMITE'
 WHERE Type = 'UNIT_FRIGATE';
 
---UPDATE Unit_ClassUpgrades
---SET UnitClassType = 'UNITCLASS_CRUISER'
---WHERE UnitType = 'UNIT_FRIGATE';
-
--- Infixo: fixing resource requirements
--- VP removed Iron req from Ships before Industrial Era
--- INSERT INTO Unit_ResourceQuantityRequirements (UnitType, ResourceType, Cost)
--- VALUES ('UNIT_FRIGATE', 'RESOURCE_IRON', 1);
-
 UPDATE Units
 SET IconAtlas = 'ENLIGHTENMENT_UNIT_ATLAS', PortraitIndex = 7
 WHERE Type = 'UNIT_CRUISER';
@@ -551,21 +453,9 @@ WHERE Type = 'UNIT_CRUISER';
 -- Ship of the Line - new strong naval melee unit
 -------------------------------------------------------
 
---UPDATE Units
---SET ObsoleteTech = 'TECH_INDUSTRIALIZATION', Combat = 40, GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD'
---WHERE Type = 'UNIT_EE_SHIP_OF_THE_LINE';
-
--- SotL -> Ironclad
---INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
---VALUES ('UNIT_EE_SHIP_OF_THE_LINE', 'UNITCLASS_IRONCLAD');
-
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_SHIP_OF_THE_LINE', 'PROMOTION_EE_FIRST_RATE'),
 ('UNIT_EE_SHIP_OF_THE_LINE', 'PROMOTION_EXTRA_SIGHT_I');
-	
--- Infixo: VP removed Iron req from ships before Industrial Era
---DELETE FROM Unit_ResourceQuantityRequirements
---WHERE UnitType = 'UNIT_EE_SHIP_OF_THE_LINE';
 
 -------------------------------------------------------
 -- Align flavors
@@ -590,18 +480,6 @@ INSERT INTO Unit_Flavors (UnitType, FlavorType, Flavor) VALUES
 ('UNIT_EE_GALLEON',   'FLAVOR_NAVAL_RECON', 13),
 ('UNIT_EE_SHIP_OF_THE_LINE','FLAVOR_NAVAL', 25),
 ('UNIT_EE_SHIP_OF_THE_LINE','FLAVOR_NAVAL_RECON', 25);
-
---UPDATE Unit_Flavors SET Flavor =  5 WHERE UnitType = 'UNIT_EE_FIELD_GUN' AND FlavorType = 'FLAVOR_OFFENSE';
---UPDATE Unit_Flavors SET Flavor = 13 WHERE UnitType = 'UNIT_EE_LINE_INFANTRY' AND FlavorType = 'FLAVOR_OFFENSE';
-
---UPDATE Unit_Flavors SET Flavor = 20 WHERE UnitType = 'UNIT_EE_CARRACK' AND FlavorType = 'FLAVOR_NAVAL';
---UPDATE Unit_Flavors SET Flavor = 25 WHERE UnitType = 'UNIT_EE_CARRACK' AND FlavorType = 'FLAVOR_NAVAL_RECON';
-
---UPDATE Unit_Flavors SET Flavor = 25 WHERE UnitType = 'UNIT_EE_GALLEON' AND FlavorType = 'FLAVOR_NAVAL';
---UPDATE Unit_Flavors SET Flavor = 13 WHERE UnitType = 'UNIT_EE_GALLEON' AND FlavorType = 'FLAVOR_NAVAL_RECON';
-
---UPDATE Unit_Flavors SET Flavor = 25 WHERE UnitType = 'UNIT_EE_SHIP_OF_THE_LINE' AND FlavorType = 'FLAVOR_NAVAL';
---UPDATE Unit_Flavors SET Flavor = 25 WHERE UnitType = 'UNIT_EE_SHIP_OF_THE_LINE' AND FlavorType = 'FLAVOR_NAVAL_RECON';
 
 -------------------------------------------------------
 -- Align unit costs and make gold purchases available
@@ -692,50 +570,118 @@ INSERT INTO UnitGameplay2DScripts (UnitType, SelectionSound, FirstSelectionSound
 ----------------------------------------------------
 
 INSERT INTO Language_en_US (Tag, Text) VALUES
+-- Carrack
 ('TXT_KEY_UNIT_EE_CARRACK', 'Carrack'),
-('TXT_KEY_UNIT_EE_CARRACK_HELP', 'Medieval era melee naval unit used to gain early naval supremacy.'),
+('TXT_KEY_UNIT_EE_CARRACK_HELP', 'Early Renaissance era melee naval unit used to gain early naval supremacy.'),
 ('TXT_KEY_UNIT_EE_CARRACK_PEDIA', 'Developed by the Genoese Republic for commercial purposes, a carrack is three- or four-masted sailing vessel. Utilized by Spain and Portugal for oceanic travel and exploration, the carrack was one of the most influential ship designs in history. Large and roomy to carry cargo across vast distances, they were used heavily across the Atlantic and Indian oceans, carrying new found wealth and resources back to the great cities of Europe. One of the most famous ships to go down a history, the Santa Maria, was a carrack that carried Columbus and his crew to discover the new world. Another famous ship of this design belongs to Vasco Da Gama, the Portuguese explorer who circumnavigated Africa, discovering a new route to spices of India. The end of the carrack came at the hands of the galleon. Developed from the carrack, the first galleons became a reality in the mid 16th century, though the carrack would persist for several more decades.'),
-('TXT_KEY_UNIT_EE_CARRACK_STRATEGY', 'The Carrack upgrades from the Trireme. It still cannot enter ocean tiles.  However, it is significantly stronger, allowing you to better secure your coastal cities from seafaring Barbarians or counterattacks from enemy Civilizations.  Its early increased combat strength means it can be used, with support, to take small cities with low Defensive Strength.'),
-('TXT_KEY_UNIT_EE_CRUISER', 'Cruiser'),
-('TXT_KEY_UNIT_EE_CRUISER_HELP', 'Extremely powerful Industrial Era ranged naval Unit used to wrest control of the seas.'),
-('TXT_KEY_UNIT_EE_CRUISER_STRATEGY', 'A technological bridge between the Frigate and the Battleship, Cruisers move at the same speed as its predecessor but boasts a much stronger Combat Strength.  The Cruiser easily outguns an outdated navy, even without any added maneuverability.'),
-('TXT_KEY_UNIT_EE_CRUISER_PEDIA', 'The word cruiser was applied originally to frigates of the sailing era, which, being smaller and faster than ships of the line, cruised the seas scouting for enemy fleets and hunting enemy convoys. As the designation for a specific type of warship, cruiser did not become current until about 1880, when navies had settled on iron-hulled ships powered either by a combination of sail and steam or solely by steam. Cruiser, then, became the standard designation for a large surface warship built for high speed and great cruising radius, capable of not only defending its own fleet and coastlines but also threatening those of the enemy. By about 1900, cruisers were of two principal kinds: protected cruisers had steel armour plating only on their decks, while armoured cruisers also had armour extending down the sides of the hull. Though smaller than battleships, cruisers were powerful warships because of their great speed and relatively big guns.'),
-('TXT_KEY_UNIT_EE_CUIRASSIER', 'Cuirassier'),
-('TXT_KEY_UNIT_EE_CUIRASSIER_HELP', 'Fast Enlightenment Era mounted Unit.  Vulnerable to Lancers and Uhlans.'),
-('TXT_KEY_UNIT_EE_CUIRASSIER_PEDIA', 'Cuirassiers were European cavalry rigged with firearms and a cuirass, which was the name of their armour. A cuirass is a single or multiple pieces of metal which usually covered the front of the torso. About the middle of the century, the breastplate of the cuirass was made in two parts; the lower adjusted to overlap the upper, held together with a strap or sliding rivet in order to add flexibility to the advantages plate armour had over mail.Primarily fielded in the 15th century, the Cuirassier grew to a heightened prominence during the Napoleonic wars, where it was heavily recruited and equipped with swords as their primary weapon. Cuirassiers continued to be employed into the early ravages of the Great War and continue their ceremonial use as regiments to this day.'),
-('TXT_KEY_UNIT_EE_CUIRASSIER_STRATEGY', 'The Enlightenment Era cavalry unit, the Cuirassier has an increased strength over the medieval Knight while moving at the same speed.  It is vulnerable to anti-mounted units such as Lancers and Uhlans.'),
-('TXT_KEY_UNIT_EE_EXPLORER', 'Explorer'),
+('TXT_KEY_UNIT_EE_CARRACK_STRATEGY', 'The Carrack upgrades from the Caravel. It allows you to better secure your coastal cities from seafaring Barbarians or counterattacks from enemy Civilizations.  Its early increased combat strength means it can be used, with support, to take small cities with low Defensive Strength.'),
+-- Cruiser
+--('TXT_KEY_UNIT_EE_CRUISER', 'Cruiser'),
+--('TXT_KEY_UNIT_EE_CRUISER_HELP', 'Extremely powerful Industrial Era ranged naval Unit used to wrest control of the seas.'),
+--('TXT_KEY_UNIT_EE_CRUISER_STRATEGY', 'A technological bridge between the Frigate and the Battleship, Cruisers move at the same speed as its predecessor but boasts a much stronger Combat Strength.  The Cruiser easily outguns an outdated navy, even without any added maneuverability.'),
+--('TXT_KEY_UNIT_EE_CRUISER_PEDIA', 'The word cruiser was applied originally to frigates of the sailing era, which, being smaller and faster than ships of the line, cruised the seas scouting for enemy fleets and hunting enemy convoys. As the designation for a specific type of warship, cruiser did not become current until about 1880, when navies had settled on iron-hulled ships powered either by a combination of sail and steam or solely by steam. Cruiser, then, became the standard designation for a large surface warship built for high speed and great cruising radius, capable of not only defending its own fleet and coastlines but also threatening those of the enemy. By about 1900, cruisers were of two principal kinds: protected cruisers had steel armour plating only on their decks, while armoured cruisers also had armour extending down the sides of the hull. Though smaller than battleships, cruisers were powerful warships because of their great speed and relatively big guns.'),
+-- Cuirassier
+--('TXT_KEY_UNIT_EE_CUIRASSIER', 'Cuirassier'),
+--('TXT_KEY_UNIT_EE_CUIRASSIER_HELP', 'Fast Enlightenment Era mounted Unit.  Vulnerable to Lancers and Uhlans.'),
+--('TXT_KEY_UNIT_EE_CUIRASSIER_PEDIA', 'Cuirassiers were European cavalry rigged with firearms and a cuirass, which was the name of their armour. A cuirass is a single or multiple pieces of metal which usually covered the front of the torso. About the middle of the century, the breastplate of the cuirass was made in two parts; the lower adjusted to overlap the upper, held together with a strap or sliding rivet in order to add flexibility to the advantages plate armour had over mail.Primarily fielded in the 15th century, the Cuirassier grew to a heightened prominence during the Napoleonic wars, where it was heavily recruited and equipped with swords as their primary weapon. Cuirassiers continued to be employed into the early ravages of the Great War and continue their ceremonial use as regiments to this day.'),
+--('TXT_KEY_UNIT_EE_CUIRASSIER_STRATEGY', 'The Enlightenment Era cavalry unit, the Cuirassier has an increased strength over the medieval Knight while moving at the same speed.  It is vulnerable to anti-mounted units such as Lancers and Uhlans.'),
+-- Adventurer
+('TXT_KEY_UNIT_EE_EXPLORER', 'Adventurer'),
 ('TXT_KEY_UNIT_EE_EXPLORER_HELP', 'Recon unit. Can see further and has additional movement while embarked.'),
-('TXT_KEY_UNIT_EE_EXPLORER_PEDIA', 'Throughout history there are those whose thirst for adventure led them from the safe confines of civilized lands. These explorers, frequently funded by government stipends, would then journey into the unknown, charting their progress all the way. These expeditions, and the maps they helped create, became blueprints for the conquest and domestication of the once uncharted regions of the world.'),
-('TXT_KEY_UNIT_EE_EXPLORER_STRATEGY', 'An upgrade to the Scout.  The Explorer has even more movement and strength, although is still quite weak.  The Explorer excels at sea exploration, as it is able to move further while embarked.  Use it to finish meeting all the other Civilizations, or scout out locations for overseas colonies.'),
+('TXT_KEY_UNIT_EE_EXPLORER_PEDIA', 'Throughout history there are those whose thirst for adventure led them from the safe confines of civilized lands. These adventurers, frequently funded by government stipends, would then journey into the unknown, charting their progress all the way. These expeditions, and the maps they helped create, became blueprints for the conquest and domestication of the once uncharted regions of the world.'),
+('TXT_KEY_UNIT_EE_EXPLORER_STRATEGY', 'An upgrade to the Explorer. The Adventurer has even more movement and strength, although is still quite weak.  The Adventurer excels at sea exploration, as it is able to move further while embarked.  Use it to finish meeting all the other Civilizations, or scout out locations for overseas colonies.'),
+-- Field Gun
 ('TXT_KEY_UNIT_EE_FIELD_GUN', 'Field Gun'),
-('TXT_KEY_UNIT_EE_FIELD_GUN_HELP', 'Enlightenment Era artillery unit.  Must set up before firing.'),
+('TXT_KEY_UNIT_EE_FIELD_GUN_HELP', 'Enlightenment Era artillery unit. Moves at half-speed in enemy territory.'),
 ('TXT_KEY_UNIT_EE_FIELD_GUN_PEDIA', 'A field gun is a piece of light artillery that can be easily moved around the battlefield. During his wars in Europe, Napoleon used field guns to great effect. His employment of very large wheels allowed his guns to be quickly moved in the midst of battle, meaning enemy formations could be easily broken up. This strategy gradually became obsolete, however, as the development of road and rail, and the changing nature of the battlefield, allowed for most kinds of artillery to be moved at respectable speed.[NEWLINE][NEWLINE]By the beginning of the Second World War, the term "field gun" had come to mean any long-range artillery piece that fired at a low angle. However, because of the demand for artillery which could fire at both long-range and a high angle during the later stages of World War II, field guns became largely supplanted by howitzers, and today the term sees no widespread application.'),
-('TXT_KEY_UNIT_EE_FIELD_GUN_STRATEGY', 'The Field Gun is the Enlightenment Era artillery unit.  While its range remains the same as the Cannon, from which it upgrades, it is much stronger.  Like other siege units, it cannot see very far and must be protected.  It also must expend movement to set up – but Field Guns are essential to Enlightenment conquests.'),
+('TXT_KEY_UNIT_EE_FIELD_GUN_STRATEGY', 'The Field Gun is the Enlightenment Era artillery unit.  While its range remains the same as the Cannon, from which it upgrades, it is much stronger. Like other siege units, it cannot see very far and must be protected. It also moves at half-speed in enemy territory, but Field Guns are essential to Enlightenment conquests.'),
+-- First Rate
 ('TXT_KEY_UNIT_EE_ENGLISH_FIRST_RATE', 'First Rate'),
 ('TXT_KEY_UNIT_EE_ENGLISH_FIRST_RATE_HELP', 'Powerful Enlightenment Era naval melee unit which boosts the defensive strength of adjacent friendly units.  Only the English may build it.'),
 ('TXT_KEY_UNIT_EE_ENGLISH_FIRST_RATE_PEDIA', '“First-rate” is the classification used for the largest ships of the line maintained by the British Royal Navy.  Throughout the existence of the rating system, the threshold armament and crew for a ship to be considered first-rate changed.  However, it was established in the early 1700s that a first-rate ship loaded for wartime carried at least 100 guns.  First-rates were very expensive, heavy and slow in exchange for their massive firepower.  As a result, few were maintained at any given time, and they often served as flagships.  HMS Victory, Admrial Nelson’s famous flagship from the Battle of Trafalgar, is the only surviving first-rate.'),
 ('TXT_KEY_UNIT_EE_ENGLISH_FIRST_RATE_STRATEGY', 'The First Rate is England’s unique unit, replacing the Ship of the Line.  Like the Ship of the Line, it is a strong melee ship.  However, it is even stronger than the unit it replaces.  It also provides combat boosts to nearby allied ships when defending.  Use it as part of a larger fleet to greatly increase your naval firepower.'),
+-- Galleon
 ('TXT_KEY_UNIT_EE_GALLEON', 'Galleon'),
-('TXT_KEY_UNIT_EE_GALLEON_HELP', 'Renaissance Era melee naval Unit.  Can enter ocean tiles.'),
+('TXT_KEY_UNIT_EE_GALLEON_HELP', 'Renaissance Era ranged naval Unit. Can enter ocean tiles.'),
 ('TXT_KEY_UNIT_EE_GALLEON_PEDIA', 'A galleon is the design of a multi-story sailing vessel attributed to the Venetians. Employed extensively in the fleets of Spain and other European states to further their naval militaristic interests, the galleon were formidable warships that weighed up to 2000 metric tonnes. The galleon was powered entirely by wind, using sails carried on three or four masts, with a lateen sail continuing to be used on the last (usually third and fourth) masts. They were used in both military and trade applications, most famously in the Spanish treasure fleet, and the Manila Galleons. Demoting the carrack to be used just for cargo, these vessels became the forefront of European armadas and went on to colonize the world.'),
-('TXT_KEY_UNIT_EE_GALLEON_STRATEGY', 'The Galleon is a Renaissance naval unit.  Upgrading from the Carrack, the Galleon is the first melee ship to be able to enter Oceans.  Use a fleet of Galleons, supported by larger ships, to conquer overseas cities and protect your overseas holdings.'),
+('TXT_KEY_UNIT_EE_GALLEON_STRATEGY', 'The Galleon is a Renaissance naval unit.  Upgrading from the Galleass, the Galleon is the first ranged ship to be able to enter Oceans.  Use a fleet of Galleons, supported by larger ships, to conquer overseas cities and protect your overseas holdings.'),
+-- Line Infantry
 ('TXT_KEY_UNIT_EE_LINE_INFANTRY', 'Line Infantry'),
 ('TXT_KEY_UNIT_EE_LINE_INFANTRY_HELP', 'Basic front-line infantry unit of the Enlightenment Era.'),
 ('TXT_KEY_UNIT_EE_LINE_INFANTRY_PEDIA', 'With the massive proliferation of guns from the middle of the 17th century, the battlefield became dominated by linear tactics, according to which infantry were arranged into long thin lines and fired volleys. A line consisted of 2, 3, or 4 ranks of soldiers. The relatively short range at which smooth bore muskets could accurately hit a target, added to the slow reload, meant that massed formation firing was essential for maximizing enemy casualties. The line was considered the fundamental battle formation as it allowed for the largest deployment of firepower. In the years following the Napoleonic Wars, line infantry continued to be deployed as the main battle force, while light infantry provided fire support and covered the movement of units. With the invention of new weaponry, the concept of line infantry began to wane; men walking in formation line-abreast became far too easy a target. The growing accuracy and rate of fire of rifles, together with the invention of the gatling gun and machine gun, meant that close order line infantry would suffer huge losses before being able to close with their foe. With the turn of the 20th Century, this slowly led to infantry increasingly adopting skirmisher style light infantry tactics in battle, while retaining line infantry drills for training.'),
-('TXT_KEY_UNIT_EE_LINE_INFANTRY_STRATEGY', 'The standard gunpowder unit of the Enlightenment Era, upgrading from and significantly outclassing the Musketman.  The Line Infantry will form the backbone of Enlightenment armies, being used to fight other melee units and protect siege and ranged units.'),
-('TXT_KEY_UNIT_EE_SKIRMISHER', 'Skirmisher'),
+('TXT_KEY_UNIT_EE_LINE_INFANTRY_STRATEGY', 'The standard gunpowder unit of the Enlightenment Era, upgrading from and significantly outclassing the Tercio. The Line Infantry will form the backbone of Enlightenment armies, being used to fight other melee units and protect siege and ranged units.'),
+-- Light Infantry
+('TXT_KEY_UNIT_EE_SKIRMISHER', 'Light Infantry'),
 ('TXT_KEY_UNIT_EE_SKIRMISHER_HELP', 'Primary ranged unit of the Enlightenment era which must be adjacent to attack.'),
-('TXT_KEY_UNIT_EE_SKIRMISHER_PEDIA', 'Skirmishers are light infantry or cavalry soldiers stationed ahead or alongside a larger body of friendly troops to harass the enemy. In ancient and medieval warfare, skirmishers typically carried bows, javelins, or slings. Acting as light infantry with minimal armor, they could run ahead of the main battle line, release a volley, and retreat before the clash of the opposing main forces. During the Napoleonic Wars the role of the skirmisher took on new notability, attempting to disrupt enemy forces by firing into their close-packed ranks and potentially causing early casualties and breaking enemy formation. A skirmish force screening the main body of infantry became so important that eventually all the major European powers developed specialized skirmishing infantry, e.g. the German Jäger and the French Voltigeurs. While muskets were the predominant weapon at the time, the British Army experimented with rifles, which soon became the predominant firearm. A consequence of these wars was a trend to train line troops to adopt skirmisher tactics. By the late 19th century, the concept of fighting in formation was on the wane, and the distinctions between skirmisher and heavy infantry have largely disappeared.'),
-('TXT_KEY_UNIT_EE_SKIRMISHER_STRATEGY', 'The Skirmisher is the first gunpowder based ranged unit of the game. While its range decreases to just one, the melee strength of the unit remains the same, allowing it to defend just as well as it attacks while suffering no damage when attacking.'),
+('TXT_KEY_UNIT_EE_SKIRMISHER_PEDIA', 'Light Infantry act as a skirmish force stationed ahead or alongside a larger body of friendly troops to harass the enemy. In ancient and medieval warfare, skirmishers typically carried bows, javelins, or slings. Acting as light infantry with minimal armor, they could run ahead of the main battle line, release a volley, and retreat before the clash of the opposing main forces. During the Napoleonic Wars the role of the skirmisher took on new notability, attempting to disrupt enemy forces by firing into their close-packed ranks and potentially causing early casualties and breaking enemy formation. A skirmish force screening the main body of infantry became so important that eventually all the major European powers developed specialized skirmishing infantry, e.g. the German Jaeger and the French Voltigeurs. While muskets were the predominant weapon at the time, the British Army experimented with rifles, which soon became the predominant firearm. A consequence of these wars was a trend to train line troops to adopt skirmisher tactics. By the late 19th century, the concept of fighting in formation was on the wane, and the distinctions between skirmisher and heavy infantry have largely disappeared.'),
+('TXT_KEY_UNIT_EE_SKIRMISHER_STRATEGY', 'The Light Infantry is a primary ranged unit of the Enlightenment Era. It is very well suited to fight in difficult terrain, like hills and forests.'),
+-- Ship of the Line
 ('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE', 'Ship of the Line'),
-('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE_HELP', 'Powerful Enlightenment Era naval ranged Unit.'),
-('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE_STRATEGY', 'The Ship of the Line is a melee naval unit of the Enlightenment Era.  Unlike the Galleon, from which it upgrades, the Ship of the Line requires Iron to build and maintain.  However, a boost to combat strength and a critical boost to movement speed make it worth the price.  Use it to crush outdated fleets with superior firepower and speed.'),
-('TXT_KEY_UNIT_EE_SURVEYOR', 'Surveyor'),
-('TXT_KEY_UNIT_EE_SURVEYOR_HELP', 'Late game scouting unit which can enter enemy territory and cover land quickly.'),
-('TXT_KEY_UNIT_EE_SURVEYOR_PEDIA', 'As the Industrial Revolution powered forward, exploration of the world took on a much more scientific slant.  The purpose of exploration changed from the Renaissance ideal of bringing back treasure and trade routes, to a desire to understand the world and its flora and fauna.  This served a practical purpose as well – a more urbanized and mechanized society required formal planning of spaces, in order to more efficiently build infrastructure and settlements.'),
-('TXT_KEY_UNIT_EE_SURVEYOR_STRATEGY', 'The Surveyor is a recon unit that upgrades from the Explorer.  It is stronger and faster still than the Explorer, although it is vulnerable alone.  The Surveyor may enter rival territory without an Open Borders agreement.'),
+('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE_HELP', 'Powerful Enlightenment Era naval melee Unit. Grants adjacent ships combat bonus.'),
+('TXT_KEY_UNIT_EE_SHIP_OF_THE_LINE_STRATEGY', 'The Ship of the Line is a melee naval unit of the Enlightenment Era.  Unlike the Corvette, the Ship of the Line requires Iron to build and maintain.  However, a boost to combat strength and a critical boost to movement speed make it worth the price.  Use it to crush outdated fleets with superior firepower and speed.'),
+-- Surveyor
+--('TXT_KEY_UNIT_EE_SURVEYOR', 'Surveyor'),
+--('TXT_KEY_UNIT_EE_SURVEYOR_HELP', 'Late game scouting unit which can enter enemy territory and cover land quickly.'),
+--('TXT_KEY_UNIT_EE_SURVEYOR_PEDIA', 'As the Industrial Revolution powered forward, exploration of the world took on a much more scientific slant.  The purpose of exploration changed from the Renaissance ideal of bringing back treasure and trade routes, to a desire to understand the world and its flora and fauna.  This served a practical purpose as well – a more urbanized and mechanized society required formal planning of spaces, in order to more efficiently build infrastructure and settlements.'),
+--('TXT_KEY_UNIT_EE_SURVEYOR_STRATEGY', 'The Surveyor is a recon unit that upgrades from the Explorer.  It is stronger and faster still than the Explorer, although it is vulnerable alone.  The Surveyor may enter rival territory without an Open Borders agreement.'),
+-- Uhlan
 ('TXT_KEY_UNIT_EE_UHLAN', 'Uhlan'),
 ('TXT_KEY_UNIT_EE_UHLAN_HELP', 'Mid game light cavalry unit good against other mounted units.'),
 ('TXT_KEY_UNIT_EE_UHLAN_PEDIA', 'The Uhlan was a Polish light cavalry unit armed with lances, sabres, and pistols which came to frequent the armies of 18th and 19th century Russia, Prussia, and Austria. Descendents of the Tartar settlers of Lithuania, the first Uhlan regiment was created by the Polish-Lithuanian Commonwealth in the early 1700s. Swift and unobstructed by the cumbersome armor which had previously dominated mounted warfare, the Uhlan quickly grew in popular use for their versatility and speed; able to conduct reconnaissance, skirmishes, or to head-on charges. Today, a ceremonial regiment of Uhlans is retained by the Polish Armed Forces.'),
 ('TXT_KEY_UNIT_EE_UHLAN_STRATEGY', 'The anti-cavalry movement unit of the Industrial Era, the Uhlan upgrades from the Lancer and fulfills largely the same role as its Renaissance predecessor.  Use it to directly counter the fast cavalry that enemies harass your invading armies with');
+
+-- Corvette (ex. Privateer)
+UPDATE Language_en_US
+SET Text = 'Naval Unit that attacks as a melee unit. It is stronger and faster than the Carrack.'
+WHERE Tag IN ('TXT_KEY_UNIT_PRIVATEER_STRATEGY');
+
+-- Portugese Nau
+UPDATE Language_en_US 
+SET Text = 'Melee naval unit which excels at sea exploration. Has higher Combat Strength than the Carrack, and can perform an ability when adjacent to City-States to earn [ICON_GOLD] Gold and XP. May only be built by the Portuguese. [NEWLINE][NEWLINE]If possible, when a Nau sells its Exotic Cargo, a Feitoria is [COLOR_POSITIVE_TEXT]automatically created[ENDCOLOR] in its territory.'
+WHERE Tag = 'TXT_KEY_UNIT_HELP_PORTUGUESE_NAU';
+UPDATE Language_en_US 
+SET Text = 'This melee naval unit replaces the Carrack and is skilled at exploration. When it is in a tile next to land owned by another Civilization or City-State you are at peace with, it may perform a one-time trade mission to earn [ICON_GOLD] Gold and XP. The further the land is from your own capital, the greater the bonus, so it is best to use on distant players. Use this unit to explore the map and uncover the locations of other players.'
+WHERE Tag = 'TXT_KEY_UNIT_PORTUGUESE_NAU_STRATEGY';
+
+-- Spanish Conquistador
+UPDATE Language_en_US
+SET Text = 'Renaissance Era unit that specializes in scouting and colonizing overseas. Only Spain may build it. Replaces the Lancer, but is available with Exploration.'
+WHERE Tag = 'TXT_KEY_CIV5_SPAIN_CONQUISTADOR_HELP';
+UPDATE Language_en_US
+SET Text = 'The Conquistador is a multi-purpose unit that is strong both on land and at sea. Replacing the Lancer but becoming available with Exploration instead of Metallurgy, it is an exceptional scout on land with extra visibility. It also has the ability to found new cities, but only on a foreign continent that does not contain the Spanish capital. In the water, the Conquistador has the defensive embarkation promotion that allows it to better defend itself against naval units. It also suffers no penalty when attacking cities, unlike the Lancer.'
+WHERE Tag IN ('TXT_KEY_CIV5_SPAIN_CONQUISTADOR_STRATEGY');
+
+-- Russian Cossack
+UPDATE Language_en_US
+SET Text = 'Only the Russians may build it. This Unit has a combat bonus when fighting enemies that have already taken damage, and is stronger than the Uhlan, which it replaces.'
+WHERE Tag = 'TXT_KEY_UNIT_HELP_COSSACK';
+UPDATE Language_en_US
+SET Text = 'The Cossack is the Russian unique unit, replacing the Uhlan. They are stronger than the Uhlan, and can also move after attacking. They get a combat bonus when battling damaged units. This makes Cossacks exceptionally strong at counter attacking, let the enemy chew up the front line peasants, then tear the weakened foe apart with a Cossack charge!'
+WHERE Tag = 'TXT_KEY_UNIT_RUSSIAN_COSSACK_STRATEGY';
+
+-- American Minuteman
+UPDATE Language_en_US
+SET Text = 'The Minuteman is the American unique unit, replacing the Line Infantry. The Minuteman can move through difficult terrain without penalty.'
+WHERE Tag = 'TXT_KEY_UNIT_AMERICAN_MINUTEMAN_STRATEGY';
+UPDATE Language_en_US
+SET Text = 'Only the Americans may build it. This Unit may move through rough ground as though it were flat, unlike the Line Infantry which it replaces.'
+WHERE Tag = 'TXT_KEY_UNIT_HELP_MINUTEMAN'; 
+
+-- English First Rate (ranged)
+UPDATE Language_en_US
+SET Text = 'First Rate'
+WHERE Tag = 'TXT_KEY_UNIT_ENGLISH_SHIPOFTHELINE';
+UPDATE Language_en_US
+SET Text = 'Powerful Enlightenment Era naval ranged unit which boosts the defensive strength of adjacent friendly units, has increased sight range and can fire twice per turn.  Only the English may build it.'
+WHERE Tag = 'TXT_KEY_UNIT_HELP_SHIPOFTHELINE';
+UPDATE Language_en_US
+SET Text = 'The First Rate is England''s unique unit, replacing the Frigate.  However, it is much stronger than the unit it replaces because it can fire twice per turn.  It also provides combat boosts to nearby allied ships when defending and has increased sight range.  Use it as part of a larger fleet to greatly increase your naval firepower.'
+WHERE Tag = 'TXT_KEY_UNIT_ENGLISH_SHIPOFTHELINE_STRATEGY';
+
+-- Howitzer (VP's Field Gun)
+DELETE FROM Language_en_US WHERE Tag = 'TXT_KEY_UNIT_FIELD_GUN';
+INSERT INTO Language_en_US (Tag, Text) VALUES
+('TXT_KEY_UNIT_FIELD_GUN', 'Howitzer'),
+('TXT_KEY_UNIT_FIELD_GUN_HELP', 'Industrial Era artillery unit, more powerful than a Field Gun. Moves at half-speed in enemy territory.'),
+('TXT_KEY_UNIT_FIELD_GUN_PEDIA', 'A howitzer is a type of artillery piece characterized by a relatively short barrel and the use of comparatively small propellant charges to propel projectiles over relatively high trajectories, with a steep angle of descent. Introduced to European armies in the middle of 18th century, these field howitzers were also able to fire explosive shells. In the 1860s, artillery officers discovered that rifled siege howitzers (substantially larger than field howitzers) were a more efficient means of destroying walls than smoothbore siege guns or siege mortars. The lightest of these weapons (later known as "light siege howitzers") had calibers around 150 mm and fired shells that weighed between 40 and 50 kilograms. The heaviest (later called "medium siege howitzers") had calibers between 200 mm and 220 mm and fired shells that weighed about 100 kilograms (220 pounds).'),
+('TXT_KEY_UNIT_FIELD_GUN_STRATEGY', 'Industrial Era artillery unit, more powerful than a Field Gun. Moves at half-speed in enemy territory.');

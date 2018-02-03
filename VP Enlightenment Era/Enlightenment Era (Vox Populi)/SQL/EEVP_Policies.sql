@@ -16,11 +16,6 @@ WHERE Type IN ('POLICY_BRANCH_RATIONALISM', 'POLICY_BRANCH_EXPLORATION', 'POLICY
 -- Policies
 --------------------------------------------------------------------------------------------------------------------------
 
--- Infixo: remove due to different meaning in VP
---DELETE FROM Policy_BuildingClassYieldChanges WHERE PolicyType = 'POLICY_MERCHANT_NAVY'	  AND BuildingClassType = 'BUILDINGCLASS_EE_DRYDOCK';
---DELETE FROM Policy_BuildingClassYieldChanges WHERE PolicyType = 'POLICY_SOVEREIGNTY' 	  AND BuildingClassType = 'BUILDINGCLASS_EE_ACADEMY';
---DELETE FROM Policy_BuildingClassYieldChanges WHERE PolicyType = 'POLICY_MERCANTILISM' 	  AND BuildingClassType = 'BUILDINGCLASS_EE_WEIGH_HOUSE';
-
 INSERT INTO Policy_BuildingClassYieldChanges (PolicyType, BuildingClassType, YieldType, YieldChange) VALUES
 ('POLICY_CREATIVE_EXPRESSION','BUILDINGCLASS_EE_GALLERY',	 'YIELD_GOLDEN_AGE_POINTS', 2), -- Infixo
 ('POLICY_MOBILIZATION', 	  'BUILDINGCLASS_EE_BASTION',	 'YIELD_SCIENCE', 3), -- ok
@@ -39,17 +34,6 @@ INSERT INTO Policy_BuildingClassYieldModifiers (PolicyType, BuildingClassType, Y
 -- Ceremony +1 Hap from National Wonders	
 INSERT INTO Policy_BuildingClassHappiness (PolicyType, BuildingClassType, Happiness)
 VALUES ('POLICY_LEGALISM', 'BUILDINGCLASS_EE_SUMMER_PALACE', 1);
-
--- Universal Healthcare
---INSERT INTO Policy_BuildingClassHappiness (PolicyType, BuildingClassType, Happiness) VALUES
---('POLICY_UNIVERSAL_HEALTHCARE_F', 'BUILDINGCLASS_EE_SUMMER_PALACE', 1),
---('POLICY_UNIVERSAL_HEALTHCARE_O', 'BUILDINGCLASS_EE_SUMMER_PALACE', 1),
---('POLICY_UNIVERSAL_HEALTHCARE_A', 'BUILDINGCLASS_EE_SUMMER_PALACE', 1);
-
--- Humanism (Aesthetics)
---UPDATE Language_en_US
---SET Text = '[COLOR_POSITIVE_TEXT]Humanism[ENDCOLOR][NEWLINE]Amphitheaters, Opera Houses, Galleries, Museums, and Broadcast Towers produce +2 [ICON_RESEARCH] Science. All [ICON_GREAT_WORK] Great Works produce +1 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.'
---WHERE Tag = 'TXT_KEY_POLICY_CULTURAL_CENTERS_HELP';
 
 -- Creative Expression (Freedom)
 UPDATE Language_en_US
