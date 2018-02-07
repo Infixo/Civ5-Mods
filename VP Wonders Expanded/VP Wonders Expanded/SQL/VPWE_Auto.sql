@@ -65,6 +65,7 @@ VALUES
 --('SAGRADA',     1, 1), -- Sagrada Familia
 ('SHWEDAGON',   1, 0), -- Shwedagon Pagoda / Shwedagon Zedi Daw / Great Dagon Pagoda  / Golden Pagoda
 --('SKYTREE',     1, 1), -- Tokyo Skytree
+('SOLOMON',     1, 0), -- Solomon's Temple
 ('SOVIETS',     1, 0), -- Palace of the Soviets
 ('SPUTNIK',     1, 0), -- Sputnik Program, The
 ('STPETERS',    1, 0), -- Papal Basilica of St. Peter in the Vatican

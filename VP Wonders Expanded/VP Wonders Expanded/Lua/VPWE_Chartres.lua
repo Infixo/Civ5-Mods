@@ -14,25 +14,25 @@ local iDummy = GameInfoTypes.BUILDING_CHARTRES_DUMMY
 function GetTradeRoutesToCity(pCity)
 
 	local tCities = {}
+	local pPlayer = Players[pCity:GetOwner()]
 
-	local iPlayer = pCity:GetOwner()
-	local pPlayer = Players[iPlayer]
-
-	-- Domestic Trade Routes
 	local tTradeRoutes = pPlayer:GetTradeRoutes()
-	for iKey, tRoute in ipairs(tTradeRoutes) do
+	for _, tRoute in ipairs(tTradeRoutes) do
+		-- Domestic Trade Routes
 		if (tRoute.ToCity == pCity) then
-			local pFromCity = tRoute.FromCity
-			tCities[pFromCity] = true
+			tCities[ tRoute.FromCity ] = true
+		end
+		-- Outgoing Trade Routes
+		if (tRoute.FromCity == pCity) then
+			tCities[ tRoute.ToCity ] = true
 		end
 	end
 	
-	-- International Trade Routes
+	-- Incoming International Trade Routes
 	local tTradeRoutes = pPlayer:GetTradeRoutesToYou()
-	for iKey, tRoute in ipairs(tTradeRoutes) do
+	for _, tRoute in ipairs(tTradeRoutes) do
 		if (tRoute.ToCity == pCity) then
-			local pFromCity = tRoute.FromCity
-			tCities[pFromCity] = true
+			tCities[ tRoute.FromCity ] = true
 		end
 	end	
 	
@@ -42,11 +42,11 @@ end
 function GetFaithFromCities(tCities)
 	local iFaith = 0
 	for pCity, _ in pairs(tCities) do
-		if pCity:GetFaithPerTurn() > 0 then
-			iFaith = iFaith + pCity:GetFaithPerTurn() * iMod
-		end
+		--if pCity:GetFaithPerTurn() > 0 then
+		iFaith = iFaith + pCity:GetFaithPerTurn()
+		--end
 	end
-	return math.ceil(iFaith)
+	return math.ceil(iFaith * iMod)
 end
 
 function SetChartesDummy(pCity)
