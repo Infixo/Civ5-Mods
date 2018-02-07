@@ -122,6 +122,10 @@
     <Folder Include="SQL" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Art\VPWE_GW_Ark_Covenant.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
     <Content Include="Art\VPWE_Solomon_128.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
