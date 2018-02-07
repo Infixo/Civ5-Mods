@@ -1008,6 +1008,8 @@ local function SetupBuildingList( city, buildings, buildingIM )
 		-- Sometimes yields go to the 2nd line and mess with the next building
 		if tips:count() > 6 then
 			buildingButton:SetSizeY( 69 ) -- cannot use GetSizeY() because it scales from Portrait which is already 64
+		else
+			buildingButton:SetSizeY( 46 ) -- original size from xml
 		end
 		-- Infixo OFF
 		--controls.Label:ChangeParent( controls.Stack )
