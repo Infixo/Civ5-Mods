@@ -29,7 +29,7 @@ UPDATE Buildings SET Cost =  500, PrereqTech = 'TECH_CIVIL_SERVICE', NumPolicies
 --UPDATE Buildings SET Cost =  800, PrereqTech = 'TECH_PRINTING_PRESS', NumPoliciesNeeded = 10, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_DUOMO';
 UPDATE Buildings SET Cost =  800, PrereqTech = 'TECH_ASTRONOMY',    NumPoliciesNeeded = 10, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_TOCALI';
 --UPDATE Buildings SET Cost =  800, PrereqTech = 'TECH_GUNPOWDER',    NumPoliciesNeeded = 10, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_BENHADDOU';
-UPDATE Buildings SET Cost =  800, PrereqTech = 'TECH_CHEMISTRY',    NumPoliciesNeeded = 10, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_KINKAKUJI';
+UPDATE Buildings SET Cost =  800, PrereqTech = 'TECH_BANKING',      NumPoliciesNeeded = 10, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_KINKAKUJI';
 UPDATE Buildings SET Cost =  900, PrereqTech = 'TECH_NAVIGATION',   NumPoliciesNeeded = 11, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_GRIPSHOLM';
 --UPDATE Buildings SET Cost =  900, PrereqTech = 'TECH_ECONOMICS',    NumPoliciesNeeded = 11, MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_LEONARDO';
 UPDATE Buildings SET Cost =  900, PrereqTech = 'TECH_ACOUSTICS',    NumPoliciesNeeded = 0,  MaxStartEra = 'ERA_INDUSTRIAL' WHERE Type = 'BUILDING_STPETERS'; -- PIETY
@@ -471,7 +471,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_WONDER_DAMASCUS_QUOTE', '[NEWLINE]The reputation and history of Damascus steel has given rise to many legends, such as the ability to cut through a rifle barrel or to cut a hair falling across the blade. The manufacturing technique has yet to be reverse engineered, even in modern times.'),
 ('TXT_KEY_WONDER_DAMASCUS_PEDIA', 'Damascus steel was a type of steel used for manufacturing sword blades in the Near East made with wootz steel. These swords are characterized by distinctive patterns of banding and mottling reminiscent of flowing water. Such blades were reputed to be tough, resistant to shattering and capable of being honed to a sharp, resilient edge.[NEWLINE][NEWLINE]  The reputation and history of Damascus steel has given rise to many legends, such as the ability to cut through a rifle barrel or to cut a hair falling across the blade. Although many types of modern steel outperform ancient Damascus alloys, chemical reactions in the production process made the blades extraordinary for their time, as Damascus steel was superplastic and very hard at the same time.'),
 ('TXT_KEY_PROMOTION_DAMASCUS',     'Damascus Steel'),
-('TXT_KEY_PROMOTION_DAMASCUS_HELP', 'Exceptional Blades (+20% [ICON_STRENGTH] Combat Strength)');
+('TXT_KEY_PROMOTION_DAMASCUS_HELP', '+20% [ICON_STRENGTH] Combat Strength');
 
 
 ----------------------------------------------------
@@ -588,9 +588,11 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 --SET SpecialistType = 'SPECIALIST_ENGINEER', GreatPeopleRateChange = 2
 --WHERE Type = 'BUILDING_JUMEIRAH';
 
-INSERT INTO Building_YieldModifiers (BuildingType, YieldType, Yield) VALUES
-('BUILDING_JUMEIRAH', 'YIELD_FOOD', 10),
-('BUILDING_JUMEIRAH', 'YIELD_TOURISM', 10);
+--INSERT INTO Building_YieldModifiers (BuildingType, YieldType, Yield) VALUES
+--('BUILDING_JUMEIRAH', 'YIELD_FOOD', 10);
+
+INSERT INTO Building_GlobalYieldModifiers (BuildingType, YieldType, Yield) VALUES
+('BUILDING_NABAWI', 'YIELD_TOURISM', 10);
 
 INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange) VALUES
 ('BUILDING_JUMEIRAH', 'BUILDINGCLASS_TRAINSTATION', 'YIELD_TOURISM', 5);
@@ -607,12 +609,12 @@ INSERT INTO Building_FeatureYieldChanges (BuildingType, FeatureType, YieldType, 
 INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
 ('BUILDING_JUMEIRAH', 'FLAVOR_CULTURE', 60),
 ('BUILDING_JUMEIRAH', 'FLAVOR_GOLD', 20),
-('BUILDING_JUMEIRAH', 'FLAVOR_GROWTH', 30),
+--('BUILDING_JUMEIRAH', 'FLAVOR_GROWTH', 30),
 ('BUILDING_JUMEIRAH', 'FLAVOR_HAPPINESS', 40);
 
 INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_JUMEIRAH',     'Palm Jumeirah'),
-('TXT_KEY_WONDER_JUMEIRAH_HELP',  'All Train Stations +5 [ICON_TOURISM] Tourism and +2 [ICON_HAPPINESS_1] Happiness. In the City +10% [ICON_FOOD] Food and +10% [ICON_TOURISM] Tourism, and each worked Atoll or Oasis +10 [ICON_GOLD] Gold and +10 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]City must be built on the [COLOR_CYAN]Coast[ENDCOLOR] and have an [COLOR_CYAN]Atoll[ENDCOLOR] or an [COLOR_CYAN]Oasis[ENDCOLOR] nearby.'),
+('TXT_KEY_WONDER_JUMEIRAH_HELP',  'All Cities generate +10% [ICON_TOURISM] Tourism. All Train Stations +5 [ICON_TOURISM] Tourism and +2 [ICON_HAPPINESS_1] Happiness. In this City each worked Atoll or Oasis provides +10 [ICON_GOLD] Gold and +10 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]City must be built on the [COLOR_CYAN]Coast[ENDCOLOR] and have an [COLOR_CYAN]Atoll[ENDCOLOR] or an [COLOR_CYAN]Oasis[ENDCOLOR] nearby.'),
 ('TXT_KEY_WONDER_JUMEIRAH_QUOTE', '[NEWLINE]"It is the nature of the strong heart, that like the palm tree it strives ever upwards when it is most burdened."[NEWLINE] - Phillip Sydney[NEWLINE]'),
 ('TXT_KEY_WONDER_JUMEIRAH_PEDIA', 'Located off the shore of Dubai in the United Arab Emirates (UAE), Palm Jumeirah is a large archipelago created by man in the shape of a palm tree. It was announced in 2001, and originally was intended to be one of three "Palm Islands" along with the Palm Jebel Ali and the Palm Deira, which was intended to be the largest of the three islands at the time. The archipelago has a total area of 25 square kilometres, comparable to over 800 American football pitches.[NEWLINE][NEWLINE] Palm Jumeirah consists of a central trunk, connected to the mainland by a 300 metre long bridge, sixteen fronds of the palm, and an 11 kilometre breakwater surrounding the construction. In total, the islands more than doubled Dubai''s existing coastline.[NEWLINE][NEWLINE] The islands are also a hotbed for new developments and resorts, much like the rest of Dubai. The Atlantis resort opened on the breakwater in 2008, which later became a symbol of the developments.');
 
@@ -867,7 +869,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_WONDER_NABAWI_QUOTE', '[NEWLINE]"When you see a person who has been given more than you in money and beauty, look to those, who have been given less."[NEWLINE] - Prophet Muhammad[NEWLINE]'),
 ('TXT_KEY_WONDER_NABAWI_PEDIA', 'Al-Masjid al-Nabawi, often called the Prophet''s Mosque, is a mosque situated in the city of Medina. As the final resting place of the Islamic prophet Muhammad, it is considered the second holiest site in Islam by Muslims (the first being the Masjid al-Haram in Mecca) and is one of the largest mosques in the World. The mosque is under the control of the Custodian of the Two Holy Mosques. It is the second mosque built in history.[NEWLINE][NEWLINE]  One of the most notable features of the site is the Green Dome over the center of the mosque, where the tomb of Muhammad is located. It is not exactly known when the green dome was constructed but manuscripts dating to the early 12th century describe the dome. It is known as the Dome of the Prophet or the Green Dome. Subsequent Islamic rulers greatly expanded and decorated it. Early Muslim leaders Abu Bakr and Umar are buried in an adjacent area in the mosque.[NEWLINE][NEWLINE]  The site was originally Muhammad''s house; he settled there after his Hijra to Medina, later building a mosque on the grounds. He himself shared in the heavy work of construction. The original mosque was an open-air building. The basic plan of the building has been adopted in the building of other mosques throughout the world.'),
 ('TXT_KEY_NABAWI_THEMING_BONUS_HELP', 'To maximize your bonus, make sure both Great Works are filled with Writings created by you.'),
-('TXT_KEY_THEMING_BONUS_NABAWI', 'Islamic Calligraphy Works');
+('TXT_KEY_THEMING_BONUS_NABAWI', 'Islamic calligraphy works');
 
 
 ----------------------------------------------------
@@ -1178,33 +1180,31 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ----------------------------------------------------
 
 UPDATE Buildings
-SET FreePolicies = 1, NumTradeRouteBonus = 1, SpecialistType = 'SPECIALIST_CIVIL_SERVANT', GreatPeopleRateChange = 2, MinorFriendshipChange = 50
+SET FreePolicies = 1, MinorFriendshipChange = 50, SpecialistType = 'SPECIALIST_CIVIL_SERVANT', GreatPeopleRateChange = 2
 WHERE Type = 'BUILDING_TRAFALGAR';
 
---INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield) VALUES
---('BUILDING_TRAFALGAR', 'YIELD_CULTURE', 2);
+INSERT INTO Building_SpecialistYieldChanges (BuildingType, SpecialistType, YieldType, Yield) VALUES
+('BUILDING_TRAFALGAR', 'SPECIALIST_CIVIL_SERVANT', 'YIELD_CULTURE', 1),
+('BUILDING_TRAFALGAR', 'SPECIALIST_CIVIL_SERVANT', 'YIELD_GOLDEN_AGE_POINTS', 1);
 
 INSERT INTO Building_SpecificGreatPersonRateModifier (BuildingType, SpecialistType, Modifier) VALUES
 ('BUILDING_TRAFALGAR', 'SPECIALIST_CIVIL_SERVANT', 33);
 
 INSERT INTO Building_YieldPerAlly (BuildingType, YieldType, Yield) VALUES
-('BUILDING_TRAFALGAR', 'YIELD_CULTURE', 4),
-('BUILDING_TRAFALGAR', 'YIELD_GOLDEN_AGE_POINTS', 2),
-('BUILDING_TRAFALGAR', 'YIELD_SCIENCE', 4);
+('BUILDING_TRAFALGAR', 'YIELD_CULTURE', 2),
+('BUILDING_TRAFALGAR', 'YIELD_GOLDEN_AGE_POINTS', 2);
 
 INSERT INTO Building_YieldPerFriend (BuildingType, YieldType, Yield) VALUES
-('BUILDING_TRAFALGAR', 'YIELD_CULTURE', 2),
-('BUILDING_TRAFALGAR', 'YIELD_GOLDEN_AGE_POINTS', 1),
-('BUILDING_TRAFALGAR', 'YIELD_SCIENCE', 2);
+('BUILDING_TRAFALGAR', 'YIELD_CULTURE', 1),
+('BUILDING_TRAFALGAR', 'YIELD_GOLDEN_AGE_POINTS', 1);
 
 INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
 ('BUILDING_TRAFALGAR', 'FLAVOR_GROWTH', 30),
-('BUILDING_TRAFALGAR', 'FLAVOR_CULTURE', 30),
-('BUILDING_TRAFALGAR', 'FLAVOR_SCIENCE', 30);
+('BUILDING_TRAFALGAR', 'FLAVOR_CULTURE', 30);
 
 INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_TRAFALGAR',     'Trafalgar Square'),
-('TXT_KEY_WONDER_TRAFALGAR_HELP',  '1 Free [COLOR_POSITIVE_TEXT]Social Policy[ENDCOLOR]. Receive an increase of +50% [ICON_INFLUENCE] Influence with all City-States in the world and an additional +1 [ICON_INTERNATIONAL_TRADE] Trade Route. The City receives +4 [ICON_TOURISM] Culture, +4 [ICON_RESEARCH] Science and +2 [ICON_GOLDEN_AGE] Golden Age Points from each Allied City-State and half of that from each Friendly one. +33% increased generation rate of [ICON_DIPLOMAT] Great Diplomats in the City.[NEWLINE]Requires [COLOR_CYAN]Freedom[ENDCOLOR]. City must be built next to a [COLOR_CYAN]River[ENDCOLOR].'),
+('TXT_KEY_WONDER_TRAFALGAR_HELP',  '1 Free [COLOR_POSITIVE_TEXT]Social Policy[ENDCOLOR]. Receive an increase of +50% [ICON_INFLUENCE] Influence with all City-States in the world. +1 [ICON_CULTURE] Culture and +1 [ICON_GOLDEN_AGE] Golden Age Point from Civil Servants in all Cities and from each Friendly City State. Twice as much from an Allied one. +33% faster generation of [ICON_DIPLOMAT] Great Diplomats in the City.[NEWLINE]Requires [COLOR_CYAN]Freedom[ENDCOLOR]. City must be built next to a [COLOR_CYAN]River[ENDCOLOR].'),
 ('TXT_KEY_WONDER_TRAFALGAR_QUOTE', '[NEWLINE]"Time is everything; five minutes make the difference between victory and defeat"[NEWLINE] - Lord Nelson[NEWLINE]'),
 ('TXT_KEY_WONDER_TRAFALGAR_PEDIA', 'Trafalgar Square is a public area located in the heart of the City of Westminster, in London, England. Redevelopment of the existing area, known as Charing Cross, began in 1820 under the guide of architect John Nash, who in turn was commisioned by King George IV, and was completed in 1845. The name commemorates the Battle of Trafalgar, a naval battle fought between England and Napoleonic France during the Napoleonic Wars. In the center of the square is Nelson''s column, a monument dedicate to Admiral Horatio Nelson, who died at the battle which was the square''s namesake. The column features four cast iron plates made from captured French guns, each depicting a famous battle in the Napoleonic Wars. The base of the column is guarded by four Lion statues.');
 
