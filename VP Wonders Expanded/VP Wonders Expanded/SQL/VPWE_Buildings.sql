@@ -592,7 +592,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 --('BUILDING_JUMEIRAH', 'YIELD_FOOD', 10);
 
 INSERT INTO Building_GlobalYieldModifiers (BuildingType, YieldType, Yield) VALUES
-('BUILDING_NABAWI', 'YIELD_TOURISM', 10);
+('BUILDING_JUMEIRAH', 'YIELD_TOURISM', 10);
 
 INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange) VALUES
 ('BUILDING_JUMEIRAH', 'BUILDINGCLASS_TRAINSTATION', 'YIELD_TOURISM', 5);
@@ -1140,7 +1140,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ----------------------------------------------------
 
 UPDATE Buildings
-SET GoldenAge = 1, MinorFriendshipChange = 25
+SET GoldenAge = 1, MinorFriendshipChange = 25, ExtraLeagueVotes = 2
 WHERE Type = 'BUILDING_TAIPEI101';
 
 INSERT INTO Building_BuildingClassYieldChanges (BuildingType, BuildingClassType, YieldType, YieldChange) VALUES
@@ -1168,7 +1168,7 @@ INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor) VALUES
 
 INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_TAIPEI101',     'Taipei 101'),
-('TXT_KEY_WONDER_TAIPEI101_HELP',  'A [ICON_GOLDEN_AGE] [COLOR_POSITIVE_TEXT]Golden Age[ENDCOLOR] begins. +2 [ICON_GOLD] Gold from all Banks, Stock Exchanges, Villages, Towns and Colonias. Receive an increase of +25% [ICON_INFLUENCE] Influence with all City-States in the world.[NEWLINE][NEWLINE]City must be built on a [COLOR_CYAN]Flat[ENDCOLOR] terrain and have a [COLOR_CYAN]Jungle[ENDCOLOR] or [COLOR_CYAN]Forest[ENDCOLOR] nearby.'),
+('TXT_KEY_WONDER_TAIPEI101_HELP',  'A [ICON_GOLDEN_AGE] [COLOR_POSITIVE_TEXT]Golden Age[ENDCOLOR] begins. +2 [ICON_GOLD] Gold from all Banks, Stock Exchanges, Villages, Towns and Colonias. Grants 2 additional Delegates in the World Congress for every 8 City-States in the game. Receive an increase of +25% [ICON_INFLUENCE] Influence with all City-States in the world.[NEWLINE][NEWLINE]City must be built on a [COLOR_CYAN]Flat[ENDCOLOR] terrain and have a [COLOR_CYAN]Jungle[ENDCOLOR] or [COLOR_CYAN]Forest[ENDCOLOR] nearby.'),
 ('TXT_KEY_WONDER_TAIPEI101_QUOTE', '[NEWLINE]"I am opposed to millionaires, but it would be dangerous to offer me the position."[NEWLINE] - Mark Twain[NEWLINE]'),
 ('TXT_KEY_WONDER_TAIPEI101_PEDIA', 'Taipei 101 is a financial tower in Taipei, the capital city of Taiwan. It was the tallest building in the world from 2004 to 2010, being surpassed by the Burj Khalifa in Dubai. Across five floors from the 87th to the 91st floors is a large turned mass damper, which stops the tower from suffering damage from amplitudinal waves caused by high winds. The tower is also designed with symbolism in mind. It is not only a large sundial with the shadow it casts, it is composed of 8 segments of 8 floors, eight being a traditional number for good luck. The design also takes into account ancient Chinese Pagoda design.');
 
