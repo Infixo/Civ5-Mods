@@ -414,6 +414,7 @@ function RefreshYourTR()
 	local pPlayer = Players[ Game.GetActivePlayer() ];
     
     --print("RefreshYourTR");
+	SetAlreadyActiveRoutes(pPlayer); -- TROE
 	SetData(pPlayer:GetTradeRoutes());
 	SortData();
 	DisplayData();
@@ -424,6 +425,7 @@ g_Tabs["YourTR"].RefreshContent = RefreshYourTR;
 function RefreshAvailableTR()
 	local pPlayer = Players[ Game.GetActivePlayer() ];
 
+	SetAlreadyActiveRoutes(pPlayer); -- TROE
     SetData(pPlayer:GetTradeRoutesAvailable());
 	SortData();
 	DisplayData();
@@ -440,6 +442,18 @@ function RefreshTRWithYou()
 end
 g_Tabs["TRWithYou"].RefreshContent = RefreshTRWithYou;
 
+-- TROE
+-- blocked routes - Vox Populi feature
+local tAlreadyActiveRoutes = {}; -- gonna store concatenated CivType and CityName
+function SetAlreadyActiveRoutes(pPlayer)
+	pPlayerTradeRoutes = pPlayer:GetTradeRoutes();
+	if not pPlayerTradeRoutes then return end
+	for _,v in ipairs(pPlayerTradeRoutes) do
+		local sToRouteName = v.ToCityName.."#"..v.ToCivilizationType;
+		tAlreadyActiveRoutes[ sToRouteName ] = true; -- tricky
+	end
+end
+-- TROE end
 
 function SetData(data)
 	local cityStateCiv = GameInfo.Civilizations["CIVILIZATION_MINOR"];
@@ -517,14 +531,6 @@ function DisplayData()
 	local bTroeBlocked	= Controls.bTroeBlocked:IsChecked();
 	--print("DisplayData with filters:", bTroeLand, bTroeSea, bTroeFood, bTroeProduction, bTroeMinor, bTroeMajor, bTroeBlocked);
 	local iMinorCivType = GameInfoTypes["CIVILIZATION_MINOR"];
-	-- blocked routes - Vox Populi feature
-	local tAlreadyActiveRoutes = {}; -- gonna store concatenated CivType and CityName
-	for i,v in ipairs(g_Data) do
-		if v.TurnsLeft ~= nil and v.TurnsLeft > 0 then -- not sure if 0 means that it is still active or not?
-			local sToRouteName = v.ToCityName.."#"..v.ToCivilizationType;
-			tAlreadyActiveRoutes[ sToRouteName ] = true; -- tricky
-		end
-	end
 	-- TROE
 
 	Controls.MainStack:DestroyAllChildren(); 
@@ -604,8 +610,8 @@ function DisplayData()
 		instance.RouteRange:SetText(v.RouteRange);
 		instance.RouteLength:SetText(v.RouteLength);
 		instance.RouteTurns:SetText(v.RouteTurns);
-		-- TROE add red exclamation mark for already targeted INT cities
-		if v.TradeConnectionType == TradeConnectionTypes.TRADE_CONNECTION_INTERNATIONAL and tAlreadyActiveRoutes[ sToRouteName ] then
+		-- TROE add red exclamation mark for already targeted INT cities (not active in TRWithYou tab)
+		if v.TradeConnectionType == TradeConnectionTypes.TRADE_CONNECTION_INTERNATIONAL and tAlreadyActiveRoutes[ sToRouteName ] and g_CurrentTab ~= "TRWithYou" then
 			instance.ToCity:SetText(v.ToCityName.."[COLOR_RED]![ENDCOLOR]");
 		end
 		-- TROE
