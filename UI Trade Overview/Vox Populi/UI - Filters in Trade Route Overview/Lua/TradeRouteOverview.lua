@@ -1,4 +1,4 @@
-print("Loading TradeRouteOverview.lua from 'UI - Filters in Trade Route Overview (Vox Populi)' version 1.2"); -- TROE
+print("Loading TradeRouteOverview.lua from 'UI - Filters in Trade Route Overview (Vox Populi)' version 1.3"); -- TROE
 
 -------------------------------------------------
 -- Trade Route Overview
@@ -749,4 +749,4 @@ ContextPtr:SetShowHideHandler( ShowHideHandler );
 RegisterSortOptions();
 TabSelect("YourTR");
 
-print("Loaded TradeRouteOverview.lua from 'UI - Filters in Trade Route Overview (Vox Populi)' version 1.2"); -- TROE
+print("OK loaded TradeRouteOverview.lua from 'UI - Filters in Trade Route Overview (Vox Populi)'"); -- TROE

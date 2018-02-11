@@ -7,8 +7,8 @@
     <Guid>f30c5651-8fce-44c8-abe6-4bc9bd582098</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR]), version 1.2</Teaser>
-    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version 1.2.</Description>
+    <Teaser>Adds filters for Trade Routes Available page ([COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR])</Teaser>
+    <Description>Adds filters for Trade Routes Available page:[NEWLINE][ICON_BULLET] Land / Sea[NEWLINE][ICON_BULLET] Food / Production[NEWLINE][ICON_BULLET] Minor / Major[NEWLINE]This is [COLOR_POSITIVE_TEXT]Vox Populi[ENDCOLOR] version 1.3.</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>
     </SpecialThanks>
@@ -33,6 +33,13 @@
         <Name>(6b) CBO Compatibility (No-EUI)</Name>
         <Id>828b5b4b-7c62-4afb-a43f-034b596ef5e4</Id>
         <MinVersion>1</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(6c) 43 Civs CP</Name>
+        <Id>6521c02b-1c78-4826-a5b0-faed86235e98</Id>
+        <MinVersion>0</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>
     </ModReferences>
