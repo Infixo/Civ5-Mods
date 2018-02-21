@@ -1,4 +1,4 @@
-print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.2")
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.3")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -483,8 +483,8 @@ local function SpecialistTooltip( control )
 		strToolTip = L"TXT_KEY_CITYVIEW_EMPTY_SLOT".."[NEWLINE]("..strToolTip..")"
 	end
 	g_rightTipControls.Text:SetText( strToolTip )
-	-- Infixo Icon OFF
-	--IconHookup( specialist.PortraitIndex, g_rightTipControls.Portrait:GetSizeY(), specialist.IconAtlas, g_rightTipControls.Portrait )
+	-- Infixo Portrait is used to show bigger tooltip icon
+	IconHookup( specialist.PortraitIndex, g_rightTipControls.Portrait:GetSizeY(), specialist.IconAtlas, g_rightTipControls.Portrait )
 	g_rightTipControls.Box:SetHide( false )
 	return g_rightTipControls.Box:DoAutoSize()
 end
@@ -3003,7 +3003,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
-print("Loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.2")
+print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.3")
 print("Finished loading EUI city view",os.clock())
 end)
 
