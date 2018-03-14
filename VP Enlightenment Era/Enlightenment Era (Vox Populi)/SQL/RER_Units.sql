@@ -79,7 +79,7 @@ WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_LONGSWORDSMAN
 
 -- update Longswordsman
 UPDATE Units
-SET Combat = 22, ObsoleteTech = 'TECH_CHEMISTRY', GoodyHutUpgradeUnitClass = 'UNITCLASS_2HANDER'
+SET ObsoleteTech = 'TECH_CHEMISTRY', GoodyHutUpgradeUnitClass = 'UNITCLASS_2HANDER'
 WHERE Type = 'UNIT_LONGSWORDSMAN';
 
 ----------------------------------------------------

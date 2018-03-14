@@ -310,6 +310,16 @@ INSERT INTO Building_UnitCombatFreeExperiences (BuildingType, UnitCombatType, Ex
 ('BUILDING_EE_GUNSMITH', 'UNITCOMBAT_SIEGE', 15);
 	
 ----------------------------------------------
+-- Japan's UA
+----------------------------------------------
+
+INSERT INTO Trait_BuildingClassYieldChanges (TraitType, BuildingClassType, YieldType, YieldChange ) VALUES
+('TRAIT_FIGHT_WELL_DAMAGED', 'BUILDINGCLASS_EE_BASTION',  'YIELD_FAITH',   1),
+('TRAIT_FIGHT_WELL_DAMAGED', 'BUILDINGCLASS_EE_BASTION',  'YIELD_CULTURE', 1),
+('TRAIT_FIGHT_WELL_DAMAGED', 'BUILDINGCLASS_EE_GUNSMITH', 'YIELD_FAITH',   1),
+('TRAIT_FIGHT_WELL_DAMAGED', 'BUILDINGCLASS_EE_GUNSMITH', 'YIELD_CULTURE', 1);
+
+----------------------------------------------
 -- Manor
 ----------------------------------------------
 

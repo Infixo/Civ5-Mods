@@ -9,7 +9,7 @@
     <Stability>Stable</Stability>
     <Teaser>Expands the game to include the [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR]. Version 1.0</Teaser>
     <Description>The [COLOR_POSITIVE_TEXT]Enlightenment Era[ENDCOLOR] was a period in which scientific thought advanced dramatically.
-[NEWLINE]Requires Vox Populi. Version 1.0.
+[NEWLINE]Requires Vox Populi. Version 1.0.1.
 [NEWLINE][NEWLINE]Main authors: Pouakai, Janboruta, Sukritact - EE, zwei833 - RER. Vox Populi version created by Infixo.</Description>
     <Authors>Pouakai, JFD, Janboruta, Sukritact, zwei833, Infixo</Authors>
     <SpecialThanks>Xony, pandasnail, phantomaxl1207, barrizqi, Chrisy15, Enginseer, Padre19, Aldebaran1997, Gazebo</SpecialThanks>
@@ -359,7 +359,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Scenes\EE_Kronborg_splash.dds">
+    <Content Include="Art\Scenes\EE_Kronborg_Splash.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
@@ -371,7 +371,7 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Scenes\EE_FasilGhebbi_Splash.dds">
+    <Content Include="Art\Scenes\EE_Fasil_Ghebbi_Splash.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
@@ -379,15 +379,15 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Scenes\EE_Smithsonian_splash.dds">
+    <Content Include="Art\Scenes\EE_Smithsonian_Splash.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Scenes\EE_Topkapi_splash.dds">
+    <Content Include="Art\Scenes\EE_Topkapi_Splash.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Scenes\EE_Wat_Phra_Kaew_splash.dds">
+    <Content Include="Art\Scenes\EE_Wat_Phra_Kaew_Splash.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>

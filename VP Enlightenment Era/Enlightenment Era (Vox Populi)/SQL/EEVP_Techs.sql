@@ -341,15 +341,15 @@ UPDATE Technologies SET Cost =  1000 WHERE GridX =  7; --1000/780	Renaissance: 5
 UPDATE Technologies SET Cost =  1200 WHERE GridX =  8; --1500/1150
 UPDATE Technologies SET Cost =  1500 WHERE GridX =  9; --n/a		Enlightenment: 40 turns
 UPDATE Technologies SET Cost =  1800 WHERE GridX = 10; --n/a
-UPDATE Technologies SET Cost =  2500 WHERE GridX = 11; --2500/1600	Industrial: 45 turns
-UPDATE Technologies SET Cost =  4000 WHERE GridX = 12; --3500/2350
+UPDATE Technologies SET Cost =  2400 WHERE GridX = 11; --2500/1600	Industrial: 45 turns
+UPDATE Technologies SET Cost =  3800 WHERE GridX = 12; --3500/2350
 UPDATE Technologies SET Cost =  5000 WHERE GridX = 13; --5500/3100	Modern: 45 turns
-UPDATE Technologies SET Cost =  6500 WHERE GridX = 14; --6000/4100
-UPDATE Technologies SET Cost =  8000 WHERE GridX = 15; --6500/5100	Atomic: 45 turns
-UPDATE Technologies SET Cost = 10000 WHERE GridX = 16; --7500/6400
-UPDATE Technologies SET Cost = 12000 WHERE GridX = 17; --8500/7700	Information: 60 turns
-UPDATE Technologies SET Cost = 14000 WHERE GridX = 18; --9500/8800
-UPDATE Technologies SET Cost = 16000 WHERE GridX = 19; --10000/9500
+UPDATE Technologies SET Cost =  6000 WHERE GridX = 14; --6000/4100
+UPDATE Technologies SET Cost =  7000 WHERE GridX = 15; --6500/5100	Atomic: 45 turns
+UPDATE Technologies SET Cost =  8000 WHERE GridX = 16; --7500/6400
+UPDATE Technologies SET Cost =  9000 WHERE GridX = 17; --8500/7700	Information: 60 turns
+UPDATE Technologies SET Cost = 11000 WHERE GridX = 18; --9500/8800
+UPDATE Technologies SET Cost = 13000 WHERE GridX = 19; --10000/9500
 UPDATE Technologies SET Cost = 20000 WHERE GridX = 20; --11000	Future: 20 turns
 
 --==========================================================================================================================
