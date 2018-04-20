@@ -1,4 +1,4 @@
-print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.3")
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.4")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -910,6 +910,12 @@ local function SetupBuildingList( city, buildings, buildingIM )
 					buildingYieldModifier = buildingYieldModifier + Game.GetPlayerPerkBuildingClassPercentYieldChange( perkID, buildingClassID, yieldID )
 				end
 			end
+			-- Vox Populi start
+			-- Yield bonuses to World Wonders
+			if city:GetNumWorldWonders() > 0 and Game.IsWorldWonderClass(buildingClassID) then 
+				buildingYieldRate = buildingYieldRate + cityOwner:GetExtraYieldWorldWonder(buildingID, yieldID)
+			end
+			-- Vox Populi end
 			-- Specialists yield
 			--[[ Infixo don't duplicate specialists
 			if specialist then
@@ -1820,17 +1826,21 @@ local function UpdateCityViewNow()
 		local iScienceUnhappiness = city:GetUnhappinessFromScience();
 		local iCultureUnhappiness = city:GetUnhappinessFromCulture();
 		local iResistanceUnhappiness = 0;
+		local iOccupationUnhappiness = 0;
+		local iPuppetUnhappiness = 0;
 		if(city:IsRazing()) then
 			iResistanceUnhappiness = (city:GetPopulation() / 2);
 		elseif(city:IsResistance()) then
 			iResistanceUnhappiness = (city:GetPopulation() / 2);
 		end
-		local iOccupationUnhappiness = 0;
+		if(city:IsPuppet()) then
+			iPuppetUnhappiness = (city:GetPopulation() / GameDefines.BALANCE_HAPPINESS_PUPPET_THRESHOLD_MOD);
+		end
 		if(city:IsOccupied() and not city:IsNoOccupiedUnhappiness() and not city:IsResistance() and not city:IsRazing()) then
 			iOccupationUnhappiness = (city:GetPopulation() * GameDefines.UNHAPPINESS_PER_OCCUPIED_POPULATION);
 		end
 
-		local iTotalUnhappiness = iScienceUnhappiness + iCultureUnhappiness + iDefenseUnhappiness	+ iGoldUnhappiness + iConnectionUnhappiness + iPillagedUnhappiness + iStarvingUnhappiness + iMinorityUnhappiness + iOccupationUnhappiness + iResistanceUnhappiness;
+		local iTotalUnhappiness = iScienceUnhappiness + iCultureUnhappiness + iDefenseUnhappiness	+ iGoldUnhappiness + iConnectionUnhappiness + iPillagedUnhappiness + iStarvingUnhappiness + iMinorityUnhappiness + iOccupationUnhappiness + iResistanceUnhappiness + iPuppetUnhappiness;
 
 		local iPuppetMod = cityOwner:GetPuppetUnhappinessMod();
 		local iCultureYield = city:GetUnhappinessFromCultureYield() / 100;
@@ -1860,6 +1870,12 @@ local function UpdateCityViewNow()
 		if (iResistanceUnhappiness ~= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_EO_CITY_RESISTANCE", iResistanceUnhappiness);
 		end
+
+		-- Puppet tooltip
+		if (iPuppetUnhappiness ~= 0) then
+			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_PUPPET_UNHAPPINESS", iPuppetUnhappiness);
+		end
+
 		-- Occupation tooltip
 		if (iOccupationUnhappiness ~= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_OCCUPATION_UNHAPPINESS", iOccupationUnhappiness);
@@ -3003,7 +3019,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
-print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.3")
+print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.4")
 print("Finished loading EUI city view",os.clock())
 end)
 

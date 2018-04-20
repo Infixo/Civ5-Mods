@@ -7,7 +7,7 @@
     <Guid>6df65e6b-6aa4-4da2-a7fd-084d0e9c84c1</Guid>
     <ModVersion>10</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>More compact and concise City View (for Vox Populi with EUI), Version 10.3</Teaser>
+    <Teaser>More compact and concise City View (for Vox Populi with EUI), Version 10.4</Teaser>
     <Description>Details:
 - Considerably smaller City Focus box.
 - Slim and informative Great Person meters.
@@ -17,7 +17,7 @@
 
 Requires [COLOR_POSITIVE_TEXT]Vox Populi with EUI[ENDCOLOR]. Only works with the small interface option.
 
-Vox Populi compatible by Infixo. Version 10.3</Description>
+Vox Populi compatible by Infixo. Version 10.4</Description>
     <Authors>bc1, Meister Maggi, Infixo</Authors>
     <SpecialThanks>Gazebo, Sneaks, Thalassicus, whoward69</SpecialThanks>
     <AffectsSavedGames>false</AffectsSavedGames>
