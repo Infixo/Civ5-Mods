@@ -284,7 +284,7 @@
 				</Button>
 				<!-- Infixo Great Works -->
 				<Button Anchor="L,B" Size="254,27" Offset="2,0" Texture="CivilopediaButtons272x27.dds" ID="GreatWorksHeader">
-					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_CITYVIEW_GREAT_WORKS" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="GreatWorksHeaderLabel"/>
+					<Label Anchor="L,C" Offset="40,-2" Font="TwCenMT18" String="TXT_KEY_VP_GREAT_WORKS" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" ID="GreatWorksHeaderLabel"/>
 				</Button>
 				<Stack ID="GreatWorksStack" Anchor="L,T" StackGrowth="B">
 					<Button ID="GreatWorksBox" Anchor="L,T" Color="White.0" Size="254,32"/>

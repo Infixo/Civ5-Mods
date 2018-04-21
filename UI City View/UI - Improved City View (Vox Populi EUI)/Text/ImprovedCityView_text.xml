@@ -9,9 +9,6 @@
 		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
 			<Text>{1_Specialist} employed at {2_Building}</Text>
 		</Row>
-		<Row Tag="TXT_KEY_CITYVIEW_GREAT_WORKS">
-			<Text>Great Works</Text>
-		</Row>
 	</Language_en_US>
 	<!-- DE_DE -->
 	<Language_DE_DE>
@@ -65,9 +62,6 @@
 		</Row>
 		<Row Tag="TXT_KEY_CITYVIEW_EMPLOYED_AT">
 			<Text>{1_Specialist} zatrudniony w {2_Building}</Text>
-		</Row>
-		<Row Tag="TXT_KEY_CITYVIEW_GREAT_WORKS">
-			<Text>Wielkie Dzieła</Text>
 		</Row>
 	</Language_PL_PL>
 	<!-- RU_RU -->
