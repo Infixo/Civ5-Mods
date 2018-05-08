@@ -1,4 +1,4 @@
-print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.4")
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.5")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -1759,7 +1759,7 @@ local function UpdateCityViewNow()
 			Controls.NoAutoSpecialistsCheckbox:SetDisabled( g_isViewingMode )
 			Controls.SpecialistsControlBox:SetHide( g_isViewingMode )
 			if bnw_mode then
-				Controls.TourismPerTurnLabel:LocalizeAndSetText( "TXT_KEY_CITYVIEW_PERTURN_TEXT", city:GetBaseTourism() )
+				Controls.TourismPerTurnLabel:LocalizeAndSetText( "TXT_KEY_CITYVIEW_PERTURN_TEXT", city:GetBaseTourism() / 100 )
 				-- CBP
 				local iHappinessPerTurn = city:getHappinessDelta();
 				Controls.HappinessPerTurnLabel:LocalizeAndSetText( "TXT_KEY_NET_HAPPINESS_TEXT", iHappinessPerTurn)
@@ -3019,7 +3019,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
-print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.4")
+print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.5")
 print("Finished loading EUI city view",os.clock())
 end)
 
