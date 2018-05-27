@@ -58,12 +58,12 @@ VALUES ('UNITCLASS_2HANDER', 'UNIT_2HANDER', 'TXT_KEY_UNIT_2HANDER');
 INSERT INTO Units 
 	(Class, Type, PrereqTech, Combat, Cost, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 
 	Description, Civilopedia, Strategy, Help,
-	MilitarySupport, MilitaryProduction, Pillage, ObsoleteTech, GoodyHutUpgradeUnitClass, AdvancedStartCost, 
+	MilitarySupport, MilitaryProduction, Pillage, ObsoleteTech, GoodyHutUpgradeUnitClass, AdvancedStartCost, PurchaseCooldown,
 	XPValueAttack, XPValueDefense, Conscription, UnitArtInfo, UnitFlagIconOffset, IconAtlas, PortraitIndex)
 VALUES
 	('UNITCLASS_2HANDER', 'UNIT_2HANDER','TECH_CHEMISTRY', 26, 300, 400, 1, 2, 'UNITCOMBAT_MELEE', 'DOMAIN_LAND', 'UNITAI_ATTACK',
 	'TXT_KEY_UNIT_2HANDER',	'TXT_KEY_CIV5_2HANDER_TEXT', 'TXT_KEY_UNIT_2HANDER_STRATEGY', 'TXT_KEY_UNIT_HELP_2HANDER',
-	1, 1, 1, 'TECH_EE_FLINTLOCK', 'UNITCLASS_EE_LINE_INFANTRY', 25,
+	1, 1, 1, 'TECH_EE_FLINTLOCK', 'UNITCLASS_EE_LINE_INFANTRY', 25, 1,
 	3, 3, 3, 'ART_DEF_UNIT_2HANDER', 33, 'RER_UNITS_ATLAS', 0);
 
 INSERT INTO UnitGameplay2DScripts (UnitType, SelectionSound, FirstSelectionSound)

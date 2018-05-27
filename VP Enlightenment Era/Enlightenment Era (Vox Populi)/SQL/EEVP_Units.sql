@@ -153,7 +153,7 @@ SET ObsoleteTech = 'TECH_EE_FLINTLOCK', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE
 WHERE Class = 'UNITCLASS_TERCIO';
 
 UPDATE Units
-SET ObsoleteTech = 'TECH_REPLACEABLE_PARTS', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_LINE_INFANTRY'
+SET ObsoleteTech = 'TECH_REPLACEABLE_PARTS', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN'
 WHERE Type = 'UNIT_FRENCH_MUSKETEER';
 
 UPDATE Unit_ClassUpgrades
@@ -395,7 +395,7 @@ UPDATE Units SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD' WHERE Type = 'U
 -- Portuguese Nau
 -------------------------------------------------------
 
-UPDATE Civilization_UnitClassOverrides SET UnitClassType='UNITCLASS_EE_CARRACK' WHERE UnitType='UNIT_PORTUGUESE_NAU';
+UPDATE Civilization_UnitClassOverrides SET UnitClassType = 'UNITCLASS_EE_CARRACK' WHERE UnitType = 'UNIT_PORTUGUESE_NAU';
 
 UPDATE Units 
 SET Combat = 32, Moves = 5, Class = 'UNITCLASS_EE_CARRACK', PrereqTech = 'TECH_ASTRONOMY', ObsoleteTech = 'TECH_EE_WARSHIPS', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER'
@@ -407,6 +407,8 @@ UPDATE Unit_ClassUpgrades SET UnitClassType = 'UNITCLASS_PRIVATEER' WHERE UnitTy
 -- Dutch Sea Beggar - replacement for Carrack (change from Privateer)
 -- Related to William of Orange, so XVI-XII cent., late Renaissance
 -------------------------------------------------------
+
+UPDATE Civilization_UnitClassOverrides SET UnitClassType = 'UNITCLASS_EE_CARRACK' WHERE UnitType = 'UNIT_DUTCH_SEA_BEGGAR';
 
 UPDATE Units
 SET Combat = 34, Class = 'UNITCLASS_EE_CARRACK', PrereqTech = 'TECH_EE_EXPLORATION', ObsoleteTech = 'TECH_INDUSTRIALIZATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER'
@@ -650,6 +652,11 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 UPDATE Language_en_US
 SET Text = 'Naval Unit that attacks as a melee unit. It is stronger and faster than the Carrack.'
 WHERE Tag IN ('TXT_KEY_UNIT_PRIVATEER_STRATEGY');
+
+-- Dutch Sea Beggar
+UPDATE Language_en_US
+SET Text = 'Naval Unit that specializes in attacking coastal cities to earn gold and capturing enemy ships. Stronger than Carrack, which it replaces. Only the Dutch can build it.'
+WHERE Tag = 'TXT_KEY_UNIT_HELP_SEA_BEGGAR';
 
 -- Portugese Nau
 UPDATE Language_en_US 
