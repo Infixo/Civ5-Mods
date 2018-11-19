@@ -7,7 +7,7 @@
     <Guid>675ba5ec-dc5a-400f-9864-8170568d04e5</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Stable</Stability>
-    <Teaser>Additional Naval units in late-game eras. Version 1.5.</Teaser>
+    <Teaser>Additional Naval units in late-game eras. Version 1.6.</Teaser>
     <Description>Additional units in late-game eras so in each era there's a complete set of specific unit types (no gaps):
 [NEWLINE][ICON_BULLET]Dreadnought - Modern Era, naval ranged
 [NEWLINE][ICON_BULLET](early) Destroyer - Modern Era, naval melee
@@ -16,7 +16,7 @@
 [NEWLINE][ICON_BULLET]Missile Destroyer - Information Era, naval melee
 [NEWLINE][ICON_BULLET]Supercarrier - Information Era, carriers
 [NEWLINE]Changes to existing units: Missile Cruiser is back again a ranged unit, Submarine is available earlier but is weaker and Guided Missile is available in Information Era. Destroyer is renamed to Modern Destroyer.
-[NEWLINE]Requires Vox Populi. Version 1.5.</Description>
+[NEWLINE]Requires Vox Populi. Version 1.6.</Description>
     <Authors>Infixo</Authors>
     <SpecialThanks>See credits.txt</SpecialThanks>
     <AffectsSavedGames>true</AffectsSavedGames>
@@ -120,6 +120,14 @@
     <ReloadUnitSystem>true</ReloadUnitSystem>
     <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
     <Homepage>http://forums.civfanatics.com/threads/enhanced-naval-warfare-for-vox-populi.624793/</Homepage>
+    <ModContent>
+      <Content xmlns="">
+        <Type>InGameUIAddin</Type>
+        <Name>Unit_Supercarrier</Name>
+        <Description>Unit_Supercarrier</Description>
+        <FileName>Supercarrier/Unit_Supercarrier.lua</FileName>
+      </Content>
+    </ModContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -446,6 +454,10 @@
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Supercarrier\SV_Supercarrier.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Supercarrier\Unit_Supercarrier.lua">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

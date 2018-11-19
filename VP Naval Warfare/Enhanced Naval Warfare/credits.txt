@@ -1,17 +1,20 @@
-Attack Submarine, Missile Cruiser
-- Models - Gedemon's RED Extended
-- Icons - Gedemon's RED Extended (by Urzahil, Hulfgar)
+Attack Submarine
+- Model - Gedemon's RED Extended
+- Icon - Asterix Rage
+Missile Cruiser
+- Model - Gedemon's RED Extended
+- Icon - Gedemon's RED Extended (by Urzahil, Hulfgar)
 Dreadnought
 - Model - Danrell
-- Icons - Gedemon's RED Extended (by Urzahil, Hulfgar)
+- Icon - Gedemon's RED Extended (by Urzahil, Hulfgar)
 Destroyer (Z-Class)
 - Model - Danrell
 Destroyer (Wickes-class)
 - Model - snafusmith
-- Icons - Josh LaBrie's Advanced Naval Units 
+- Icon - Asterix Rage
 Rocket Missile
-- Icons - swatmp5's Tactical Nuclear Missile
+- Icon - Asterix Rage
 Supercarrier:
 - Model - Wolfdog
 - Flag - Rapunzel's Nimitz-Class Supercarrier
-- Icons - Gedemon's RED Extended (by Urzahil, Hulfgar)
+- Icon - Asterix Rage

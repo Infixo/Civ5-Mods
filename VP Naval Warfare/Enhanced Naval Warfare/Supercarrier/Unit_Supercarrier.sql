@@ -132,7 +132,7 @@ VALUES ('TXT_KEY_UNIT_SUPERCARRIER_PEDIA', 'Supercarrier is an unofficial descri
 
 -- Pedia: Strategy (middle)
 INSERT INTO Language_en_US (Tag, Text)
-VALUES ('TXT_KEY_UNIT_SUPERCARRIER_STRATEGY', 'The Supercarrier is a specialized vessel which carries fighter airplanes, bombers (but not stealth bombers), and atomic bombs. The aircrafts it carries make it the most powerful offensive weapon afloat. Defensively, the Supercarrier is much stronger than its predecessor, but should still be escorted by destroyers and submarines. Maximum of 3 units can be built.');
+VALUES ('TXT_KEY_UNIT_SUPERCARRIER_STRATEGY', 'The Supercarrier is a specialized vessel which carries fighter airplanes, bombers (but not stealth bombers), and atomic bombs. The aircrafts it carries make it the most powerful offensive weapon afloat. Defensively, the Supercarrier is much stronger than its predecessor, but should still be escorted by destroyers and submarines. Maximum of 2 units can be built.');
 
 -- Pedia: Game Info (top)
 INSERT INTO Language_en_US (Tag, Text)

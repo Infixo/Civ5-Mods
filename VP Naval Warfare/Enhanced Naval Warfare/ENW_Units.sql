@@ -23,7 +23,7 @@ WHERE StrategicViewType = 'ART_DEF_UNIT_MISSILE_CRUISER';
 
 UPDATE Units
 SET UnitFlagAtlas = 'FLAG_ATLAS_ENW', UnitFlagIconOffset = 3, CombatClass = 'UNITCOMBAT_NAVALRANGED',
-	Combat = 55, RangedCombat = 80, Range = 1, Cost = 2800, ExtraMaintenanceCost = 2
+	Combat = 55, RangedCombat = 80, Range = 2, Cost = 2800, ExtraMaintenanceCost = 2
 WHERE Type = 'UNIT_MISSILE_CRUISER';
 
 -- other gameplay changes will follow
@@ -44,7 +44,6 @@ VALUES
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_SEE_INVISIBLE_SUBMARINE'),
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_ANTI_SUBMARINE_I'),  -- 33%
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_INDIRECT_FIRE'),
-	('UNIT_MISSILE_CRUISER', 'PROMOTION_NAVAL_RANGE'),
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_CAN_MOVE_AFTER_ATTACKING'),
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_CARGO_III'),  -- NuclearSub and MisDestr has 2 cargo
 	('UNIT_MISSILE_CRUISER', 'PROMOTION_INTERCEPTION_III');  -- 50%
