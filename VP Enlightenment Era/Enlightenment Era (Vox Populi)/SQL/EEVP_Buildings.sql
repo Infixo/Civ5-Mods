@@ -241,12 +241,12 @@ INSERT INTO Building_ResourceYieldChanges (BuildingType, ResourceType, YieldType
 ----------------------------------------------
 
 UPDATE Buildings
-SET AllowsRangeStrike = 1, NeverCapture = 1, ConquestProb = 0, CitySupplyModifier = 10
+SET AllowsRangeStrike = 1, NeverCapture = 1, ConquestProb = 0
 WHERE Type = 'BUILDING_EE_BASTION';
 
-UPDATE Buildings SET Defense = 1500, ExtraCityHitPoints = 150 WHERE Type = 'BUILDING_EE_BASTION';
-UPDATE Buildings SET Defense = 1000, ExtraCityHitPoints = 100 WHERE Type = 'BUILDING_ARSENAL';
-UPDATE Buildings SET Defense = 2000, ExtraCityHitPoints = 150 WHERE Type = 'BUILDING_MILITARY_BASE';
+UPDATE Buildings SET Defense = 1000, ExtraCityHitPoints = 100, CitySupplyModifier = 10, CityRangedStrikeRange = 1, HealRateChange = 10 WHERE Type = 'BUILDING_EE_BASTION';
+UPDATE Buildings SET Defense = 1500, ExtraCityHitPoints = 100, CitySupplyModifier = 10, CityRangedStrikeRange = 0, HealRateChange =  0 WHERE Type = 'BUILDING_ARSENAL';
+UPDATE Buildings SET Defense = 2000, ExtraCityHitPoints = 150, CitySupplyModifier = 20 WHERE Type = 'BUILDING_MILITARY_BASE';
 
 -- add EE_BASTION to Defender of Faith Belief
 INSERT INTO Belief_BuildingClassYieldChanges (BeliefType, BuildingClassType, YieldType, YieldChange) VALUES
@@ -262,7 +262,7 @@ SET BuildingClassType = 'BUILDINGCLASS_EE_BASTION'
 WHERE BuildingType = 'BUILDING_KREPOST';
 
 UPDATE Buildings  -- VP: Arsenal, Metallurgy
-SET BuildingClass = 'BUILDINGCLASS_EE_BASTION', PrereqTech = 'TECH_EE_FLINTLOCK', ExtraCityHitPoints = 150, Defense = 1500
+SET BuildingClass = 'BUILDINGCLASS_EE_BASTION', PrereqTech = 'TECH_EE_FLINTLOCK', Defense = 1500, ExtraCityHitPoints = 150, CityIndirectFire = 0, BlockScienceTheft = 0
 WHERE Type = 'BUILDING_KREPOST'; 
 
 -- Infixo: in VP2/27 Ostrog doesn't have any prereq buildings, don't know yet if it's a bug or not; delete/insert will work in both cases
@@ -277,7 +277,7 @@ VALUES ('BUILDING_KREPOST', 'BUILDINGCLASS_CASTLE');
 ----------------------------------------------
 
 UPDATE Buildings
-SET UnculturedHappinessChange = -10, DefenseHappinessChange = 10  -- Defense = Crime
+SET UnculturedHappinessChange = -10, DefenseHappinessChange = 10  -- Defense = Distress
 WHERE Type = 'BUILDING_EE_TAVERN';
 
 INSERT INTO Building_ResourceYieldChanges (BuildingType, ResourceType, YieldType, Yield) VALUES
@@ -378,8 +378,8 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_EE_ACADEMY_PEDIA', 'An academy is an organized body of scholars supported by state funding, though generally independent of direct government influence, that coordinates research, establishes standards for their respective fields, and maintain various research facilities within their jurisdiction. The amount of power and influence an academy yields varies considerable between nations. In some, the a single academy may oversee multiple, or all, scientific disciplines, while in others each discipline is guided by its own academy. While academies dedicated to the natural sciences began forming in the 1600s, they truly began to flourish in the 1700s as royalty throughout Europe followed the model set by Frederick III of Prussia when he founded the Prussian Academy of Sciences in 1700.'),
 -- Bastion
 ('TXT_KEY_BUILDING_EE_BASTION', 'Bastion'),
-('TXT_KEY_BUILDING_EE_BASTION_HELP', '+150 HP and +15 [ICON_STRENGTH] Defense in the City. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Castle[ENDCOLOR].'),
-('TXT_KEY_BUILDING_EE_BASTION_STRATEGY', 'The Bastion is an Enlightenment-era defensive building which increases both the hitpoints and defensive strength of the city where it is built. The city must possess a Castle before a Bastion can be built.'),
+('TXT_KEY_BUILDING_EE_BASTION_HELP', 'Military Units supplied by this City''s population increased by 10%. Increases the City''s [ICON_RANGE_STRENGTH] Ranged Strike Range by 1. Garrisoned units receive an additional 10 Health when healing in this city.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Castle[ENDCOLOR].'),
+('TXT_KEY_BUILDING_EE_BASTION_STRATEGY', 'The Bastion is an Enlightenment-era military building that increases Defense Strength by 10 and Hit Points by 100, making the city more difficult to capture. Increases the City''s [ICON_RANGE_STRENGTH] Ranged Strike Range by 1. Increases Military Units supplied by this City''s population by 10%. The city must possess a [COLOR_CYAN]Castle[ENDCOLOR] before it can construct a Bastion.'),
 ('TXT_KEY_BUILDING_EE_BASTION_PEDIA', 'A bastion is an angular projection extending from a fortification, specifically designed to address the changes gunpowder had brought to the landscape of war. Their angular shape eliminated dead space in front of the bastion, allowing neighboring bastions to fire upon enemies should they reach the base. Bastions tend to be short and broad, providing ample room for cannons and their crews while presenting a smaller profile for enemy artillery to attack. Should a cannonball strike the bastion and penetrate its stone facade, the interior of hard-packed earth and rubble would absorb the blow. Advances in artillery during the 19th Century, however, would render even these defensive measures obsolete.'),
 -- Cloth Mill
 ('TXT_KEY_BUILDING_EE_CLOTH_MILL', 'Cloth Mill'),
@@ -403,8 +403,8 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_EE_GUNSMITH_PEDIA', 'Gunsmiths are skilled craftsmen devoted to the design, modification, manufacture and repair of firearms. Before the advent of Eli Whitney''s Mill River Armory in the 1790s AD Samuel Colt''s mass production of handguns at his factories in Hartford (USA) and London (UK) in the mid-1800s, the gunsmith shop was a vital establishment in any "civilized" settlement.'),
 -- Manor
 ('TXT_KEY_BUILDING_EE_MANOR', 'Manor'),
-('TXT_KEY_BUILDING_EE_MANOR_HELP', 'Slightly reduces [ICON_HAPPINESS_3] Crime. +15% Generation of [ICON_GREAT_PEOPLE] Great People.'),
-('TXT_KEY_BUILDING_EE_MANOR_STRATEGY', 'Slightly reduces Crime. Increases the rate at which Great People are generated in a city.'),
+('TXT_KEY_BUILDING_EE_MANOR_HELP', 'Slightly reduces [ICON_HAPPINESS_3] Distress. +15% Generation of [ICON_GREAT_PEOPLE] Great People.'),
+('TXT_KEY_BUILDING_EE_MANOR_STRATEGY', 'Slightly reduces Distress. Increases the rate at which Great People are generated in a city.'),
 ('TXT_KEY_BUILDING_EE_MANOR_PEDIA', 'During the Middle Ages, the manor house was the dwelling of the lord of the manor (or the residential bailiff) and the administrative center of his feudal estate. The medieval manor was generally fortified in proportion to the degree of peaceful settlement of the country or region in which it was located. It served as the center of secular village life, and its great hall was the scene of the manorial court and the place of assembly of the tenantry. With increased prosperity and the desire for more commodious dwellings, the 16th-century manor house evolved into the Renaissance country house. In England more elaborate buildings were constructed, reflecting a new era of formality. The houses were frequently of regular quadrangular plan, with the hall diminished in size and importance. In later years the title of manor house in England lost particular significance, having been adopted by large country mansions that had no manorial foundation.'),
 -- Menagerie
 ('TXT_KEY_BUILDING_EE_MENAGERIE', 'Menagerie'),
@@ -418,7 +418,7 @@ INSERT INTO Language_en_US (Tag, Text) VALUES
 ('TXT_KEY_BUILDING_EE_SALON_STRATEGY', 'The Salon is an Enlightenment-era building which increases the [ICON_CULTURE] Culture output of a city. It may not be built in a city with an Academy, forcing cities to specialise in either Culture or Science.'),
 -- Tavern
 ('TXT_KEY_BUILDING_EE_TAVERN', 'Tavern'),
-('TXT_KEY_BUILDING_EE_TAVERN_HELP', 'Slightly reduces [ICON_HAPPINESS_3] Boredom but increases [ICON_HAPPINESS_3] Crime. Nearby [ICON_RES_WHEAT] Wheat, [ICON_RES_DEER] Deer, [ICON_RES_FISH] Fish , [ICON_RES_WINE] Wine and [ICON_RES_BISON] Bison: +1 [ICON_FOOD] Food.'),
+('TXT_KEY_BUILDING_EE_TAVERN_HELP', 'Slightly reduces [ICON_HAPPINESS_3] Boredom but increases [ICON_HAPPINESS_3] Distress. Nearby [ICON_RES_WHEAT] Wheat, [ICON_RES_DEER] Deer, [ICON_RES_FISH] Fish , [ICON_RES_WINE] Wine and [ICON_RES_BISON] Bison: +1 [ICON_FOOD] Food.'),
 ('TXT_KEY_BUILDING_EE_TAVERN_STRATEGY', 'The Tavern increases the happiness output of the city. In order to build the Tavern, a city must first contain a Collosseum.'),
 ('TXT_KEY_BUILDING_EE_TAVERN_PEDIA', 'Establishments for the dispensation and consumption of alcoholic beverages have been a fixture of cities throughout human civilization. The Babylonian Code of Hammurabi suggests the death penalty for proprietors diluting beer, while the ancient Greek lesche and phatnai catered to the needs of foreign traders and envoys. The traditional English tavern has its roots in the Roman period and, although still considered a place of ill-repute, the taberna was understood as a higher class establishment than the similar caupona which served slaves and the lower classes. Tabernae eventually evolved into alehouses run by women and finally the medieval English inn; sanctuaries for wayfaring strangers, thieves, and political malcontents. By the middle of the 16th century the dining-out habit was well established among townsmen of all classes, and the tavern originated the custom of providing a daily meal at a fixed time. As taverns gradually became more socially acceptable, some of the better houses became regular meeting halls and unofficial clubhouses providing companionship to the masses.'),
 -- Weigh House
@@ -434,23 +434,23 @@ WHERE Tag = 'TXT_KEY_BUILDING_MUSEUM_HELP';
 
 -- Ostrog
 UPDATE Language_en_US
-SET Text = '+1 [ICON_PRODUCTION] Production and [ICON_GOLD] Gold to Camps, Mines, and Lumbermills. Decreases tile [ICON_CULTURE] Culture and [ICON_GOLD] Gold cost in the City by 50%. Enemy land Units must expend 1 extra [ICON_MOVES] movement per Tile if they move into a Tile worked by this City.[NEWLINE][NEWLINE]+150 HP and +15 [ICON_STRENGTH] Defense in the City. Military Units supplied by this City''s population increased by 10%.'
+SET Text = '+1 [ICON_PRODUCTION] Production and [ICON_GOLD] Gold to Camps, Mines, Lumbermills, and Strategic Resources. Increases the City''s [ICON_RANGE_STRENGTH] Ranged Strike Range by 1. Enemy land Units must expend 1 extra [ICON_MOVES] movement per Tile if they move into a Tile worked by this City.[NEWLINE][NEWLINE]Increases city Defense Strength by 15 and Hit Points by 150. Military Units supplied by this City''s population increased by 15%. Garrisoned units receive an additional 10 Health when healing in this city.'
 WHERE Tag = 'TXT_KEY_BUILDING_KREPOST_HELP';
 
 -- Arsenal
 UPDATE Language_en_US
-SET Text = '+100 HP and +10 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Bastion[ENDCOLOR].'
+SET Text = 'Military Units supplied by this City''s population increased by 10%. Allows Indirect Fire. Foreign Spies cannot steal [ICON_RESEARCH] Science from this City.[NEWLINE][NEWLINE]City must have a [COLOR_CYAN]Bastion[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_BUILDING_ARSENAL_HELP';
 UPDATE Language_en_US
-SET Text = 'The Arsenal is an Industrial-era military building that increases city''s Defense Strength and Hit Points, making it more difficult to capture. Increases number of Military Units supplied by this City''s population. The city must possess a Bastion before it can construct an Arsenal.'
+SET Text = 'The Arsenal is an Industrial-era military building that increases Defense Strength by 15 and Hit Points by 100, making the city more difficult to capture. Allows the City to [ICON_RANGE_STRENGTH] Ranged Strike indirectly, ignoring Line of Sight. Increases Military Units supplied by this City''s population by 10%. The city must possess a [COLOR_CYAN]Bastion[ENDCOLOR] before it can construct an Arsenal.'
 WHERE Tag = 'TXT_KEY_BUILDING_ARSENAL_STRATEGY';
 
 -- Military Base
 UPDATE Language_en_US
-SET Text = '+20% [ICON_PRODUCTION] Production of Air units, +10 [ICON_STRENGTH] Damage to Air Units during Air Strikes on City. Garrisoned units receive an additional 10 Health when healing in this city. Foreign Spies cannot steal [ICON_RESEARCH] Science from this City. +150 HP and +20 [ICON_STRENGTH] Defense in the city. Increases the Military Unit Supply Cap from Population in the City by 10%.[NEWLINE][NEWLINE]City must have an [COLOR_CYAN]Arsenal[ENDCOLOR].'
+SET Text = 'Reduces [ICON_HAPPINESS_3] Distress greatly. +25% [ICON_PRODUCTION] Production of Air units, +15 [ICON_STRENGTH] Damage to Air Units during Air Strikes on City. Increases the City''s [ICON_RANGE_STRENGTH] Ranged Strength by 100%. Military Units supplied by this City''s population increased by 20%, and garrisoned units receive an additional 10 Health when healing in this city.[NEWLINE][NEWLINE]City must have an [COLOR_CYAN]Arsenal[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_BUILDING_MILITARY_BASE_HELP';
 UPDATE Language_en_US
-SET Text = 'The Military Base is a late-game building which greatly increases city''s Defensive Strength and Hit Points. Garrisoned units receive an additional 10 Health when healing in this city. Increases number of Military Units supplied by this City''s population. The city must possess an Arsenal before a Military Base may be constructed.'
+SET Text = 'The Military Base is a late-game building which increases Defensive Strength by 20 and Hit Points by 150, and improves defense against air units. The city must possess an [COLOR_CYAN]Arsenal[ENDCOLOR] before a Military Base may be constructed. Garrisoned units receive an additional 10 Health when healing in this city. Increases Military Units supplied by this City''s population by 20%.'
 WHERE Tag = 'TXT_KEY_BUILDING_MILITARY_BASE_STRATEGY';
 
 -- Seaport

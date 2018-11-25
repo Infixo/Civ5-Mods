@@ -17,17 +17,17 @@ WHERE Type IN ('POLICY_BRANCH_RATIONALISM', 'POLICY_BRANCH_EXPLORATION', 'POLICY
 --------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO Policy_BuildingClassYieldChanges (PolicyType, BuildingClassType, YieldType, YieldChange) VALUES
-('POLICY_CREATIVE_EXPRESSION','BUILDINGCLASS_EE_GALLERY',	 'YIELD_GOLDEN_AGE_POINTS', 2), -- Infixo
-('POLICY_MOBILIZATION', 	  'BUILDINGCLASS_EE_BASTION',	 'YIELD_SCIENCE', 3), -- ok
-('POLICY_NAVIGATION_SCHOOL',  'BUILDINGCLASS_EE_GUNSMITH',	 'YIELD_SCIENCE', 5);
+('POLICY_CREATIVE_EXPRESSION','BUILDINGCLASS_EE_GALLERY',  'YIELD_GOLDEN_AGE_POINTS', 2),
+('POLICY_MOBILIZATION', 	  'BUILDINGCLASS_EE_BASTION',  'YIELD_SCIENCE', 3),
+('POLICY_NAVAL_TRADITION',    'BUILDINGCLASS_EE_GUNSMITH', 'YIELD_SCIENCE', 3);
 
 INSERT INTO Policy_BuildingClassCultureChanges (PolicyType, BuildingClassType, CultureChange) VALUES
-('POLICY_CREATIVE_EXPRESSION', 	 'BUILDINGCLASS_EE_GALLERY', 2),
-('POLICY_NAVIGATION_SCHOOL', 'BUILDINGCLASS_EE_GUNSMITH',	 2);
+('POLICY_CREATIVE_EXPRESSION', 'BUILDINGCLASS_EE_GALLERY',  2),
+('POLICY_NAVAL_TRADITION',     'BUILDINGCLASS_EE_GUNSMITH', 1);
 
 INSERT INTO Policy_BuildingClassYieldModifiers (PolicyType, BuildingClassType, YieldType, YieldMod) VALUES
-('POLICY_MERCANTILISM',	'BUILDINGCLASS_EE_WEIGH_HOUSE',	'YIELD_SCIENCE', 2),
-('POLICY_MERCANTILISM',	'BUILDINGCLASS_EE_WEIGH_HOUSE',	'YIELD_CULTURE', 2),
+('POLICY_MERCANTILISM',	'BUILDINGCLASS_EE_WEIGH_HOUSE',	'YIELD_SCIENCE', 1),
+('POLICY_MERCANTILISM',	'BUILDINGCLASS_EE_WEIGH_HOUSE',	'YIELD_CULTURE', 3),
 ('POLICY_TRADE_UNIONS',	'BUILDINGCLASS_EE_CLOTH_MILL',	'YIELD_PRODUCTION', 2),
 ('POLICY_TRADE_UNIONS',	'BUILDINGCLASS_EE_CLOTH_MILL',	'YIELD_GOLD', 2);
 
@@ -45,15 +45,15 @@ WHERE Tag = 'TXT_KEY_POLICY_CREATIVE_EXPRESSION_HELP';
 
 -- Division of Labor
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Division of Labor[ENDCOLOR][NEWLINE]Forges, Windmills, Workshops, Cloth Mills, Factories, and Airports generate +2% [ICON_PRODUCTION] Production and [ICON_GOLD] Gold each. [ICON_GOLD] Gold investments in Buildings reduce their [ICON_PRODUCTION] Production cost by an additional 10%.'
+SET Text = '[COLOR_POSITIVE_TEXT]Division of Labor[ENDCOLOR][NEWLINE]Forges, Windmills, Workshops, Cloth Mills, Factories, Train Stations, and Seaports generate +2% [ICON_PRODUCTION] Production and [ICON_GOLD] Gold each. [ICON_GOLD] Gold investments in Buildings reduce their [ICON_PRODUCTION] Production cost by an additional 10%.'
 WHERE Tag = 'TXT_KEY_POLICY_TRADE_UNIONS_HELP';
 
 -- Mercantilism (Industry)
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Mercantilism[ENDCOLOR][NEWLINE]Markets, Caravansaries, Customs Houses, Banks, Weigh Houses, and Stock Exchanges generate +2% [ICON_RESEARCH] Science and [ICON_CULTURE] Culture each. +100% [ICON_PRODUCTION] Production speed of Train Stations and Seaports.'
+SET Text = '[COLOR_POSITIVE_TEXT]Mercantilism[ENDCOLOR][NEWLINE]Markets, Caravansaries, Customs Houses, Banks, Weigh Houses, and Stock Exchanges generate +1% [ICON_RESEARCH] Science and +3% [ICON_CULTURE] Culture each. +100% [ICON_PRODUCTION] Production speed of Train Stations and Seaports.'
 WHERE Tag = 'TXT_KEY_POLICY_MERCANTILISM_HELP';
 
--- Regimental System (Imperialism)	
+-- Colonialism (Naval Tradition)
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Regimental System[ENDCOLOR][NEWLINE]Earn [ICON_GREAT_GENERAL] Great Generals and [ICON_GREAT_ADMIRAL] Great Admirals 33% more quickly. Barracks, Armories, Gunsmiths, Military Academies, Forts, and Citadels provide +5 [ICON_RESEARCH] Science and +2 [ICON_CULTURE] Culture.'
-WHERE Tag = 'TXT_KEY_POLICY_NAVIGATION_SCHOOL_HELP';
+SET Text = '[COLOR_POSITIVE_TEXT]Colonialism[ENDCOLOR][NEWLINE]+10% to sum of Yield and [ICON_GOLDEN_AGE] Golden Age duration modifiers from Global Monopolies; +4 to sum of Yields and [ICON_HAPPINESS_1] Happiness from Global Monopolies. Barracks, Armories, Gunsmiths, Military Academies, Forts, and Citadels provide +3 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture.'
+WHERE Tag = 'TXT_KEY_POLICY_NAVAL_TRADITION_HELP';

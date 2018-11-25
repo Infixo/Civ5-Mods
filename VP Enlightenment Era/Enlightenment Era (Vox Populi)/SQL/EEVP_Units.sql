@@ -11,9 +11,9 @@
 
 INSERT INTO Units (Type, PrereqTech, Combat, Moves, RequiresFaithPurchaseEnabled, ObsoleteTech, CombatClass, Domain, DefaultUnitAI, AdvancedStartCost, UnitFlagIconOffset, PortraitIndex, GoodyHutUpgradeUnitClass) VALUES
 ('UNIT_EE_ADVENTURER',    'TECH_EE_EXPLORATION',  23, 3, 1,'TECH_STEAM_POWER',    'UNITCOMBAT_RECON',       'DOMAIN_LAND','UNITAI_EXPLORE',     10, 6, 6,'UNITCLASS_ZEPPELIN'), -- UNIT_EE_EXPLORER in original EE
-('UNIT_EE_FIELD_GUN',     'TECH_EE_FLINTLOCK',    17, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_SIEGE',       'DOMAIN_LAND','UNITAI_CITY_BOMBARD',30, 4, 4,'UNITCLASS_FIELD_GUN'),
+('UNIT_EE_FIELD_GUN',     'TECH_EE_FLINTLOCK',    20, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_SIEGE',       'DOMAIN_LAND','UNITAI_CITY_BOMBARD',30, 4, 4,'UNITCLASS_FIELD_GUN'),
 ('UNIT_EE_LINE_INFANTRY', 'TECH_EE_FLINTLOCK',    30, 2, 1,'TECH_RIFLING',        'UNITCOMBAT_GUN',         'DOMAIN_LAND','UNITAI_DEFENSE',     30, 1, 1,'UNITCLASS_RIFLEMAN'),
-('UNIT_EE_SKIRMISHER',    'TECH_EE_FORTIFICATION',21, 2, 1,'TECH_DYNAMITE',       'UNITCOMBAT_ARCHER',      'DOMAIN_LAND','UNITAI_RANGED',      30, 2, 2,'UNITCLASS_GATLINGGUN'),
+('UNIT_EE_SKIRMISHER',    'TECH_EE_FORTIFICATION',24, 2, 1,'TECH_DYNAMITE',       'UNITCOMBAT_ARCHER',      'DOMAIN_LAND','UNITAI_RANGED',      30, 2, 2,'UNITCLASS_GATLINGGUN'),
 ('UNIT_EE_UHLAN',         'TECH_RIFLING',         40, 4, 1,'TECH_COMBUSTION',     'UNITCOMBAT_MOUNTED',     'DOMAIN_LAND','UNITAI_FAST_ATTACK', 30, 3, 3,'UNITCLASS_WWI_TANK'),
 ('UNIT_EE_CARRACK',       'TECH_ASTRONOMY',       30, 5, 0,'TECH_NAVIGATION',     'UNITCOMBAT_NAVALMELEE',  'DOMAIN_SEA', 'UNITAI_EXPLORE_SEA', 50, 9,19,'UNITCLASS_PRIVATEER'),
 ('UNIT_EE_GALLEON',       'TECH_EE_EXPLORATION',  16, 4, 0,'TECH_EE_WARSHIPS',    'UNITCOMBAT_NAVALRANGED', 'DOMAIN_SEA', 'UNITAI_ASSAULT_SEA', 50, 5, 5,'UNITCLASS_FRIGATE'),
@@ -78,6 +78,16 @@ WHERE Type IN (
 'UNIT_EE_GALLEON',
 'UNIT_EE_SHIP_OF_THE_LINE');
 
+-- Version 1.2 updates for existing units related to additonal era (courtesy of adan_eslavo)
+UPDATE Units Set ObsoleteTech = 'TECH_BALLISTICS' WHERE Type = 'UNIT_AUSTRIAN_HUSSAR';
+UPDATE Units Set ObsoleteTech = 'TECH_BALLISTICS' WHERE Type = 'UNIT_INDIAN_WARELEPHANT';
+UPDATE Units Set GoodyHutUpgradeUnitClass = 'UNITCLASS_2HANDER' WHERE Type = 'UNIT_DANISH_BERSERKER';
+UPDATE Units Set ObsoleteTech = 'TECH_EE_FLINTLOCK' WHERE Type = 'UNIT_DANISH_BERSERKER';
+UPDATE Units Set GoodyHutUpgradeUnitClass = 'UNITCLASS_2HANDER' WHERE Type = 'UNIT_JAPANESE_SAMURAI';
+UPDATE Units Set ObsoleteTech = 'TECH_EE_FLINTLOCK' WHERE Type = 'UNIT_JAPANESE_SAMURAI';
+UPDATE Units Set GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_SKIRMISHER' WHERE Type = 'UNIT_OTTOMAN_JANISSARY';
+UPDATE Units Set ObsoleteTech = 'TECH_DYNAMITE' WHERE Type = 'UNIT_OTTOMAN_JANISSARY';
+
 ----------------------------------------------------
 -- Unit AI
 ----------------------------------------------------
@@ -130,7 +140,7 @@ SET ObsoleteTech = 'TECH_EE_EXPLORATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_
 WHERE Type = 'UNIT_EXPLORER';
 
 INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
-('UNIT_EE_ADVENTURER', 'PROMOTION_BARBARIAN_PENALTY_III'),
+('UNIT_EE_ADVENTURER', 'PROMOTION_BARBARIAN_BONUS'),
 ('UNIT_EE_ADVENTURER', 'PROMOTION_DEFENSIVE_EMBARKATION'),
 ('UNIT_EE_ADVENTURER', 'PROMOTION_EE_ADVENTURER'),
 ('UNIT_EE_ADVENTURER', 'PROMOTION_EMBARKED_SIGHT'),
@@ -147,18 +157,24 @@ WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_EXPLORER');
 
 -------------------------------------------------------
 -- Tercio upgrade
+-- Zulu Impi, French Musketeer
 -------------------------------------------------------
-UPDATE Units
-SET ObsoleteTech = 'TECH_EE_FLINTLOCK', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_LINE_INFANTRY' 
-WHERE Class = 'UNITCLASS_TERCIO';
 
 UPDATE Units
-SET ObsoleteTech = 'TECH_REPLACEABLE_PARTS', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN'
-WHERE Type = 'UNIT_FRENCH_MUSKETEER';
+SET ObsoleteTech = 'TECH_EE_FLINTLOCK', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_LINE_INFANTRY' 
+WHERE Type = 'UNIT_SPANISH_TERCIO';
+
+UPDATE Units
+SET ObsoleteTech = 'TECH_RIFLING', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_LINE_INFANTRY' 
+WHERE Type IN ('UNIT_FRENCH_MUSKETEER', 'UNIT_ZULU_IMPI');
+
+--UPDATE Units
+--SET ObsoleteTech = 'TECH_REPLACEABLE_PARTS', GoodyHutUpgradeUnitClass = 'UNITCLASS_RIFLEMAN'
+--WHERE Type = 'UNIT_FRENCH_MUSKETEER'
 
 UPDATE Unit_ClassUpgrades
 SET UnitClassType = 'UNITCLASS_EE_LINE_INFANTRY'
-WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_TERCIO' AND Type != 'UNIT_FRENCH_MUSKETEER');
+WHERE UnitType IN (SELECT Type FROM Units WHERE Class = 'UNITCLASS_TERCIO' AND Type != 'UNIT_SWEDISH_CAROLEAN');
 
 -------------------------------------------------------
 -- Swedish Carolean, used in period 1680-1720
@@ -237,18 +253,19 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType) VALUES
 ('UNIT_EE_UHLAN', 'PROMOTION_FORMATION_1');
 
 -------------------------------------------------------
--- Ottoman Sipahi & Polish Winged Hussar
--- Sipahi were two types of Ottoman cavalry corps
+-- Polish Winged Hussar (replaces Lancer, upgrades to Uhlan)
 -- The Polish Hussars or Winged Hussars, were one of the main types of the cavalry in the Polish-Lithuanian Commonwealth between the 16th and 18th centuries
+-- (Ottoman) Sipahi (gifted by minors, "replaces" Lancer)
+-- Sipahi were two types of Ottoman cavalry corps
 -------------------------------------------------------
 
-UPDATE Units
-SET ObsoleteTech = 'TECH_COMBUSTION'
-WHERE Type IN ('UNIT_OTTOMAN_SIPAHI', 'UNIT_POLISH_WINGED_HUSSAR');
+UPDATE Unit_ClassUpgrades
+SET UnitClassType = 'UNITCLASS_EE_UHLAN'
+WHERE UnitType IN ('UNIT_OTTOMAN_SIPAHI', 'UNIT_POLISH_WINGED_HUSSAR');
 
 UPDATE Units
-SET PrereqTech = 'TECH_EE_EXPLORATION'
-WHERE Type = 'UNIT_POLISH_WINGED_HUSSAR';
+SET ObsoleteTech = 'TECH_COMBUSTION', GoodyHutUpgradeUnitClass = 'UNITCLASS_EE_UHLAN'
+WHERE Type IN ('UNIT_OTTOMAN_SIPAHI', 'UNIT_POLISH_WINGED_HUSSAR');
 
 -------------------------------------------------------
 -- Spanish Conquistador (XVI-XVII cent.)
@@ -272,7 +289,7 @@ WHERE Type = 'UNIT_POLISH_WINGED_HUSSAR';
 -------------------------------------------------------
 
 UPDATE Units
-SET RangedCombat = 35, Range = 2
+SET RangedCombat = 38, Range = 2
 WHERE Type = 'UNIT_EE_SKIRMISHER';
 
 -- Infixo: proper upgrade for Musketman and Civs' uniques
@@ -398,7 +415,7 @@ UPDATE Units SET GoodyHutUpgradeUnitClass = 'UNITCLASS_IRONCLAD' WHERE Type = 'U
 UPDATE Civilization_UnitClassOverrides SET UnitClassType = 'UNITCLASS_EE_CARRACK' WHERE UnitType = 'UNIT_PORTUGUESE_NAU';
 
 UPDATE Units 
-SET Combat = 32, Moves = 5, Class = 'UNITCLASS_EE_CARRACK', PrereqTech = 'TECH_ASTRONOMY', ObsoleteTech = 'TECH_EE_WARSHIPS', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER'
+SET Combat = 32, Moves = 5, Class = 'UNITCLASS_EE_CARRACK', PrereqTech = 'TECH_ASTRONOMY', ObsoleteTech = 'TECH_INDUSTRIALIZATION', GoodyHutUpgradeUnitClass = 'UNITCLASS_PRIVATEER'
 WHERE Type = 'UNIT_PORTUGUESE_NAU';
 
 UPDATE Unit_ClassUpgrades SET UnitClassType = 'UNITCLASS_PRIVATEER' WHERE UnitType = 'UNIT_PORTUGUESE_NAU';
@@ -534,7 +551,7 @@ UPDATE Units SET Cost = 350, FaithCost = 450 WHERE Type = 'UNIT_EE_CARRACK'; -- 
 UPDATE Units SET Cost = 350, FaithCost = 450 WHERE Type = 'UNIT_PORTUGUESE_NAU'; -- replaces EE_CARRACK (originally PRIVATEER)
 UPDATE Units SET Cost = 375, FaithCost = 450 WHERE Type = 'UNIT_DUTCH_SEA_BEGGAR'; -- replaces EE_CARRACK (originally PRIVATEER)
 UPDATE Units SET Cost = 375, FaithCost = 450 WHERE Type = 'UNIT_EE_GALLEON'; -- Renaissance, takes place of FRIGATE
-UPDATE Units SET Cost = 350, FaithCost = 400 WHERE Type = 'UNIT_SPANISH_CONQUISTADOR'; -- replaces LANCER (originally KNIGHT)
+-- UPDATE Units SET Cost = 350, FaithCost = 400 WHERE Type = 'UNIT_SPANISH_CONQUISTADOR'; -- replaces LANCER (originally KNIGHT)
 -- Enlightenment
 UPDATE Units SET Cost = 400, FaithCost = 500 WHERE Type = 'UNIT_EE_LINE_INFANTRY';
 UPDATE Units SET Cost = 400, FaithCost = 500 WHERE Type = 'UNIT_SWEDISH_CAROLEAN'; -- replaces EE_LINE_INF (originally TERCIO)
