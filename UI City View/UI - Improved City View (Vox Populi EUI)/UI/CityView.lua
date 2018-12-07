@@ -1,4 +1,4 @@
-print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.5")
+print("Loading CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 11.0")
 ------------------------------------------------------
 -- City View
 -- coded by bc1 from 1.0.3.276 brave new world code
@@ -942,7 +942,7 @@ local function SetupBuildingList( city, buildings, buildingIM )
 				-- Vox Populi Comparable Yields
 				--buildingYieldRate = buildingYieldRate + (foodConsumed < foodPerPop * population and foodPerPop * numSpecialistsInBuilding / 2 or 0)
 				--buildingYieldModifier = buildingYieldModifier + (tonumber(building.FoodKept) or 0) -- FoodKept has a different meaning
-				--[[  Infixo switched off to avoid confusion
+				--[[ Infixo turned off due to confusion
 				if foodConsumed < foodPerPop * population then 
 					-- this only happens when specialists in the city consume less food that normal population
 					local foodPerSpec = city:FoodConsumptionSpecialistTimes100() / 100;
@@ -1866,6 +1866,7 @@ local function UpdateCityViewNow()
 			end
 		end
 		
+				
 		-- Resistance tooltip
 		if (iResistanceUnhappiness ~= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_EO_CITY_RESISTANCE", iResistanceUnhappiness);
@@ -1880,7 +1881,6 @@ local function UpdateCityViewNow()
 		if (iOccupationUnhappiness ~= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_OCCUPATION_UNHAPPINESS", iOccupationUnhappiness);
 		end
-		
 
 		-- Starving tooltip
 		if (iStarvingUnhappiness ~= 0) then
@@ -1890,19 +1890,19 @@ local function UpdateCityViewNow()
 		if (iPillagedUnhappiness ~= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_PILLAGED_UNHAPPINESS", iPillagedUnhappiness);
 		end
-		-- Gold tooltip
-		if (iGoldUnhappiness > 0) then
-			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_GOLD_UNHAPPINESS", iGoldUnhappiness, iGoldYield, iGoldNeeded, iGoldDeficit);
-		end
-		if ((iGoldYield - iGoldNeeded) >= 0) then
-			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_GOLD_UNHAPPINESS_SURPLUS", (iGoldYield - iGoldNeeded));
-		end
 		-- Defense tooltip
 		if (iDefenseUnhappiness > 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_DEFENSE_UNHAPPINESS", iDefenseUnhappiness, iDefenseYield, iDefenseNeeded, iDefenseDeficit);
 		end
 		if ((iDefenseYield - iDefenseNeeded) >= 0) then
 			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_DEFENSE_UNHAPPINESS_SURPLUS", (iDefenseYield - iDefenseNeeded));
+		end
+		-- Gold tooltip
+		if (iGoldUnhappiness > 0) then
+			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_GOLD_UNHAPPINESS", iGoldUnhappiness, iGoldYield, iGoldNeeded, iGoldDeficit);
+		end
+		if ((iGoldYield - iGoldNeeded) >= 0) then
+			strOccupationTT = strOccupationTT .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_GOLD_UNHAPPINESS_SURPLUS", (iGoldYield - iGoldNeeded));
 		end
 		-- Connection tooltip
 		if (iConnectionUnhappiness ~= 0) then
@@ -3019,7 +3019,7 @@ function( notificationID, notificationType, toolTip, strSummary, data1, data2, p
 		end
 	end
 end)
-print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 10.5")
+print("OK loaded CityView.lua from 'UI - Improved City View (Vox Populi with EUI)' version 11.0")
 print("Finished loading EUI city view",os.clock())
 end)
 
